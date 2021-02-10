@@ -24,10 +24,10 @@
 <nav class="nav navbar-expand navbar-dark bg-dark">
     <ul class="nav navbar-nav nav-fill w-100">
         <li class="nav-item"><a class="nav-link" href="#">소개</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">추천</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">액세서리</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">고객지원</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">뉴스</a></li>
-        <li class="nav-item"><a class="nav-link" href="#"">매장찾기</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">원두&머신추천</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">후기</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">매장찾기</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">E-shop</a></li>
     </ul>
 </nav>

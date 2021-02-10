@@ -25,7 +25,7 @@
           p:driverClassName="${DRV}"
           p:url="${URL}"
           p:username="${USR}"
-          p:password="playground2020" />
+          p:password="javacoffe2020" />
 
     <!--mybaits 설정 #1-->
     <bean id="sqlSessionFactory"
