@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="review">
+
+    <insert id="insertReview" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.ReviewVO">
+        insert into Review (title, userid, contents, fnames, fsizes, uuid) values (#{title}, #{userid}, #{contents}, #{fnames}, #{fsizes}, #{uuid});
+    </insert>
+
+    <select id="lastReviewID" statementType="PREPARED" resultType="String">
+        select AUTO_INCREMENT -1 rno from information_schema.TABLES where TABLE_NAME = 'Review';
+    </select>
+
+    <select id="selectList" statementType="PREPARED" resultType="javaCoffe.spring.mvc.vo.ReviewVO" parameterType="int">
+        select rno, title, userid, regdate, views, thumbs, fnames from Review order by rno desc limit #{startnum}, 24;
+    </select>
+
+    <select id="countReview" statementType="PREPARED" resultType="int">
+        select count(rno) cnt from Review;
+    </select>
+
+    <select id="findSelectList" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.ReviewVO">
+        select rno, title, userid, regdate, views, thumbs, fnames from Review
+        <if test="findType != 'ticon'">
+            where ${findType} like concat('%', #{findKey},'%')
+        </if>
+        <if test="findType == 'ticon'">
+            where title like concat('%', #{findKey},'%') or contents like concat('%',#{findKey},'%')
+        </if>
+        order by rno desc limit #{snum}, 24;
+    </select>
+
+    <select id="findCountReview" statementType="PREPARED" parameterType="map" resultType="int">
+        select count(rno) rno from Review
+        <if test="findType != 'ticon'">
+            where ${findType} like concat('%',#{findKey},'%')
+        </if>
+        <if test="findType == 'ticon'">
+            where title like concat('%',#{findKey},'%') or contents like concat('%',#{findKey},'%')
+        </if>
+    </select>
+
+    <select id="selectOne" statementType="PREPARED" resultType="javaCoffe.spring.mvc.vo.ReviewVO" parameterType="String">
+        select * from Review where rno = #{rno};
+    </select>
+
+    <update id="viewCount" statementType="PREPARED" parameterType="String">
+        update Review set views = (views + 1) where rno = #{rno};
+    </update>
+</mapper>
