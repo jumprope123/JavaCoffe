@@ -26,7 +26,7 @@
         <li class="nav-item"><a class="nav-link" href="#">소개</a></li>
         <li class="nav-item"><a class="nav-link" href="#">원두&머신추천</a></li>
         <li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">후기</a></li>
+        <li class="nav-item"><a class="nav-link" href="/review/list?cp=1">후기</a></li>
         <li class="nav-item"><a class="nav-link" href="#">매장찾기</a></li>
         <li class="nav-item"><a class="nav-link" href="#">E-shop</a></li>
     </ul>
