@@ -11,16 +11,12 @@
     <!-- http cache control 관련 코드 : meta-->
 
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/customCSS.css">
+<%--    <link rel="stylesheet" href="/css/bootstrap.min.css">--%>
+<%--    <link rel="stylesheet" href="/css/customCSS.css">--%>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
-    <style>
-        .fatdiv {padding: 15px;}
-        .margin30{margin: 30px 0;}
-        .colblack {color: black}
-    </style>
-    <title>Java Coffe</title>
+    <title>JAVAPRESSO</title>
 </head>
 <body>
 <div class="container">
@@ -31,8 +27,7 @@
    <tiles:insertAttribute name="footer"/>
 </div>
 <!--로그인 모달-->
-<tiles:insertAttribute name="modal"/>
-
+<%--<tiles:insertAttribute name="modal"/>--%>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"> </script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
