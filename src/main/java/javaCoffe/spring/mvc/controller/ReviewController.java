@@ -96,4 +96,9 @@ public class ReviewController {
         rrsrv.delRePly(rrvo);
         return returnPage;
     }
+
+    @GetMapping("review/update")
+    public ModelAndView update(ModelAndView mv, String rno){
+        return mv;
+    }
 }

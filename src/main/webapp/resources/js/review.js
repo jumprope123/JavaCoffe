@@ -1,5 +1,26 @@
 // jquery 선택자에 for문을 적용하는방법을 알면 적용하기
 // 이미지파일 확장자 제한 및 선택한 파일이름 띄우기 1~5
+
+// $(document).ready(function () {
+//     var fileId = ["#file1","#file2","#file3","#file4","#file5"];
+//     var fileLable = ["#file1Lable", "#file2Lable", "#file3Lable", "#file4Lable", "#file5Lable"];
+//
+//     for (i=0; i<5; i++) {
+//         $(fileId[i]).change(function () {
+//             var filename = $(this)[0].files[0].name;
+//             var filetype = filename.substring(filename.lastIndexOf(".") + 1).toLowerCase();
+//             if (!(filetype == 'jpg' || filetype == 'png' || filetype == 'jpeg' || filetype == 'bmp' || filetype == 'gif')) {
+//                 alert('확장자가 png, jpeg, bmp, gif 인 이미지파일만 선택가능합니다.');
+//                 $(fileId[i]).val('');
+//                 $(fileLable[i]).html('업로드할 이미지파일을 선택하세요1');
+//             } else {
+//                 $(fileLable[i]).html( filename );
+//             }
+//         })
+//     }
+// })
+
+
 $(document).ready(function () {
     $("#file1").change(function () {
         var file1name = $(this)[0].files[0].name;
@@ -191,4 +212,9 @@ $('#delrpbtn').on('click',function () {
 // 댓글 삭제창 닫기
 $('#delcencelrpbtn').on('click',function () {
     $('#replydeleteModal').modal('hide');
+})
+
+// 수정하기 버튼
+$('#upReviewBtn').on('click',function () {
+    location.href = "/review/update?rno=" + $('#rno').val();
 })
