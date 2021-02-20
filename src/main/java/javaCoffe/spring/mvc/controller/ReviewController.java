@@ -133,4 +133,15 @@ public class ReviewController {
         return returnPage;
     }
 
+    // 이전페이지로
+    @GetMapping("review/prevView")
+    public String preView(String rno){
+        String preRno = rsrv.readPreReview(rno); // rno값을 받아서 전 rno를 조회해서 보낸다. 만약 최신이라면 그대로 보낸다.
+
+        if (preRno == null) {
+            preRno = rsrv.readFirstRno();
+        }
+        return "redirect:/review/view?rno=" + preRno;
+    }
+
 }

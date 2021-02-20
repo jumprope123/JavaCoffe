@@ -60,4 +60,12 @@ public class ReviewDAOImpl implements ReviewDAO{
     @Override
     public int updateReview(ReviewVO rvo) { return sqlSession.update("review.updateReview",rvo);
     }
+
+    @Override
+    public String selectPreRno(String rno) { return sqlSession.selectOne("review.selectOnePreRno",rno);
+    }
+
+    @Override
+    public String selectFirstRno() { return sqlSession.selectOne("review.selectFirstRno");
+    }
 }

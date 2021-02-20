@@ -23,4 +23,8 @@ public interface ReviewDAO {
     int deleteView(String rno);
 
     int updateReview(ReviewVO rvo);
+
+    String selectPreRno(String rno);
+
+    String selectFirstRno();
 }

@@ -57,4 +57,13 @@
     <update id="updateReview" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.ReviewVO">
         update Review set title = #{title}, regdate = current_timestamp, contents = #{contents}, fnames = #{fnames}, fsizes = #{fsizes} where rno = #{rno}
     </update>
+
+    <select id="selectOnePreRno" statementType="PREPARED" parameterType="String" resultType="String">
+        select rno from Review where rno <![CDATA[<]]> #{rno} order by rno desc limit 1;
+    </select>
+
+    <select id="selectFirstRno" statementType="PREPARED" resultType="String">
+        select rno from Review order by rno asc limit 1;
+    </select>
+
 </mapper>

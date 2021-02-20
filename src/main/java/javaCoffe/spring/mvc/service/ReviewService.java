@@ -23,4 +23,8 @@ public interface ReviewService {
     Boolean delReview(ReviewVO nrvo);
 
     Boolean updateReview(ReviewVO rvo, MultipartFile[] img, String[] fileck);
+
+    String readPreReview(String rno);
+
+    String readFirstRno();
 }
