@@ -5,6 +5,7 @@
 <c:set var="newChar" value="
 " scope="application"/> <%-- value값에 엔터를 넣음 --%>
 
+
 <c:set var="baseImgURL" value="http://localhost/cdn/"/>
 <%--<c:set var="baseImgURL" value="http://13.125.205.40:8447/cdn/" />--%>
 
@@ -38,7 +39,7 @@
                         </c:if>
                     </c:forEach>
 
-                    <p>${fn:replace(review.contents, newchar, "<br>")}</p>
+                    <p>${fn:replace(review.contents, newChar, '<br>')}</p>
                 </th>
             </tr> <!--본문-->
 
@@ -71,10 +72,11 @@
         </div>
     </div><!--버튼들-->
 
-    <input type="hidden" id="rno" value="${param.rno}">
-<%--    <input type="hidden" id="cp" value="${param.cp}">--%>
-    <input type="hidden" id="userid" value="${review.userid}">
-
+    <form id="hiddenform">
+        <input type="hidden" name="rno" id="rno" value="${param.rno}">
+    <%--    <input type="hidden" id="cp" value="${param.cp}">--%>
+        <input type="hidden" id="userid" value="${review.userid}">
+    </form>
     <div class="row margin1050 mt-5">
         <h3><i class="bi bi-chat-square-dots-fill"></i>&nbsp;댓글 남기기</h3>
     </div>
@@ -94,7 +96,7 @@
                                     <a href="javascript:modiReply('${r.replyNo}','${r.reply}')">[수정]</a>
                                     <a href="javascript:delReply('${r.replyNo}')">[삭제]</a></div> <%--대댓글이 있는 리플은 삭제못하게 하고싶은데 어떻게?--%>
                                 </div>
-                                <p class="mt-1">${r.reply}</p>
+                                <p class="mt-1">${fn:replace(r.reply,newChar,'<br>')}</p>
                             </td>
                         </tr>
                     </tbody>
@@ -108,7 +110,7 @@
                                     <h3 style="display: inline-block">${r.userid}</h3>
                                     <div style="float: right">${fn:substring(r.regdate,0,19)}</div>
                                 </li>
-                                <li><p>${r.reply}</p></li>
+                                <li><p>${fn:replace(r.reply,newChar,'<br>')}</p></li>
                             </ul>
                         </td>
                     </tr>

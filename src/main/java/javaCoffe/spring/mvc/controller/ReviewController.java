@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.util.List;
 
 @Controller
 public class ReviewController {
@@ -40,7 +42,7 @@ public class ReviewController {
             rsrv.newReview(rvo,img);
             returnPage = "redirect:/review/list?cp=1";
         } else {
-            rds.addFlashAttribute("checkCaptcha","자동가입방지 확인이 실패했어요");
+            rds.addFlashAttribute("checkCaptcha","자동입력방지 확인이 실패했어요");
             rds.addFlashAttribute("rvo",rvo);
         }
         return returnPage;
@@ -71,7 +73,7 @@ public class ReviewController {
         return mv;
     }
 
-    @PostMapping("review/replyok") //댓글쓰기
+    @PostMapping("/review/replyok") //댓글쓰기
     public String replyok(ReviewReplyVO rrvo){
         String returnPage = "redirect:/review/view?rno=" + rrvo.getReviewNo();
 
@@ -83,22 +85,52 @@ public class ReviewController {
         return returnPage;
     }
 
-    @PostMapping("review/replyModiOk") //댓글 수정하기
+    @PostMapping("/review/replyModiOk") //댓글 수정하기
     public String replyModiOk(ReviewReplyVO rrvo){
         String returnPage = "redirect:/review/view?rno=" + rrvo.getReviewNo();
         rrsrv.updateRePly(rrvo);
         return returnPage;
     }
 
-    @PostMapping("review/replydel")
+    // 댓글 삭제하기
+    @PostMapping("/review/replydel")
     public String replydel(ReviewReplyVO rrvo){
         String returnPage = "redirect:/review/view?rno=" + rrvo.getReviewNo();
         rrsrv.delRePly(rrvo);
         return returnPage;
     }
 
-    @GetMapping("review/update")
+    // 후기 게시글 수정하기
+    @GetMapping("/review/update")
     public ModelAndView update(ModelAndView mv, String rno){
+        ReviewVO rvo = rsrv.readOneReview(rno);
+        mv.setViewName("review/update.tiles");
+        mv.addObject("rvo",rvo);
         return mv;
     }
+
+    // 후기게시글 삭제하기
+    @PostMapping("/review/delview")
+    public String delview(String rno){
+    ReviewVO nrvo = rsrv.readOneReview(rno);
+    rsrv.delReview(nrvo);
+    return "redirect:/review/list?cp=1";
+    }
+
+    // 수정페이지
+    @PostMapping("/review/update")
+    public String update(ReviewVO rvo, HttpServletRequest req, RedirectAttributes rds, MultipartFile[] img ){
+        String gCaptcha = req.getParameter("g-recaptcha");
+        String returnPage = "redirect:/review/update?rno=" + rvo.getRno();
+        String[] fileck = new String[]{req.getParameter("fileck1"), req.getParameter("fileck2"), req.getParameter("fileck3"), req.getParameter("fileck4"), req.getParameter("fileck5")};
+
+        if (gcutil.checkCaptcha(gCaptcha)){
+            rsrv.updateReview(rvo, img, fileck);
+            returnPage = "redirect:/review/view?rno=" + rvo.getRno();
+        }else {
+            rds.addFlashAttribute("checkCaptcha","자동입력 방지확인이 실패했어요");
+        }
+        return returnPage;
+    }
+
 }

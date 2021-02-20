@@ -19,4 +19,8 @@ public interface ReviewDAO {
     ReviewVO selectOneReview(String rno);
 
     int updateViewCount(String rno);
+
+    int deleteView(String rno);
+
+    int updateReview(ReviewVO rvo);
 }

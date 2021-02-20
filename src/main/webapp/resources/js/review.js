@@ -32,6 +32,7 @@ $(document).ready(function () {
         }else {
             document.getElementById('file1Lable').innerText = file1name;
         }
+        $('#xbox1').addClass('invisible'); //수정페이지를 위한 코드추가
     })
 })
 
@@ -46,6 +47,7 @@ $(document).ready(function () {
         }else {
             document.getElementById('file2Lable').innerText = file2name;
         }
+        $('#xbox2').addClass('invisible');//수정페이지를 위한 코드추가
     })
 })
 
@@ -60,6 +62,7 @@ $(document).ready(function () {
         }else {
             document.getElementById('file3Lable').innerText = file3name;
         }
+        $('#xbox3').addClass('invisible');//수정페이지를 위한 코드추가
     })
 })
 
@@ -74,6 +77,7 @@ $(document).ready(function () {
         }else {
             document.getElementById('file4Lable').innerText = file4name;
         }
+        $('#xbox4').addClass('invisible');//수정페이지를 위한 코드추가
     })
 })
 
@@ -88,6 +92,7 @@ $(document).ready(function () {
         }else {
             document.getElementById('file5Lable').innerText = file5name;
         }
+        $('#xbox5').addClass('invisible');//수정페이지를 위한 코드추가
     })
 })
 
@@ -99,7 +104,7 @@ $('#reviewWriteOkBtn').on('click',function () {
     }else if($('#contents').val()==''){
         alert('내용을 입력하세요');
     }else if ($('#file1').val()==''){
-        alert('사진을 1개이상 첨부해주세요')
+        alert('첫번째 첨부란에 사진을 첨부해주세요')
     }else if (grecaptcha.getResponse()==""){
         alert('자동 작성 방지 확인을 클릭해주세요');
     }else {
@@ -216,5 +221,82 @@ $('#delcencelrpbtn').on('click',function () {
 
 // 수정하기 버튼
 $('#upReviewBtn').on('click',function () {
-    location.href = "/review/update?rno=" + $('#rno').val();
+    if (confirm("정말 수정하시겠습니까?")){
+    location.href = "/review/update?rno=" + $('#rno').val();}
+})
+
+// 삭제하기 버튼
+$('#rmReviewBtn').on('click',function () {
+    if (confirm('정말 삭제하시겠습니까?')){
+        $('#hiddenform').attr('method','post');
+        $('#hiddenform').attr('action','/review/delview');
+        $('#hiddenform').submit();
+    }
+})
+
+
+
+//수정취소하기 버튼
+$('#reviewUpdcancelbtn').on('click',function () {
+    if (confirm('정말 취소하시겠습니까?')){
+        history.back();
+    }
+})
+
+
+// 수정하기의 이미지첨부 엑스박스 선택시
+$('#xbox1').on('click',function () {
+    $('#xbox1').addClass('invisible');
+    $('#file1Lable').text('업로드할 이미지파일을 선택하세요1');
+})
+$('#xbox2').on('click',function () {
+    $('#xbox2').addClass('invisible');
+    $('#file2Lable').text('업로드할 이미지파일을 선택하세요2');
+})
+$('#xbox3').on('click',function () {
+    $('#xbox3').addClass('invisible');
+    $('#file3Lable').text('업로드할 이미지파일을 선택하세요3');
+})
+$('#xbox4').on('click',function () {
+    $('#xbox4').addClass('invisible');
+    $('#file4Lable').text('업로드할 이미지파일을 선택하세요4');
+})
+$('#xbox5').on('click',function () {
+    $('#xbox5').addClass('invisible');
+    $('#file5Lable').text('업로드할 이미지파일을 선택하세요5');
+})
+
+// 수정하기의 수정완료 버튼 클릭시
+$('#reviewUpdOkBtn').on('click',function () {
+    if ($('#title').val() == ''){
+        alert('제목을 입력하세요');
+    }else if($('#contents').val()==''){
+        alert('내용을 입력하세요');
+    }else if ($('#file1Lable').text() == '업로드할 이미지파일을 선택하세요1'){
+        alert('첫번째 첨부란에 사진을 첨부해주세요')
+    }else if (grecaptcha.getResponse()==""){
+        alert('자동 작성 방지 확인을 클릭해주세요');
+    }else {
+        if ($('#file1Lable').text() == '업로드할 이미지파일을 선택하세요1'){ $('#fileck1').val('false'); } else { $('#fileck1').val('true'); }
+        if ($('#file2Lable').text() == '업로드할 이미지파일을 선택하세요2'){ $('#fileck2').val('false'); } else { $('#fileck2').val('true'); }
+        if ($('#file3Lable').text() == '업로드할 이미지파일을 선택하세요3'){ $('#fileck3').val('false'); } else { $('#fileck3').val('true'); }
+        if ($('#file4Lable').text() == '업로드할 이미지파일을 선택하세요4'){ $('#fileck4').val('false'); } else { $('#fileck4').val('true'); }
+        if ($('#file5Lable').text() == '업로드할 이미지파일을 선택하세요5'){ $('#fileck5').val('false'); } else { $('#fileck5').val('true'); }
+        $('#g-recaptcha').val(grecaptcha.getResponse());
+        $('#reviewUpdfrm').attr('method','post');
+        $('#reviewUpdfrm').attr('enctype','multipart/form-data');
+        $('#reviewUpdfrm').attr('action','/review/update');
+        $('#reviewUpdfrm').submit();
+
+    }
+})
+
+// 이전게시물 클릭시
+$('#prevbtn').on('click',function () {
+    location.href = '/review/prevView?rno=' + $('#rno').val();
+})
+
+//다음게시물 클릭시
+$('#nextbtn').on('click',function () {
+
 })

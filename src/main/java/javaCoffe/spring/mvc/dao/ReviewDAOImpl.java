@@ -52,4 +52,12 @@ public class ReviewDAOImpl implements ReviewDAO{
     public int updateViewCount(String rno) {
         return sqlSession.update("review.viewCount",rno);
     }
+
+    @Override
+    public int deleteView(String rno) { return sqlSession.delete("review.deleteOneReview", rno);
+    }
+
+    @Override
+    public int updateReview(ReviewVO rvo) { return sqlSession.update("review.updateReview",rvo);
+    }
 }

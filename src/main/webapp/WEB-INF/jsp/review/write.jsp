@@ -35,7 +35,7 @@
 
             <!--파일 첨부 시작-->
             <div class="form-group row">
-                <label for="file1" class="col-form-label col-2 text-right">파일 첨부</label>
+                <label for="file1" class="col-form-label col-2 text-right">이미지 첨부</label>
                 <div class="custom-file col-9 offset-2">
                     <input type="file" id="file1" name="img" class="custom-file-input">
                     <label id="file1Lable" class="custom-file-label">업로드할 이미지파일을 선택하세요1</label>

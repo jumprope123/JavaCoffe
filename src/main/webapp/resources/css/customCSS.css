@@ -10,6 +10,8 @@
 
 .bidragup{position: relative; top: -3px;}
 
+.bidragdown{position: relative; bottom: -5px;}
+
 .tblines {border-top: 3px solid black; border-bottom: 3px solid black;}
 
 .pushtop50 {margin-top: 50px;}
@@ -29,3 +31,4 @@
 .pushright {float: right;}
 
 .tbwide td:first-child{width: 25%;}
+

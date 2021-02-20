@@ -19,4 +19,8 @@ public interface ReviewService {
     ReviewVO readOneReview(String rno);
 
     Boolean viewCountReview(String rno);
+
+    Boolean delReview(ReviewVO nrvo);
+
+    Boolean updateReview(ReviewVO rvo, MultipartFile[] img, String[] fileck);
 }

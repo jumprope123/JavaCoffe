@@ -49,4 +49,12 @@
     <update id="viewCount" statementType="PREPARED" parameterType="String">
         update Review set views = (views + 1) where rno = #{rno};
     </update>
+
+    <delete id="deleteOneReview" statementType="PREPARED" parameterType="String">
+        delete from Review where rno = #{rno};
+    </delete>
+
+    <update id="updateReview" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.ReviewVO">
+        update Review set title = #{title}, regdate = current_timestamp, contents = #{contents}, fnames = #{fnames}, fsizes = #{fsizes} where rno = #{rno}
+    </update>
 </mapper>
