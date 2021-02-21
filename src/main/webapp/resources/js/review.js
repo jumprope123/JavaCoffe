@@ -298,5 +298,5 @@ $('#prevbtn').on('click',function () {
 
 //다음게시물 클릭시
 $('#nextbtn').on('click',function () {
-
+    location.href = '/review/nextView?rno=' + $('#rno').val();
 })

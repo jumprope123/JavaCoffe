@@ -181,13 +181,23 @@ public class ReviewServiceImpl implements ReviewService{
 
     @Override
     public String readPreReview(String rno) {
-        String preRno = rdao.selectPreRno(rno);
-        return preRno;
+        return rdao.selectPreRno(rno);
+
     }
 
     @Override
     public String readFirstRno() {
         return rdao.selectFirstRno();
+    }
+
+    @Override
+    public String readNextReview(String rno) {
+        return rdao.selectNextRno(rno);
+    }
+
+    @Override
+    public String readLastRno() {
+        return rdao.selectLastRno();
     }
 
 

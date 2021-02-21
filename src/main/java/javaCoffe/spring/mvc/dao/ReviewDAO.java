@@ -27,4 +27,8 @@ public interface ReviewDAO {
     String selectPreRno(String rno);
 
     String selectFirstRno();
+
+    String selectNextRno(String rno);
+
+    String selectLastRno();
 }

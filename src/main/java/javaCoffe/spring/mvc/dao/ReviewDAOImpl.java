@@ -68,4 +68,10 @@ public class ReviewDAOImpl implements ReviewDAO{
     @Override
     public String selectFirstRno() { return sqlSession.selectOne("review.selectFirstRno");
     }
+
+    @Override
+    public String selectNextRno(String rno) { return sqlSession.selectOne("review.selectOneNextRno",rno); }
+
+    @Override
+    public String selectLastRno() { return sqlSession.selectOne("review.selectLastRno"); }
 }

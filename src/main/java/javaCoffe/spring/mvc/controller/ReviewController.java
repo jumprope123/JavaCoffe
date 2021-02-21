@@ -136,7 +136,7 @@ public class ReviewController {
     // 이전페이지로
     @GetMapping("review/prevView")
     public String preView(String rno){
-        String preRno = rsrv.readPreReview(rno); // rno값을 받아서 전 rno를 조회해서 보낸다. 만약 최신이라면 그대로 보낸다.
+        String preRno = rsrv.readPreReview(rno); // rno값을 받아서 전 rno를 조회해서 보낸다. 만약 마지막게시글이라면 그대로 보낸다.
 
         if (preRno == null) {
             preRno = rsrv.readFirstRno();
@@ -144,4 +144,14 @@ public class ReviewController {
         return "redirect:/review/view?rno=" + preRno;
     }
 
+    // 다음페이지로
+    @GetMapping("review/nextView")
+    public String nextView(String rno){
+        String nextRno = rsrv.readNextReview(rno); //rno값을 받아서 다음 rno를 조회해서 보낸다. 만약 최신게시글이라면 그대로 보낸다.
+
+        if (nextRno == null){
+            nextRno = rsrv.readLastRno();
+        }
+        return "redirect:/review/view?rno=" + nextRno;
+    }
 }

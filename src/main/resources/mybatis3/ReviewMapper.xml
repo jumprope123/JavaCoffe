@@ -66,4 +66,11 @@
         select rno from Review order by rno asc limit 1;
     </select>
 
+    <select id="selectOneNextRno" statementType="PREPARED" parameterType="String" resultType="String">
+        select rno from Review where rno <![CDATA[>]]> #{rno} order by rno asc limit 1;
+    </select>
+
+    <select id="selectLastRno" statementType="PREPARED" resultType="String">
+        select rno from Review order by rno desc limit 1;
+    </select>
 </mapper>

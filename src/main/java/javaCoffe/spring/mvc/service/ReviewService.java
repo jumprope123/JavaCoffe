@@ -27,4 +27,8 @@ public interface ReviewService {
     String readPreReview(String rno);
 
     String readFirstRno();
+
+    String readNextReview(String rno);
+
+    String readLastRno();
 }
