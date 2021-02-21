@@ -5,6 +5,11 @@
 <c:set var="newChar" value="
 " scope="application"/> <%-- value값에 엔터를 넣음 --%>
 
+<%--로그인 하지 않았으면 list페이지로 강제 전환--%>
+<%--<c:if test="${UID ne rvo.userid}"> --%>
+<%--    <c:redirect url="/review/list?cp=1"/>--%>
+<%--</c:if>--%>
+
 <%--구글 리캡챠 사용을 위한 api--%>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 

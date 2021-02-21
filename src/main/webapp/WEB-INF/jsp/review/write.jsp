@@ -4,6 +4,11 @@
 <%--구글 리캡챠 사용을 위한 api--%>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 
+<%--로그인 하지 않았으면 list페이지로 강제 전환--%>
+<%--<c:if test="${UID ne rvo.userid}">--%>
+<%--    <c:redirect url="/review/list?cp=1"/>--%>
+<%--</c:if>--%>
+
 <div id="main">
     <div class="margin30">
         <h3><i class="bi bi-cup-fill bidragup"></i>&nbsp;상품 후기</h3>
