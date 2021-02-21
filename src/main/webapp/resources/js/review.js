@@ -300,3 +300,26 @@ $('#prevbtn').on('click',function () {
 $('#nextbtn').on('click',function () {
     location.href = '/review/nextView?rno=' + $('#rno').val();
 })
+
+// 추천하기 클릭시
+$('#thumbBtn').on('click',function () {
+    if ($('#thumb').val() == 'no'){
+        $('#thumb').val('yes');
+        alert('해당 게시글을 추천하였습니다.');
+        $('#thumbBtn').html('<i class="bi bi-hand-thumbs-down bidragup"></i>취소하기');
+    }else {
+        $('#thumb').val('no');
+        alert('해당 게시글의 추천을 취소하였습니다.');
+        $('#thumbBtn').html('<i class="bi bi-hand-thumbs-up bidragup"></i>추천하기');
+    }
+    var checkThumb = $('#thumb').val();
+    $.ajax({
+        url: '/review/thumbUp',
+        type: 'GET',
+        data: {rno: $('#rno').val(), checkThumb: checkThumb}
+    })
+        .done(function (data) {
+            let thumbs = data["thumbs"];
+            $('#thumbs').text(thumbs);
+        })
+})

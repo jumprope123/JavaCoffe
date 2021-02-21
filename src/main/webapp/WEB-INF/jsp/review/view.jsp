@@ -31,7 +31,7 @@
     <div class="row margin1050">
         <table class="table">
             <tr><th colspan="2" class="tblines2 text-center bg-light"><h2>${review.title}</h2></th></tr>
-            <tr class="tbbg1 font-weight-bold"><td><i class="bi bi-person"></i> : ${review.userid}</td><td class="text-right"><i class="bi bi-calendar-plus"></i> : ${fn:substring(review.regdate,0,19)} / <i class="bi bi-hand-thumbs-up"></i> : ${review.thumbs} / <i class="bi bi-eye"></i> : ${review.views}</td></tr>
+            <tr class="tbbg1 font-weight-bold"><td><i class="bi bi-person"></i> : ${review.userid}</td><td class="text-right"><i class="bi bi-calendar-plus"></i> : ${fn:substring(review.regdate,0,19)} / <i class="bi bi-hand-thumbs-up"></i> : <span id="thumbs">${review.thumbs}</span> / <i class="bi bi-eye"></i> : ${review.views}</td></tr>
             <tr>
                 <th colspan="2" class="tbbg1 tblines2">
                     <c:forEach begin="0" end="4" var="i" step="1">
@@ -64,6 +64,7 @@
         </div>
         <div class="col-6 text-right">
 <%--            <c:if test="${not empty UID}">--%>
+                <input type="hidden" id="thumb" name="thumb" value="no">
                 <button type="button" id="thumbBtn" class="btn btn-success">
                     <i class="bi bi-hand-thumbs-up bidragup"></i>추천하기
                 </button>

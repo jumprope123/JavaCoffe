@@ -31,4 +31,6 @@ public interface ReviewService {
     String readNextReview(String rno);
 
     String readLastRno();
+
+    String updateThumb(String rno, String checkThumb);
 }

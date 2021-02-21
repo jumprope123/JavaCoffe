@@ -22,7 +22,7 @@ import java.util.*;
 import static jdk.nashorn.internal.objects.Global.println;
 
 @Component("imgutil")
-public class ImageUploadUtil {
+public class ImageUploadUtilForReview {
 
     // 이미지 업로드 경로 설정
      private String IMG_UPLOAD_PATH = "C:/Java/nginx-1.19.6/html/cdn/"; //window

@@ -1,7 +1,9 @@
 package javaCoffe.spring.mvc.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javaCoffe.spring.mvc.dao.ReviewDAO;
-import javaCoffe.spring.mvc.utils.ImageUploadUtil;
+import javaCoffe.spring.mvc.utils.ImageUploadUtilForReview;
 import javaCoffe.spring.mvc.vo.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,7 @@ public class ReviewServiceImpl implements ReviewService{
     @Autowired
     private ReviewDAO rdao;
     @Autowired
-    private ImageUploadUtil imgutil;
+    private ImageUploadUtilForReview imgutil;
 
 
     @Override
@@ -198,6 +200,23 @@ public class ReviewServiceImpl implements ReviewService{
     @Override
     public String readLastRno() {
         return rdao.selectLastRno();
+    }
+
+    @Override
+    public String updateThumb(String rno, String checkThumb) {
+        if (checkThumb.equals("yes")) {
+            rdao.updateThumbPlus(rno);
+        }else {
+            rdao.updateThumbMinus(rno);
+        }
+        ObjectMapper mapper = new ObjectMapper();
+        String json = "";
+        try {
+            json = mapper.writeValueAsString(rdao.selectOneThumb(rno));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return json;
     }
 
 

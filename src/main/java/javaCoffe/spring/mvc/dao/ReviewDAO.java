@@ -31,4 +31,10 @@ public interface ReviewDAO {
     String selectNextRno(String rno);
 
     String selectLastRno();
+
+    int updateThumbPlus(String rno);
+
+    int updateThumbMinus(String rno);
+
+    ReviewVO selectOneThumb(String rno);
 }

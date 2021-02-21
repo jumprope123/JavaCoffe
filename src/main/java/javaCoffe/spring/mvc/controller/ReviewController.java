@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -134,7 +137,7 @@ public class ReviewController {
     }
 
     // 이전페이지로
-    @GetMapping("review/prevView")
+    @GetMapping("/review/prevView")
     public String preView(String rno){
         String preRno = rsrv.readPreReview(rno); // rno값을 받아서 전 rno를 조회해서 보낸다. 만약 마지막게시글이라면 그대로 보낸다.
 
@@ -145,7 +148,7 @@ public class ReviewController {
     }
 
     // 다음페이지로
-    @GetMapping("review/nextView")
+    @GetMapping("/review/nextView")
     public String nextView(String rno){
         String nextRno = rsrv.readNextReview(rno); //rno값을 받아서 다음 rno를 조회해서 보낸다. 만약 최신게시글이라면 그대로 보낸다.
 
@@ -153,5 +156,22 @@ public class ReviewController {
             nextRno = rsrv.readLastRno();
         }
         return "redirect:/review/view?rno=" + nextRno;
+    }
+
+    @ResponseBody
+    @GetMapping("/review/thumbUp")
+    public void thumbUp(String rno, String checkThumb, HttpServletResponse res){ //HttpServletResponse는 servlet의 힘을 빌려서 화면에 출력해주는데 사용.
+        System.out.println("it's working");
+        System.out.println("--------------------------");
+        System.out.println(rno);
+        System.out.println(checkThumb);
+        System.out.println("--------------------------");
+        String ThumbCnt = rsrv.updateThumb(rno, checkThumb);
+        res.setContentType("application/json; charset=UTF-8");
+        try {
+            res.getWriter().print(ThumbCnt);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

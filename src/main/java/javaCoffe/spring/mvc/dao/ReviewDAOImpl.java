@@ -74,4 +74,15 @@ public class ReviewDAOImpl implements ReviewDAO{
 
     @Override
     public String selectLastRno() { return sqlSession.selectOne("review.selectLastRno"); }
+
+    @Override
+    public int updateThumbPlus(String rno) { return sqlSession.update("review.updateThumbPlus",rno);
+    }
+
+    @Override
+    public int updateThumbMinus(String rno) { return sqlSession.update("review.updateThumbMinus",rno); }
+
+    @Override
+    public ReviewVO selectOneThumb(String rno) { return sqlSession.selectOne("review.selectOneThumb",rno);
+    }
 }

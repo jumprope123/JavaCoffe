@@ -73,4 +73,16 @@
     <select id="selectLastRno" statementType="PREPARED" resultType="String">
         select rno from Review order by rno desc limit 1;
     </select>
+
+    <update id="updateThumbPlus" statementType="PREPARED">
+        update Review set thumbs = thumbs +1 where rno = #{rno};
+    </update>
+
+    <update id="updateThumbMinus" statementType="PREPARED">
+        update Review set thumbs = thumbs -1 where rno = #{rno};
+    </update>
+
+    <select id="selectOneThumb" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.ReviewVO">
+        select * from Review where rno = #{rno};
+    </select>
 </mapper>
