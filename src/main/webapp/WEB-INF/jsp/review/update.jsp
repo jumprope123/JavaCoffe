@@ -13,7 +13,7 @@
 <%--구글 리캡챠 사용을 위한 api--%>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 
-<div id="main">
+<div id="main"  class="container">
     <div class="margin30">
         <h3><i class="bi bi-cup-fill bidragup"></i>&nbsp;상품 후기</h3>
         <hr style="border-bottom: 1px solid white">

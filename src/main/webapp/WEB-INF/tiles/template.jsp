@@ -11,20 +11,20 @@
     <!-- http cache control 관련 코드 : meta-->
 
 
-<%--    <link rel="stylesheet" href="/css/bootstrap.min.css">--%>
-<%--    <link rel="stylesheet" href="/css/customCSS.css">--%>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/customCSS.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <title>JAVAPRESSO</title>
 </head>
 <body>
-<div class="container">
-   <tiles:insertAttribute name="header"/>
+<div class="container1">
+    <tiles:insertAttribute name="header"/>
 
     <tiles:insertAttribute name="main" />
 
-   <tiles:insertAttribute name="footer"/>
+    <tiles:insertAttribute name="footer"/>
 </div>
 <!--로그인 모달-->
 <%--<tiles:insertAttribute name="modal"/>--%>

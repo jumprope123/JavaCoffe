@@ -9,7 +9,7 @@
 <%--    <c:redirect url="/review/list?cp=1"/>--%>
 <%--</c:if>--%>
 
-<div id="main">
+<div id="main"  class="container">
     <div class="margin30">
         <h3><i class="bi bi-cup-fill bidragup"></i>&nbsp;상품 후기</h3>
         <hr style="border-bottom: 1px solid white">
@@ -65,7 +65,7 @@
             <!--파일 첨부 끝-->
 
             <div class="form-group row">
-                <label class="col-form-label col-2 text-right text-danger">자동 가입방지</label>
+                <label class="col-form-label col-2 text-right text-danger">자동 입력방지</label>
                 <div class="g-recaptcha" data-sitekey="6LfA1joaAAAAAOU9f2VaZdKu9Z4C_tWErqdpFnqf"></div>
                 <input type="hidden" name="g-recaptcha" id="g-recaptcha">
                 <span style="color: red">${checkCaptcha}</span>

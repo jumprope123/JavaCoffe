@@ -34,7 +34,7 @@
 <%--<c:set var="baseImgURL" value="http://13.125.205.40:8447/cdn" />--%>
 <c:set var="thumbURL" value="${baseImgURL}/_thumb/small_"/>
 
-<div id="main">
+<div id="main" class="container">
     <div class="margin30">
         <h3><i class="bi bi-cup-fill bidragup"></i>&nbsp;상품 후기</h3>
         <hr style="border-bottom: 1px solid white">

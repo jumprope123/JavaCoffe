@@ -4,11 +4,8 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: white;
     overflow-x: hidden;
-}
-
-#wrap {
 }
 
 /* 헤더영역 */
@@ -24,31 +21,45 @@ header {
     background-color: #000000;
 }
 
-.header_top {
-    width: 100%;
-    height: 80px;
+.top_wrapper {
     position: fixed;
-    background-color: #000000;
-    z-index: 1;
+    background-color: #000;
+    z-index: 2002;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+}
+
+.header_top {
+    margin: 0 auto;
+    width: 996px;
+    height: 80px;
+    padding-top: 20px;
+}
+.header_top .hlogo {
+    display: inline-block;
+    width: 157px;
+    margin-top: 5px;
 }
 
 .header_top .hlogo>a {
-    margin-top: 20px;
-    margin-left: 23.75%;
-    position: relative;
 }
 
 .header_top .hlogo>a>img {
-    margin-top: 25px;
+    width: 157px;
+    margin-top: 5px;
 }
 
-.header_customer {}
+.header_customer {
+    float: right;
+    display: flex;
+}
 
 .header_customer .header_login {
-    float: left;
-    position: absolute;
-    top: 20px;
-    right: 40.7%;
+    position: relative;
+    display: inline-block;
+    z-index: 2001;
 }
 
 .header_customer .header_login>#hloginbtn {
@@ -66,10 +77,9 @@ header {
 }
 
 .header_customer .header_join {
-    float: left;
-    position: absolute;
-    top: 20px;
-    right: 24.6%;
+    position: relative;
+    display: inline-block;
+    margin-left: 18px;
 }
 
 .header_customer .header_join>#hjoinbtn {
@@ -113,11 +123,11 @@ header {
     float: left;
     width: 110px;
     height: 76px;
-    border-left: 1px solid #313131;
+
 }
 
-.nav_menu>#nav_e-shop {
-    border-right: 1px solid #313131;
+.nav_menu>.navbar_Item:nth-child(n+2){
+    border-left: 1px solid #313131;
 }
 
 .nav_menu .navbar_Item .navbar_anchor {
@@ -371,7 +381,10 @@ footer {}
 /* //푸터영역 */
 
 /* introduce page main 영역 */
-#middle {}
+#middle {
+
+}
+
 .main_container .main_headimg {
     width: 100%;
     height: 70vw;
@@ -380,7 +393,8 @@ footer {}
     margin-bottom: 45px;
     position: relative;
 }
-.main_container{}
+.main_container{
+}
 .main_container section h1 {
     font-size: 38px;
     margin: 50px 0 50px 0;
@@ -412,6 +426,7 @@ footer {}
 .headTxtBox p {
     margin: 0 0 30px 0;
 }
+
 section h3 {
     color: #d9272e;
     font-family: NanumGothic;
