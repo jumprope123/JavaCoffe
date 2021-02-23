@@ -30,104 +30,104 @@
             </div>
         </div>
         <nav class="header_navbar">
-            <ul class="nav_menu">
-                <li class="navbar_Item">
-                    <a class="navbar_anchor" href="#">
-                        <div class="navbar_element">
-                            <div class="navbar_title">소개</div>
-                        </div>
-                    </a>
-                    <span class="VisuallyHidden">
-              <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
-                서브 메뉴 소개 열기
-              </button>
-            </span>
-                </li>
-                <li class="navbar_Item">
-                    <a class="navbar_anchor" href="#">
-                        <div class="navbar_element">
-                <span class="navbar_icon" style="width: 30px; height: 20px;">
+            <div class="nav_wrap">
+                <ul class="nav_menu">
+                    <li class="navbar_Item">
+                        <a class="navbar_anchor" href="#">
+                            <div class="navbar_element">
+                                <div class="navbar_title">소개</div>
+                            </div>
+                        </a>
+                        <span class="VisuallyHidden">
+                  <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
+                    서브 메뉴 소개 열기
+                  </button>
                 </span>
-                            <div class="navbar_title">원두추천</div>
-                        </div>
-                    </a>
-                    <span class="VisuallyHidden">
-              <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
-                서브 메뉴 원두추천 열기
-              </button>
-            </span>
-                </li>
-                <li class="navbar_Item">
-                    <a class="navbar_anchor" href="#">
-                        <div class="navbar_element">
-                <span class="navbar_icon" style="width: 30px; height: 20px;">
+                    </li>
+                    <li class="navbar_Item">
+                        <a class="navbar_anchor" href="#">
+                            <div class="navbar_element">
+                    <span class="navbar_icon" style="width: 30px; height: 20px;">
+                    </span>
+                                <div class="navbar_title">원두추천</div>
+                            </div>
+                        </a>
+                        <span class="VisuallyHidden">
+                  <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
+                    서브 메뉴 원두추천 열기
+                  </button>
                 </span>
-                            <div class="navbar_title">머신추천</div>
-                        </div>
-                    </a>
-                    <span class="VisuallyHidden">
-              <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
-                서브 메뉴 머신추천 열기
-              </button>
-            </span>
-                </li>
-                <li class="navbar_Item">
-                    <a class="navbar_anchor" href="#">
-                        <div class="navbar_element">
-                <span class="navbar_icon" style="width: 30px; height: 20px;">
+                    </li>
+                    <li class="navbar_Item">
+                        <a class="navbar_anchor" href="#">
+                            <div class="navbar_element">
+                    <span class="navbar_icon" style="width: 30px; height: 20px;">
+                    </span>
+                                <div class="navbar_title">머신추천</div>
+                            </div>
+                        </a>
+                        <span class="VisuallyHidden">
+                  <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
+                    서브 메뉴 머신추천 열기
+                  </button>
                 </span>
-                            <div class="navbar_title">게시판</div>
-                        </div>
-                    </a>
-                    <span class="VisuallyHidden">
-              <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
-                서브 메뉴 게시판 열기
-              </button>
-            </span>
-                </li>
-                <li class="navbar_Item">
-                    <a class="navbar_anchor" href="/review/list?cp=1">
-                        <div class="navbar_element">
-                <span class="navbar_icon" style="width: 30px; height: 20px;">
+                    </li>
+                    <li class="navbar_Item">
+                        <a class="navbar_anchor" href="#">
+                            <div class="navbar_element">
+                    <span class="navbar_icon" style="width: 30px; height: 20px;">
+                    </span>
+                                <div class="navbar_title">게시판</div>
+                            </div>
+                        </a>
+                        <span class="VisuallyHidden">
+                  <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
+                    서브 메뉴 게시판 열기
+                  </button>
                 </span>
-                            <div class="navbar_title">후기</div>
-                        </div>
-                    </a>
-                    <span class="VisuallyHidden">
-              <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
-                후기 게시판 열기
-              </button>
-            </span>
-                </li>
-                <li class="navbar_Item">
-                    <a class="navbar_anchor" href="#">
-                        <div class="navbar_element">
-                <span class="navbar_icon" style="width: 30px; height: 20px;">
+                    </li>
+                    <li class="navbar_Item">
+                        <a class="navbar_anchor" href="/review/list?cp=1">
+                            <div class="navbar_element">
+                                <div class="navbar_title">후기</div>
+                            </div>
+                        </a>
+                        <span class="VisuallyHidden">
+                  <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
+                    서브 메뉴 소개 열기
+                  </button>
                 </span>
-                            <div class="navbar_title">매장찾기</div>
-                        </div>
-                    </a>
-                    <span class="VisuallyHidden">
-              <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
-                서브 메뉴 마장찾기 열기
-              </button>
-            </span>
-                </li>
-                <li class="navbar_Item" id="nav_e-shop">
-                    <a class="navbar_anchor" href="#">
-                        <div class="navbar_element">
-                <span class="navbar_icon" style="width: 30px; height: 20px;">
+                    </li>
+                    <li class="navbar_Item">
+                        <a class="navbar_anchor" href="#">
+                            <div class="navbar_element">
+                    <span class="navbar_icon" style="width: 30px; height: 20px;">
+                    </span>
+                                <div class="navbar_title">매장찾기</div>
+                            </div>
+                        </a>
+                        <span class="VisuallyHidden">
+                  <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
+                    서브 메뉴 마장찾기 열기
+                  </button>
                 </span>
-                            <div class="navbar_title">e-shop</div>
-                        </div>
-                    </a>
-                    <span class="VisuallyHidden">
-              <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
-                서브 메뉴 e-shop 열기
-              </button>
-            </span>
-                </li>
-            </ul>
+                    </li>
+                    <li class="navbar_Item" id="nav_e-shop">
+                        <a class="navbar_anchor" href="#">
+                            <div class="navbar_element">
+                    <span class="navbar_icon" style="width: 30px; height: 20px;">
+                    </span>
+                                <div class="navbar_title">e-shop</div>
+                            </div>
+                        </a>
+                        <span class="VisuallyHidden">
+                  <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
+                    서브 메뉴 e-shop 열기
+                  </button>
+                </span>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </div>
 </header>

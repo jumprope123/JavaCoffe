@@ -115,15 +115,18 @@ header {
 }
 
 .nav_menu {
-    position: absolute;
-    left: 32%;
+}
+
+.nav_wrap {
+    margin: 0 auto;
+    width: 776px;
+    height: 76px;
 }
 
 .nav_menu>.navbar_Item {
     float: left;
     width: 110px;
     height: 76px;
-
 }
 
 .nav_menu>.navbar_Item:nth-child(n+2){
@@ -192,23 +195,22 @@ footer {}
 }
 
 #footer .footer_top {
-    width: 100%;
     height: 20px;
+    margin: 0 auto;
+    width: 996px;
 }
 
 #footer .footer_block {
     width: 100%;
     height: 183px;
-    position: absolute;
 }
 
 .footer_block .footer_bar {
     overflow: hidden;
-    width: 996px;
     height: 68px;
     background-color: #1b1b1b;
-    position: relative;
-    left: 23.7%;
+    margin: 0 auto;
+    width: 996px;
 }
 
 .footer_init {
@@ -296,9 +298,13 @@ footer {}
     color: #fff;
 }
 
+.footer_bottom {
+    margin: 0 auto;
+    width: 996px;
+    height: 30px;
+}
+
 .footer_social1 {
-    position: relative;
-    left: 23.7%;
     margin: 10px 0px 0px 22px;
 }
 
@@ -316,9 +322,8 @@ footer {}
 }
 
 .footer_top_page_link {
-    position: relative;
     float: left;
-    left: 28.2%;
+    margin-left: 170px;
     color: white;
 }
 
@@ -333,9 +338,8 @@ footer {}
 }
 
 .footer_copyright {
-    position: relative;
     float: left;
-    left: 37.5%;
+    margin-left: 90px;
 }
 
 .footer_copyright span {
@@ -479,28 +483,14 @@ section h3 {
 
 /*  화면너비 768 ~ 1200px */
 @media (max-width: 1240px) {
-    #wrap {
-        width: 100px;}
-    #content2 .article_box1{
-        width: 50%;
-    }
-    #content2 .article_box2{
-        width: 50%;
-    }
-    #content2 .article_box3{
-        display: none;
-    }
 
-    #content3 .article_square1{
-        width: 31.333%;}
-    #content3 .article_square2{
-        width: 31.333%;}
-    #content3 .article_square3{
-        width: 31.333%;}
-    #content3 .article_square4{
-        display: none;}
 }
 
 /*  화면너비 480 ~ 768  */
+@media (max-width: 768px) {
 
+}
 /*  화면너비 0 ~ 480  */
+@media (max-width: 480px) {
+
+}
