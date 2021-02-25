@@ -6,8 +6,27 @@
 <mapper namespace="member">
     <insert id="insertMember" statementType="PREPARED"
         parameterType="javaCoffe.spring.mvc.vo.MemberVO">
-        insert into MemberJoin(name,jumin,userid,passwd,zipcode,userAddr1,userAddr2,userAddr3,email,phone)
-        values (#{name},#{jumin},#{userid},#{passwd},#{zipcode},
-                #{userAddr1},#{userAddr2},#{userAddr3},#{email},#{phone});
+        insert into Member(name,jumin,userid,passwd,
+                           zipcode,addr1,addr2,email,phone)
+        values (#{name},#{jumin},#{userid},#{passwd},
+                #{zipcode},#{addr1},#{addr2},#{email},#{phone});
     </insert>
+    <select id="zipcode" statementType="PREPARED"
+            parameterType="String"
+            resultType="javaCoffe.spring.mvc.vo.ZipcodeVO">
+        select * from zipcode where DONG like #{mydong};
+    </select>
+
+    <select id="checkuid" statementType="PREPARED"
+            parameterType="String" resultType="int">
+            select count(userid) cnt from Member
+            where userid = #{uid};
+    </select>
+
+    <select id="checklogin" statementType="PREPARED"
+            parameterType="javaCoffe.spring.mvc.vo.MemberVO" resultType="int">
+        select count(userid) cnt from Member
+        where userid = #{userid} and passwd = #{passwd}
+    </select>
+
 </mapper>

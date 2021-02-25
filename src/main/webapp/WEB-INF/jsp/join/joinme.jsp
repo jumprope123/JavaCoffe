@@ -4,12 +4,7 @@
 
 
 <script src="https://www.google.com/recaptcha/api.js"></script>
-<style>
-    .zipsize {
-       width: 20%;
-       margin-top: 10px;
-    }
-</style>
+
 <div id="main margin30 container">
     <div class="margin30 container">
         <h3 class="main_join"><img src="/img/login/GLYPHICONS/glyphicons_043_group.png">회원가입</h3>
@@ -51,7 +46,7 @@
                                for="name">이름</label>
                         <input type="text" name="name" id="name"
                                class="form-control col-2 border-info" readonly value="${param.name}">
-                    </div><!--이름-->          <%--param 쿼리문을 받아서 넘어온값을 value값으로.ID값을 넣어주면 적용됨--%>
+                    </div><!--이름-->
 
                     <div class="form-group row">
                         <label class="col-2 col-form-label  text-right"
@@ -97,20 +92,13 @@
                     </div><!--비밀번호 확인-->
 
                     <div class="form-group row">
-                        <div class="col-12">
-                            <div class="row">
                         <label class="col-2 col-form-label text-right">우편번호</label>
-                        <input type="text" id="sample6_postcode" name="zipcode" placeholder="우편번호">
+                        <input type="text" id="sample6_postcode" placeholder="우편번호">
                         <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                            </div>
-                        <div class="row">
-                                <label class="col-2 col-form-label text-right"></label>
-                                <input type="text" class="input_text zipsize" name="userAddr1" style="height: 2rem;" id="sample6_address" placeholder="주소"><br>
-                                <input type="text" class="input_text zipsize" name="userAddr2" id="sample6_detailAddress" placeholder="상세주소">
-                                <input type="text" class="input_text zipsize" name="userAddr3" id="sample6_extraAddress" placeholder="추가주소">
-                        </div>
+                        <input type="text" id="sample6_address" placeholder="주소"><br>
+                        <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+                        <input type="text" id="sample6_extraAddress" placeholder="추가주소">
                     </div>
-                </div>
 
                     <div class="form-group row">
                         <label class="col-2 col-form-label text-right"
@@ -123,7 +111,7 @@
                         <div class="input-group-append">
                             <span class="input-group-text igborder">@</span>
                         </div>
-                        <input type="text" name="email2" id="email2" readonly
+                        <input type="text" name="email12" id="email2" readonly
                                class="form-control col-2 border-info igborder"
                                value="${mvo.email}">&nbsp;
                         <select id="email3" class="form-control col-2 border-info igborder">
@@ -179,7 +167,7 @@
             </div><!--버튼들-->
 
             <input type="hidden" name="jumin" id="jumin">
-            <input type="hidden" name="sample6_postcode1" id="sample6_postcode1">
+            <input type="hidden" name="zipcode" id="zipcode">
             <input type="hidden" name="email" id="email">
             <input type="hidden" name="phone" id="phone">
 
