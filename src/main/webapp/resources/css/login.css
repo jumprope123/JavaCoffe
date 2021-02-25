@@ -1,0 +1,83 @@
+/*agree.jsp css*/
+
+
+/*아이콘 옆 회원가입*/
+.main_join {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*사이트 이용약관, 실명확인 부분*/
+.site_agree {
+    font-size: 16px;
+    font-weight: bold;
+}
+/*사이트 이용약관, 실명확인 부분 회색글자*/
+.site_agree_gray {
+    font-size: 16px;
+}
+
+/*개인 정보 수집 및 이용*/
+.site_collect_agree {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+/*개인정보 처리 위탁*/
+.site_solution {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+/*모두 동의합니다 버튼 간격*/
+.all_agree_bottom {
+    margin-bottom: 50px;
+}
+
+/*checkme.jsp css*/
+
+/*실명확인 회원가입 부분*/
+.form_marginbot {
+    margin-bottom: 50px;
+}
+
+/*실명회원 글자*/
+.real_join {
+    font-size: 16px;
+    font-weight: bold;
+}
+/*이름 글자*/
+.real_name {
+    font-size: 14px;
+}
+/*주민번호 글자*/
+.real_jumin {
+    font-size: 14px;
+}
+
+/*경고 문구*/
+.warning_font {
+    font-size: 14px;
+}
+
+/*joinme.jsp css*/
+
+/*일반회원 글자*/
+.normal_join{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*joinok.jsp css*/
+.site_agreefont {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*취소하기버튼*/
+
+
+
+
+
+
