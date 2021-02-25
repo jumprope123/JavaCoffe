@@ -9,10 +9,10 @@
                     <h3 class="VisuallyHidden">언어 및 국가 선택</h3>
                     <span class="VisuallyHidden">현재 대한민국 웹사이트에 접속 중이십니다. 국가 변경을 원하시면,
               여기를 클릭하세요.</span>
-                    <span class="contries_flag"><img src="./img/base/south-korea.png" /></span>
+                    <span class="contries_flag"><img src="../img/base/south-korea.png" /></span>
                     <div class="languageswitcher">
                         <form class="languageswitcher_frm" action="" method="post">
-                            <select class="countries_selection">
+                            <select class="countries_selection" style="box-sizing: border-box !important;">
                                 <option value="kor">한국어</option>
                                 <option value="eng">English</option>
                             </select>
@@ -79,26 +79,26 @@
                     <span class="social_label">자바프레소 계정을 팔로우 하세요</span>
                     <ul class="s_list">
                         <li class="s_item1">
-                            <a href="#"><img src="./img/base/instagram.png" alt="인스타그램" /></a>
+                            <a href="#"><img src="../img/base/instagram.png" alt="인스타그램" /></a>
                         </li>
                         <li class="s_item1">
-                            <a href="#"><img src="./img/base/facebook.png" alt="페이스북" /></a>
+                            <a href="#"><img src="../img/base/facebook.png" alt="페이스북" /></a>
                         </li>
                         <li class="s_item1">
-                            <a href="#"><img src="./img/base/youtube.png" alt="유튜브" /></a>
+                            <a href="#"><img src="../img/base/youtube.png" alt="유튜브" /></a>
                         </li>
                         <li class="s_item1">
-                            <a href="#"><img src="./img/base/twitter.png" alt="트위터" /></a>
+                            <a href="#"><img src="../img/base/twitter.png" alt="트위터" /></a>
                         </li>
                         <li class="s_item1">
-                            <a href="#"><img src="./img/base/pinterest.png" alt="핀터레스트" /></a>
+                            <a href="#"><img src="../img/base/pinterest.png" alt="핀터레스트" /></a>
                         </li>
                     </ul>
                 </div>
-                <a class="footer_top_page_link" href="#top">맨 위로 가기<img src="./img/base/up.png" alt="#" /></a>
+                <a class="footer_top_page_link" href="#top">맨 위로 가기<img src="../img/base/up.png" alt="#" /></a>
                 <div class="footer_copyright">
                     <a class="footer_link" href="#" target="_blank">
-                        <img alt="logo" src="./img/base/javapressologo.png" />
+                        <img alt="logo" src="../img/base/javapressologo.png" />
                         <span class="VisuallyHidden">이 링크는 새로운 창을 엽니다.
                         </span>
                     </a>

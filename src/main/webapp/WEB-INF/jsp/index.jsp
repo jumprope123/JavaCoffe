@@ -1,4 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
+<style>
+    * {
+        box-sizing: content-box !important;
+    }
+</style>
 
 <main id="middle">
     <div>
