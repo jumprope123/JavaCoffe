@@ -22,3 +22,8 @@ select * from Review where rno = ?;
 select rno from Review order by rno desc limit 0,1;
 
 select AUTO_INCREMENT-1 rno from information_schema.TABLES where TABLE_NAME = 'Review';
+
+-- join
+create table MemberJoin (
+
+);
