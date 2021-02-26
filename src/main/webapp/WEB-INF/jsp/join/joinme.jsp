@@ -46,7 +46,7 @@
                                for="name">이름</label>
                         <input type="text" name="name" id="name"
                                class="form-control col-2 border-info" readonly value="${param.name}">
-                    </div><!--이름-->
+                    </div><!--이름-->          <%--param 쿼리문을 받아서 넘어온값을 value값으로.ID값을 넣어주면 적용됨--%>
 
                     <div class="form-group row">
                         <label class="col-2 col-form-label  text-right"
