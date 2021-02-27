@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <style>
     ul.nav li.dropdown:hover > ul.dropdown-menu{display:block; margin:0;}
+    .pd5 {padding: 5px}
 </style>
 <div id="main">
     <div class="row">
@@ -108,19 +109,37 @@
                         <button id="eshop5btn" class="btn flex-fill mr-1" style="border: 1px solid black;">프림설탕</button>
                     </div>
                     <div class="row" style="margin-top: 50px;">
+                        <div class="col-12">
+                            <div class="row">
+                                <p class="h5">상품 3개</p>
+                            </div>
+                            <div class="row mt-2" style="border-bottom: 1px solid black"></div> <%--선 구현--%>
+                            <div class="row mt-1">
+                                <div class="col-10">
+                                <ul class="list-unstyled mt-1" style="display: block">
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">추천순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">판매인기순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">낮은가격순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">높은가격순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">상품평순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">등록일순</a></li>
+                                </ul>
+                                </div>
+                                <div class="col-2">
+                                    <select class="form-control">
+                                        <option>20개씩 보기</option>
+                                        <option>30개씩 보기</option>
+                                        <option>40개씩 보기</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-1" style="border-bottom: 1px solid black"></div> <%--선 구현--%>
+                            <div class="row mt-3">
+                                <ul class="list-inline">
 
-                        <p>상품 3개</p>
-
-                        <ul class="list-unstyled">
-                            <li class="list-inline-item">추천순</li>
-                            <li class="list-inline-item">판매인기순</li>
-                            <li class="list-inline-item">낮은가격순</li>
-                            <li class="list-inline-item">높은가격순</li>
-                            <li class="list-inline-item">상품평순</li>
-                            <li class="list-inline-item">등록일순</li>
-                        </ul>
-
-
+                                </ul>
+                            </div> <%--콘텐츠 내용물 제작--%>
+                        </div>
                     </div>
                 </div>
             </div>
