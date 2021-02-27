@@ -184,3 +184,23 @@
     </div>
 </div>
 
+<%--
+데이터베이스 내용
+데이터베이스 내용
+string	eno	alternate key	autoincrement
+string	title	제품이름
+string	brand	제조사
+int	ogprice	할인전 가격
+int	dcprice	할인후가격
+int	thumbs	추천수
+int	salesVolume	판매수
+int	comment	상품평수
+String	regdate	등록일	timestamp
+string	biggenre	대분류
+string	smallgenre	소분류
+string	code	상품코드	primary
+string	explain	간략설명
+String	shippay	배송비
+int	stuck	재고
+
+--%>
