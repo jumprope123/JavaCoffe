@@ -1,11 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <style>
     ul.nav li.dropdown:hover > ul.dropdown-menu{display:block; margin:0;}
     .pd5 {padding: 5px}
 </style>
 <div id="main">
     <div class="row">
-        <div class="col-2 mt-4">
+        <div class="col-2" style="margin-top: 150px;">
             <p class="text-center text-danger font-weight-bold mt-2" style="font-size: 1.2em;">6만원이상 무료배송</p>
             <ul class="nav .nav-pills nav-stacked justify-content-center">
                 <li class="dropdown dropright text-center bg-black" style="min-width: 250px; padding: 10px 40px;">
@@ -111,7 +114,7 @@
                     <div class="row" style="margin-top: 50px;">
                         <div class="col-12">
                             <div class="row">
-                                <p class="h5">상품 3개</p>
+                                <p class="h5">상품 20개</p>
                             </div>
                             <div class="row mt-2" style="border-bottom: 1px solid black"></div> <%--선 구현--%>
                             <div class="row mt-1">
@@ -135,15 +138,47 @@
                             </div>
                             <div class="row mt-1" style="border-bottom: 1px solid black"></div> <%--선 구현--%>
                             <div class="row mt-3">
-                                <ul class="list-inline">
+                                <ul class="list-inline text-center">
 
+                                    <c:forEach begin="0" end="19" step="1">
+                                    <li class="list-inline-item" style="margin-bottom: 10px;">
+                                        <div class="card" style="width: 230px; border: none;">
+                                            <div class="text-center center" style="width: 230px; height: 150px; border: 1px solid #E0E0E0;">
+                                                <img src="/img/eshop/list_maxwellMild.jpg" class="card-img-top" style="width: 150px; height: 145px; margin-top: 1px;">
+                                            </div>
+                                            <div class="card-body text-center" style="margin-top: -10px;">
+                                                <p class="card-text font-weight-bold" style="color: #717188">맥스웰 마일드 커피믹스 900g</p>
+                                                <p class="card-text" style="margin-top: 15px; color: #717188">[동서식품]</p>
+                                                <p class="card-text" style="margin-top: 5px; color: #999999; text-decoration-line: line-through">4,000원</p>
+                                                <p class="card-text h5 font-weight-bold">3,800원</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    </c:forEach>
                                 </ul>
                             </div> <%--콘텐츠 내용물 제작--%>
                         </div>
                     </div>
+                    <div class="row mb-2"> <%--페이지네이션 시작--%>
+                        <div class="col-12">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a href="#" class="page-link">이전</a>
+                                </li>
+                                <c:forEach var="i" begin="1" end="10" step="1">
+                                <li class="page-item">
+                                    <a href="#" class="page-link">${i}</a>
+                                </li>
+                                </c:forEach>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">다음</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="row"></div>
         </div> <%--section--%>
         <div class="col-2"></div><%--여기에는 장바구니나 방금본 목록같은거 둥둥띄워서 따라다니게 하기--%>
     </div>

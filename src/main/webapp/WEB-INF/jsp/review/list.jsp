@@ -69,7 +69,7 @@
                         <div class="card-body">
                             <h5 class="card-title">${r.title}</h5>
                             <p class="card-text">${r.userid} <span style="float: right">${fn:substring(r.regdate, 0, 10)}</span></p>
-                            <p class="card=text"><i class="bi bi-eye"></i> ${r.views} <span style="float: right"><i class="bi bi-hand-thumbs-up"></i> ${r.thumbs}</span></p>
+                            <p class="card-text"><i class="bi bi-eye"></i> ${r.views} <span style="float: right"><i class="bi bi-hand-thumbs-up"></i> ${r.thumbs}</span></p>
                         </div>
                     </div>
                 </li>
