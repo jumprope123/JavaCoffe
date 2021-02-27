@@ -1,6 +1,6 @@
 package javaCoffe.spring.mvc.vo;
 
-public class EshopVO {
+public class AdminVO {
     private int eno;
     private String title;
     private String brand;
@@ -17,10 +17,10 @@ public class EshopVO {
     private String shippay;
     private int stuck;
 
-    public EshopVO() {
+    public AdminVO() {
     }
 
-    public EshopVO(int eno, String title, String brand, int ogprice, int dcprice, int thumbs, int salesVolume, int comment, String regdate, String biggenre, String smallgenre, String code, String explain, String shippay, int stuck) {
+    public AdminVO(int eno, String title, String brand, int ogprice, int dcprice, int thumbs, int salesVolume, int comment, String regdate, String biggenre, String smallgenre, String code, String explain, String shippay, int stuck) {
         this.eno = eno;
         this.title = title;
         this.brand = brand;
