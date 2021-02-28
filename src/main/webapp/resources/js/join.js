@@ -58,7 +58,7 @@ $('#joinbtn').on('click',function () {
         alert('비밀번호 확인란을 입력해주세요');
     }else if ($('#newpwd').val() != $('#repwd').val()){
         alert('비밀번호가 일치하지 않습니다.');
-    }else if ($('#sample6_postcode').val() == ''||$('#sample6_address').val() == ''||$('#sample6_detailAddress').val() == '' || $('#sample6_extraAddress').val()){
+    }else if ($('#sample6_postcode').val() == ''||$('#sample6_address').val() == ''||$('#sample6_detailAddress').val() == ''){
         alert('우편번호를 검색해주세요');
     }else if ($('#email1').val() == ''||$('#email2').val() == ''){
         alert('이메일주소를 입력해주세요');
