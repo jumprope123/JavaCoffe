@@ -58,10 +58,8 @@ $('#joinbtn').on('click',function () {
         alert('비밀번호 확인란을 입력해주세요');
     }else if ($('#newpwd').val() != $('#repwd').val()){
         alert('비밀번호가 일치하지 않습니다.');
-    }else if ($('#sample6_postcode').val() == ''||$('#sample6_address').val() == ''||$('#add1').val() == ''){
+    }else if ($('#sample6_postcode').val() == ''||$('#sample6_address').val() == ''||$('#sample6_detailAddress').val() == '' || $('#sample6_extraAddress').val()){
         alert('우편번호를 검색해주세요');
-    }else if ($('#sample6_detailAddress').val() == ''){
-        alert('나머지 주소를 입력해주세요');
     }else if ($('#email1').val() == ''||$('#email2').val() == ''){
         alert('이메일주소를 입력해주세요');
     }else if ($('#hp2').val() == '' || $('#hp3').val() == ''){
@@ -75,7 +73,7 @@ $('#joinbtn').on('click',function () {
 
         // 분리된 데이터 합치기
         $('#jumin').val($('#jumin1').val() + '-' + $('#jumin2').val());
-        $('#zipcode').val($('#zip1').val() + '-' + $('#zip2').val());
+        $('#zipcode').val($('#sample6_postcode').val() + $('#sample6_address').val() + $('#sample6_detailAddress').val() + $('#sample6_extraAddress').val() );
         $('#email').val($('#email1').val() + '@' + $('#email2').val());
         $('#phone').val($('#hp1').val() + '-' + $('#hp2').val() + '-' + $('#hp3').val());
 
@@ -86,7 +84,7 @@ $('#joinbtn').on('click',function () {
         $('#joinfrm').attr('method', 'post');
         $('#joinfrm').submit();
     }
-})
+});
 
 //회원가입 취소하기
 $('#cancelbtn').on('click',function () {
