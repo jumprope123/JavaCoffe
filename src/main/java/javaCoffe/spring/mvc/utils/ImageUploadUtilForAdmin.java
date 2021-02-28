@@ -1,31 +1,22 @@
 package javaCoffe.spring.mvc.utils;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItem;
-import org.apache.commons.io.IOUtils;
 import org.imgscalr.Scalr;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.PosixFilePermission;
-import java.nio.file.attribute.PosixFilePermissions;
+import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 
-import static jdk.nashorn.internal.objects.Global.println;
-
-@Component("imgutilForReview")
-public class ImageUploadUtilForReview {
+@Component("imgutilforAdmin")
+public class ImageUploadUtilForAdmin {
 
     // 이미지 업로드 경로 설정
-     private String IMG_UPLOAD_PATH = "C:/Java/nginx-1.19.6/html/cdn/"; //window
+     private String IMG_UPLOAD_PATH = "C:/Java/nginx-1.19.6/html/eshop/"; //window
 //    private String IMG_UPLOAD_PATH = "/home/centos/imgupload/"; // linux
 
     // 갤러리에 이미지 첨부시 파일 존재 여부 확인
@@ -62,13 +53,13 @@ public class ImageUploadUtilForReview {
 
             // 지정한 위치를 기준으로 잘라냄
             BufferedImage scaledImg = Scalr.crop( image,
-                    (image.getWidth() - imgwidth) / 2,
-                    (image.getHeight() - imgheight) / 2,
+                    0,
+                    0,
                     imgwidth, imgheight, null );
 
             // 잘라낸 이미지를 220x220으로 재조정
             BufferedImage resizedImg = Scalr.resize(
-                    scaledImg, 220, 220, null);
+                    scaledImg, 150, 145, null);
 
             // 재조정한 이미지를 실제경로에 저장함
             ImageIO.write(resizedImg, imgtype, new File(tfname));
@@ -124,48 +115,48 @@ public class ImageUploadUtilForReview {
         // 업로드한 파일명과 파일크기를 리턴함
         return nfname + "/" + (mf.getSize()/1024);
     }
-
-    //filenames 전체를 받아서 삭제 메소드 구현 (기존 원본 파일 삭제)
-    public void delFile(String filenames){
-        ArrayList<String> filenameList = new ArrayList<>();
-        int fileCnt = filenames.split("[/]").length; // 이미지파일의 총 갯수(널 포함)
-        for (int i=0; i<fileCnt; i++){
-            if(filenames.split("[/]")[i] != "-") {
-                String fname = filenames.split("[/]")[i];
-                filenameList.add(fname);
-            }else {
-                return;
-            }
-        }
-        Iterator iter = filenameList.iterator();
-        while (iter.hasNext()){
-            String fname = (String)iter.next();
-            File savedFile = new File(IMG_UPLOAD_PATH + fname);
-            savedFile.delete();
-        }
-    }
-
-    // 하나의 filename만 받아서 삭제하는 메소드 구현
-    public void delOneFile(String filename){
-        File savedFile = new File(IMG_UPLOAD_PATH + filename);
-        savedFile.delete();
-    }
-
-
-    // 파일 리스트를 받아서 썸네일 삭제 메소드 구현
-    public void delsumFile(String filenames, String id){
-        String sumName ="_thumb/small_" + id + "_" + filenames.split("[/]")[0];
-        File savedFile = new File(IMG_UPLOAD_PATH + sumName);
-        savedFile.delete();
-
-    }
-
-    // 하나의 파일만 받아서 썸네일 삭제 메소드 구현
-    public void delOneSumFile(String filename, String id){
-        String sumName ="_thumb/small_" + id + "_" + filename;
-        File savedFile = new File(IMG_UPLOAD_PATH + sumName);
-        savedFile.delete();
-    }
+//
+//    //filenames 전체를 받아서 삭제 메소드 구현 (기존 원본 파일 삭제)
+//    public void delFile(String filenames){
+//        ArrayList<String> filenameList = new ArrayList<>();
+//        int fileCnt = filenames.split("[/]").length; // 이미지파일의 총 갯수(널 포함)
+//        for (int i=0; i<fileCnt; i++){
+//            if(filenames.split("[/]")[i] != "-") {
+//                String fname = filenames.split("[/]")[i];
+//                filenameList.add(fname);
+//            }else {
+//                return;
+//            }
+//        }
+//        Iterator iter = filenameList.iterator();
+//        while (iter.hasNext()){
+//            String fname = (String)iter.next();
+//            File savedFile = new File(IMG_UPLOAD_PATH + fname);
+//            savedFile.delete();
+//        }
+//    }
+//
+//    // 하나의 filename만 받아서 삭제하는 메소드 구현
+//    public void delOneFile(String filename){
+//        File savedFile = new File(IMG_UPLOAD_PATH + filename);
+//        savedFile.delete();
+//    }
+//
+//
+//    // 파일 리스트를 받아서 썸네일 삭제 메소드 구현
+//    public void delsumFile(String filenames, String id){
+//        String sumName ="_thumb/small_" + id + "_" + filenames.split("[/]")[0];
+//        File savedFile = new File(IMG_UPLOAD_PATH + sumName);
+//        savedFile.delete();
+//
+//    }
+//
+//    // 하나의 파일만 받아서 썸네일 삭제 메소드 구현
+//    public void delOneSumFile(String filename, String id){
+//        String sumName ="_thumb/small_" + id + "_" + filename;
+//        File savedFile = new File(IMG_UPLOAD_PATH + sumName);
+//        savedFile.delete();
+//    }
 
 }
 

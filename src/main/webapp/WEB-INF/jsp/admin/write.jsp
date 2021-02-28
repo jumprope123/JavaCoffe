@@ -18,6 +18,12 @@
                 </div>
                 <div class="col-4"></div> <%--칸맞춤용div--%>
             </div>
+            <div class="row">
+                <div class="offset-2 col-6 text-center">
+                    <span class="text-success">등록하신 상품은 대/소분류에 맞게 자동으로 분류되어 등록됩니다.</span>
+                </div>
+                <div class="col-4"></div> <%--칸맞춤용div--%>
+            </div>
             <div class="form-group row mt-5">
                 <label for="title" class="col-form-label col-2 text-right font-weight-bold h5">제품명</label>
                 <input type="text" id="title" name="title" class="form-control col-6">
@@ -25,23 +31,23 @@
             </div>
             <div class="form-group row">
                 <label for="title" class="col-form-label col-2 text-right font-weight-bold h5">브랜드</label>
-                <input type="text" id="brand" name="title" class="form-control col-6">
+                <input type="text" id="brand" name="brand" class="form-control col-6">
                 <label for="brand" class="col-form-label col-4 text-center text-danger"><strong style="text-decoration-line: underline">'대괄호[]'</strong>를 제외한 브랜드명을 입력하세요.</label>
             </div>
             <div class="form-group row">
                 <label for="ogprice" class="col-form-label col-2 text-right font-weight-bold h5">할인전 가격<span class="text-warning">(fake)</span></label>
-                <input type="number" id="ogprice" name="title" class="form-control col-6">
+                <input type="number" id="ogprice" name="ogprice" class="form-control col-6">
                 <label for="ogprice" class="col-form-label col-4 text-center text-danger">상품의 할인 전 가격을 입력하세요. ex) <span style="text-decoration-line: line-through; color: gray">4,000원</span></label>
             </div>
             <div class="form-group row">
                 <label for="dcprice" class="col-form-label col-2 text-right font-weight-bold h5">할인후 가격<span class="text-warning">(real)</span></label>
-                <input type="number" id="dcprice" name="title" class="form-control col-6">
+                <input type="number" id="dcprice" name="dcprice" class="form-control col-6">
                 <label for="dcprice" class="col-form-label col-4 text-center text-danger">실제 판매하실 가격을 입력하세요.</label>
             </div>
             <div class="form-group row">
                 <label for="bigGenre" class="col-form-label col-2 text-right font-weight-bold h5">대분류</label>
                 <select class="form-control col-6 singleDay" id="bigGenre" name="bigGenre">
-                    <option value="coffe">원두|커피믹스|스틱</option><option value="tea">차류[티백/아이스티]</option><option value="syrup">시럽|소스|파우더</option>
+                    <option selected value="coffe">원두|커피믹스|스틱</option><option value="tea">차류[티백/아이스티]</option><option value="syrup">시럽|소스|파우더</option>
                     <option value="vending">자판기|제빙기</option><option value="takeoutcup">테이크아웃컵|페트컵</option><option value="drink">음료수[캔/페트/병]</option>
                     <option value="disposable">종이컵|일회용품</option><option value="food1">볶음밥|만두|핫바</option><option value="food2">돈까스|감튀|어묵</option>
                 </select>
@@ -50,7 +56,7 @@
             <div class="form-group row">
                 <label for="smallGenre" class="col-form-label col-2 text-right font-weight-bold h5">소분류</label>
                 <select class="form-control col-6 singleDay" id="smallGenre" name="smallGenre">
-                    <option value="bean">원두</option><option value="coffemix">커피믹스</option><option value="coffestick">스틱</option>
+                    <option selected value="bean">원두</option><option value="coffemix">커피믹스</option><option value="coffestick">스틱</option>
                 </select>
                 <label for="bigGenre" class="col-form-label col-4 text-center text-danger">소분류를 선택하세요.</label>
             </div>
@@ -66,8 +72,8 @@
             </div>
             <div class="form-group row">
                 <label for="shippay" class="col-form-label col-2 text-right font-weight-bold h5">배송비용<span class="text-warning"></span></label>
-                <select class="form-control col-6 singleDay" id="shippay" name="shippay">
-                    <option value="free">무료배송</option><option value="1500">1,500원</option><option value="2500">2,500원</option>
+                <select class="form-control col-6 singleDay" id="shipPay" name="shipPay">
+                    <option selected value="0">무료배송</option><option value="1500">1,500원</option><option value="2500">2,500원</option>
                     <option value="3000">3,000원</option><option value="4000">4,000원</option><option value="5000">5,000원</option>
                 </select>
                 <label for="shippay" class="col-form-label col-4 text-center text-danger">상품의 배송비용을 입력하세요.</label>
@@ -76,6 +82,14 @@
                 <label for="stuck" class="col-form-label col-2 text-right font-weight-bold h5">재고<span class="text-warning"></span></label>
                 <input type="number" id="stuck" name="stuck" class="form-control col-6">
                 <label for="stuck" class="col-form-label col-4 text-center text-danger">재고수량을 입력하세요.</label>
+            </div>
+            <div class="form-group row">
+                <label for="img" class="col-form-label col-2 text-right font-weight-bold h5">이미지 업로드<span class="text-warning"></span></label>
+                <div class="custom-file col-6">
+                    <input type="file" id="img" name="img" class="custom-file-input">
+                    <label id="imgLable" class="custom-file-label">업로드할 이미지파일을 선택하세요</label>
+                </div>
+                <label for="img" class="col-form-label col-4 text-center text-danger">대표이미지 1개만 업로드가능합니다.</label>
             </div>
         </div>
         <div class="row">

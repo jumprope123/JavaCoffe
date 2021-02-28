@@ -14,7 +14,7 @@
 
     <!-- 메인영역에 보여줄 페이지를 url 요청 방법에 따라 구분해 둠 -->
     <!-- 메인영역을 제외한 나머지 영역은 위에서 정의한 템플릿을 참조함 -->
-    <!-- url : .index.tiles => main: /index.jsp -->
+    <!-- url : .index.tiles => main: /fail.jsp -->
     <definition extends="base" name="*.tiles">
         <put-attribute name="main" value="/WEB-INF/jsp/{1}.jsp"/> <!--*의 숫자에 따라 번호가 들어감-->
     </definition>

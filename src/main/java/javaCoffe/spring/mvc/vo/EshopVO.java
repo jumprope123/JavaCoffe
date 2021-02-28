@@ -7,35 +7,41 @@ public class EshopVO {
     private int ogprice;
     private int dcprice;
     private int thumbs;
-    private int salesVolume;
+    private int salesVolumn;
     private int comment;
     private String regdate;
-    private String biggenre;
-    private String smallgenre;
+    private String bigGenre;
+    private String smallGenre;
     private String code;
-    private String explain;
-    private String shippay;
+    private String simpleExplain;
+    private String shipPay;
     private int stuck;
+    private String fsizes;
+    private String fnames;
+    private String uuid;
 
     public EshopVO() {
     }
 
-    public EshopVO(int eno, String title, String brand, int ogprice, int dcprice, int thumbs, int salesVolume, int comment, String regdate, String biggenre, String smallgenre, String code, String explain, String shippay, int stuck) {
+    public EshopVO(int eno, String title, String brand, int ogprice, int dcprice, int thumbs, int salesVolumn, int comment, String regdate, String bigGenre, String smallGenre, String code, String simpleExplain, String shipPay, int stuck, String fsizes, String fnames, String uuid) {
         this.eno = eno;
         this.title = title;
         this.brand = brand;
         this.ogprice = ogprice;
         this.dcprice = dcprice;
         this.thumbs = thumbs;
-        this.salesVolume = salesVolume;
+        this.salesVolumn = salesVolumn;
         this.comment = comment;
         this.regdate = regdate;
-        this.biggenre = biggenre;
-        this.smallgenre = smallgenre;
+        this.bigGenre = bigGenre;
+        this.smallGenre = smallGenre;
         this.code = code;
-        this.explain = explain;
-        this.shippay = shippay;
+        this.simpleExplain = simpleExplain;
+        this.shipPay = shipPay;
         this.stuck = stuck;
+        this.fsizes = fsizes;
+        this.fnames = fnames;
+        this.uuid = uuid;
     }
 
     public int getEno() {
@@ -86,12 +92,12 @@ public class EshopVO {
         this.thumbs = thumbs;
     }
 
-    public int getSalesVolume() {
-        return salesVolume;
+    public int getSalesVolumn() {
+        return salesVolumn;
     }
 
-    public void setSalesVolume(int salesVolume) {
-        this.salesVolume = salesVolume;
+    public void setSalesVolumn(int salesVolumn) {
+        this.salesVolumn = salesVolumn;
     }
 
     public int getComment() {
@@ -110,20 +116,20 @@ public class EshopVO {
         this.regdate = regdate;
     }
 
-    public String getBiggenre() {
-        return biggenre;
+    public String getBigGenre() {
+        return bigGenre;
     }
 
-    public void setBiggenre(String biggenre) {
-        this.biggenre = biggenre;
+    public void setBigGenre(String bigGenre) {
+        this.bigGenre = bigGenre;
     }
 
-    public String getSmallgenre() {
-        return smallgenre;
+    public String getSmallGenre() {
+        return smallGenre;
     }
 
-    public void setSmallgenre(String smallgenre) {
-        this.smallgenre = smallgenre;
+    public void setSmallGenre(String smallGenre) {
+        this.smallGenre = smallGenre;
     }
 
     public String getCode() {
@@ -134,20 +140,20 @@ public class EshopVO {
         this.code = code;
     }
 
-    public String getExplain() {
-        return explain;
+    public String getSimpleExplain() {
+        return simpleExplain;
     }
 
-    public void setExplain(String explain) {
-        this.explain = explain;
+    public void setSimpleExplain(String simpleExplain) {
+        this.simpleExplain = simpleExplain;
     }
 
-    public String getShippay() {
-        return shippay;
+    public String getShipPay() {
+        return shipPay;
     }
 
-    public void setShippay(String shippay) {
-        this.shippay = shippay;
+    public void setShipPay(String shipPay) {
+        this.shipPay = shipPay;
     }
 
     public int getStuck() {
@@ -156,5 +162,29 @@ public class EshopVO {
 
     public void setStuck(int stuck) {
         this.stuck = stuck;
+    }
+
+    public String getFsizes() {
+        return fsizes;
+    }
+
+    public void setFsizes(String fsizes) {
+        this.fsizes = fsizes;
+    }
+
+    public String getFnames() {
+        return fnames;
+    }
+
+    public void setFnames(String fnames) {
+        this.fnames = fnames;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }
