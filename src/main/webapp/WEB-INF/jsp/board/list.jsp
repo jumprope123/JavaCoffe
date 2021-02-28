@@ -73,7 +73,7 @@
     </div><!--게시판 테이블-->
 
     <div class="row margin1050">
-<%--        <c:if test="${not empty UID }">--%>
+        <c:if test="${not empty UID }">
             <div class="col-6">
                 <div class="form-group row">
                     <select name="findtype" id="findtype" class="form-control col-4">
@@ -91,7 +91,7 @@
                 <button type="button" id="newbd" class="btn btn-info">
                     <i class="bi bi-plus-circle bidragup"></i>새 글 쓰기</button>
             </div>
-<%--        </c:if>--%>
+        </c:if>
     </div><!--새 글 쓰기-->
 
     <div class="row">
