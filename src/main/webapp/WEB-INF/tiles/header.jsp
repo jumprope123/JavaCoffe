@@ -87,7 +87,7 @@
                 </span>
                     </li>
                     <li class="navbar_Item">
-                        <a class="navbar_anchor" href="#">
+                        <a class="navbar_anchor" href="/board/list?cp=1">
                             <div class="navbar_element">
                     <span class="navbar_icon" style="width: 30px; height: 20px;">
                     </span>
@@ -129,7 +129,7 @@
                 </span>
                     </li>
                     <li class="navbar_Item" id="nav_e-shop">
-                        <a class="navbar_anchor" href="#">
+                        <a class="navbar_anchor" href="/eshop/list">
                             <div class="navbar_element">
                     <span class="navbar_icon" style="width: 30px; height: 20px;">
                     </span>
