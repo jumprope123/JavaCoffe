@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- http cache control 관련 코드 : meta-->
+
+
+    <link rel="stylesheet" href="/css/login.css">
 <%--    <link rel="stylesheet" href="/css/find.css">--%>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/customCSS.css">
@@ -20,18 +23,25 @@
 </head>
 <body>
 <div class="container1">
-   <tiles:insertAttribute name="header"/>
+    <tiles:insertAttribute name="header"/>
 
     <tiles:insertAttribute name="main" />
 
-   <tiles:insertAttribute name="footer"/>
+    <tiles:insertAttribute name="footer"/>
 </div>
 <!--로그인 모달-->
 <%--<tiles:insertAttribute name="modal"/>--%>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"> </script>
 <script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/review.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/join.js"></script>
+<script src="/js/zipcode.js"></script>
+<script src="/js/board.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/admin.js"></script>
 </body>
 </html>
 
