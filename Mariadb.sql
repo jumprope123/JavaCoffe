@@ -25,5 +25,22 @@ select AUTO_INCREMENT-1 rno from information_schema.TABLES where TABLE_NAME = 'R
 
 -- join
 create table MemberJoin (
-
+    mno int primary key auto_increment,
+    name varchar(20) not null ,
+    jumin varchar(20) not null ,
+    userid varchar(16) not null,
+    passwd varchar(16) not null ,
+    zipcode varchar(50) not null ,
+    userAddr1 varchar(50) not null ,
+    userAddr2 varchar(50) not null ,
+    userAddr3 varchar(50) not null ,
+    email varchar(50) not null ,
+    phone varchar(20) not null ,
+    regdate timestamp default current_timestamp
 );
+
+-- CRUD
+
+insert into MemberJoin (name, jumin, userid, passwd, zipcode, userAddr1, userAddr2, userAddr3, email, phone)
+values ();
+
