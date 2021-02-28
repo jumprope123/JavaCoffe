@@ -205,3 +205,7 @@ function checkuid(){
 $('#go2index').on('click',function () {
     location.href = '/index';
 })
+
+$('#hjoinbtn').on('click',function () {
+    location.href = '/join/agree'
+})
