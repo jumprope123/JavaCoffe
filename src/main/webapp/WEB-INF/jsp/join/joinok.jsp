@@ -31,13 +31,12 @@
 
     <div class="jumbotron margin1050 bg-info text-white">
         <h1 class="site_agree">회원가입을 축하합니다</h1>
-        <p class="margin30 site_agreefont">게시판 글작성, 쇼핑몰 이용등의 일부 서비스는
-            실명확인 후 이용하실 수 있습니다.<br>
+        <p class="margin30 site_agreefont">게시판 글작성, 쇼핑몰 등을 <br>
+            자유롭게 이용하세요
             실명확인 후에도 가입하신 아이디는 변경할 수 없습니다.</p>
         <hr class="bg-white">
-        <p class="site_agreefont">회원가입 이후 아이디와 비밀번호로 일반회원으로
-            로그인하셔서 추가 인적사항등을 등록해주시기 바랍니다.<br>
-            Lorem Ipsum과 함께 즐거운 시간 되십시오</p>
+        <p class="site_agreefont">회원가입 이후 아이디와 비밀번호는 안전하게 보호하도록 약속드리겠습니다 <br>
+            Javapresso에서 즐거운 시간 되십시오</p>
         <p>이름 : ${name}</p>
         <p>이메일 : ${email}</p>
         <p>가입일시 : ${regdate}</p>
