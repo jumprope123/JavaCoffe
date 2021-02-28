@@ -100,7 +100,7 @@
                         <div class="col-12">
                             <div class="row">
                         <label class="col-2 col-form-label text-right">우편번호</label>
-                        <input type="text" id="sample6_postcode" placeholder="우편번호">
+                        <input type="text" id="sample6_postcode" name="zipcode" placeholder="우편번호">
                         <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
                             </div>
                         <div class="row">
@@ -179,7 +179,7 @@
             </div><!--버튼들-->
 
             <input type="hidden" name="jumin" id="jumin">
-            <input type="hidden" name="zipcode" id="zipcode">
+            <input type="hidden" name="sample6_postcode1" id="sample6_postcode1">
             <input type="hidden" name="email" id="email">
             <input type="hidden" name="phone" id="phone">
 
