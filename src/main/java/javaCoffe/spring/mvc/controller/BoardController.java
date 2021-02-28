@@ -88,6 +88,19 @@ public class BoardController {
         return returnPage;
     }
 
+    @GetMapping("/board/update") //수정하기 폼
+    public ModelAndView update(String bno, ModelAndView mv, HttpSession sess){
+
+        //로그인했으면 수정하기 창이 보이고 아니면 인덱스 화면으로 넘어감
+        if(sess.getAttribute("UID") != null && bno != null) {
+            mv.setViewName("board/update.tiles");
+            mv.addObject("bd", bsrv.readOneBoard(bno));
+        }else {
+            mv.setViewName("redirect:/index");
+        }
+        return mv;
+    }
+
     @ResponseBody
     @GetMapping("/pds/down")//첨부파일 다운로드하기
     public void pdown(String bno, String order, HttpServletResponse res){
@@ -100,19 +113,6 @@ public class BoardController {
             e.printStackTrace();
         }
 
-    }
-
-    @GetMapping("/board/update") //수정하기 폼
-    public ModelAndView update(String bno, ModelAndView mv, HttpSession sess){
-
-        //로그인했으면 수정하기 창이 보이고 아니면 인덱스 화면으로 넘어감
-//        if(sess.getAttribute("UID") != null && bno != null) {
-            mv.setViewName("board/update.tiles");
-            mv.addObject("bd", bsrv.readOneBoard(bno));
-//        }else {
-//            mv.setViewName("redirect:/index");
-//        }
-        return mv;
     }
 
     @PostMapping("/board/update") //수정하기 완료
