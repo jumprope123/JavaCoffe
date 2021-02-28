@@ -8,6 +8,6 @@
         parameterType="javaCoffe.spring.mvc.vo.MemberVO">
         insert into MemberJoin(name,jumin,userid,passwd,zipcode,userAddr1,userAddr2,userAddr3,email,phone)
         values (#{name},#{jumin},#{userid},#{passwd},#{zipcode},
-                #{userAddr1},#{userAddr2},${userAddr3},#{email},#{phone});
+                #{userAddr1},#{userAddr2},#{userAddr3},#{email},#{phone});
     </insert>
 </mapper>
