@@ -17,7 +17,6 @@ $('#listbdbtn').on('click', function () {
     location.href = "/board/list?cp=" + $('#cp').val();
 })
 
-//추천하기
 $('#thumbbtn').on('click', function () {
     location.href = "board/ "
 })
@@ -70,9 +69,7 @@ $('#rpbtn').on('click',function () {
 $('#newbdbtn').on('click',function () {
     if ($('#title').val() == '') alert('제목을 작성하세요!');
     else if ($('#contents').val() == '') alert('본문을 작성하세요!');
-    else if (grecaptcha.getResponse()=="") alert('자동 자동 입력방지를 확인해주세요');
     else {
-        $('#g-recaptcha').val(grecaptcha.getResponse());
         $('#newbdfrm').attr('method', 'post');
         $('#newbdfrm').attr('enctype', 'multipart/form-data');
         $('#newbdfrm').attr('action', '/board/writeok');
