@@ -11,12 +11,14 @@
     <!-- http cache control 관련 코드 : meta-->
 
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/login.css">
+<%--    <link rel="stylesheet" href="/css/find.css">--%>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/customCSS.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <%-- 추가 스타일 --%>
     <title>JAVAPRESSO</title>
 </head>
 <body>
@@ -36,8 +38,8 @@
 <script src="/js/join.js"></script>
 <script src="/js/zipcode.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
 
