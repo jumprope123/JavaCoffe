@@ -7,8 +7,9 @@ public class MemberVO {
     private String userid;
     private String passwd;
     private String zipcode;
-    private String addr1;
-    private String addr2;
+    private String userAddr1;
+    private String userAddr2;
+    private String userAddr3;
     private String email;
     private String phone;
     private String regdate;
@@ -62,19 +63,27 @@ public class MemberVO {
     }
 
     public String getAddr1() {
-        return addr1;
+        return userAddr1;
     }
 
     public void setAddr1(String addr1) {
-        this.addr1 = addr1;
+        this.userAddr1 = addr1;
     }
 
     public String getAddr2() {
-        return addr2;
+        return userAddr2;
     }
 
     public void setAddr2(String addr2) {
-        this.addr2 = addr2;
+        this.userAddr2 = addr2;
+    }
+
+    public String getAddr3() {
+        return userAddr3;
+    }
+
+    public void setAddr3(String addr3) {
+        this.userAddr3 = addr3;
     }
 
     public String getEmail() {
