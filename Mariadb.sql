@@ -30,7 +30,7 @@ create table MemberJoin (
     jumin varchar(20) not null ,
     userid varchar(16) not null,
     passwd varchar(16) not null ,
-    zipcode varchar(50) not null ,
+    zipcode varchar(50)  not null ,
     userAddr1 varchar(50) not null ,
     userAddr2 varchar(50) not null ,
     userAddr3 varchar(50) not null ,
