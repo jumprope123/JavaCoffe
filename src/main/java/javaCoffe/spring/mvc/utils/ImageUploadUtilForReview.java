@@ -16,7 +16,7 @@ import java.util.*;
 
 
 
-@Component("imgutil")
+@Component("imgutilForReview")
 public class ImageUploadUtilForReview {
 
     // 이미지 업로드 경로 설정
