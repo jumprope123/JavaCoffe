@@ -129,7 +129,7 @@
                 </span>
                     </li>
                     <li class="navbar_Item" id="nav_e-shop">
-                        <a class="navbar_anchor" href="/eshop/list">
+                        <a class="navbar_anchor" href="/eshop/list?bigGenre=coffe&cp=1">
                             <div class="navbar_element">
                     <span class="navbar_icon" style="width: 30px; height: 20px;">
                     </span>

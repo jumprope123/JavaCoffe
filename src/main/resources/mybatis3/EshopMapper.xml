@@ -3,14 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="admin">
-    <insert id="insertEshop" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.EshopVO">
-        insert into eshop (title, brand, ogprice, dcprice, bigGenre, smallGenre, code, simpleExplain, shipPay, stuck, fsizes, fnames, uuid)
-        values (#{title}, #{brand}, #{ogprice}, #{dcprice}, #{bigGenre}, #{smallGenre}, #{code}, #{simpleExplain}, #{shipPay}, #{stuck}, #{fsizes}, #{fnames}, #{uuid});
-    </insert>
+<mapper namespace="eshop">
 
-    <select id="lastEnoId" statementType="PREPARED" resultType="String">
-        select AUTO_INCREMENT -1 eno from information_schema.TABLES where TABLE_NAME = 'eshop';
+    <select id="selectCoffeGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where bigGenre = #{bigGenre} order by eno desc limit #{snum}, 20;
+    </select>
+
+    <select id="countBigGenre" statementType="PREPARED" parameterType="String" resultType="int">
+        select COUNT(code) from eshop where bigGenre = #{bigGenre};
     </select>
 
 </mapper>

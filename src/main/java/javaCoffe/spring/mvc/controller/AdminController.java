@@ -28,7 +28,7 @@ public class AdminController {
     public String writeok(EshopVO evo, MultipartFile[] img){
         String returnPage = "redirect:/eshop/fail";
         if (adsrv.newProduct(evo, img) == true){
-            returnPage = "redirect:/eshop/list?cp=1";
+            returnPage = "redirect:/eshop/list?bigGenre=coffe&cp=1";
         }
         return returnPage;
     }
