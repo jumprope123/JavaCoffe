@@ -2,6 +2,31 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<%--페이지당 게시물 수 20개로 설정--%>
+<fmt:parseNumber var="cp" value="${param.cp}"/>
+<fmt:parseNumber var="pp" value="20"/>
+<fmt:parseNumber var="bigGenreCnt" value="${bigGenreCnt}"/>
+
+<fmt:parseNumber var="sp" value="${((cp-1) / 10)}" integerOnly="true"/>
+<fmt:parseNumber var="sp" value="${sp * 10 + 1}"/>
+<fmt:parseNumber var="ep" value="${sp + 9}"/>
+
+<fmt:parseNumber var="tp" value="${bigGenreCnt/pp}" integerOnly="true"/>
+<c:if test="${(bigGenreCnt % pp) > 0}">
+    <fmt:parseNumber var="tp" value="${tp + 1}"/>
+</c:if>
+
+<fmt:parseNumber var="snum" value="${bigGenreCnt - (cp - 1) * pp}" integerOnly="true"/>
+
+<c:set var="navlnk" value="/eshop/list?bigGenre=${param.bigGenre}&cp="/>
+
+<%-- 이미지 출력을 위한 기본 주소 설정 --%>
+<%-- http://localhost/eshop/_thumb/small_글번호_파일명 --%>
+<c:set var="baseImgURL" value="http://localhost/eshop"/>
+<%--<c:set var="baseImgURL" value="http://13.125.205.40:8447/eshop" />--%>
+<c:set var="thumbURL" value="${baseImgURL}/_thumb/small_"/>
+
 <style>
     ul.nav li.dropdown:hover > ul.dropdown-menu{display:block; margin:0;}
     .pd5 {padding: 5px}
@@ -140,17 +165,17 @@
                             <div class="row mt-3">
                                 <ul class="list-inline text-center">
 
-                                    <c:forEach begin="0" end="19" step="1">
+                                    <c:forEach var="b" items="${bigGenres}">
                                     <li class="list-inline-item" style="margin-bottom: 10px;">
                                         <div class="card" style="width: 230px; border: none;">
                                             <div class="text-center center" style="width: 230px; height: 150px; border: 1px solid #E0E0E0;">
-                                                <img src="/img/eshop/list_maxwellMild.jpg" class="card-img-top" style="width: 150px; height: 145px; margin-top: 1px;">
+                                                <img src="${thumbURL}${b.eno}_${fn:split(b.fnames,"[/]")[0]}" class="card-img-top" style="width: 150px; height: 145px; margin-top: 1px;">
                                             </div>
                                             <div class="card-body text-center" style="margin-top: -10px;">
-                                                <p class="card-text font-weight-bold" style="color: #717188">맥스웰 마일드 커피믹스 900g</p>
-                                                <p class="card-text" style="margin-top: 15px; color: #717188">[동서식품]</p>
-                                                <p class="card-text" style="margin-top: 5px; color: #999999; text-decoration-line: line-through">4,000원</p>
-                                                <p class="card-text h5 font-weight-bold">3,800원</p>
+                                                <p class="card-text font-weight-bold" style="color: #717188">${b.title}</p>
+                                                <p class="card-text" style="margin-top: 15px; color: #717188">[${b.brand}]</p>
+                                                <p class="card-text" style="margin-top: 5px; color: #999999; text-decoration-line: line-through">${b.ogprice}원</p>
+                                                <p class="card-text h5 font-weight-bold">${b.dcprice}원</p>
                                             </div>
                                         </div>
                                     </li>
@@ -162,16 +187,25 @@
                     <div class="row mb-2"> <%--페이지네이션 시작--%>
                         <div class="col-12">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item">
-                                    <a href="#" class="page-link">이전</a>
-                                </li>
-                                <c:forEach var="i" begin="1" end="10" step="1">
-                                <li class="page-item">
-                                    <a href="#" class="page-link">${i}</a>
-                                </li>
+
+                                <%--'이전'이 표시되어야 할 때는 cp > 10 --%>
+                                <li class="page-item <c:if test="${sp lt 11}">disabled</c:if>">
+                                    <a href="${navlnk}${sp - 10}" class="page-link">이전</a></li>
+
+                                <c:forEach var="i" begin="${sp}" end="${ep}" step="1">
+                                    <c:if test="${i le tp}">
+                                        <c:if test="${i ne cp}">
+                                            <li class="page-item"><a href="${navlnk}${i}" class="page-link font-weight-bold">${i}</a></li>
+                                        </c:if>
+                                        <c:if test="${i eq cp}">
+                                            <li class="page-item active"><a href="${navlnk}${i}" class="page-link font-weight-bold">${i}</a></li>
+                                        </c:if>
+                                    </c:if>
                                 </c:forEach>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">다음</a>
+
+                                <%--'다음'이 표시되어야 할 때는 ?--%>
+                                <li class="page-item <c:if test="${ep gt tp}">disabled</c:if>">
+                                    <a href="${navlnk}${sp+10}" class="page-link">다음</a></li>
                                 </li>
                             </ul>
                         </div>
