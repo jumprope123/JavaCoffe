@@ -22,4 +22,19 @@ public class EshopDAOImpl implements EshopDAO{
     public int selectCountBigGenre(String bigGenre) {
         return sqlSession.selectOne("eshop.countBigGenre",bigGenre);
     }
+
+    @Override
+    public List<EshopVO> CoffeInfoByThumbs(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreByThumbs", param);
+    }
+
+    @Override
+    public List<EshopVO> CoffeInfoByThumbsWithSmallGenre(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreByThumbsWithSmallGenre", param);
+    }
+
+    @Override
+    public int selectCountBigGenre(Map<String, Object> param) {
+        return sqlSession.selectOne("eshop.countBigGenreAndSmallGenre",param);
+    }
 }

@@ -151,12 +151,12 @@
                             <div class="row mt-1">
                                 <div class="col-10">
                                 <ul class="list-unstyled mt-1" style="display: block">
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">추천순</a></li>
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">판매인기순</a></li>
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">낮은가격순</a></li>
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">높은가격순</a></li>
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">상품평순</a></li>
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">등록일순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listByThumbs?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">추천순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listBySalesVolumn?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">판매인기순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listByCheap?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">낮은가격순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listByExpensive?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">높은가격순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listByComment?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">상품평순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listByRegdate?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">등록일순</a></li>
                                 </ul>
                                 </div>
                                 <div class="col-2">

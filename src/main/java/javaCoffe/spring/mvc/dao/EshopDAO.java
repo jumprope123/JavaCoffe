@@ -10,4 +10,10 @@ public interface EshopDAO {
     List<EshopVO> CoffeInfo(Map<String, Object> param);
 
     int selectCountBigGenre(String bigGenre);
+
+    List<EshopVO> CoffeInfoByThumbs(Map<String, Object> param);
+
+    List<EshopVO> CoffeInfoByThumbsWithSmallGenre(Map<String, Object> param);
+
+    int selectCountBigGenre(Map<String, Object> param);
 }

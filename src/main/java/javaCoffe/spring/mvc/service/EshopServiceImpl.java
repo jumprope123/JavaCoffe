@@ -28,4 +28,31 @@ public class EshopServiceImpl implements EshopService {
     public int countBigGenre(String bigGenre) { // 대분류를 통해 총 갯수 파악
         return edao.selectCountBigGenre(bigGenre);
     }
+
+    @Override
+    public List<EshopVO> readCoffeInfoByThumbs(String bigGenre, String cp) {
+        int snum = (Integer.parseInt(cp) - 1) * 20; //한페이지에 20개의 리스트를 보여줌
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("snum",snum);
+        return edao.CoffeInfoByThumbs(param);
+    }
+
+    @Override
+    public List<EshopVO> readCoffeInfoByThumbs(String bigGenre, String cp, String smallGenre) {
+        int snum = (Integer.parseInt(cp) - 1) * 20; //한페이지에 20개의 리스트를 보여줌
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("snum",snum);
+        param.put("smallGenre", smallGenre);
+        return edao.CoffeInfoByThumbsWithSmallGenre(param);
+    }
+
+    @Override
+    public int countBigGenre(String bigGenre, String smallGenre) {
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("smallGenre", smallGenre);
+        return edao.selectCountBigGenre(param);
+    }
 }
