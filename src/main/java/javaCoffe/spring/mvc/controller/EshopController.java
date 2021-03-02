@@ -75,5 +75,18 @@ public class EshopController {
         return mv;
     }
 
+    @GetMapping("eshop/listByComment")
+    public ModelAndView listByComment(ModelAndView mv, String cp, String bigGenre, String smallGenre){
+        mv.setViewName("eshop/list.tiles");
+        if (smallGenre.isEmpty()) { // smallGenre가 비어있는경우
+            mv.addObject("bigGenres", esrv.readCoffeInfoByComment(bigGenre, cp)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
+            mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre));// 해당 대분류값의 총 갯수를 파악함
+        } else {// smallGenre가 비어있지 않은 경우
+            mv.addObject("bigGenres", esrv.readCoffeInfoByComment(bigGenre, cp, smallGenre)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
+            mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre, smallGenre));// 해당 대분류값의 총 갯수를 파악함
+        }
+        return mv;
+    }
+
 
 }

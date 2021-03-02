@@ -26,4 +26,8 @@ public interface EshopService {
     List<EshopVO> readCoffeInfoByExpensive(String bigGenre, String cp);
 
     List<EshopVO> readCoffeInfoByExpensive(String bigGenre, String cp, String smallGenre);
+
+    List<EshopVO> readCoffeInfoByComment(String bigGenre, String cp);
+
+    List<EshopVO> readCoffeInfoByComment(String bigGenre, String cp, String smallGenre);
 }

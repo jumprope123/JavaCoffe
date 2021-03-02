@@ -112,4 +112,23 @@ public class EshopServiceImpl implements EshopService {
         param.put("smallGenre", smallGenre);
         return edao.CoffeInfoByExpensiveWithSmallGenre(param);
     }
+
+    @Override
+    public List<EshopVO> readCoffeInfoByComment(String bigGenre, String cp) {
+        int snum = (Integer.parseInt(cp) - 1) * 20; //한페이지에 20개의 리스트를 보여줌
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("snum",snum);
+        return edao.CoffeInfoByComment(param);
+    }
+
+    @Override
+    public List<EshopVO> readCoffeInfoByComment(String bigGenre, String cp, String smallGenre) {
+        int snum = (Integer.parseInt(cp) - 1) * 20; //한페이지에 20개의 리스트를 보여줌
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("snum",snum);
+        param.put("smallGenre", smallGenre);
+        return edao.CoffeInfoByCommentWithSmallGenre(param);
+    }
 }
