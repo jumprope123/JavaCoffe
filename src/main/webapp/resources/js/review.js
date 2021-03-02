@@ -135,7 +135,7 @@ $('#reviewcmtbtn').on('click',function () {
 })
 
 // 대댓글을 위한 댓글의 추가 버튼 클릭시
-function addReply(commentNo) {
+function addReplyforReview(commentNo) {
     $('#replyModal').modal('show');
     $('#commentNo').val(commentNo); // 대댓글 작성시 부모댓글의 번호를 cno에 저장
 } //대댓글 대화상자 띄우기
