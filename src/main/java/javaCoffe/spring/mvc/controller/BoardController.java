@@ -73,8 +73,8 @@ public class BoardController {
 
     @PostMapping("/board/writeok") //파일업로드
     public String writeok(BoardVO bvo, MultipartFile[] file, HttpServletRequest req, RedirectAttributes rds, MultipartFile[] img){
-        String returnPage = "redirect:/board/write";
         String gCaptcha = req.getParameter("g-recaptcha");
+        String returnPage = "redirect:/board/write";
 
         if (gcutil.checkCaptcha(gCaptcha)){
             bsrv.newBoard(bvo,img);
