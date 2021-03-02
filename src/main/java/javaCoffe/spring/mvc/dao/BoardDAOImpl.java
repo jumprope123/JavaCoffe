@@ -65,7 +65,7 @@ public class BoardDAOImpl implements BoardDAO {
         param.put("bno", bno);
         param.put("order", "fname"+order);
 
-        return sqlSession.selectOne("board.selectOneFname");    }
+        return sqlSession.selectOne("board.selectOneFname",param);    }
 
     @Override
     public int updateDownCount(Map<String, String> param) {

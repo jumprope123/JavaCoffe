@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Component("bimgutil")
-public class ImageUploadUtil {
+public class ImageUploadUtilForBoard {
 
     // 이미지 업로드 경로 설정
     private String IMG_UPLOAD_PATH = "C:/Java/nginx-1.19.6/html/cdn/";
