@@ -30,4 +30,8 @@ public interface EshopService {
     List<EshopVO> readCoffeInfoByComment(String bigGenre, String cp);
 
     List<EshopVO> readCoffeInfoByComment(String bigGenre, String cp, String smallGenre);
+
+    List<EshopVO> readCoffeInfoByRegdate(String bigGenre, String cp);
+
+    List<EshopVO> readCoffeInfoByRegdate(String bigGenre, String cp, String smallGenre);
 }

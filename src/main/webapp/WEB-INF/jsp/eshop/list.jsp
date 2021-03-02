@@ -19,7 +19,7 @@
 
 <fmt:parseNumber var="snum" value="${bigGenreCnt - (cp - 1) * pp}" integerOnly="true"/>
 
-<c:set var="navlnk" value="/eshop/list?bigGenre=${param.bigGenre}&cp="/>
+<c:set var="navlnk" value="/eshop/${addr}?bigGenre=${param.bigGenre}&smallGenre=${smallGenre}&cp="/>
 
 <%-- 이미지 출력을 위한 기본 주소 설정 --%>
 <%-- http://localhost/eshop/_thumb/small_글번호_파일명 --%>

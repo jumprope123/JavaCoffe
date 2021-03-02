@@ -77,4 +77,14 @@ public class EshopDAOImpl implements EshopDAO{
     public List<EshopVO> CoffeInfoByCommentWithSmallGenre(Map<String, Object> param) {
         return sqlSession.selectList("eshop.selectCoffeGenreByCommentWithSmallGenre", param);
     }
+
+    @Override
+    public List<EshopVO> CoffeInfoByRegdate(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreByRegdate", param);
+    }
+
+    @Override
+    public List<EshopVO> CoffeInfoByRegdateWithSmallGenre(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreByRegdateWithSmallGenre", param);
+    }
 }
