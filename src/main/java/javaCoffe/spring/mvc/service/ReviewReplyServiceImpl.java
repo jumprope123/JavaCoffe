@@ -54,4 +54,9 @@ public class ReviewReplyServiceImpl implements ReviewReplyService{
             isOk = true;
         return isOk;
     }
+
+    @Override
+    public int readReplyCnt(String rno) {
+        return rrdao.checkCntReply(rno);
+    }
 }

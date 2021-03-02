@@ -82,7 +82,7 @@
     <div class="row margin1050 mt-5">
         <h3><i class="bi bi-chat-square-dots-fill"></i>&nbsp;댓글 남기기</h3>
     </div>
-
+    <input type="hidden" id="reviewCnt" value="${reviewCnt}">
     <div class="row margin1050">
         <table class="table tblines">
             <c:forEach var="r" items="${rp}">

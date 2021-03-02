@@ -14,4 +14,6 @@ public interface ReviewReplyService {
     Boolean updateRePly(ReviewReplyVO rrvo);
 
     Boolean delRePly(ReviewReplyVO rrvo);
+
+    int readReplyCnt(String rno);
 }
