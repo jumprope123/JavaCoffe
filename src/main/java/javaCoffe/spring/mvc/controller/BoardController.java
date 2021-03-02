@@ -92,20 +92,21 @@ public class BoardController {
     public ModelAndView update(String bno, ModelAndView mv, HttpSession sess){
 
         //로그인했으면 수정하기 창이 보이고 아니면 인덱스 화면으로 넘어감
-        if(sess.getAttribute("UID") != null && bno != null) {
+//        if(sess.getAttribute("UID") != null && bno != null) {
             mv.setViewName("board/update.tiles");
             mv.addObject("bd", bsrv.readOneBoard(bno));
-        }else {
-            mv.setViewName("redirect:/index");
-        }
+//        }else {
+//            mv.setViewName("redirect:/index");
+//        }
         return mv;
     }
 
     @ResponseBody
-    @GetMapping("/pds/down")//첨부파일 다운로드하기
+    @GetMapping("/board/down")//첨부파일 다운로드하기
     public void pdown(String bno, String order, HttpServletResponse res){
         try {
             BoardVO p = bsrv.readOneFname(bno, order);
+            System.out.println(p.getFname1() +"/"+p.getUuid());
             fud.procDownloadV2(p.getFname1(), p.getUuid(), res);
             bsrv.downCountBoard(bno, order);   //첨부파일 다운수 처리
 
@@ -113,6 +114,7 @@ public class BoardController {
             e.printStackTrace();
         }
 
+        System.out.println("aaa");
     }
 
     @PostMapping("/board/update") //수정하기 완료
@@ -122,9 +124,10 @@ public class BoardController {
         String returnPage = "redirect:/board/update" + param;
 
         //로그인한 사용자이면서 수정하는 글이 자신이 쓴것이라면
-        if(sess.getAttribute("UID").equals(userid) && bsrv.modifyBoard(bvo)) {
+        //if(sess.getAttribute("UID").equals(userid) && bsrv.modifyBoard(bvo)) {
+            bsrv.modifyBoard(bvo);
             returnPage = "redirect:/board/view" + param;
-        }
+        //}
         return returnPage;
     }
 
@@ -134,7 +137,7 @@ public class BoardController {
         //삭제하려면 로그인필요
         //또한, 자기가 작성한 글만 삭제 가능
 
-        if(sess.getAttribute("UID").equals(userid))
+        //if(sess.getAttribute("UID").equals(userid))
         bsrv.removeBoard(bno);
 
         return "redirect:/board/list?cp=" + cp;
