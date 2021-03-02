@@ -151,7 +151,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="rpbtn" class="btn btn-warning">대댓글 작성</button>
+                <button type="button" id="rpbtnForReview" class="btn btn-warning">대댓글 작성</button>
                 <button type="button" id="rpcencelbtn" class="btn btn-secondary">취소</button>
             </div>
         </div>

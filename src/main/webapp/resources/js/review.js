@@ -141,7 +141,7 @@ function addReplyforReview(commentNo) {
 } //대댓글 대화상자 띄우기
 
 //대댓글 작성하기
-$('#rpbtn').on('click',function () {
+$('#rpbtnForReview').on('click',function () {
     if ($('#rereplyForReview').val()=='') alert('내용을 작성하시오');
     else {
         $('#rpfrm').attr('method','post');
