@@ -142,7 +142,7 @@ function addReplyforReview(commentNo) {
 
 //대댓글 작성하기
 $('#rpbtn').on('click',function () {
-    if ($('#rereply').val()=='') alert('내용을 작성하시오');
+    if ($('#rereplyForReview').val()=='') alert('내용을 작성하시오');
     else {
         $('#rpfrm').attr('method','post');
         $('#rpfrm').attr('action','/review/replyok');
