@@ -144,7 +144,7 @@
             </div>
             <div class="modal-body">
                 <form name="rpfrm" id="rpfrm" class="well form-inline">
-                    <textarea name="reply" id="rereply" rows="8" cols="75" class="span4"></textarea>
+                    <textarea name="reply" id="rereplyForReview" rows="8" cols="75" class="span4"></textarea>
                     <input type="hidden" name="userid" value="testReReplyId<%--${UID}--%>">
                     <input type="hidden" name="reviewNo" value="${param.rno}">
                     <input type="hidden" name="commentNo" id="commentNo">
