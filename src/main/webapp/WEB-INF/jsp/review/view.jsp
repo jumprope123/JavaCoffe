@@ -94,7 +94,7 @@
                                 <div>
                                     <div style="display: inline-block" class="text-left">${fn:substring(r.regdate,0,19)}</div>
                                     <div style="float: right">
-                                    <a href="javascript:addReply('${r.replyNo}')">[추가]</a>
+                                    <a href="javascript:addReplyforReview('${r.replyNo}')">[추가]</a>
                                     <a href="javascript:modiReply('${r.replyNo}','${r.reply}')">[수정]</a>
                                     <a href="javascript:delReply('${r.replyNo}')">[삭제]</a></div> <%--대댓글이 있는 리플은 삭제못하게 하고싶은데 어떻게?--%>
                                 </div>
