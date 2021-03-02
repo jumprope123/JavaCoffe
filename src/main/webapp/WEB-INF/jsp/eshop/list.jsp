@@ -127,30 +127,36 @@
             <div class="row" style="max-width: 1300px">
                 <div class="col-12">
                     <div class="row mt-4">
-                        <h3 class="h3"><i class="bi bi-cup-straw bidragup"></i>&nbsp;로스팅원두 | 드립백</h3>
+                        <h3 class="h3 font-weight-bold"><i class="bi bi-cup-straw bidragup"></i>&nbsp;E-shop(회원전용)</h3>
                     </div>
                     <div class="row d-flex mt-3">
-                        <button id="eshop1btn" class="btn flex-fill mr-1" style="border: 1px solid black;">로스팅원두 | 드립백</button>
-                        <button id="eshop2btn" class="btn flex-fill mr-1" style="border: 1px solid black;">자판기믹스</button>
-                        <button id="eshop3btn" class="btn flex-fill mr-1" style="border: 1px solid black;">설탕커피</button>
-                        <button id="eshop4btn" class="btn flex-fill mr-1" style="border: 1px solid black;">일회용커피</button>
-                        <button id="eshop5btn" class="btn flex-fill mr-1" style="border: 1px solid black;">프림설탕</button>
+                        <button id="eshop1btn" class="btn flex-fill mr-1 <c:if test="${param.bigGenre eq 'coffe'}">btn-success</c:if>" style="border: 1px solid black;">원두|커피믹스|스틱</button>
+                        <button id="eshop2btn" class="btn flex-fill mr-1 <c:if test="${param.bigGenre eq 'tea'}">btn-success</c:if>" style="border: 1px solid black;">차류[티백/아이스티]</button>
+                        <button id="eshop3btn" class="btn flex-fill mr-1 <c:if test="${param.bigGenre eq 'syrup'}">btn-success</c:if>" style="border: 1px solid black;">시럽|소스|파우더</button>
+                        <button id="eshop4btn" class="btn flex-fill mr-1 <c:if test="${param.bigGenre eq 'vending'}">btn-success</c:if>" style="border: 1px solid black;">자판기|제빙기</button>
+                        <button id="eshop5btn" class="btn flex-fill mr-1 <c:if test="${param.bigGenre eq 'takeoutcup'}">btn-success</c:if>" style="border: 1px solid black;">테이크아웃컵|페트컵</button>
+                    </div>
+                    <div class="row d-flex mt-1">
+                        <button id="eshop6btn" class="btn flex-fill mr-1 <c:if test="${param.bigGenre eq 'drink'}">btn-success</c:if>" style="border: 1px solid black;">음료수[캔/페트/병]</button>
+                        <button id="eshop7btn" class="btn flex-fill mr-1 <c:if test="${param.bigGenre eq 'disposable'}">btn-success</c:if>" style="border: 1px solid black;">종이컵|일회용품</button>
+                        <button id="eshop8btn" class="btn flex-fill mr-1 <c:if test="${param.bigGenre eq 'food1'}">btn-success</c:if>" style="border: 1px solid black;">볶음밥|만두|핫바</button>
+                        <button id="eshop9btn" class="btn flex-fill mr-1 <c:if test="${param.bigGenre eq 'food2'}">btn-success</c:if>" style="border: 1px solid black;">돈까스|감튀|어묵</button>
                     </div>
                     <div class="row" style="margin-top: 50px;">
                         <div class="col-12">
                             <div class="row">
-                                <p class="h5">상품 20개</p>
+                                <p class="h5">상품 ${bigGenreCnt}개</p>
                             </div>
                             <div class="row mt-2" style="border-bottom: 1px solid black"></div> <%--선 구현--%>
                             <div class="row mt-1">
                                 <div class="col-10">
                                 <ul class="list-unstyled mt-1" style="display: block">
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">추천순</a></li>
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">판매인기순</a></li>
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">낮은가격순</a></li>
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">높은가격순</a></li>
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">상품평순</a></li>
-                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="#">등록일순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listByThumbs?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">추천순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listBySalesVolumn?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">판매인기순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listByCheap?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">낮은가격순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listByExpensive?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">높은가격순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listByComment?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">상품평순</a></li>
+                                    <li class="list-inline-item font-weight-bold pd5 mr-4"><a href="/eshop/listByRegdate?bigGenre=${param.bigGenre}&smallGenre=${param.smallGenre}&cp=1">등록일순</a></li>
                                 </ul>
                                 </div>
                                 <div class="col-2">
