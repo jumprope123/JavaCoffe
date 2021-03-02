@@ -3,7 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="find">
+<mapper namespace="findshop">
+    <select id="selectList" statementType="PREPARED" resultType="javaCoffe.spring.mvc.vo.FindShopVO">
+        select sno, sname, address, jibeon, phone
+        from FindShop
+        order by sno
+    </select>
 
+    <select id="selectLocation" statementType="PREPARED" resultType="javaCoffe.spring.mvc.vo.FindShopVO">
+        select sno, lat, lng
+        from FindShop
+        order by sno
+    </select>
 
 </mapper>

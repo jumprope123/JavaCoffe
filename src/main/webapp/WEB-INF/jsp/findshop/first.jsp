@@ -1,4 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <head>
     <link rel="stylesheet" href="/css/find.css">
     <style>
@@ -10,15 +13,14 @@
 
 <main id="middle">
     <div class="map_wrapper">
-        <video autoplay loop muted>
-            <source src="../../video/mapbgv1.mp4" type="video/mp4">
-            <strong>Your browser does not support the video tag.</strong>
-        </video>
+        <div id="video_area">
+            <video autoplay="autoplay" id="background_video" loop="loop" muted="muted" preload="auto" src="../video/mapbgv1.mp4" volume="0"></video>
+        </div>
         <div class="map_title">
             <p>매장 찾기</p>
             <h2>이용 목적에 맞는 매장 찾기</h2>
         </div>
-        <div class="adress_input_box">
+        <div class="adress_input_box" id="adress_input_box">
             <div class="box_wrap">
                 <div class="tabs">
                     <ul id="shops" role="tablist">
@@ -26,7 +28,7 @@
                             <h2>
                                 <a tabindex="-1">
                                     <span class="icon">
-                                        <img alt="캡슐 구매" src="../../img/find/capsulecoffee.png">
+                                        <img alt="캡슐 구매" src="../img/find/capsulecoffee.png">
                                     </span>
                                     <span class="label">캡슐 구매</span>
                                 </a>
@@ -36,7 +38,7 @@
                             <h2>
                                 <a tabindex="-1">
                                     <span class="icon">
-                                        <img alt="머신 구매" src="../../img/find/coffeemaker.png">
+                                        <img alt="머신 구매" src="../img/find/coffeemaker.png">
                                     </span>
                                     <span class="label">머신 구매</span>
                                 </a>
@@ -46,7 +48,7 @@
                             <h2>
                                 <a tabindex="-1">
                                     <span class="icon">
-                                        <img alt="캡슐 재활용" src="../../img/find/recycle.png">
+                                        <img alt="캡슐 재활용" src="../img/find/recycle.png">
                                     </span>
                                     <span class="label">캡슐 재활용</span>
                                 </a>
@@ -54,35 +56,59 @@
                         </li>
                     </ul>
                 </div>
-                <div id="search" class="form_search">
-                    <form id="locationForm" role="search" action="." method="get" accept-charset="UTF-8">
+                <div class="form_search" id="search">
+                    <form accept-charset="UTF-8" action="." id="locationForm" method="get" role="search">
                         <div class="location">
-                            <label for="location" class="a11y-hidden"></label>
-                            <input id="location" class="form_text" type="text" value="" tabindex="1" placeholder="주소, 우편번호, 시/도" aria-describedby="locationExplanation" autocomplete="off">
-                            <button class="geoloc-btn activated" tabindex="2" type="button" aria-label="내 위치에서 가까운 매장 찾기"></button>
-                            <button class="clear-btn" tabindex="-1" type="button" aria-hidden="true"></button>
+                            <label class="a11y-hidden" for="pac-input"></label>
+                            <input aria-describedby="locationExplanation" autocomplete="off" class="form_text controls" id="pac-input" placeholder="주소, 우편번호, 시/도" tabindex="1" type="text" value="">
+                            <button aria-hidden="true" class="cancel-btn" tabindex="-1" type="button"></button>
+                            <button aria-label="내 위치에서 가까운 매장 찾기" class="geoloc-btn activated" tabindex="2" type="button"></button>
                         </div>
-                        <button type="submit" class="form-submit" id="btnSearch" tabindex="4"><span>검색</span></button>
+                        <button class="form-submit" id="btnSearch" onclick="" tabindex="4" type="button"><span>검색</span></button>
                     </form>
                 </div>
-                <div id="map" style="width:100%; height: 100vh;"></div>
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1CCvsEeWN2zyvgcL8RGZ67905NDrwOgM&callback=initMap&region=kr"></script>
-                <script>
-                    function initMap() {
-                        var seoul = { lat: 37.5642135 ,lng: 127.0016985 };
-                        var map = new google.maps.Map(
-                            document.getElementById('map'), {
-                                zoom: 12,
-                                center: seoul
-                            });
-                        new google.maps.Marker({
-                            position: seoul,
-                            map: map,
-                            label: "서울 중심 좌표"
-                        });
-                    }
-                </script>
             </div>
+        </div>
+    </div>
+
+    <div id="map" style="width:100%; height: 100vh;"></div>
+    <div class="open closed" id="results">
+        <div aria-hidden="true" class="results-header nb-shops hidden" id="storeResultsHeader" style="padding-bottom: 10px">
+            <span>19</span> 검색 결과                            </div>
+        <div class="results-empty loading" style="display: none;">
+            <img alt="" src="img/loader.gif">
+        </div>
+        <div class="results-ctn vscroll hidden" style="padding-top: 10px">
+            <ul aria-labelledby="storeResultsHeader storeResultDesc" id="store-locator-results">
+                <c:forEach var="f" items="${fsinfo}">
+                    <li style="border-top: solid 1px black">
+                        <button tabindex="3" class="shop-item shop-item-112">
+                            <div class="StoreResult-content">
+                                <div class="shop-name">
+                                    <strong>${f.sname}</strong>
+                                </div>
+                                <div class="shop-address">
+                                    ${f.address}<br>
+                                    ${f.jibeon}<br>
+                                    <div class="phone" aria-label="전화번호 :  080-734-1111&nbsp;">
+                                        ${f.phone}
+                                    </div>
+                                </div>
+                                <div class="Capabilities shop-attributes">
+                                    <ul>
+                                        <li>25.43 km&nbsp;</li>
+                                        <li>재활용</li>
+                                        <li>무료 커피 시음</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </button>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+        <div class="holder">
+            <a></a>
         </div>
     </div>
 </main>

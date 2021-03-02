@@ -148,7 +148,7 @@ header {
     border-color: #dfe3e8;
     font-size: 16px;
 }
-.btn {
+.navbar .form-inline .btn {
     border-radius: 2px;
     color: #fff;
     border-color: #29c68c;
@@ -160,7 +160,7 @@ header {
     background: #26bb84;
 }
 
-.btn {
+.navbar .form-inline .btn {
     margin-left: 4px;
 }
 .navbar .search-form .form-control {
