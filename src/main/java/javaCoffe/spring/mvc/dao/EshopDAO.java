@@ -32,4 +32,8 @@ public interface EshopDAO {
     List<EshopVO> CoffeInfoByComment(Map<String, Object> param);
 
     List<EshopVO> CoffeInfoByCommentWithSmallGenre(Map<String, Object> param);
+
+    List<EshopVO> CoffeInfoByRegdate(Map<String, Object> param);
+
+    List<EshopVO> CoffeInfoByRegdateWithSmallGenre(Map<String, Object> param);
 }

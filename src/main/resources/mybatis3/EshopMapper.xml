@@ -57,4 +57,13 @@
         select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by Comment desc limit #{snum}, 20;
     </select>
 
+    <!--일찍 등록한게 일찍뜨도록-->
+    <select id="selectCoffeGenreByRegdate" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where bigGenre = #{bigGenre} order by regdate asc limit #{snum}, 20;
+    </select>
+
+    <select id="selectCoffeGenreByRegdateWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by regdate asc limit #{snum}, 20;
+    </select>
+
 </mapper>

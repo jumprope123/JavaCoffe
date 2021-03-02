@@ -19,6 +19,7 @@ public class EshopController {
 
         mv.addObject("bigGenres",esrv.readCoffeInfo(bigGenre,cp)); // cp값에따라 20개의 데이터를 넘김
         mv.addObject("bigGenreCnt",esrv.countBigGenre(bigGenre)); // 해당 대분류값의 총 갯수를 파악함
+        mv.addObject("addr","list"); // 주소창에 입력될 값 전달
 
         return mv;
     }
@@ -33,6 +34,9 @@ public class EshopController {
             mv.addObject("bigGenres", esrv.readCoffeInfoByThumbs(bigGenre,cp,smallGenre)); // cp값에따라 20개의 데이터를 넘김 단, thumbs에 의해 내림차순정렬됨
             mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre,smallGenre));// 해당 대분류값의 총 갯수를 파악함
         }
+        mv.addObject("addr","listByThumbs"); // 주소창에 입력될 값 전달
+        mv.addObject("smallGenre",smallGenre); // 주소창에 입력될 값 전달
+
         return mv;
     }
 
@@ -46,6 +50,8 @@ public class EshopController {
             mv.addObject("bigGenres", esrv.readCoffeInfoBySalesVolumn(bigGenre,cp,smallGenre)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
             mv.addObject("bigGenreCnt",esrv.countBigGenre(bigGenre,smallGenre));// 해당 대분류값의 총 갯수를 파악함
         }
+        mv.addObject("addr","listBySalesVolumn"); // 주소창에 입력될 값 전달
+        mv.addObject("smallGenre",smallGenre); // 주소창에 입력될 값 전달
         return mv;
     }
 
@@ -59,6 +65,8 @@ public class EshopController {
             mv.addObject("bigGenres", esrv.readCoffeInfoByCheap(bigGenre, cp, smallGenre)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
             mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre, smallGenre));// 해당 대분류값의 총 갯수를 파악함
         }
+        mv.addObject("addr","listByCheap"); // 주소창에 입력될 값 전달
+        mv.addObject("smallGenre",smallGenre); // 주소창에 입력될 값 전달
         return mv;
     }
 
@@ -72,6 +80,8 @@ public class EshopController {
             mv.addObject("bigGenres", esrv.readCoffeInfoByExpensive(bigGenre, cp, smallGenre)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
             mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre, smallGenre));// 해당 대분류값의 총 갯수를 파악함
         }
+        mv.addObject("addr","listByExpensive"); // 주소창에 입력될 값 전달
+        mv.addObject("smallGenre",smallGenre); // 주소창에 입력될 값 전달
         return mv;
     }
 
@@ -85,6 +95,23 @@ public class EshopController {
             mv.addObject("bigGenres", esrv.readCoffeInfoByComment(bigGenre, cp, smallGenre)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
             mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre, smallGenre));// 해당 대분류값의 총 갯수를 파악함
         }
+        mv.addObject("addr","listByComment"); // 주소창에 입력될 값 전달
+        mv.addObject("smallGenre",smallGenre); // 주소창에 입력될 값 전달
+        return mv;
+    }
+
+    @GetMapping("eshop/listByRegdate")
+    public ModelAndView listByRegdate(ModelAndView mv, String cp, String bigGenre, String smallGenre){
+        mv.setViewName("eshop/list.tiles");
+        if (smallGenre.isEmpty()) { // smallGenre가 비어있는경우
+            mv.addObject("bigGenres", esrv.readCoffeInfoByRegdate(bigGenre, cp)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
+            mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre));// 해당 대분류값의 총 갯수를 파악함
+        } else {// smallGenre가 비어있지 않은 경우
+            mv.addObject("bigGenres", esrv.readCoffeInfoByRegdate(bigGenre, cp, smallGenre)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
+            mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre, smallGenre));// 해당 대분류값의 총 갯수를 파악함
+        }
+        mv.addObject("addr","listByRegdate"); // 주소창에 입력될 값 전달
+        mv.addObject("smallGenre",smallGenre); // 주소창에 입력될 값 전달
         return mv;
     }
 
