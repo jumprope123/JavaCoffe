@@ -136,7 +136,7 @@
 
 
 <!-- 대댓글 작성을 위한 모달대화상자 -->
-<div class="modal hide" id="replyModal" role="dialog">
+<div class="modal hide" id="replyModalForReview" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
