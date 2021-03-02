@@ -55,4 +55,61 @@ public class EshopServiceImpl implements EshopService {
         param.put("smallGenre", smallGenre);
         return edao.selectCountBigGenre(param);
     }
+
+    @Override
+    public List<EshopVO> readCoffeInfoBySalesVolumn(String bigGenre, String cp) {
+        int snum = (Integer.parseInt(cp) - 1) * 20; //한페이지에 20개의 리스트를 보여줌
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("snum",snum);
+        return edao.CoffeInfoBySalesVolumn(param);
+    }
+
+    @Override
+    public List<EshopVO> readCoffeInfoBySalesVolumn(String bigGenre, String cp, String smallGenre) {
+        int snum = (Integer.parseInt(cp) - 1) * 20; //한페이지에 20개의 리스트를 보여줌
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("snum",snum);
+        param.put("smallGenre", smallGenre);
+        return edao.CoffeInfoBySalesVolumnWithSmallGenre(param);
+    }
+
+    @Override
+    public List<EshopVO> readCoffeInfoByCheap(String bigGenre, String cp) {
+        int snum = (Integer.parseInt(cp) - 1) * 20; //한페이지에 20개의 리스트를 보여줌
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("snum",snum);
+        return edao.CoffeInfoByCheap(param);
+    }
+
+    @Override
+    public List<EshopVO> readCoffeInfoByCheap(String bigGenre, String cp, String smallGenre) {
+        int snum = (Integer.parseInt(cp) - 1) * 20; //한페이지에 20개의 리스트를 보여줌
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("snum",snum);
+        param.put("smallGenre", smallGenre);
+        return edao.CoffeInfoByCheapWithSmallGenre(param);
+    }
+
+    @Override
+    public List<EshopVO> readCoffeInfoByExpensive(String bigGenre, String cp) {
+        int snum = (Integer.parseInt(cp) - 1) * 20; //한페이지에 20개의 리스트를 보여줌
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("snum",snum);
+        return edao.CoffeInfoByExpensive(param);
+    }
+
+    @Override
+    public List<EshopVO> readCoffeInfoByExpensive(String bigGenre, String cp, String smallGenre) {
+        int snum = (Integer.parseInt(cp) - 1) * 20; //한페이지에 20개의 리스트를 보여줌
+        Map<String,Object> param = new HashMap<>();
+        param.put("bigGenre", bigGenre);
+        param.put("snum",snum);
+        param.put("smallGenre", smallGenre);
+        return edao.CoffeInfoByExpensiveWithSmallGenre(param);
+    }
 }

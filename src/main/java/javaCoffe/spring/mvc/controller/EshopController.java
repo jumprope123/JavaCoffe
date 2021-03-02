@@ -35,4 +35,45 @@ public class EshopController {
         }
         return mv;
     }
+
+    @GetMapping("eshop/listBySalesVolumn")
+    public ModelAndView listBySalesVolumn(ModelAndView mv, String cp , String bigGenre, String smallGenre){
+        mv.setViewName("eshop/list.tiles");
+        if (smallGenre.isEmpty()){ // smallGenre가 비어있는경우
+            mv.addObject("bigGenres", esrv.readCoffeInfoBySalesVolumn(bigGenre,cp)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
+            mv.addObject("bigGenreCnt",esrv.countBigGenre(bigGenre));// 해당 대분류값의 총 갯수를 파악함
+        }else {// smallGenre가 비어있지 않은 경우
+            mv.addObject("bigGenres", esrv.readCoffeInfoBySalesVolumn(bigGenre,cp,smallGenre)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
+            mv.addObject("bigGenreCnt",esrv.countBigGenre(bigGenre,smallGenre));// 해당 대분류값의 총 갯수를 파악함
+        }
+        return mv;
+    }
+
+    @GetMapping("eshop/listByCheap") //할인후 가격 기준 오름차순 정렬
+    public ModelAndView listByCheap(ModelAndView mv, String cp, String bigGenre, String smallGenre) {
+        mv.setViewName("eshop/list.tiles");
+        if (smallGenre.isEmpty()) { // smallGenre가 비어있는경우
+            mv.addObject("bigGenres", esrv.readCoffeInfoByCheap(bigGenre, cp)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
+            mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre));// 해당 대분류값의 총 갯수를 파악함
+        } else {// smallGenre가 비어있지 않은 경우
+            mv.addObject("bigGenres", esrv.readCoffeInfoByCheap(bigGenre, cp, smallGenre)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
+            mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre, smallGenre));// 해당 대분류값의 총 갯수를 파악함
+        }
+        return mv;
+    }
+
+    @GetMapping("eshop/listByExpensive")
+    public ModelAndView listByExpensive(ModelAndView mv, String cp, String bigGenre, String smallGenre){
+        mv.setViewName("eshop/list.tiles");
+        if (smallGenre.isEmpty()) { // smallGenre가 비어있는경우
+            mv.addObject("bigGenres", esrv.readCoffeInfoByExpensive(bigGenre, cp)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
+            mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre));// 해당 대분류값의 총 갯수를 파악함
+        } else {// smallGenre가 비어있지 않은 경우
+            mv.addObject("bigGenres", esrv.readCoffeInfoByExpensive(bigGenre, cp, smallGenre)); //cp값에따라 20개의 데이터를 넘김 단, SalesVolumn에 의해 내림차순정렬됨
+            mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre, smallGenre));// 해당 대분류값의 총 갯수를 파악함
+        }
+        return mv;
+    }
+
+
 }

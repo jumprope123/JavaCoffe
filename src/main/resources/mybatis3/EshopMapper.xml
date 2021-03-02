@@ -25,4 +25,28 @@
         select COUNT(code) from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre};
     </select>
 
+    <select id="selectCoffeGenreBySalesVolumn" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where bigGenre = #{bigGenre} order by salesVolumn desc limit #{snum}, 20;
+    </select>
+
+    <select id="selectCoffeGenreBySalesVolumnWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by salesVolumn desc limit #{snum}, 20;
+    </select>
+
+    <select id="selectCoffeGenreByCheap" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where bigGenre = #{bigGenre} order by dcprice asc limit #{snum}, 20;
+    </select>
+
+    <select id="selectCoffeGenreByCheapWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by dcprice asc limit #{snum}, 20;
+    </select>
+
+    <select id="selectCoffeGenreByExpensive" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where bigGenre = #{bigGenre} order by dcprice desc limit #{snum}, 20;
+    </select>
+
+    <select id="selectCoffeGenreByExpensiveWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by dcprice desc limit #{snum}, 20;
+    </select>
+
 </mapper>

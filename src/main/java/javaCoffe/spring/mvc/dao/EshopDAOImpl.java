@@ -37,4 +37,34 @@ public class EshopDAOImpl implements EshopDAO{
     public int selectCountBigGenre(Map<String, Object> param) {
         return sqlSession.selectOne("eshop.countBigGenreAndSmallGenre",param);
     }
+
+    @Override
+    public List<EshopVO> CoffeInfoBySalesVolumn(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreBySalesVolumn", param);
+    }
+
+    @Override
+    public List<EshopVO> CoffeInfoBySalesVolumnWithSmallGenre(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreBySalesVolumnWithSmallGenre", param);
+    }
+
+    @Override
+    public List<EshopVO> CoffeInfoByCheap(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreByCheap", param);
+    }
+
+    @Override
+    public List<EshopVO> CoffeInfoByCheapWithSmallGenre(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreByCheapWithSmallGenre", param);
+    }
+
+    @Override
+    public List<EshopVO> CoffeInfoByExpensive(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreByExpensive", param);
+    }
+
+    @Override
+    public List<EshopVO> CoffeInfoByExpensiveWithSmallGenre(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreByExpensiveWithSmallGenre", param);
+    }
 }
