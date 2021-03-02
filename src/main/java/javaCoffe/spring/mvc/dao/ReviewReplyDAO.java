@@ -14,4 +14,6 @@ public interface ReviewReplyDAO {
     int updateReply(ReviewReplyVO rrvo);
 
     int delReply(ReviewReplyVO rrvo);
+
+    int checkCntReply(String rno);
 }

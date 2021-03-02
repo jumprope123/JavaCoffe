@@ -39,6 +39,9 @@ public class ReviewReplyDAOImpl implements ReviewReplyDAO{
         return sqlSession.delete("reply.deleteReply",rrvo);
     }
 
+    @Override
+    public int checkCntReply(String rno) { return sqlSession.selectOne("reply.countReply",rno); }
+
     private String selectLastReplyNo() {
         return sqlSession.selectOne("reply.lastReplyNo");
     }

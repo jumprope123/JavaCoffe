@@ -204,10 +204,15 @@ $('#upReviewBtn').on('click',function () {
 
 // 삭제하기 버튼
 $('#rmReviewBtn').on('click',function () {
-    if (confirm('정말 삭제하시겠습니까?')){
-        $('#hiddenform').attr('method','post');
-        $('#hiddenform').attr('action','/review/delview');
-        $('#hiddenform').submit();
+    var review = $('#reviewCnt').val() // 댓글의 수 확인
+    if (review != 0){ //댓글이 1개 이상이면
+        alert('댓글이 달린 게시글은 삭제할 수 없습니다.');
+    } else { //댓글이 없으면
+        if (confirm('정말 삭제하시겠습니까?')) {
+            $('#hiddenform').attr('method', 'post');
+            $('#hiddenform').attr('action', '/review/delview');
+            $('#hiddenform').submit();
+        }
     }
 })
 
