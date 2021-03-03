@@ -57,12 +57,12 @@
                     <label class="custom-file-label">첨부할 파일을 선택하세요</label>
                 </div>
             </div><!--파일첨부 끝-->
-<%--            <div class="form-group row">--%>
-<%--                <label class="col-2 text-right text-danger" >자동 입력방지</label>--%>
-<%--                <div class="g-recaptcha"--%>
-<%--                     data-sitekey = "6LfG1joaAAAAADEkugKdcD0aHQEHMTHMBwTiiouJ"></div>--%>
-<%--                <input type="hidden" name="g-recaptcha" id="g-recaptcha">--%>
-<%--            </div>--%>
+            <div class="form-group row">
+                <label class="col-2 text-right text-danger" >자동 입력방지</label>
+                <div class="g-recaptcha"
+                     data-sitekey = "6LfA1joaAAAAAOU9f2VaZdKu9Z4C_tWErqdpFnqf"></div>
+                <input type="hidden" name="g-recaptcha" id="g-recaptcha">
+            </div>
         </div><!--새글쓰기 폼-->
 
         <div class="row margin1050">

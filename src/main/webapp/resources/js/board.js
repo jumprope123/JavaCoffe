@@ -103,6 +103,7 @@ $('#newbdbtn').on('click',function () {     //작성완료
     if ($('#title').val() == '') alert('제목을 작성하세요!');
     else if ($('#contents').val() == '') alert('본문을 작성하세요!');
     else {
+        $('#g-recaptcha').val(grecaptcha.getResponse());
         $('#newbdfrm').attr('method', 'post');
         $('#newbdfrm').attr('enctype', 'multipart/form-data');
         $('#newbdfrm').attr('action', '/board/writeok');
