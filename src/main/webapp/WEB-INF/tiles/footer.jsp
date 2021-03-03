@@ -79,19 +79,19 @@
                     <span class="social_label">자바프레소 계정을 팔로우 하세요</span>
                     <ul class="s_list">
                         <li class="s_item1">
-                            <a href="#"><img src="../img/base/instagram.png" alt="인스타그램" /></a>
+                            <a href="https://www.instagram.com/"><img src="../img/base/instagram.png" alt="인스타그램" /></a>
                         </li>
                         <li class="s_item1">
-                            <a href="#"><img src="../img/base/facebook.png" alt="페이스북" /></a>
+                            <a href="https://www.facebook.com/"><img src="../img/base/facebook.png" alt="페이스북" /></a>
                         </li>
                         <li class="s_item1">
-                            <a href="#"><img src="../img/base/youtube.png" alt="유튜브" /></a>
+                            <a href="https://www.youtube.com/channel/UCW_k9fP-SWxKC1SiWUxs5VQ"><img src="../img/base/youtube.png" alt="유튜브" /></a>
                         </li>
                         <li class="s_item1">
-                            <a href="#"><img src="../img/base/twitter.png" alt="트위터" /></a>
+                            <a href="https://twitter.com/?lang=ko"><img src="../img/base/twitter.png" alt="트위터" /></a>
                         </li>
                         <li class="s_item1">
-                            <a href="#"><img src="../img/base/pinterest.png" alt="핀터레스트" /></a>
+                            <a href="https://www.pinterest.co.kr/"><img src="../img/base/pinterest.png" alt="핀터레스트" /></a>
                         </li>
                     </ul>
                 </div>
