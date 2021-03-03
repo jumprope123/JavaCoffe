@@ -109,4 +109,5 @@ public class MemberVO {
     public void setRegdate(String regdate) {
         this.regdate = regdate;
     }
+
 }

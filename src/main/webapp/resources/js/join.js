@@ -62,14 +62,12 @@ $('#joinbtn').on('click',function () {
         alert('우편번호를 검색해주세요');
     }else if ($('#email1').val() == ''||$('#email2').val() == ''){
         alert('이메일주소를 입력해주세요');
-    }else if ($('#hp2').val() == '' || $('#hp3').val() == ''){
+    }else if ($('#hp1').val() == ''||$('#hp2').val() == '' || $('#hp3').val() == ''){
         alert('전화번호를 입력해주세요');
-/*    }else if (grecaptcha.getResponse() == ""){ //grecaptcha는 헤드에있는 자바스크립트 내에 작성된 코드임
-        alert("자동가입 방지 확인 필요!");*/
+    }else if (grecaptcha.getResponse() == ""){ //grecaptcha는 헤드에있는 자바스크립트 내에 작성된 코드임
+        alert("자동가입 방지 확인 필요!");
     }else {
-        // recaptcha 코드 유효성 검사를 위한 변수값 설정
-        // alert(grecaptcha.getResponse());
-        // 구글 recaptcha 코드 확인
+
 
         // 분리된 데이터 합치기
         $('#jumin').val($('#jumin1').val() + '-' + $('#jumin2').val());
@@ -78,7 +76,7 @@ $('#joinbtn').on('click',function () {
         $('#phone').val($('#hp1').val() + '-' + $('#hp2').val() + '-' + $('#hp3').val());
 
         // 클라이언트에서 생성한 코드를 서버에서도 확인하기 위한 목적
-        /*$('#g-recaptcha').val(grecaptcha.getResponse());*/
+        $('#g-recaptcha').val(grecaptcha.getResponse());
 
         $('#joinfrm').attr('action', '/join/joinme'); //
         $('#joinfrm').attr('method', 'post');
@@ -157,7 +155,7 @@ $('#modalx').on('click', function () {
 
 // 이메일 처리
 //option:selected => select 요소들 중 선택한 객체를 알아냄
-// 선택한 객체.text() : 태그 사이의 문자
+// 선택한 객체.text() : 태그 사이의 joinbtn문자
 // 선택한 객체.val() : 태그의 val속성 값
 $('#email3').on('change',function () {
     let val = $('#email3 option:selected').text();
@@ -171,35 +169,38 @@ $('#email3').on('change',function () {
 });
 
 // 아이디 중복체크
-$('#newuid').on('blur',function () {checkuid();})
-$('#newuid').on('focus',function () {
-    $('#uidmsg').text('6~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다.');
-    $('#uidmsg').attr('style', 'color:red !important');
-});
+$('#newid').on('blur',function () { checkuid(); });
+$('#newid').on('focus',function () {
+    $('#uidmsg').text("7~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다."); });
+$('#uidmsg').attr('style', 'color: blue !important');
 
-function checkuid(){
-    let uid = $('#newuid').val().trim();
+function checkuid() {
+    let uid = $('#newid').val().trim();
     if (uid == '') {
-        $('#uidmsg').text('6~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다.')
+        $('#uidmsg').text("7~16 자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다.");
         return;
     }
+
     $.ajax({
         url: '/join/checkuid',
-        type: 'GET',
-        data: { uid: $('#newuid').val() }
-        }) // 비동기 요청 설정
-        .done(function (data){
-            let msg = '사용 불가 아이디입니다.';
-            if (data.trim() == 0){
-                msg = '사용 가능 아이디입니다.';
-                $('#uidmsg').attr('style', 'color:blue !important');
+        type: 'GET', data: {uid: $('#newid').val()}
+    })  // 비동기 요청 설정
+
+        .done(function (data) {
+            let msg = '사용 불가 아이디입니다';
+            if (data.trim() == '0') {
+                msg = '사용 가능 아이디입니다';
+                $('#uidmsg').attr('style', 'color: blue !important');
             }
             $('#uidmsg').text(msg);
         }) // 비동기 요청 성공시
-        .fail(function (xhr, status, error){
-            alert(xhr,status, + "/" + error)
-        }); // 비동기 요청 실패시
+
+        .fail(function (xhr, status, error) {
+            alert(xhr.status, +"/" + error);
+        });// 비동기 요청 실패시
 }
+
+
 
 // joinok
 $('#go2index').on('click',function () {

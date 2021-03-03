@@ -1,4 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
+<%
+    String name = request.getParameter("name");
+    String email = request.getParameter("email");
+%>
 <div id="main margin30 container">
     <div class="margin30 container">
         <h3 class="main_join"><img src="/img/login/GLYPHICONS/glyphicons_043_group.png">회원가입</h3>
@@ -30,7 +34,7 @@
     <%--실명회원 가입 부분--%>
     <div class="card card-body bg-light margin1050">
         <h3 class="margin30 font-weight-bold real_join">실명확인 회원가입</h3>
-        <form>
+        <form method="post">
             <div class="row">
                 <div class="col-5 offset-1">
                     <div class="form-group row">
@@ -83,6 +87,9 @@
         </form>
     </div><!-- 실명확인 회원가입 -->
     <div class="all_agree_bottom"></div>
+
+    <input type="hidden" name="name" id="name">
+    <input type="hidden" name="jumin" id="jumin">
 
 
 </div><!-- main -->
