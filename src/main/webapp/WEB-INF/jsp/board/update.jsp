@@ -17,10 +17,6 @@
             <div class="col-6">
                 <h4><i class="bi bi-plus-circle-fill bidragup"></i> 새글쓰기</h4>
             </div>
-            <div class="col-6 text-right">
-                <button type="button" id="listbdbtn" class="btn btn-light"><i class="bi bi-card-list bidragup"></i>목록으로</button>
-
-            </div>
         </div><!--상단버튼-->
 
         <div class="card card-body bg-light margin1050">
@@ -37,9 +33,11 @@
                 <textarea type="text" id="contents" name="contents" class="form-control col-9"
                           rows="15">${bd.contents}</textarea>
             </div>
-            <div class="row">
-                <label class="col-2 text-right">자동가입방지</label>
-                <img src="../../img/google_recaptcha.gif" width="40%" height="40%" style="margin-left: -3px;">
+            <div class="form-group row">
+                <label class="col-2 text-right text-danger" >자동 입력방지</label>
+                <div class="g-recaptcha"
+                     data-sitekey = "6LfA1joaAAAAAOU9f2VaZdKu9Z4C_tWErqdpFnqf"></div>
+                <input type="hidden" name="g-recaptcha" id="g-recaptcha">
             </div>
         </div><!--수정하기 폼-->
 

@@ -116,15 +116,19 @@ public class BoardController {
     }
 
     @PostMapping("/board/update") //수정하기 완료
-    public String updateok(BoardVO bvo, String cp, HttpSession sess, String userid){
+    public String updateok(BoardVO bvo, String cp,HttpServletRequest req, HttpSession sess, String userid){
+        String gCaptcha = req.getParameter("g-recaptcha");
         String param = "?bno=" + bvo.getBno();
         param += "&cp=" + cp;
         String returnPage = "redirect:/board/update" + param;
 
         //로그인한 사용자이면서 수정하는 글이 자신이 쓴것이라면
         //if(sess.getAttribute("UID").equals(userid) && bsrv.modifyBoard(bvo)) {
+        if (gcutil.checkCaptcha(gCaptcha)){
             bsrv.modifyBoard(bvo);
+
             returnPage = "redirect:/board/view" + param;
+        }
         //}
         return returnPage;
     }

@@ -121,7 +121,9 @@ $('#Boardupbdokbtn').on('click',function () {    //수정완료
     if ($('#title').val() == '') alert('제목을 작성하세요!');
     else if ($('#contents').val() == '') alert('본문을 작성하세요!');
     else { (confirm('정말로 수정 하시겠습니까?'))
+        $('#g-recaptcha').val(grecaptcha.getResponse());
         $('#upbdfrm').attr('method','post');
+        $('#upbdfrm').attr('enctype','multipart/form-data');
         $('#upbdfrm').attr('action','/board/update');
         $('#upbdfrm').submit();
     }
