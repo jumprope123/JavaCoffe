@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reply">
+
+    <insert id="insertReply" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.ReviewReplyVO">
+        insert into ReviewReply(commentNo, reviewNo, userid, reply) values (#{commentNo}, #{reviewNo},#{userid},#{reply})
+    </insert>
+
+    <select id="lastReplyNo" resultType="String" statementType="PREPARED">
+        select auto_increment from information_schema.TABLES where table_name = 'ReviewReply'
+    </select>
+
+    <select id="selectList" statementType="PREPARED" parameterType="int" resultType="javaCoffe.spring.mvc.vo.ReviewReplyVO" >
+        select * from ReviewReply where reviewNo = #{reviewNo} order by commentNo;
+    </select>
+
+    <update id="updateReply" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.ReviewReplyVO">
+        update ReviewReply set reply = #{reply} , regdate = current_timestamp where replyNo = #{replyNo};
+    </update>
+
+    <delete id="deleteReply" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.ReviewReplyVO">
+        delete from ReviewReply where replyNo = #{replyNo};
+    </delete>
+
+    <select id="countReply" statementType="PREPARED" parameterType="String" resultType="int">
+        select count(replyNo) from ReviewReply where reviewNo = #{rno};
+    </select>
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+    <insert id="insertEshop" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.EshopVO">
+        insert into eshop (title, brand, ogprice, dcprice, bigGenre, smallGenre, code, simpleExplain, shipPay, stuck, fsizes, fnames, uuid)
+        values (#{title}, #{brand}, #{ogprice}, #{dcprice}, #{bigGenre}, #{smallGenre}, #{code}, #{simpleExplain}, #{shipPay}, #{stuck}, #{fsizes}, #{fnames}, #{uuid});
+    </insert>
+
+    <select id="lastEnoId" statementType="PREPARED" resultType="String">
+        select AUTO_INCREMENT -1 eno from information_schema.TABLES where TABLE_NAME = 'eshop';
+    </select>
+
+
+</mapper>
