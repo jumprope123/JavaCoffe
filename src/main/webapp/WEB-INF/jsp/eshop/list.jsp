@@ -39,38 +39,38 @@
                 <li class="dropdown dropright text-center bg-black" style="min-width: 250px; padding: 10px 40px;">
                     <a class="dropdown-toggle font-weight-bold text-white " data-toggle="dropdown" style="font-size: 1.2em;">원두 | 커피믹스 | 스틱</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">원두</a></li>
-                        <li><a class="dropdown-item" href="#">커피믹스</a></li>
-                        <li><a class="dropdown-item" href="#">스틱</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=coffe&smallGenre=bean&cp=1">원두</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=coffe&smallGenre=coffemix&cp=1">커피믹스</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=coffe&smallGenre=coffestick&cp=1">스틱</a></li>
                     </ul>
                 </li>
                 <li class="dropdown dropright text-center bg-black"  style=" min-width: 250px; padding: 10px 40px;">
                     <a class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" style="font-size: 1.2em;">차류[티백/아이스티]</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">티백</a></li>
-                        <li><a class="dropdown-item" href="#">아이스티</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=tea&smallGenre=teabag&cp=1">티백</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=tea&smallGenre=icetea&cp=1">아이스티</a></li>
                     </ul>
                 </li>
                 <li class="dropdown dropright text-center bg-black"  style=" min-width: 250px; padding: 10px 40px;">
                     <a class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" style="font-size: 1.2em;">시럽 | 소스 | 파우더</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">시럽</a></li>
-                        <li><a class="dropdown-item" href="#">소스</a></li>
-                        <li><a class="dropdown-item" href="#">파우더</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=syrup&smallGenre=syrub&cp=1">시럽</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=syrup&smallGenre=source&cp=1">소스</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=syrup&smallGenre=powder&cp=1">파우더</a></li>
                     </ul>
                 </li>
                 <li class="dropdown dropright text-center bg-black"  style=" min-width: 250px; padding: 10px 40px;">
                     <a class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" style="font-size: 1.2em;">자판기 | 제빙기</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">자판기</a></li>
-                        <li><a class="dropdown-item" href="#">제빙기</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=vending&smallGenre=vendingmc&cp=1">자판기</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=vending&smallGenre=icemc&cp=1">제빙기</a></li>
                     </ul>
                 </li>
                 <li class="dropdown dropright text-center bg-black"  style=" min-width: 250px; padding: 10px 40px;">
                     <a class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" style="font-size: 1.2em;">테이크아웃컵 | 페트컵</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">테이크아웃컵</a></li>
-                        <li><a class="dropdown-item" href="#">페트컵</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=takeoutcup&smallGenre=takeoutcup&cp=1">테이크아웃컵</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=takeoutcup&smallGenre=petcup&cp=1">페트컵</a></li>
                     </ul>
                 </li>
             </ul>
@@ -79,19 +79,19 @@
                 <li class="dropdown dropright text-center bg-black" s style=" min-width: 250px; padding: 10px 40px;">
                     <a class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" style="font-size: 1.2em;">음료수 [캔/페트/병]</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">뚱캔</a></li>
-                        <li><a class="dropdown-item" href="#">슬림캔</a></li>
-                        <li><a class="dropdown-item" href="#">페트</a></li>
-                        <li><a class="dropdown-item" href="#">병음료</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=drink&smallGenre=fatcan&cp=1">뚱캔</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=drink&smallGenre=slimcan&cp=1">슬림캔</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=drink&smallGenre=pet&cp=1">페트</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=drink&smallGenre=bottle&cp=1">병음료</a></li>
                     </ul>
                 </li>
                 <li class="dropdown dropright text-center bg-black"  style=" min-width: 250px; padding: 10px 40px;">
                     <a class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" style="font-size: 1.2em;">종이컵 | 일회용품</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">페트컵</a></li>
-                        <li><a class="dropdown-item" href="#">종이컵</a></li>
-                        <li><a class="dropdown-item" href="#">화장지 | 냅킨</a></li>
-                        <li><a class="dropdown-item" href="#">일회용품</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=disposable&smallGenre=petcup&cp=1">페트컵</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=disposable&smallGenre=papercup&cp=1">종이컵</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=disposable&smallGenre=tissue&cp=1">화장지 | 냅킨</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=disposable&smallGenre=disposable&cp=1">일회용품</a></li>
                     </ul>
                 </li>
             </ul>
@@ -100,18 +100,18 @@
                 <li class="dropdown dropright text-center bg-black"  style=" min-width: 250px; padding: 10px 40px;">
                     <a class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" style="font-size: 1.2em;">볶음밥 | 만두 | 핫바</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">볶음밥</a></li>
-                        <li><a class="dropdown-item" href="#">면 | 떡</a></li>
-                        <li><a class="dropdown-item" href="#">만두</a></li>
-                        <li><a class="dropdown-item" href="#">핫바 | 핫도그 | 치즈스틱</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=food1&smallGenre=ricefry&cp=1">볶음밥</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=food1&smallGenre=nuddle&cp=1">면 | 떡</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=food1&smallGenre=dimsum&cp=1">만두</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=food1&smallGenre=hotbar&cp=1">핫바 | 핫도그 | 치즈스틱</a></li>
                     </ul>
                 </li>
                 <li class="dropdown dropright text-center bg-black"  style=" min-width: 250px; padding: 10px 40px;">
                     <a class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" style="font-size: 1.2em;">돈까스 | 감튀 | 어묵</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">돈까스</a></li>
-                        <li><a class="dropdown-item" href="#">감튀</a></li>
-                        <li><a class="dropdown-item" href="#">어묵</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=food2&smallGenre=porkcutlet&cp=1">돈까스</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=food2&smallGenre=friedpotato&cp=1">감튀</a></li>
+                        <li><a class="dropdown-item" href="/eshop/list?bigGenre=food2&smallGenre=fishcake&cp=1">어묵</a></li>
                     </ul>
                 </li>
             </ul>

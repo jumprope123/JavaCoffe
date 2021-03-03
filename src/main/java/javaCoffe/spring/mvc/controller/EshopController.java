@@ -14,14 +14,19 @@ public class EshopController {
     private EshopService esrv;
 
     @GetMapping("/eshop/list")
-    public ModelAndView list(ModelAndView mv, String cp, String bigGenre, String cnt){
+    public ModelAndView list(ModelAndView mv, String cp, String bigGenre, String cnt, String smallGenre){
         if (cnt == null || cnt.isEmpty()){cnt = "20";} //만약 cnt가 없으면 20을 대입. 애초에 cnt자체가 안넘어오는경우도잇음
         int cntNum = Integer.parseInt(cnt); // cnt값을 숫자로 변환
 
         mv.setViewName("eshop/list.tiles");
 
-        mv.addObject("bigGenres",esrv.readCoffeInfo(bigGenre,cp,cntNum)); // cp값에따라 20개의 데이터를 넘김
-        mv.addObject("bigGenreCnt",esrv.countBigGenre(bigGenre)); // 해당 대분류값의 총 갯수를 파악함
+        if (smallGenre == null || smallGenre.isEmpty()) { //small장르 값이 넘어오질않거나 비어있다면
+            mv.addObject("bigGenres", esrv.readCoffeInfo(bigGenre, cp, cntNum)); // cp값에따라 20개의 데이터를 넘김
+            mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre)); // 해당 대분류값의 총 갯수를 파악함
+        } else { // small장르가 있다면
+            mv.addObject("bigGenres", esrv.readCoffeInfo(bigGenre, cp, cntNum, smallGenre)); // cp값에따라 20개의 데이터를 넘김
+            mv.addObject("bigGenreCnt", esrv.countBigGenre(bigGenre, smallGenre)); // 해당 대분류값의 총 갯수를 파악함
+        }
         mv.addObject("addr","list"); // 주소창에 입력될 값 전달
         mv.addObject("cnt",cnt);
 
