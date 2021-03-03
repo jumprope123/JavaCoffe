@@ -11,3 +11,4 @@ public class IndexController {
         return "/index.tiles";
     }
 }
+//인덱스야 어디갓엇니 ㅠ
