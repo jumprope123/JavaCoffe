@@ -25,3 +25,10 @@ $('#eshop8btn').on('click',function () {
 $('#eshop9btn').on('click',function () {
     location.href = '/eshop/list?bigGenre=food2&cp=1';
 })
+
+$('#showCntChangeForEhsop').on('change',function () {
+    var linkForCnt = $('#linkForCnt').val()
+    var showCntChangeForEhsop = $('#showCntChangeForEhsop').val();
+    location.href = linkForCnt+'&cnt='+showCntChangeForEhsop;
+
+})
