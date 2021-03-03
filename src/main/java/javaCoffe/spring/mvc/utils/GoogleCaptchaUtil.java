@@ -19,7 +19,7 @@ public class GoogleCaptchaUtil {
         boolean isChecked = false;
 
         //공개키 / 사설키 인증을 통해 올바른 captcha 코드인지 확인
-        String secretKey = "6LfA1joaAAAAADC9J8tN8kXFMsaA8fMRgXxKQKSS";
+        String secretKey = "6Le81joaAAAAALN4Jle5oKfRh2vqXaZNyxPdsoOw";
         String verifyURL = "https://www.google.com/recaptcha/api/siteverify";
         String params = "secret=" + secretKey + "&response=" + gCaptcha;
 

@@ -13,11 +13,12 @@
                 </div>
                 <div class="header_customer">
                     <div class="header_login">
+                        <c:if test="${empty UID}">
                         <button class="LoginDropdownButton" id="hloginbtn">
                             로그인 하기
                             <!--aria-expanded="false"-->
                         </button>
-
+                        </c:if>
                     </div>
                     <div class="header_join">
                         <button class="JoinDropdownButton" id="hjoinbtn">

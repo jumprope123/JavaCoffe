@@ -1,7 +1,10 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<%
+    String name = request.getParameter("name");
+    String email = request.getParameter("email");
+%>
 
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <style>
@@ -43,7 +46,7 @@
     <div class="card card-body bg-light margin1050">
         <h3 class="font-weight-bold normal_join">일반회원</h3>
 
-        <form name="joinfrm" id="joinfrm">
+        <form name="joinfrm" id="joinfrm" method="post">
             <div class="row margin30">
                 <div class="col-11 offset-1">
                     <div class="form-group row">
@@ -80,7 +83,7 @@
                                for="newpwd">비밀번호</label>
                         <input type="password" name="passwd" id="newpwd"
                                class="form-control col-2 border-info">
-                        <span class="col-form-label text-danger">
+                        <span id="pwmsg" class="col-form-label text-danger">
                            &nbsp;&nbsp;7~16 자의 영문 소문자, 숫자와 특수문자
                            사용할 수 있습니다.
                         </span>
@@ -105,7 +108,7 @@
                             </div>
                         <div class="row">
                                 <label class="col-2 col-form-label text-right"></label>
-                                <input type="text" class="input_text zipsize" name="userAddr1" style="height: 2rem;" id="sample6_address" placeholder="주소"><br>
+                                <input type="text" class="input_text zipsize" name="userAddr1" style="height: 2.5rem;" id="sample6_address" placeholder="주소"><br>
                                 <input type="text" class="input_text zipsize" name="userAddr2" id="sample6_detailAddress" placeholder="상세주소">
                                 <input type="text" class="input_text zipsize" name="userAddr3" id="sample6_extraAddress" placeholder="추가주소">
                         </div>
@@ -124,7 +127,7 @@
                             <span class="input-group-text igborder">@</span>
                         </div>
                         <input type="text" name="email2" id="email2" readonly
-                               class="form-control col-2 border-info igborder"
+                               class="form-control col-2 border-info igborder" style="margin-left: 3px;"
                                value="${mvo.email}">&nbsp;
                         <select id="email3" class="form-control col-2 border-info igborder">
                             <option>선택</option>
@@ -140,7 +143,7 @@
                         <label class="col-2 col-form-label text-right"
                                for="hp1">개인 연락처</label>
                         <select id="hp1" name="hp1" style="width: 85px;" class="form-control border-info">
-                            <option>선택</option>
+                            <option id="hpsel">선택</option>
                             <option>010</option>
                             <option>011</option>
                             <option>016</option>
@@ -154,15 +157,13 @@
                                class="form-control col-1 border-info"
                                value="${mvo.phone}">
                     </div><!--전화번호-->
-<%--
-                    <div class="form-group row">
-                        <label class="col-2 text-info text-right">자동가입방지</label>
-                        <div class="g-recaptcha"
-                             data-sitekey="6Le81joaAAAAAJt1AUAXPyoaNPoS0XkPFWvF3tp8"></div>
+
+                   <div class="form-group row">
+                        <label class="col-2 text-right">자동가입방지</label>
+                        <div class="g-recaptcha" data-sitekey="6Le81joaAAAAAJt1AUAXPyoaNPoS0XkPFWvF3tp8"></div>
                         <input type="hidden" name="g-recaptcha" id="g-recaptcha">
                         <span style="color: red">${checkCaptcha}</span>
-
-                    </div><!--자동가입방지-->--%>
+                   </div><!--자동가입방지-->
 
                 </div>
             </div>

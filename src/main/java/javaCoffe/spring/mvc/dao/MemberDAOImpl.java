@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository("mdao")
 public class MemberDAOImpl implements MemberDAO{
@@ -14,14 +15,10 @@ public class MemberDAOImpl implements MemberDAO{
     @Autowired
     private SqlSession sqlSession;
 
+
     @Override   // 회원정보 추가
     public int insertMember(MemberVO mvo) {
         return sqlSession.insert("member.insertMember",mvo);
-    }
-
-    @Override   // 우편번호 조회
-    public List<ZipcodeVO> selectZipcode(String dong) {
-        return sqlSession.selectList("member.zipcode", dong);
     }
 
     @Override
@@ -33,4 +30,11 @@ public class MemberDAOImpl implements MemberDAO{
     public int selectLogin(MemberVO mvo) {
         return sqlSession.selectOne("member.checklogin", mvo);
     }
+
+    @Override
+    public String readRegdate(String userid) {
+        return sqlSession.selectOne("member.getRegdate",userid);
+    }
+
+
 }
