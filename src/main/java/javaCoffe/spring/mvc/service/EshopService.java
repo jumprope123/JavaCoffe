@@ -7,6 +7,8 @@ import java.util.List;
 public interface EshopService {
     List<EshopVO> readCoffeInfo(String bigGenre, String cp, int cntNum);
 
+    List<EshopVO> readCoffeInfo(String bigGenre, String cp, int cntNum, String smallGenre);
+
     int countBigGenre(String bigGenre);
 
     List<EshopVO> readCoffeInfoByThumbs(String bigGenre, String cp, int cntNum);
@@ -34,4 +36,5 @@ public interface EshopService {
     List<EshopVO> readCoffeInfoByRegdate(String bigGenre, String cp, int cntNum);
 
     List<EshopVO> readCoffeInfoByRegdate(String bigGenre, String cp, String smallGenre, int cntNum);
+
 }

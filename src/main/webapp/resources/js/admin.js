@@ -23,16 +23,20 @@ $('#bigGenre').on('change',function () {
         $('#smallGenre').append("<option value='petcup'>페트컵</option>");
     } else if ($('#bigGenre option:selected').val() == 'drink'){
         $('#smallGenre').find('option').remove();
-        $('#smallGenre').append("<option value='can'>캔</option>");
+        $('#smallGenre').append("<option value='fatcan'>뚱캔</option>");
+        $('#smallGenre').append("<option value='slimcan'>슬림캔</option>");
         $('#smallGenre').append("<option value='pet'>페트</option>");
         $('#smallGenre').append("<option value='bottle'>병</option>");
     } else if ($('#bigGenre option:selected').val() == 'disposable'){
         $('#smallGenre').find('option').remove();
+        $('#smallGenre').append("<option value='petcup'>페트컵</option>");
         $('#smallGenre').append("<option value='papercup'>종이컵</option>");
+        $('#smallGenre').append("<option value='tissue'>화장지/냅킨류</option>");
         $('#smallGenre').append("<option value='disposable'>일회용품</option>");
     } else if ($('#bigGenre option:selected').val() == 'food1'){
         $('#smallGenre').find('option').remove();
         $('#smallGenre').append("<option value='ricefry'>볶음밥</option>");
+        $('#smallGenre').append("<option value='nuddle'>면/떡</option>");
         $('#smallGenre').append("<option value='dimsum'>만두</option>");
         $('#smallGenre').append("<option value='hotbar'>핫바</option>");
     } else if ($('#bigGenre option:selected').val() == 'food2'){

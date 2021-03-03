@@ -19,6 +19,11 @@ public class EshopDAOImpl implements EshopDAO{
     }
 
     @Override
+    public List<EshopVO> CoffeInfoWithSmallGenre(Map<String, Object> param) {
+        return sqlSession.selectList("eshop.selectCoffeGenreWithSmallGenre", param);
+    }
+
+    @Override
     public int selectCountBigGenre(String bigGenre) {
         return sqlSession.selectOne("eshop.countBigGenre",bigGenre);
     }
