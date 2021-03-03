@@ -5,7 +5,7 @@
 
 <%--페이지당 게시물 수 20개로 설정--%>
 <fmt:parseNumber var="cp" value="${param.cp}"/>
-<fmt:parseNumber var="pp" value="20"/>
+<fmt:parseNumber var="pp" value="${cnt}"/>
 <fmt:parseNumber var="bigGenreCnt" value="${bigGenreCnt}"/>
 
 <fmt:parseNumber var="sp" value="${((cp-1) / 10)}" integerOnly="true"/>
@@ -160,10 +160,11 @@
                                 </ul>
                                 </div>
                                 <div class="col-2">
-                                    <select class="form-control">
-                                        <option>20개씩 보기</option>
-                                        <option>30개씩 보기</option>
-                                        <option>40개씩 보기</option>
+                                    <input type="hidden" id="linkForCnt" value="${navlnk}${param.cp}"/>
+                                    <select id="showCntChangeForEhsop" name="showCntChangeForEhsop" class="form-control">
+                                        <option <c:if test="${param.cnt eq 20}">selected</c:if> value="20">20개씩 보기</option>
+                                        <option <c:if test="${param.cnt eq 30}">selected</c:if> value="30">30개씩 보기</option>
+                                        <option <c:if test="${param.cnt eq 40}">selected</c:if> value="40">40개씩 보기</option>
                                     </select>
                                 </div>
                             </div>
@@ -196,22 +197,22 @@
 
                                 <%--'이전'이 표시되어야 할 때는 cp > 10 --%>
                                 <li class="page-item <c:if test="${sp lt 11}">disabled</c:if>">
-                                    <a href="${navlnk}${sp - 10}" class="page-link">이전</a></li>
+                                    <a href="${navlnk}${sp - 10}&cnt=${param.cnt}" class="page-link">이전</a></li>
 
                                 <c:forEach var="i" begin="${sp}" end="${ep}" step="1">
                                     <c:if test="${i le tp}">
                                         <c:if test="${i ne cp}">
-                                            <li class="page-item"><a href="${navlnk}${i}" class="page-link font-weight-bold">${i}</a></li>
+                                            <li class="page-item"><a href="${navlnk}${i}&cnt=${param.cnt}" class="page-link font-weight-bold">${i}</a></li>
                                         </c:if>
                                         <c:if test="${i eq cp}">
-                                            <li class="page-item active"><a href="${navlnk}${i}" class="page-link font-weight-bold">${i}</a></li>
+                                            <li class="page-item active"><a href="${navlnk}${i}&cnt=${param.cnt}" class="page-link font-weight-bold">${i}</a></li>
                                         </c:if>
                                     </c:if>
                                 </c:forEach>
 
                                 <%--'다음'이 표시되어야 할 때는 ?--%>
                                 <li class="page-item <c:if test="${ep gt tp}">disabled</c:if>">
-                                    <a href="${navlnk}${sp+10}" class="page-link">다음</a></li>
+                                    <a href="${navlnk}${sp+10}&cnt=${param.cnt}" class="page-link">다음</a></li>
                                 </li>
                             </ul>
                         </div>
