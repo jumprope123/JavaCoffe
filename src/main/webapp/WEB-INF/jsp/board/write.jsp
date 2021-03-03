@@ -68,7 +68,7 @@
         <div class="row margin1050">
             <div class="col-12 text-center">
                 <button type="button" id="newbdbtn" class="btn btn-primary"><i class="bi bi-check"></i>입력완료</button>
-                <button type="button" id="cancelbtn" class="btn btn-danger"><i class="bi bi-x"></i> 취소하기</button>
+                <button type="button" id="Boardcancelbtn" class="btn btn-danger"><i class="bi bi-x"></i> 취소하기</button>
             </div>
         </div>
     </form>

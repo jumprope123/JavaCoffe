@@ -156,6 +156,24 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
+    public String readPreBoard(String bno) { return bdao.selectPreBno(bno); }
+
+    @Override
+    public String readNextBoard(String bno) {
+        return bdao.selectNextBno(bno);
+    }
+
+    @Override
+    public String readFirstBno() {
+        return bdao.selectFirstBno();
+    }
+
+    @Override
+    public String readLastBno() {
+        return bdao.selectLastBno();
+    }
+
+    @Override
     public boolean downCountBoard(String bno, String order) {
         Map<String , String> param = new HashMap<>();
         param.put("bno",bno);

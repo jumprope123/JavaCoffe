@@ -30,4 +30,11 @@ public interface BoardDAO {
 
     Object selectOneThumb(String bno);
 
+    String selectPreBno(String bno);
+
+    String selectNextBno(String bno);
+
+    String selectLastBno();
+
+    String selectFirstBno();
 }

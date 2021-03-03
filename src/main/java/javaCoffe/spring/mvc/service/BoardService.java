@@ -25,4 +25,11 @@ public interface BoardService {
 
     String updateThumb(String bno, String checkThumb);
 
+    String readPreBoard(String bno);
+
+    String readNextBoard(String bno);
+
+    String readFirstBno();
+
+    String readLastBno();
 }

@@ -48,15 +48,10 @@
 
         <div class="row margin1050">
             <div class="col-12 text-center">
-                <button type="button" id="upbdokbtn" class="btn btn-primary"><i class="bi bi-check"></i>수정완료</button>
-                <button type="button" id="ccupbdbtn" class="btn btn-danger"><i class="bi bi-x"></i> 취소하기</button>
+                <button type="button" id="Boardupbdokbtn" class="btn btn-primary"><i class="bi bi-check"></i>수정완료</button>
+                <button type="button" id="Boardccupbdbtn" class="btn btn-danger"><i class="bi bi-x"></i> 취소하기</button>
             </div>
         </div>
     </form>
 
-    <footer class="row margin30">
-        <div class="col text-right fatdiv bg-light">
-            <h6>Copyright &copy; Lorem Ipsum 2021. All Right Reserved. Created By Bootstrap4</h6>
-        </div>
-    </footer>
 </div>

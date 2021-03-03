@@ -80,4 +80,17 @@ public class BoardDAOImpl implements BoardDAO {
 
     @Override
     public BoardVO selectOneThumb(String bno) { return sqlSession.selectOne("board.selectOneThumbBoard",bno); }
+
+    @Override
+    public String selectPreBno(String bno) { return sqlSession.selectOne("board.selectOnePreBno",bno);  }
+
+    @Override
+    public String selectNextBno(String bno) { return sqlSession.selectOne("board.selectOneNextBno",bno); }
+
+    @Override
+    public String selectLastBno() {return sqlSession.selectOne("board.selectLastBno");  }
+
+    @Override
+    public String selectFirstBno() { return sqlSession.selectOne("review.selectFirstBno"); }
+
 }

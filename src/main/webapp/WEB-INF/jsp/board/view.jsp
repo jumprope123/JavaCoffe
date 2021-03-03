@@ -29,10 +29,10 @@
 
     <div class="row margin1050">
         <div class="col-6 ">
-            <button type="button" id="prevbtn" class="btn btn-light">
+            <button type="button" id="Boardprevbtn" class="btn btn-light">
                 <i class="bi bi-chevron-left bidragup"></i>이전게시물</button>
 
-            <button type="button" id="nextbtn" class="btn btn-light">
+            <button type="button" id="Boardnextbtn" class="btn btn-light">
                 <i class="bi bi-chevron-right bidragup"></i>다음게시물</button>
         </div>
         <div class="col-6 text-right">

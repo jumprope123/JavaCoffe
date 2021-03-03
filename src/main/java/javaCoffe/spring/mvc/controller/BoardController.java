@@ -88,19 +88,6 @@ public class BoardController {
         return returnPage;
     }
 
-    @GetMapping("/board/update") //수정하기 폼
-    public ModelAndView update(String bno, ModelAndView mv, HttpSession sess){
-
-        //로그인했으면 수정하기 창이 보이고 아니면 인덱스 화면으로 넘어감
-//        if(sess.getAttribute("UID") != null && bno != null) {
-            mv.setViewName("board/update.tiles");
-            mv.addObject("bd", bsrv.readOneBoard(bno));
-//        }else {
-//            mv.setViewName("redirect:/index");
-//        }
-        return mv;
-    }
-
     @ResponseBody
     @GetMapping("/board/down")//첨부파일 다운로드하기
     public void pdown(String bno, String order, HttpServletResponse res){
@@ -114,6 +101,19 @@ public class BoardController {
             e.printStackTrace();
         }
 
+    }
+
+    @GetMapping("/board/update") //수정하기 폼
+    public ModelAndView update(String bno, ModelAndView mv, HttpSession sess){
+
+        //로그인했으면 수정하기 창이 보이고 아니면 인덱스 화면으로 넘어감
+//        if(sess.getAttribute("UID") != null && bno != null) {
+        mv.setViewName("board/update.tiles");
+        mv.addObject("bd", bsrv.readOneBoard(bno));
+//        }else {
+//            mv.setViewName("redirect:/index");
+//        }
+        return mv;
     }
 
     @PostMapping("/board/update") //수정하기 완료
@@ -164,6 +164,36 @@ public class BoardController {
         }
     }
 
+    @GetMapping("/board/preview") // 이전게시물
+    public String preview(String bno,BoardVO bvo, String cp){
+        String preBno = bsrv.readPreBoard(bno);
+
+        if (preBno == null) {
+            preBno = bsrv.readFirstBno();
+        }
+        String param = "?bno=" + preBno;
+        param += "&cp=" + cp;
+
+        String returnPage = "redirect:/board/view" + param;
+
+        return returnPage ;
+    }
+
+    @GetMapping("/board/nextView") // 다음게시물
+    public String nextview(String bno,BoardVO bvo, String cp){
+        String nextBno = bsrv.readNextBoard(bno);
+
+        if (nextBno == null) {
+            nextBno = bsrv.readLastBno();
+        }
+
+        String param = "?bno=" + nextBno;
+        param += "&cp=" + cp;
+
+        String returnPage = "redirect:/board/view" + param;
+        return returnPage ;
+    }
+
     @PostMapping("/board/replyok") //댓글쓰기
     public String replyok(ReplyVO rvo){
         String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
@@ -173,4 +203,5 @@ public class BoardController {
 
         return returnPage;
     }
+
 }
