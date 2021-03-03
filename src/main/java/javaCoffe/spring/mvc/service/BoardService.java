@@ -22,4 +22,7 @@ public interface BoardService {
     boolean viewCountBoard(String bno);
 
     boolean downCountBoard(String bno, String order);
+
+    String updateThumb(String bno, String checkThumb);
+
 }

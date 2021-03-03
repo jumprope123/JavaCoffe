@@ -71,4 +71,13 @@ public class BoardDAOImpl implements BoardDAO {
     public int updateDownCount(Map<String, String> param) {
         return sqlSession.update("board.downCount", param);
     }
+
+    @Override
+    public int updateThumbPluBoard(String bno) { return sqlSession.update("board.updateThumbPluBoard", bno); }
+
+    @Override
+    public int updateThumbMinBoard(String bno) { return sqlSession.update("board.updateThumbMinBoard", bno); }
+
+    @Override
+    public BoardVO selectOneThumb(String bno) { return sqlSession.selectOne("board.selectOneThumbBoard",bno); }
 }

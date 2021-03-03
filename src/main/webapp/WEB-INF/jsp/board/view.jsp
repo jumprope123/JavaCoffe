@@ -83,6 +83,7 @@
         </div>
         <div class="col-6 text-right">
 <%--            <c:if test="${not empty UID }">--%>
+            <input type="hidden" id="thumbBoard" name="thumbBoard" value="no">
             <button type="button" id="thumbbtn" class="btn btn-success">
                 <i class="bi bi-hand-thumbs-up bidragup"></i>추천하기
             </button>

@@ -114,7 +114,6 @@ public class BoardController {
             e.printStackTrace();
         }
 
-        System.out.println("aaa");
     }
 
     @PostMapping("/board/update") //수정하기 완료
@@ -151,6 +150,18 @@ public class BoardController {
         mv.addObject("bdcnt", bsrv.countBoard(findtype, findkey));
 
         return mv;
+    }
+
+    @ResponseBody 
+    @GetMapping("/board/thumbUp")   //추천기능
+    public void thumbUp(String bno, String checkThumb, HttpServletResponse res){
+        String ThumbCnt = bsrv.updateThumb(bno, checkThumb);
+        res.setContentType("application/json; charset=UTF-8");
+        try {
+            res.getWriter().print(ThumbCnt);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @PostMapping("/board/replyok") //댓글쓰기

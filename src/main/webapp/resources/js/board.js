@@ -18,7 +18,25 @@ $('#listbdbtn').on('click', function () {
 })
 
 $('#thumbbtn').on('click', function () {
-    location.href = "board/ "
+    if ($('#thumbBoard').val() == 'no'){
+        $('#thumbBoard').val('yes');
+        alert('해당 게시글을 추천하였습니다.');
+        $('#thumbbtn').html('<i class="bi bi-hand-thumbs-down bidragup"></i>취소하기');
+    }else {
+        $('#thumbBoard').val('no');
+        alert('해당 게시글의 추천을 취소하였습니다.');
+        $('#thumbbtn').html('<i class="bi bi-hand-thumbs-up bidragup"></i>추천하기');
+    }
+    var checkThumb = $('#thumbBoard').val();
+    $.ajax({
+        url: '/board/thumbUp',
+        type: 'GET',
+        data: {bno: $('#bno').val(), checkThumb: checkThumb}
+    })
+        .done(function (data) {
+            let thumbs = data["thumbs"];
+            $('#thumbs').text(thumbs);
+        })
 })
 
 $('#upbdbtn').on('click', function () {
