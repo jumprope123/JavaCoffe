@@ -95,11 +95,25 @@ function initAutocomplete(listener) {
                 infowindow.open(map, marker);
                 marker.setIcon('../img/find/jmarker1.png');
                 smoothZoom(map, 15, map.getZoom())
+                for (let k=1; k <= 19; k++) {
+                    let street = 0;
+                    street = getDistanceFromLatLonInKm(locations[i][1],locations[i][2],locations[k][1],locations[k][2]);
+                    let x = document.getElementById("c_m_street"+k);
+                    x.innerText= parseInt(street)+"Km";
+                    // 20km 이상되는거 안보여주기
+                    if (street > 20){
+                        document.getElementById("f_info_list"+k).style.display = 'none';
+                    }
+                    if (street < 20 ){
+                        document.getElementById("f_info_list"+k).style.display = 'block';
+                    }
+                }
                 setTimeout(function() {
                     marker.setIcon('../img/find/jmarker.png');
                 }, 3000);
             }
         })(marker, i));
+
     }
 
 
@@ -215,3 +229,17 @@ function smoothZoom (map, max, cnt) {
         setTimeout(function(){map.setZoom(cnt)}, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
     }
 }
+
+function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+    function deg2rad(deg) {
+        return deg * (Math.PI / 180) // 평면 거리 뽑기
+    }
+        var R = 6371; // 지구의 둘레 km
+        var dLat = deg2rad(lat2-lat1); // 두 위도 차이
+        var dLon = deg2rad(lng2-lng1); // 두 경도 차이
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        var d = R * c;
+        return d;
+
+    }

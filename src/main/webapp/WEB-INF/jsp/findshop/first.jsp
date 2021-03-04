@@ -82,7 +82,7 @@
         <div class="results-ctn vscroll hidden" style="padding-top: 10px">
             <ul aria-labelledby="storeResultsHeader storeResultDesc" id="store-locator-results">
                 <c:forEach var="f" items="${fsinfo}">
-                    <li style="border-top: solid 1px black">
+                    <li id="f_info_list${f.sno}" style="border-top: solid 1px black">
                         <button tabindex="3" class="shop-item shop-item-112">
                             <div class="StoreResult-content">
                                 <div class="shop-name">
@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="Capabilities shop-attributes">
                                     <ul>
-                                        <li style="width: 50px; float: left; font-size: 5px; background-color: #F3F3F3; color: #6E6E6E; margin-right: 5px">25.43 km&nbsp;</li>
+                                        <li id="c_m_street${f.sno}" style="width: 50px; float: left; font-size: 5px; background-color: #F3F3F3; color: #6E6E6E; margin-right: 5px">0 km&nbsp;</li>
                                         <li style="width: 20px; float: left; font-size: 5px; background: #F3F3F3; margin-right: 10px"><img src="../img/find/recyclesmall.png"></li>
                                         <li style="width: 55px; float: left; font-size: 5px; background: #F3F3F3; color: #6E6E6E;" >무료 커피 시음</li>
                                     </ul>
