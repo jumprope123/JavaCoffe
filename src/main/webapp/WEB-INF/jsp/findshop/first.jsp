@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <head>
     <link rel="stylesheet" href="/css/find.css">
     <style>
@@ -81,7 +82,7 @@
         <div class="results-ctn vscroll hidden" style="padding-top: 10px">
             <ul aria-labelledby="storeResultsHeader storeResultDesc" id="store-locator-results">
                 <c:forEach var="f" items="${fsinfo}">
-                    <li style="border-top: solid 1px black">
+                    <li id="f_info_list${f.sno}" style="border-top: solid 1px black">
                         <button tabindex="3" class="shop-item shop-item-112">
                             <div class="StoreResult-content">
                                 <div class="shop-name">
@@ -96,9 +97,9 @@
                                 </div>
                                 <div class="Capabilities shop-attributes">
                                     <ul>
-                                        <li>25.43 km&nbsp;</li>
-                                        <li>재활용</li>
-                                        <li>무료 커피 시음</li>
+                                        <li id="c_m_street${f.sno}" style="width: 50px; float: left; font-size: 5px; background-color: #F3F3F3; color: #6E6E6E; margin-right: 5px">0 km&nbsp;</li>
+                                        <li style="width: 20px; float: left; font-size: 5px; background: #F3F3F3; margin-right: 10px"><img src="../img/find/recyclesmall.png"></li>
+                                        <li style="width: 55px; float: left; font-size: 5px; background: #F3F3F3; color: #6E6E6E;" >무료 커피 시음</li>
                                     </ul>
                                 </div>
                             </div>
@@ -110,6 +111,14 @@
         <div class="holder">
             <a></a>
         </div>
+        <fmt:parseNumber var="lsno" value="0"/>
+<c:forEach var="l" items="${location}">
+    <p id="lsname${l.sno}" style="display: none">${l.sname}</p>
+    <p id="llat${l.sno}" style="display: none">${l.lat}</p>
+    <p id="llng${l.sno}" style="display: none">${l.lng}</p>
+    <c:set var="lsno" value="${lsno + 1}" />
+</c:forEach>
+        <p style="display: none" id="lsno">${lsno}</p>
     </div>
 </main>
 

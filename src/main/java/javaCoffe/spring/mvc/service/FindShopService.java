@@ -8,4 +8,6 @@ public interface FindShopService {
     List<FindShopVO> readLocation();
 
     List<FindShopVO> readFindShop();
+
+    String readLocationjson();
 }
