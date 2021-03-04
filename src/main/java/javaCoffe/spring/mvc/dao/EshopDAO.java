@@ -39,4 +39,5 @@ public interface EshopDAO {
 
     List<EshopVO> CoffeInfoByRegdateWithSmallGenre(Map<String, Object> param);
 
+    EshopVO readOneMDData(String eno);
 }
