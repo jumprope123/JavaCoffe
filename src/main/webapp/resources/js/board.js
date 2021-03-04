@@ -17,14 +17,14 @@ $('#listbdbtn').on('click', function () {
     location.href = "/board/list?cp=" + $('#cp').val();
 })
 
-// 이전글 클릭시
+// 이전게시물 클릭시
 $('#Boardprevbtn').on('click',function () {
-    location.href = '/board/preview?bno=' + $('#bno').val() + "&cp=" + $('#cp').val();;
+    location.href = '/board/prevView?bno=' + $('#bno').val() + "&cp=" + $('#cp').val();
 })
 
-//다음글 클릭시
+//다음게시물 클릭시
 $('#Boardnextbtn').on('click',function () {
-    location.href = '/board/preview?bno=' + $('#bno').val() + "&cp=" + $('#cp').val();;
+    location.href = '/board/nextView?bno=' + $('#bno').val() + "&cp=" + $('#cp').val();
 })
 
 //추천

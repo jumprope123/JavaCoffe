@@ -167,9 +167,10 @@ public class BoardController {
         }
     }
 
-    @GetMapping("/board/preview") // 이전게시물
-    public String preview(String bno,BoardVO bvo, String cp){
-        String preBno = bsrv.readPreBoard(bno);
+    // 이전페이지로
+    @GetMapping("/board/prevView")
+    public String preView(String bno,String cp){
+        String preBno = bsrv.readPreBoard(bno); // bno값을 받아서 전 bno를 조회해서 보냄.
 
         if (preBno == null) {
             preBno = bsrv.readFirstBno();
@@ -182,11 +183,12 @@ public class BoardController {
         return returnPage ;
     }
 
-    @GetMapping("/board/nextView") // 다음게시물
-    public String nextview(String bno,BoardVO bvo, String cp){
-        String nextBno = bsrv.readNextBoard(bno);
+    // 다음페이지로
+    @GetMapping("/board/nextView")
+    public String nextView(String bno,String cp){
+        String nextBno = bsrv.readNextBoard(bno); //rno값을 받아서 다음 rno를 조회해서 보낸다. 만약 최신게시글이라면 그대로 보낸다.
 
-        if (nextBno == null) {
+        if (nextBno == null){
             nextBno = bsrv.readLastBno();
         }
 
@@ -194,6 +196,7 @@ public class BoardController {
         param += "&cp=" + cp;
 
         String returnPage = "redirect:/board/view" + param;
+
         return returnPage ;
     }
 
