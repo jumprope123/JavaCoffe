@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <head>
     <link rel="stylesheet" href="/css/find.css">
     <style>
@@ -96,9 +97,9 @@
                                 </div>
                                 <div class="Capabilities shop-attributes">
                                     <ul>
-                                        <li>25.43 km&nbsp;</li>
-                                        <li>재활용</li>
-                                        <li>무료 커피 시음</li>
+                                        <li style="width: 50px; float: left; font-size: 5px; background-color: #F3F3F3; color: #6E6E6E; margin-right: 5px">25.43 km&nbsp;</li>
+                                        <li style="width: 20px; float: left; font-size: 5px; background: #F3F3F3; margin-right: 10px"><img src="../img/find/recyclesmall.png"></li>
+                                        <li style="width: 55px; float: left; font-size: 5px; background: #F3F3F3; color: #6E6E6E;" >무료 커피 시음</li>
                                     </ul>
                                 </div>
                             </div>
@@ -110,6 +111,10 @@
         <div class="holder">
             <a></a>
         </div>
+<c:forEach var="l" items="${location}">
+    <p id="llat+'${sno}'" style="display: none">${l.lat}</p>
+    <p style="display: none">${l.lng}</p>
+</c:forEach>
     </div>
 </main>
 
