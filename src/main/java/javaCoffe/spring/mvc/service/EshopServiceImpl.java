@@ -174,4 +174,9 @@ public class EshopServiceImpl implements EshopService {
         param.put("cntNum",cntNum);
         return edao.CoffeInfoByRegdateWithSmallGenre(param);
     }
+
+    @Override
+    public EshopVO readMDData(String eno) {
+        return edao.readOneMDData(eno);
+    }
 }
