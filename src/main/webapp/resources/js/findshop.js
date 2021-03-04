@@ -25,6 +25,9 @@ function initAutocomplete(listener) {
         center: { lat: 37.55902624, lng: 126.9749014 },
         zoom: 13,
         mapTypeId: "roadmap",
+        zoomControl: false,
+        mapTypeControl: false,
+        fullscreenControl: false
     });
 
     var locations = [
@@ -48,6 +51,7 @@ function initAutocomplete(listener) {
     const locationButton = document.createElement("button");
     locationButton.textContent = "Pan to Current Location";
     locationButton.classList.add("custom-map-control-button");
+
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
     locationButton.addEventListener("click", () => {
         // Try HTML5 geolocation.
@@ -95,6 +99,7 @@ function initAutocomplete(listener) {
                 infowindow.open(map, marker);
                 marker.setIcon('../img/find/jmarker1.png');
                 smoothZoom(map, 15, map.getZoom())
+                let a = 19;
                 for (let k=1; k <= 19; k++) {
                     let street = 0;
                     street = getDistanceFromLatLonInKm(locations[i][1],locations[i][2],locations[k][1],locations[k][2]);
@@ -102,9 +107,10 @@ function initAutocomplete(listener) {
                     x.innerText= parseInt(street)+"Km";
                     // 20km 이상되는거 안보여주기
                     if (street > 20){
+                        a--;
                         document.getElementById("f_info_list"+k).style.display = 'none';
-                    }
-                    if (street < 20 ){
+                        document.getElementById("results_number").innerText = a;
+                    } else {
                         document.getElementById("f_info_list"+k).style.display = 'block';
                     }
                 }

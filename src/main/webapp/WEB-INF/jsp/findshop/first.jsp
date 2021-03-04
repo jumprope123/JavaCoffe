@@ -75,7 +75,7 @@
     <div id="map" style="width:100%; height: 100vh;"></div>
     <div class="open closed" id="results">
         <div aria-hidden="true" class="results-header nb-shops hidden" id="storeResultsHeader" style="padding-bottom: 10px">
-            <span>19</span> 검색 결과                            </div>
+            <span id="results_number">19</span> 검색 결과                            </div>
         <div class="results-empty loading" style="display: none;">
             <img alt="" src="img/loader.gif">
         </div>
@@ -119,6 +119,8 @@
     <c:set var="lsno" value="${lsno + 1}" />
 </c:forEach>
         <p style="display: none" id="lsno">${lsno}</p>
+    </div>
+    <div id="shop_info_window">
     </div>
 </main>
 
