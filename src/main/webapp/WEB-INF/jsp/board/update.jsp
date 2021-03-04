@@ -1,6 +1,7 @@
 <%@ page pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<script src = "https://www.google.com/recaptcha/api.js"></script>
 <!--로그인하지않았다면 list페이지로 강제 전환-->
 <%--<c:if test="test${empty UID}">--%>
 <%--    <c:redirect url="/board/list?cp=1"/>--%>

@@ -12,6 +12,10 @@
       select * from BoardReply where bno = #{bno} order by cno;
    </select>
 
+   <update id="updateReplyBoard" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.ReplyVO">
+      update BoardReply set reply = #{reply} , regdate = current_timestamp where cno = #{cno};
+   </update>
+
    <select id="lastRno" statementType="PREPARED" resultType="String">
       select auto_increment from information_schema.TABLES
       where TABLE_NAME = 'BoardReply';

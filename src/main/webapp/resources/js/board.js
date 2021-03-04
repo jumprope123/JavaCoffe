@@ -19,6 +19,9 @@ $('#listbdbtn').on('click', function () {
 
 // 이전게시물 클릭시
 $('#Boardprevbtn').on('click',function () {
+    // if($('#bno').val() == $('#bno').val()){
+    //     alert('첫번째 게시물입니다');
+    // }
     location.href = '/board/prevView?bno=' + $('#bno').val() + "&cp=" + $('#cp').val();
 })
 
@@ -86,6 +89,28 @@ function addReply(cno) {
     $('#replyModal').modal('show');
     $('#cno').val(cno); // 대댓글 작성시 부모댓글의 번호를 cno에 저장
 }
+
+//댓글 수정하기 창
+function modiReplyForBoard(rno,reply){
+    $('#modiReplyForBoard').val(reply);
+    $('#modifyreplyrno').val(rno);
+    $('#replyModify').modal('show');
+}
+
+//댓글 수정하기
+$('#modifyokbtn').on('click',function () {
+    if ($('#modiReplyForBoard').val()=='') alert('수정할 내용을 작성하세요');
+    else {
+        $('#mmrpfrm').attr('method','post');
+        $('#mmrpfrm').attr('action','/board/replyModiOk');
+        $('#mmrpfrm').submit();
+    }
+})
+
+// 댓글 수정창 취소
+$('#modifycencelbtn').on('click',function () {
+    $('#replyModify').modal('hide');
+})
 
 // 대댓글 작성하기
 $('#rpbtn').on('click',function () {

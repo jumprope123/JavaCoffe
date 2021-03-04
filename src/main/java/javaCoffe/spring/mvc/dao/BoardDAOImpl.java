@@ -93,4 +93,5 @@ public class BoardDAOImpl implements BoardDAO {
     @Override
     public String selectFirstBno() { return sqlSession.selectOne("board.selectFirstBno"); }
 
+
 }
