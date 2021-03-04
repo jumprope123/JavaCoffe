@@ -93,7 +93,6 @@ function initAutocomplete(listener) {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-                // map.setCenter(locations[i][1], locations[i][2]);
                 map.setCenter(marker.getPosition())
                 infowindow.setContent(locations[i][0]);
                 infowindow.open(map, marker);

@@ -88,18 +88,18 @@
                                 <div class="shop-name">
                                     <strong>${f.sname}</strong>
                                 </div>
-                                <div class="shop-address">
+                                <div class="shop-address" style="text-align: left;">
                                     ${f.address}<br>
                                     ${f.jibeon}<br>
                                     <div class="phone" aria-label="전화번호 :  080-734-1111&nbsp;">
-                                        ${f.phone}
+                                        Tel. ${f.phone}
                                     </div>
                                 </div>
                                 <div class="Capabilities shop-attributes">
                                     <ul>
                                         <li id="c_m_street${f.sno}" style="width: 50px; float: left; font-size: 5px; background-color: #F3F3F3; color: #6E6E6E; margin-right: 5px">0 km&nbsp;</li>
                                         <li style="width: 20px; float: left; font-size: 5px; background: #F3F3F3; margin-right: 10px"><img src="../img/find/recyclesmall.png"></li>
-                                        <li style="width: 55px; float: left; font-size: 5px; background: #F3F3F3; color: #6E6E6E;" >무료 커피 시음</li>
+                                        <li style="width: 80px; float: left; font-size: 5px; background: #F3F3F3; color: #6E6E6E;" >무료 커피 시음</li>
                                     </ul>
                                 </div>
                             </div>
