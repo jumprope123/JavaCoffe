@@ -70,4 +70,8 @@
         select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by regdate asc limit #{snum}, #{cntNum};
     </select>
 
+    <select id="selectOneMDData" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where eno = #{eno}
+    </select>
+
 </mapper>
