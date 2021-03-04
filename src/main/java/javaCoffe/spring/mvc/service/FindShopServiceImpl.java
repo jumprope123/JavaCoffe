@@ -13,11 +13,11 @@ public class FindShopServiceImpl implements FindShopService{
 
     @Override
     public List<FindShopVO> readLocation() {
-        return fdao.selectList();
+        return fdao.selectLocation();
     }
 
     @Override
     public List<FindShopVO> readFindShop() {
-        return fdao.selectLocation();
+        return fdao.selectList();
     }
 }
