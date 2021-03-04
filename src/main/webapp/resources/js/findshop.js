@@ -1,3 +1,25 @@
+function getLocation(){
+    $.ajax({
+        url: '/findshop/first',
+        type: 'GET',
+    })
+        .done(function(data){
+            // 서버로부터 넘어온 데이터는 JSON형식이므로
+            // 출력시 Object로 보여짐
+
+            $.each(data, function(){ // 행단위 반복처리
+                var loc = [];
+                $.each(this, function(k, v){ // 열단위 반복처리
+                    if(v != null) loc = v;
+                });
+            });
+        })
+
+        .fail(function(xhr, status, error){
+            alert(xhr, status, + "/" + error);
+        });
+}
+
 function initAutocomplete(listener) {
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 37.55902624, lng: 126.9749014 },
@@ -11,6 +33,16 @@ function initAutocomplete(listener) {
         ['을지로입구역', 37.5660373, 126.9821930],
         ['덕수궁', 37.5655638, 126.974894],
     ];
+    var temp = new Array(19);
+    for (let i = 1; i <= 19; i++ ){
+        temp[i-1] = new Array(
+            document.getElementById('lsname' + i).innerText,
+            parseFloat(document.getElementById('llat' + i).innerText),
+            parseFloat(document.getElementById('llng' + i).innerText)
+        );
+    };
+    locations = locations.concat(temp);
+
     let infoWindow;
     var infowindow = new google.maps.InfoWindow();
     const locationButton = document.createElement("button");
@@ -26,9 +58,9 @@ function initAutocomplete(listener) {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
                     };
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent("현재 내 위치");
-                    infoWindow.open(map);
+                    infowindow.setPosition(pos);
+                    infowindow.setContent("현재 내 위치");
+                    infowindow.open(map);
                     map.setCenter(pos);
                 },
                 () => {
@@ -57,11 +89,12 @@ function initAutocomplete(listener) {
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
+                // map.setCenter(locations[i][1], locations[i][2]);
+                map.setCenter(marker.getPosition())
                 infowindow.setContent(locations[i][0]);
                 infowindow.open(map, marker);
-                map.setCenter(marker);
-                map.setZoom(15);
                 marker.setIcon('../img/find/jmarker1.png');
+                smoothZoom(map, 15, map.getZoom())
                 setTimeout(function() {
                     marker.setIcon('../img/find/jmarker.png');
                 }, 3000);
@@ -167,4 +200,18 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             : "에러: 브라우저에서 이 기능을 지원하지 않습니다."
     );
     infoWindow.open(map);
+}
+
+
+function smoothZoom (map, max, cnt) {
+    if (cnt >= max) {
+        return;
+    }
+    else {
+        z = google.maps.event.addListener(map, 'zoom_changed', function(event){
+            google.maps.event.removeListener(z);
+            smoothZoom(map, max, cnt + 1);
+        });
+        setTimeout(function(){map.setZoom(cnt)}, 80); // 80ms is what I found to work well on my system -- it might not work well on all systems
+    }
 }

@@ -11,7 +11,7 @@
     </select>
 
     <select id="selectLocation" statementType="PREPARED" resultType="javaCoffe.spring.mvc.vo.FindShopVO">
-        select sno, lat, lng
+        select sno, sname, lat, lng
         from FindShop
         order by sno
     </select>

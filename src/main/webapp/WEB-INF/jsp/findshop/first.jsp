@@ -111,10 +111,14 @@
         <div class="holder">
             <a></a>
         </div>
+        <fmt:parseNumber var="lsno" value="0"/>
 <c:forEach var="l" items="${location}">
-    <p id="llat+'${sno}'" style="display: none">${l.lat}</p>
-    <p style="display: none">${l.lng}</p>
+    <p id="lsname${l.sno}" style="display: none">${l.sname}</p>
+    <p id="llat${l.sno}" style="display: none">${l.lat}</p>
+    <p id="llng${l.sno}" style="display: none">${l.lng}</p>
+    <c:set var="lsno" value="${lsno + 1}" />
 </c:forEach>
+        <p style="display: none" id="lsno">${lsno}</p>
     </div>
 </main>
 
