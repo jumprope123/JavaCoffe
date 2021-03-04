@@ -147,5 +147,12 @@ public class EshopController {
         return mv;
     }
 
+// 여기부터 view
+    @GetMapping("eshop/view")
+    public ModelAndView view(ModelAndView mv, String eno){
+        mv.setViewName("eshop/view.tiles");
+        mv.addObject("viewData",esrv.readMDData(eno)); //merchandise data를 읽어옴
+        return mv;
+    }
 
 }
