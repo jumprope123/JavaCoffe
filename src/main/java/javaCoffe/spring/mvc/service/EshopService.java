@@ -37,4 +37,5 @@ public interface EshopService {
 
     List<EshopVO> readCoffeInfoByRegdate(String bigGenre, String cp, String smallGenre, int cntNum);
 
+    EshopVO readMDData(String eno);
 }
