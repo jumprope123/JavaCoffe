@@ -1,5 +1,7 @@
 package javaCoffe.spring.mvc.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javaCoffe.spring.mvc.dao.BoardDAO;
 import javaCoffe.spring.mvc.utils.FileUpDownUtil;
 import javaCoffe.spring.mvc.vo.BoardVO;
@@ -133,6 +135,42 @@ public class BoardServiceImpl implements BoardService {
         if(cnt>0) isOK = true;
 
         return isOK;
+    }
+
+    //추천하기
+    @Override
+    public String updateThumb(String bno, String checkThumb) {
+        if (checkThumb.equals("yes")) {
+            bdao.updateThumbPluBoard(bno);
+        }else {
+            bdao.updateThumbMinBoard(bno);
+        }
+        ObjectMapper mapper = new ObjectMapper();
+        String json = "";
+        try {
+            json = mapper.writeValueAsString(bdao.selectOneThumb(bno));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
+
+    @Override
+    public String readPreBoard(String bno) { return bdao.selectPreBno(bno); }
+
+    @Override
+    public String readNextBoard(String bno) {
+        return bdao.selectNextBno(bno);
+    }
+
+    @Override
+    public String readFirstBno() {
+        return bdao.selectFirstBno();
+    }
+
+    @Override
+    public String readLastBno() {
+        return bdao.selectLastBno();
     }
 
     @Override

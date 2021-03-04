@@ -72,12 +72,11 @@ public class BoardController {
     }
 
     @PostMapping("/board/writeok") //파일업로드
-    public String writeok(BoardVO bvo, MultipartFile[] file, HttpServletRequest req, RedirectAttributes rds, MultipartFile[] img){
-        String returnPage = "redirect:/board/write";
+    public String writeok(BoardVO bvo, MultipartFile[] file, HttpServletRequest req, RedirectAttributes rds){
         String gCaptcha = req.getParameter("g-recaptcha");
+        String returnPage = "redirect:/board/write";
 
         if (gcutil.checkCaptcha(gCaptcha)){
-            bsrv.newBoard(bvo,img);
             bsrv.newBoard(bvo, file);
             returnPage = "redirect:/board/list?cp=1";
         } else {
@@ -86,19 +85,6 @@ public class BoardController {
         }
 
         return returnPage;
-    }
-
-    @GetMapping("/board/update") //수정하기 폼
-    public ModelAndView update(String bno, ModelAndView mv, HttpSession sess){
-
-        //로그인했으면 수정하기 창이 보이고 아니면 인덱스 화면으로 넘어감
-//        if(sess.getAttribute("UID") != null && bno != null) {
-            mv.setViewName("board/update.tiles");
-            mv.addObject("bd", bsrv.readOneBoard(bno));
-//        }else {
-//            mv.setViewName("redirect:/index");
-//        }
-        return mv;
     }
 
     @ResponseBody
@@ -114,19 +100,35 @@ public class BoardController {
             e.printStackTrace();
         }
 
-        System.out.println("aaa");
+    }
+
+    @GetMapping("/board/update") //수정하기 폼
+    public ModelAndView update(String bno, ModelAndView mv, HttpSession sess){
+
+        //로그인했으면 수정하기 창이 보이고 아니면 인덱스 화면으로 넘어감
+//        if(sess.getAttribute("UID") != null && bno != null) {
+        mv.setViewName("board/update.tiles");
+        mv.addObject("bd", bsrv.readOneBoard(bno));
+//        }else {
+//            mv.setViewName("redirect:/index");
+//        }
+        return mv;
     }
 
     @PostMapping("/board/update") //수정하기 완료
-    public String updateok(BoardVO bvo, String cp, HttpSession sess, String userid){
+    public String updateok(BoardVO bvo, String cp,HttpServletRequest req, HttpSession sess, String userid){
+        String gCaptcha = req.getParameter("g-recaptcha");
         String param = "?bno=" + bvo.getBno();
         param += "&cp=" + cp;
         String returnPage = "redirect:/board/update" + param;
 
         //로그인한 사용자이면서 수정하는 글이 자신이 쓴것이라면
         //if(sess.getAttribute("UID").equals(userid) && bsrv.modifyBoard(bvo)) {
+        if (gcutil.checkCaptcha(gCaptcha)){
             bsrv.modifyBoard(bvo);
+
             returnPage = "redirect:/board/view" + param;
+        }
         //}
         return returnPage;
     }
@@ -153,6 +155,48 @@ public class BoardController {
         return mv;
     }
 
+    @ResponseBody 
+    @GetMapping("/board/thumbUp")   //추천기능
+    public void thumbUp(String bno, String checkThumb, HttpServletResponse res){
+        String ThumbCnt = bsrv.updateThumb(bno, checkThumb);
+        res.setContentType("application/json; charset=UTF-8");
+        try {
+            res.getWriter().print(ThumbCnt);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @GetMapping("/board/preview") // 이전게시물
+    public String preview(String bno,BoardVO bvo, String cp){
+        String preBno = bsrv.readPreBoard(bno);
+
+        if (preBno == null) {
+            preBno = bsrv.readFirstBno();
+        }
+        String param = "?bno=" + preBno;
+        param += "&cp=" + cp;
+
+        String returnPage = "redirect:/board/view" + param;
+
+        return returnPage ;
+    }
+
+    @GetMapping("/board/nextView") // 다음게시물
+    public String nextview(String bno,BoardVO bvo, String cp){
+        String nextBno = bsrv.readNextBoard(bno);
+
+        if (nextBno == null) {
+            nextBno = bsrv.readLastBno();
+        }
+
+        String param = "?bno=" + nextBno;
+        param += "&cp=" + cp;
+
+        String returnPage = "redirect:/board/view" + param;
+        return returnPage ;
+    }
+
     @PostMapping("/board/replyok") //댓글쓰기
     public String replyok(ReplyVO rvo){
         String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
@@ -162,4 +206,5 @@ public class BoardController {
 
         return returnPage;
     }
+
 }

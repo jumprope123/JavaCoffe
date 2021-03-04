@@ -23,4 +23,18 @@ public interface BoardDAO {
     BoardVO selectOneFname(String bno, String order);
 
     int updateDownCount(Map<String, String> param);
+
+    int updateThumbPluBoard(String bno);
+
+    int updateThumbMinBoard(String bno);
+
+    Object selectOneThumb(String bno);
+
+    String selectPreBno(String bno);
+
+    String selectNextBno(String bno);
+
+    String selectLastBno();
+
+    String selectFirstBno();
 }

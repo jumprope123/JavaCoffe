@@ -74,4 +74,31 @@
          where title like concat(#{findKey}, '%') or contents like concat(#{findKey}, '%')</if>
    </select>
 
+   <update id="updateThumbPluBoard" statementType="PREPARED">
+      update Board set thumbs = thumbs +1 where bno = #{bno};
+   </update>
+
+   <update id="updateThumbMinBoard" statementType="PREPARED">
+      update Board set thumbs = thumbs -1 where bno = #{bno};
+   </update>
+
+   <select id="selectOneThumbBoard" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.BoardVO">
+      select * from Board where bno = #{bno};
+   </select>
+
+   <select id="selectOnePreBno" statementType="PREPARED" parameterType="String" resultType="String">
+      select bno from Board where bno <![CDATA[<]]> #{bno} order by bno desc limit 1;
+   </select>
+
+   <select id="selectOneNextBno" statementType="PREPARED" parameterType="String" resultType="String">
+      select bno from Board where bno <![CDATA[>]]> #{bno} order by bno asc limit 1;
+   </select>
+
+   <select id="selectFirstBno" statementType="PREPARED" resultType="String">
+      select bno from Board order by bno asc limit 1;
+   </select>
+
+   <select id="selectLastBno" statementType="PREPARED" resultType="String">
+      select bno from Board order by bno desc limit 1;
+   </select>
 </mapper>
