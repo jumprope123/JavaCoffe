@@ -127,6 +127,7 @@ function initAutocomplete(listener) {
     const searchBox = new google.maps.places.SearchBox(input);
     // Bias the SearchBox results towards current map's viewport.
     map.addListener("bounds_changed", () => {
+        Searchclick();
         searchBox.setBounds(map.getBounds());
     });
     let markers = [];
@@ -134,7 +135,6 @@ function initAutocomplete(listener) {
     // more details for that place.
     searchBox.addListener("places_changed", () => {
         const places = searchBox.getPlaces();
-
         if (places.length == 0) {
             return;
         }
@@ -182,7 +182,7 @@ $(document).ready(function() {
     $("#map").hide();
     var menu_flag = true;
 
-    $( '#btnSearch' ).click( function() {
+    $( '#btnSearch' ).click( function Searchclick() {
         $('#video_area, #background_video,  .map_title').fadeOut();
         $('#map').fadeIn(2000);
 
