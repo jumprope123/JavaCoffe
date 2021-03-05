@@ -124,6 +124,7 @@ $('#eshopViewNum').on('change',function () {
     var priceForResult = parseInt($('#priceForResult').val());
     var resultPrice = typeint * priceForResult
     $('#eshopResultPrice').text(resultPrice+'원');
+    $('#ehsopFinalResultPrice').text(resultPrice);
 })
 
 $('#eshopUpBtn').on('click',function () {
@@ -134,6 +135,7 @@ $('#eshopUpBtn').on('click',function () {
     var priceForResult = parseInt($('#priceForResult').val());
     var resultPrice = newint * priceForResult
     $('#eshopResultPrice').text(resultPrice+'원');
+    $('#ehsopFinalResultPrice').text(resultPrice);
 })
 
 $('#eshopDownBtn').on('click',function () {
@@ -145,9 +147,18 @@ $('#eshopDownBtn').on('click',function () {
     var priceForResult = parseInt($('#priceForResult').val());
     var resultPrice = newint * priceForResult
     $('#eshopResultPrice').text(resultPrice+'원');
+    $('#ehsopFinalResultPrice').text(resultPrice);
 })
 
 $('#eshopCuponBtn').on('click',function () {
     alert('저희가 돈이없어서 ㅠㅠ 쿠폰은 없다구용~');
 })
 
+
+function jumpToImgExplain() {
+    location.href ="#eshopExplainImg"
+}
+
+function jumpToImgExchange() {
+    location.href ="#eshopExchangeImg"
+}

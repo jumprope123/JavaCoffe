@@ -268,17 +268,55 @@
                                     <div class="row">
                                         <div class="col-12" style="border-top: 2px solid black;"></div>
                                     </div>
+                                    <div class="row mt-3">
+                                        <div class="col-12 text-right">
+                                            <span class="font-weight-bold">총 합계금액</span>&nbsp;&nbsp;
+                                            <span id="ehsopFinalResultPrice" class="h3 font-weight-bold">${viewData.dcprice}</span>원
+                                        </div>
+                                    </div><%--가격2차--%>
+                                    <div class="row">
+                                        <div class="col-12 mt-5 text-right">
+                                            <button class="btn btn-lg btn-danger text-white" style="border-radius: 0px;">바로구매하기</button><%--바로구매하기--%>
+                                            <button class="btn btn-lg btn-dark text-white" style="border-radius: 0px; margin: 0px 10px;">장바구니</button><%--장바구니--%>
+                                            <button class="btn btn-lg btn-light text-dark" style="border-radius: 0px; box-shadow: 0px 0px 0px 2px black inset">찜리스트</button><%--찜리스트--%>
+                                        </div>
+                                    </div><%--하단버튼(바로구매하기/장바구니/찜리스트)--%>
                                 </div>
                             </form>
                         </div>
                     </div><%--사진과 정보--%>
-                    <div class="row"></div><%--상품상세정보창 / 배송교환안내창--%>
-
-
+                    <div class="row">
+                        <div class="col-10 offset-1 btn-group mt-5">
+                            <button type="button" class="btn btn-light" onclick="javascript:jumpToImgExplain();">상품 상세정보</button>
+                            <button type="button" class="btn btn-light" onclick="javascript:jumpToImgExchange();">배송/교환 관련</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10 offset-1 mt-1 text-center">
+                            <img id="eshopExplainImg" src="/img/eshop/md_explain1.jpg"/>
+                        </div>
+                    </div><%--상품상세정보창1--%>
+                    <div class="row">
+                        <div class="col-10 offset-1 mt-1 text-center">
+                            <img src="/img/eshop/md_explain2.jpg"/>
+                        </div>
+                    </div><%--상품상세정보창2--%>
+                    <div class="row">
+                        <div class="col-10 offset-1 btn-group mt-5">
+                            <button type="button" class="btn btn-light" onclick="javascript:jumpToImgExplain();">상품 상세정보</button>
+                            <button type="button" class="btn btn-light" onclick="javascript:jumpToImgExchange();">배송/교환 관련</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10 offset-1 mt-4 text-center">
+                            <img id="eshopExchangeImg" src="/img/eshop/exchange.gif"/>
+                        </div>
+                    </div><%--배송교환안내창--%>
                 </div>
             </div>
-        </div> <%--section--%>
-        <div class="col-2"></div><%--여기에는 장바구니나 방금본 목록같은거 둥둥띄워서 따라다니게 하기--%>
+        </div>
+    </div> <%--section--%>
+    <div class="col-2"></div><%--여기에는 장바구니나 방금본 목록같은거 둥둥띄워서 따라다니게 하기--%>
     </div>
 </div>
 
