@@ -118,9 +118,15 @@ $('#eshopViewXIcon').on('click',function () {
 $('#eshopViewNum').on('change',function () {
     var rawInput = $('#eshopViewNum').val();
     var typeint = parseInt(rawInput); //무조건 숫자형으로 바꿈
+    var eshopHiddenStock = parseInt($('#eshopHiddenStock').val()); //재고받아옴
     if (isNaN(typeint)) typeint = 1;
     if (typeint <= 0) typeint = 1;
     $('#eshopViewNum').val(typeint);
+    if (typeint>eshopHiddenStock) {
+        alert('주문수량은 재고를 초과할 수 없습니다.');
+        typeint = 1;
+        $('#eshopViewNum').val(typeint);
+    }
     var priceForResult = parseInt($('#priceForResult').val());
     var resultPrice = typeint * priceForResult
     $('#eshopResultPrice').text(resultPrice+'원');
@@ -130,8 +136,14 @@ $('#eshopViewNum').on('change',function () {
 $('#eshopUpBtn').on('click',function () {
     var rawInput = $('#eshopViewNum').val();
     var typeint = parseInt(rawInput); //무조건 숫자형으로 바꿈
+    var eshopHiddenStock = parseInt($('#eshopHiddenStock').val()); //재고받아옴
     var newint = typeint + 1;
     $('#eshopViewNum').val(newint);
+    if (newint>eshopHiddenStock){
+        alert('주문수량은 재고를 초과할 수 없습니다.');
+        newint = 1;
+        $('#eshopViewNum').val(newint);
+    }
     var priceForResult = parseInt($('#priceForResult').val());
     var resultPrice = newint * priceForResult
     $('#eshopResultPrice').text(resultPrice+'원');
@@ -141,9 +153,15 @@ $('#eshopUpBtn').on('click',function () {
 $('#eshopDownBtn').on('click',function () {
     var rawInput = $('#eshopViewNum').val();
     var typeint = parseInt(rawInput); //무조건 숫자형으로 바꿈
+    var eshopHiddenStock = parseInt($('#eshopHiddenStock').val()); //재고받아옴
     var newint = typeint - 1;
     if (newint <= 0) newint = 1;
     $('#eshopViewNum').val(newint);
+    if (newint>eshopHiddenStock){
+        alert('주문수량은 재고를 초과할 수 없습니다.');
+        newint = 1;
+        $('#eshopViewNum').val(newint);
+    }
     var priceForResult = parseInt($('#priceForResult').val());
     var resultPrice = newint * priceForResult
     $('#eshopResultPrice').text(resultPrice+'원');

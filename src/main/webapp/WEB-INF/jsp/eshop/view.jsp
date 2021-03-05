@@ -221,6 +221,12 @@
                                 </div>
                             </div>
                             <div class="row mt-4 align-items-center">
+                                <div class="col-2 text-left font-weight-bold">재고</div>
+                                <div class="col-10 text-left">
+                                    <span>${viewData.stuck}개</span>
+                                </div>
+                            </div>
+                            <div class="row mt-4 align-items-center">
                                 <div class="col-2 text-left font-weight-bold">브랜드</div>
                                 <div class="col-10 text-left">
                                     <span>${viewData.brand}</span>
@@ -248,6 +254,7 @@
                                                 <div class="col-12">
                                                     <div class="row">
                                                         <div class="col-8">
+                                                            <input type="hidden" id="eshopHiddenStock" value="${viewData.stuck}"/>
                                                             <input class="form-control" type="text" id="eshopViewNum" name="eshopViewNum" value="1">
                                                         </div>
                                                         <div class="col-4">
