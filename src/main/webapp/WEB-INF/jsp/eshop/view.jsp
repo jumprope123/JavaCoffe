@@ -268,6 +268,19 @@
                                     <div class="row">
                                         <div class="col-12" style="border-top: 2px solid black;"></div>
                                     </div>
+                                    <div class="row mt-3">
+                                        <div class="col-12 text-right">
+                                            <span class="font-weight-bold">총 합계금액</span>&nbsp;&nbsp;
+                                            <span id="ehsopFinalResultPrice" class="h3 font-weight-bold">${viewData.dcprice}</span>원
+                                        </div>
+                                    </div><%--가격2차--%>
+                                    <div class="row">
+                                        <div class="col-12 mt-5 text-right">
+                                            <button class="btn btn-lg btn-danger text-white" style="border-radius: 0px;">바로구매하기</button><%--바로구매하기--%>
+                                            <button class="btn btn-lg btn-dark text-white" style="border-radius: 0px; margin: 0px 10px;">장바구니</button><%--장바구니--%>
+                                            <button class="btn btn-lg btn-light text-dark" style="border-radius: 0px; box-shadow: 0px 0px 0px 2px black inset">찜리스트</button><%--찜리스트--%>
+                                        </div>
+                                    </div><%--하단버튼(바로구매하기/장바구니/찜리스트)--%>
                                 </div>
                             </form>
                         </div>
