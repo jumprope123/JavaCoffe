@@ -283,7 +283,7 @@
                                     </div><%--가격2차--%>
                                     <div class="row">
                                         <div class="col-12 mt-5 text-right">
-                                            <button type="button" class="btn btn-lg btn-danger text-white" style="border-radius: 0px;">바로구매하기</button><%--바로구매하기--%>
+                                            <button type="button" id="eshopToBuyPageBtn" class="btn btn-lg btn-danger text-white" style="border-radius: 0px;">바로구매하기</button><%--바로구매하기--%>
                                             <button type="button" id="eshopToMybasketBtn" class="btn btn-lg btn-dark text-white" style="border-radius: 0px; margin: 0px 10px;">장바구니</button><%--장바구니--%>
                                             <button type="button" class="btn btn-lg btn-light text-dark" style="border-radius: 0px; box-shadow: 0px 0px 0px 2px black inset">찜리스트</button><%--찜리스트--%>
                                         </div>
