@@ -209,6 +209,17 @@ $(document).ready(function() {
 });
 
 
+for (let s = 1 ; s <= 19; s++) {
+    let src = "";
+    $("#shop-item"+s).click(function () {
+        src = document.getElementById('llat' + s).innerText;
+        src += "," + document.getElementById('llng' + s).innerText;
+        console.log(src);
+        if (confirm("구글 경로 찾기로 이동하시겠습니까?")) {
+            location.href = "https://www.google.co.kr/maps/dir//" + src;
+        }
+    });
+}
 
 // 내 위치 에러
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
