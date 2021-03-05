@@ -107,33 +107,37 @@
                     <td>
                         <div class="cmtbg1">${r.regdate}</div>
                         <span style="float:right">
-                            <c:if test="${not empty UID}">
+<%--                            <c:if test="${not empty UID}">--%>
                                 <a href="javascript:addReply('${r.rno}')">[추가]</a>
-                            </c:if>
-                            <c:if test="${UID eq r.userid}">
-                                <a>[수정]</a><a>[삭제]</a>
-                            </c:if>
+<%--                            </c:if>--%>
+<%--                            <c:if test="${UID eq r.userid}">--%>
+                                <a href="javascript:modiReplyForBoard('${r.rno},${r.reply}')">[수정]</a>
+                                <a href="javascript:delReplyForBoard('${r.rno}')">[삭제]</a>
+<%--                            </c:if>--%>
                         </span>
                         <p>${r.reply}</p>
                     </td>
-                </tr>
-            </c:if><!--rno와 dno가 같으면 댓글-->
+                </tr><!--원댓글-->
+            </c:if>
             <c:if test="${r.cno ne r.rno}">
-                <tr><td></td>
+                <tr>
+                    <td class="text-right"><i class="bi bi-arrow-return-right"></i></td>
                     <td>
                         <ul class="list-unstyled">
                             <li>
-                                <div class="cmtbg2"><span class="h4">${r.userid}</span>
-                                    <span class="pushright">${r.regdate}</span></div>
+                                <div class="cmtbg2">
+                                    <h4 style="display: inline-block">${r.userid}</h4>
+                                    <span class="pushright">${r.regdate}</span>
+                                </div>
                                 <p>${r.reply}</p>
                             </li>
-                        </ul><!--con가 같으면 댓글의 댓글 -->
+                        </ul>
                     </td>
-                </tr>
-            </c:if><!--대댓글-->
+                </tr><!--대댓글-->
+            </c:if>
            </c:forEach>
         </table>
-    </div>
+    </div><!--댓글들-->
 
 <%--    <c:if test="${not empty UID}">--%>
     <div class="row margin1050">
@@ -154,12 +158,12 @@
 <!--대댓글 작성을 위한 모달 대화 상자-->
 <div class="modal hide" id="replyModal" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content ">
             <div class="modal-header"><h3 class="modal-title">대댓글 쓰기</h3></div>
             <div class="modal-body">
                 <form name="rpfrm" id="rpfrm" class="well form-inline">
                     <textarea name="reply" id="rereply" rows="8" cols="75" class="span4"></textarea>
-                    <input type="hidden" name="userid" value="${UID}">
+                    <input type="hidden" name="userid" value="testRRid"<%--${UID}--%>>
                     <input type="hidden" name="bno" value="${param.bno}">
                     <input type="hidden" name="cno" id="cno">
                 </form>
@@ -170,3 +174,26 @@
         </div>
     </div>
 </div>
+
+<!--댓글 수정을 위한 모달 대화 상자-->
+<div class="modal hide" id="replyModify" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title">댓글수정</h3></div>
+            <div class="modal-body">
+                <form name="mmrpfrm" id="mmrpfrm" class="well form-inline">
+                    <textarea name="reply" id="modiReplyForBoard" rows="8" cols="75" class="span4"></textarea>
+                    <input type="hidden" name="userid" value="testRRid"<%--${UID}--%>>
+                    <input type="hidden" name="bno" value="${param.bno}">
+                    <input type="hidden" name="rno" id="modifyreplyrno">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="modifyokbtn" class="btn btn-warning">댓글 수정</button>
+                <button type="button" id="modifycencelbtn" class="btn btn-secondary">취소</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--댓글 삭제을 위한 모달 대화 상자-->

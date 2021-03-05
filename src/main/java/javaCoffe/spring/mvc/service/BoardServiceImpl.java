@@ -164,9 +164,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public String readFirstBno() {
-        return bdao.selectFirstBno();
-    }
+    public String readFirstBno() { return bdao.selectFirstBno(); }
 
     @Override
     public String readLastBno() {
