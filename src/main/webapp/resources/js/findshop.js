@@ -49,7 +49,7 @@ function initAutocomplete(listener) {
     let infoWindow;
     var infowindow = new google.maps.InfoWindow();
     const locationButton = document.createElement("button");
-    locationButton.textContent = "Pan to Current Location";
+    locationButton.textContent = "내 위치";
     locationButton.classList.add("custom-map-control-button");
 
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
@@ -127,6 +127,7 @@ function initAutocomplete(listener) {
     const searchBox = new google.maps.places.SearchBox(input);
     // Bias the SearchBox results towards current map's viewport.
     map.addListener("bounds_changed", () => {
+        Searchclick();
         searchBox.setBounds(map.getBounds());
     });
     let markers = [];
@@ -134,7 +135,6 @@ function initAutocomplete(listener) {
     // more details for that place.
     searchBox.addListener("places_changed", () => {
         const places = searchBox.getPlaces();
-
         if (places.length == 0) {
             return;
         }
@@ -182,7 +182,7 @@ $(document).ready(function() {
     $("#map").hide();
     var menu_flag = true;
 
-    $( '#btnSearch' ).click( function() {
+    $( '#btnSearch' ).click( function Searchclick() {
         $('#video_area, #background_video,  .map_title').fadeOut();
         $('#map').fadeIn(2000);
 
@@ -209,6 +209,17 @@ $(document).ready(function() {
 });
 
 
+for (let s = 1 ; s <= 19; s++) {
+    let src = "";
+    $("#shop-item"+s).click(function () {
+        src = document.getElementById('llat' + s).innerText;
+        src += "," + document.getElementById('llng' + s).innerText;
+        console.log(src);
+        if (confirm("구글 경로 찾기로 이동하시겠습니까?")) {
+            location.href = "https://www.google.co.kr/maps/dir//" + src;
+        }
+    });
+}
 
 // 내 위치 에러
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

@@ -83,8 +83,9 @@
             <ul aria-labelledby="storeResultsHeader storeResultDesc" id="store-locator-results">
                 <c:forEach var="f" items="${fsinfo}">
                     <li id="f_info_list${f.sno}" style="border-top: solid 1px black">
-                        <button tabindex="3" class="shop-item shop-item-112">
+                        <button id="shop-item${f.sno}" class="shop-item" type="button">
                             <div class="StoreResult-content">
+                                <p id="shop_sno_p${f.sno}" style="display: none">${f.sno}</p>
                                 <div class="shop-name">
                                     <strong>${f.sname}</strong>
                                 </div>
