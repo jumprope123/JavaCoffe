@@ -49,7 +49,7 @@ function initAutocomplete(listener) {
     let infoWindow;
     var infowindow = new google.maps.InfoWindow();
     const locationButton = document.createElement("button");
-    locationButton.textContent = "Pan to Current Location";
+    locationButton.textContent = "내 위치";
     locationButton.classList.add("custom-map-control-button");
 
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
