@@ -238,7 +238,7 @@
                                     <span>${viewData.simpleExplain}</span>
                                 </div>
                             </div>
-                            <form class="row form-group mt-3">
+                            <form id="eshopViewForm" class="row form-group mt-3">
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-12" style="border-top: 1px solid RGB(233,233,233);"></div>
@@ -264,7 +264,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-12 mt-1">
-                                                            <input type="hidden" id="priceForResult" value="${viewData.dcprice}">
+                                                            <input type="hidden" id="priceForResult" name="priceForResult" value="${viewData.dcprice}">
                                                             <span id="eshopResultPrice" class="text-right ml-1 font-weight-bold">${viewData.dcprice}원</span>
                                                         </div>
                                                     </div>
@@ -283,9 +283,9 @@
                                     </div><%--가격2차--%>
                                     <div class="row">
                                         <div class="col-12 mt-5 text-right">
-                                            <button class="btn btn-lg btn-danger text-white" style="border-radius: 0px;">바로구매하기</button><%--바로구매하기--%>
-                                            <button class="btn btn-lg btn-dark text-white" style="border-radius: 0px; margin: 0px 10px;">장바구니</button><%--장바구니--%>
-                                            <button class="btn btn-lg btn-light text-dark" style="border-radius: 0px; box-shadow: 0px 0px 0px 2px black inset">찜리스트</button><%--찜리스트--%>
+                                            <button type="button" class="btn btn-lg btn-danger text-white" style="border-radius: 0px;">바로구매하기</button><%--바로구매하기--%>
+                                            <button type="button" id="eshopToMybasketBtn" class="btn btn-lg btn-dark text-white" style="border-radius: 0px; margin: 0px 10px;">장바구니</button><%--장바구니--%>
+                                            <button type="button" class="btn btn-lg btn-light text-dark" style="border-radius: 0px; box-shadow: 0px 0px 0px 2px black inset">찜리스트</button><%--찜리스트--%>
                                         </div>
                                     </div><%--하단버튼(바로구매하기/장바구니/찜리스트)--%>
                                 </div>

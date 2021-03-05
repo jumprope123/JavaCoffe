@@ -180,3 +180,9 @@ function jumpToImgExplain() {
 function jumpToImgExchange() {
     location.href ="#eshopExchangeImg"
 }
+
+$('#eshopToMybasketBtn').on('click',function () {
+    $('#eshopViewForm').attr('method', 'post');
+    $('#eshopViewForm').attr('action', '/mybasket/list');
+    $('#eshopViewForm').submit();
+})
