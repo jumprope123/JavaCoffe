@@ -19,14 +19,18 @@ public class BoardReplyServiceImpl implements BoardReplyService {
 
     @Override  // 댓글쓰기
     public boolean newReply(ReplyVO rvo) {
+        boolean result = false;
         int cnt = brdao.insertReply(rvo);
-        return true;
+        if (cnt > 0 ) result = true;
+        return false;
     }
 
     @Override //대댓글쓰기
     public boolean newReReply(ReplyVO rvo) {
+        boolean result = false;
         int cnt = brdao.insertReReply(rvo);
-        return false;
+        if (cnt > 0 ) result = true;
+        return result;
     }
 
     @Override //댓글수정하기
@@ -36,5 +40,12 @@ public class BoardReplyServiceImpl implements BoardReplyService {
         if (cnt > 0 )  result = true;
         return result;
     }
+
+    @Override
+    public boolean delRePly(ReplyVO rvo) {
+        boolean result = false;
+        int cnt = brdao.deleteReply(rvo);
+        if (cnt > 0 )  result = true;
+        return result;    }
 
 }

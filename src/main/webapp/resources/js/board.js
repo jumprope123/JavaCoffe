@@ -103,6 +103,8 @@ $('#modifyokbtn').on('click',function () {
     else {
         $('#mmrpfrm').attr('method','post');
         $('#mmrpfrm').attr('action','/board/replyModiOk');
+        alert($('#modiReplyForBoard').val());
+        alert($('#modifyreplycno').val());
         $('#mmrpfrm').submit();
     }
 })
@@ -110,6 +112,23 @@ $('#modifyokbtn').on('click',function () {
 // 댓글 수정창 취소
 $('#modifycencelbtn').on('click',function () {
     $('#replyModify').modal('hide');
+})
+
+//댓글 삭제하기 모듈
+function delReplyForBoard(rno) {
+    $('#deletereplycno').val(rno);
+    $('#replyDelete').modal('show');
+}
+// 댓글 삭제완료
+$('#deleteokbtn').on('click',function () {
+    $('#dmrpfrm').attr('method','post');
+    $('#dmrpfrm').attr('action','/board/delreply');
+    $('#dmrpfrm').submit();
+})
+
+// 댓글 삭제창 취소
+$('#deletecencelbtn').on('click',function () {
+    $('#replyDelete').modal('hide');
 })
 
 // 대댓글 작성하기

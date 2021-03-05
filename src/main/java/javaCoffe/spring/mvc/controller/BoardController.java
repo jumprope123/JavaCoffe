@@ -221,4 +221,11 @@ public class BoardController {
         return returnPage;
     }
 
+    // 댓글 삭제하기
+    @PostMapping("/board/delreply")
+    public String replydel(ReplyVO rvo){
+        String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
+        brsrv.delRePly(rvo);
+        return returnPage;
+    }
 }

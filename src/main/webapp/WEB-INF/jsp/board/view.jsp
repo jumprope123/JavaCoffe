@@ -197,3 +197,19 @@
 </div>
 
 <!--댓글 삭제을 위한 모달 대화 상자-->
+<div class="modal hide" id="replyDelete" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title">삭제한 댓글은 복구할 수 없습니다 <br />댓글을 정말 삭제하시겠습니까?</h3></div>
+                <form name="dmrpfrm" id="dmrpfrm" class="well form-inline">
+                    <input type="hidden" name="userid" value="testRRid"<%--${UID}--%>>
+                    <input type="hidden" name="bno" value="${param.bno}">
+                    <input type="hidden" name="cno" id="deletereplycno">
+                </form>
+            <div class="modal-footer">
+                <button type="button" id="deleteokbtn" class="btn btn-warning">댓글 삭제</button>
+                <button type="button" id="deletecencelbtn" class="btn btn-secondary">취소</button>
+            </div>
+        </div>
+    </div>
+</div>
