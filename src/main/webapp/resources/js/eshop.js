@@ -182,6 +182,15 @@ function jumpToImgExchange() {
 }
 
 $('#eshopToMybasketBtn').on('click',function () {
+    $.ajax({
+        url: '/mybasket/list',
+        type: 'POST',
+        data: {eshopViewCode: $('#eshopViewCode').val(), eshopViewNum: $('#eshopViewNum').val(), priceForResult: $('#priceForResult').val()}
+    });
+    alert('장바구니에 추가되었습니다');
+})
+
+$('#eshopToBuyPageBtn').on('click',function () {
     $('#eshopViewForm').attr('method', 'post');
     $('#eshopViewForm').attr('action', '/mybasket/list');
     $('#eshopViewForm').submit();
