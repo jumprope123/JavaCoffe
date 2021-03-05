@@ -215,6 +215,7 @@ public class BoardController {
     //댓글 수정하기
     @PostMapping("/board/replyModiOk")
     public String replyModiOk(ReplyVO rvo){
+
         String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
         brsrv.updateRePly(rvo);
         return returnPage;

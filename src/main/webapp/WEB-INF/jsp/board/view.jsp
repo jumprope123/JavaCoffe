@@ -111,7 +111,7 @@
                                 <a href="javascript:addReply('${r.rno}')">[추가]</a>
 <%--                            </c:if>--%>
 <%--                            <c:if test="${UID eq r.userid}">--%>
-                                <a href="javascript:modiReplyForBoard('${r.rno},${r.reply}')">[수정]</a>
+                                <a href="javascript:modiReplyForBoard('${r.rno}','${r.reply}')">[수정]</a>
                                 <a href="javascript:delReplyForBoard('${r.rno}')">[삭제]</a>
 <%--                            </c:if>--%>
                         </span>
@@ -144,7 +144,7 @@
         <form id="replyfrm" class="card card-body bg-light ">
             <div class="form-group row justify-content-center">
                 <label class="pushtop50 text-primary font-weight-bold" >${UID}</label>&nbsp;
-                <textarea id="reply" name="reply" row="5" class="form-control col-7"></textarea>&nbsp;
+                <textarea id="reply" name="reply" row="5" class="form-control col-7" style="resize: none"></textarea>&nbsp;
                 <span><button type="button" id="bdcmtbtn" class="btn btn-dark pushtop50">
                         <i class="bi bi-chat-text-fill bidragup"></i> 댓글쓰기</button></span>
             </div>
@@ -157,9 +157,9 @@
 
 <!--대댓글 작성을 위한 모달 대화 상자-->
 <div class="modal hide" id="replyModal" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content ">
-            <div class="modal-header"><h3 class="modal-title">대댓글 쓰기</h3></div>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title ">대댓글 쓰기</h3></div>
             <div class="modal-body">
                 <form name="rpfrm" id="rpfrm" class="well form-inline">
                     <textarea name="reply" id="rereply" rows="8" cols="75" class="span4"></textarea>
@@ -177,7 +177,7 @@
 
 <!--댓글 수정을 위한 모달 대화 상자-->
 <div class="modal hide" id="replyModify" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header"><h3 class="modal-title">댓글수정</h3></div>
             <div class="modal-body">
@@ -185,7 +185,7 @@
                     <textarea name="reply" id="modiReplyForBoard" rows="8" cols="75" class="span4"></textarea>
                     <input type="hidden" name="userid" value="testRRid"<%--${UID}--%>>
                     <input type="hidden" name="bno" value="${param.bno}">
-                    <input type="hidden" name="rno" id="modifyreplyrno">
+                    <input type="hidden" name="cno" id="modifyreplycno">
                 </form>
             </div>
             <div class="modal-footer">

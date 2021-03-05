@@ -93,7 +93,7 @@ function addReply(cno) {
 //댓글 수정하기 창
 function modiReplyForBoard(rno,reply){
     $('#modiReplyForBoard').val(reply);
-    $('#modifyreplyrno').val(rno);
+    $('#modifyreplycno').val(rno);
     $('#replyModify').modal('show');
 }
 
@@ -157,3 +157,4 @@ $('#Boardupbdokbtn').on('click',function () {    //수정완료
 $('#Boardccupbdbtn').on('click',function () {    //취소하기
     history.go(-1);
 });
+

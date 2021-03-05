@@ -31,8 +31,10 @@ public class BoardReplyServiceImpl implements BoardReplyService {
 
     @Override //댓글수정하기
     public boolean updateRePly(ReplyVO rvo) {
+        boolean result = false;
         int cnt = brdao.updateReply(rvo);
-        return true;
+        if (cnt > 0 )  result = true;
+        return result;
     }
 
 }
