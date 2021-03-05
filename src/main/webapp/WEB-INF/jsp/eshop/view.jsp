@@ -248,7 +248,7 @@
                                             <div class="row font-weight-bold h5 pl-2">${viewData.title}</div>
                                             <button type="button" id="eshopCuponBtn" class="btn btn-sm bg-dark text-white" style="border: 1px solid red;">쿠폰적용</button>
                                         </div>
-                                        <input type="hidden" name="eshopViewCode" value="${viewData.code}">
+                                        <input type="hidden" id="eshopViewCode" name="eshopViewCode" value="${viewData.code}">
                                         <div class="col-3">
                                             <div class="row">
                                                 <div class="col-12">
