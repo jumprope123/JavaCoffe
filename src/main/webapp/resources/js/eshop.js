@@ -153,3 +153,12 @@ $('#eshopDownBtn').on('click',function () {
 $('#eshopCuponBtn').on('click',function () {
     alert('저희가 돈이없어서 ㅠㅠ 쿠폰은 없다구용~');
 })
+
+
+function jumpToImgExplain() {
+    location.href ="#eshopExplainImg"
+}
+
+function jumpToImgExchange() {
+    location.href ="#eshopExchangeImg"
+}
