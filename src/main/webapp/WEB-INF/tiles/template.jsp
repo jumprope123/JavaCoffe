@@ -49,6 +49,7 @@
 <!-- // _findshop-hwang -->
 <script src="/js/admin.js"></script>
 <script src="/js/eshop.js"></script>
+<script src="/js/buylist.js"></script>
 
 </body>
 </html>

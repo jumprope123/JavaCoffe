@@ -2,6 +2,7 @@ package javaCoffe.spring.mvc.service;
 
 import javaCoffe.spring.mvc.dao.BuyPageDAO;
 import javaCoffe.spring.mvc.vo.EshopVO;
+import javaCoffe.spring.mvc.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +22,7 @@ public class BuyPageServiceImpl implements BuyPageService{
     }
 
     @Override
-    public void saveBuyData(String userid, String code, int salesCnt, int finalPrice) {
-        Map<String,Object> param = new HashMap<>();
-        param.put("userid",userid);
-        param.put("code",code);
-        param.put("salesCnt",salesCnt);
-        param.put("finalPrice",finalPrice);
-        buydao.saveBuyData(param);
-    }
+    public MemberVO readUser(String userid) {return buydao.selectUser(userid);}
+
+
 }

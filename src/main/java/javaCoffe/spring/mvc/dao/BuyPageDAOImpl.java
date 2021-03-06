@@ -1,6 +1,7 @@
 package javaCoffe.spring.mvc.dao;
 
 import javaCoffe.spring.mvc.vo.EshopVO;
+import javaCoffe.spring.mvc.vo.MemberVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,9 +20,8 @@ public class BuyPageDAOImpl implements BuyPageDAO{
         return sqlSession.selectOne("buyPage.selectMD",code);
     }
 
-
     @Override
-    public void saveBuyData(Map<String, Object> param) {
-        sqlSession.insert("buyPage.insertBuyData",param);
-    }
+    public MemberVO selectUser(String userid) {return sqlSession.selectOne("buyPage.selectUser",userid);}
+
+
 }
