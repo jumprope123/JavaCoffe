@@ -11,7 +11,5 @@ public interface MemberService {
 
     boolean checkLogin(MemberVO mvo, HttpSession sess);
 
-    Object checkLogin(MemberService msrv);
-
-    String readRegDate(String userid);
+    String readRegDate(String name);
 }

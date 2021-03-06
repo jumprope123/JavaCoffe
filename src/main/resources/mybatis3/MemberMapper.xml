@@ -26,7 +26,7 @@
     </select>
 
     <select id="getRegdate" statementType="PREPARED" parameterType="String" resultType="String">
-        select regdate from MemberJoin where userid = #{userid};
+        select regdate from MemberJoin where name = #{name};
     </select>
 
 

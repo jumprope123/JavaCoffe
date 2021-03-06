@@ -32,8 +32,8 @@ public class MemberDAOImpl implements MemberDAO{
     }
 
     @Override
-    public String readRegdate(String userid) {
-        return sqlSession.selectOne("member.getRegdate",userid);
+    public String readRegdate(String name) {
+        return sqlSession.selectOne("member.getRegdate",name);
     }
 
 

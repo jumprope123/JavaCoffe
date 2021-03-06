@@ -1,10 +1,7 @@
 package javaCoffe.spring.mvc.dao;
 
 import javaCoffe.spring.mvc.vo.MemberVO;
-import javaCoffe.spring.mvc.vo.ZipcodeVO;
 
-import java.util.List;
-import java.util.Map;
 
 public interface MemberDAO {
 
@@ -14,5 +11,5 @@ public interface MemberDAO {
 
     int selectLogin(MemberVO mvo);
 
-    String readRegdate(String userid);
+    String readRegdate(String name);
 }
