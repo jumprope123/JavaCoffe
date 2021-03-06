@@ -196,6 +196,6 @@ $('#eshopToMybasketBtn').on('click',function () {
 
 $('#eshopToBuyPageBtn').on('click',function () {
     $('#eshopViewForm').attr('method', 'post');
-    $('#eshopViewForm').attr('action', '/mybasket/list');
+    $('#eshopViewForm').attr('action', '/buylist/buyPage');
     $('#eshopViewForm').submit();//구매페이지로 코드,수량,가격(개당) 보냄
 })
