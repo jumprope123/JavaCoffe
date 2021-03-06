@@ -180,3 +180,22 @@ function jumpToImgExplain() {
 function jumpToImgExchange() {
     location.href ="#eshopExchangeImg"
 }
+
+$('#eshopToMybasketBtn').on('click',function () {
+    var eshopViewNum = parseInt($('#eshopViewNum').val());
+    var priceForResult = parseInt($('#priceForResult').val());
+    var finalPrice = eshopViewNum * priceForResult;
+
+    $.ajax({
+        url: '/mybasket/list',
+        type: 'POST',
+        data: {eshopViewCode: $('#eshopViewCode').val(), eshopViewNum: $('#eshopViewNum').val(), priceForResult: finalPrice}
+    });
+    alert('장바구니에 추가되었습니다');
+})
+
+$('#eshopToBuyPageBtn').on('click',function () {
+    $('#eshopViewForm').attr('method', 'post');
+    $('#eshopViewForm').attr('action', '/buylist/buyPage');
+    $('#eshopViewForm').submit();//구매페이지로 코드,수량,가격(개당) 보냄
+})
