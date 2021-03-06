@@ -54,3 +54,4 @@
     </div>
 </div><!-- main -->
 <div class="all_agree_bottom"></div>
+<!-- main -->

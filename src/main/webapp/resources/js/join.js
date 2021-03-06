@@ -144,3 +144,4 @@ function checkuid() {  // 아이디 중복체크 버튼 생성
 $('#go2index').on('click',function () {
     location.href = '/index';
 })
+//

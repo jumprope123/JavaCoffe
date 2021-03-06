@@ -29,5 +29,5 @@
         select regdate from MemberJoin where name = #{name};
     </select>
 
-
+<!---->
 </mapper>

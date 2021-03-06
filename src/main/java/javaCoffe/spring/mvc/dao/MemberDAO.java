@@ -13,3 +13,4 @@ public interface MemberDAO {
 
     String readRegdate(String name);
 }
+//
