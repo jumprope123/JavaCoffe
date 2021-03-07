@@ -49,10 +49,11 @@
             <div class="row mt-5">
                 <div class="col-9">
                     <div class="row">
-                        <div class="col-12 text-left font-weight-bold h5">배송지정보</div>
+                        <div class="col-2 text-left font-weight-bold h5">배송지정보</div>
+                        <div class="col-8 text-left">- 기본배송지는 회원가입시 입력하신 주소입니다. 변경을 원할시 우편번호찾기 버튼을 눌러주세요.</div>
                     </div>
                     <div class="form-group row mt-3">
-                        <div class="col-12">
+                        <div class="col-11 offset-1">
                             <div class="row">
                                 <label class="col-2 col-form-label text-left">우편번호</label>
                                 <input type="text" id="sample6_postcode" class="form-control col-2" name="zipcode" placeholder="우편번호" value="${mvo.zipcode}" readonly >
@@ -69,7 +70,58 @@
                 </div> <%--배송지정보--%>
                 <div class="col-3"></div> <%--결재완료버튼--%>
             </div>
-
+            <div class="row mt-3"><div class="col-12" style="border-bottom: 1px solid RGB(246,246,246);"></div></div>
+            <div class="row mt-3">
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-2 text-left font-weight-bold h5">주문인정보</div>
+                        <div class="col-10 text-left">- 주문인 정보는 수정할 수 없습니다.</div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-2 offset-1">이름</div>
+                        <input class="form-control col-5" name="name" value="${mvo.name}" readonly>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 offset-1">전화번호</div>
+                        <input class="form-control col-5" name="phone" value="${mvo.phone}" readonly>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 offset-1">메일주소</div>
+                        <input class="form-control col-5" name="email" value="${mvo.email}" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3"><div class="col-12" style="border-bottom: 1px solid RGB(246,246,246);"></div></div>
+            <div class="row mt-3">
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-2 text-left font-weight-bold h5">받으시는 분</div>
+                        <div class="col-10 text-left">- 기본 정보는 주문인과 동일합니다. 주문인과 수취인이 다를경우만 수정하세요.</div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-2 offset-1">이름</div>
+                        <input class="form-control col-5" name="receiveName" value="${mvo.name}">
+                    </div>
+                    <div class="row">
+                        <div class="col-2 offset-1">전화번호</div>
+                        <input class="form-control col-5" name="receivePhone" value="${mvo.phone}">
+                    </div>
+                    <div class="row">
+                        <div class="col-2 offset-1">메일주소</div>
+                        <input class="form-control col-5" name="receiveEmail" value="${mvo.email}">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5"><div class="col-12" style="border-bottom: 1px solid grey;"></div></div>
+            <div class="row mt-3">
+                <div class="col-12 h4 text-center">총 결제금액 : <span class="text-danger h1">${evo.dcprice * salesCnt}원</span></div>
+            </div>
+            <div class="row mt-3 mb-3">
+                <div class="col-12 text-center">
+                    <button type="button" id="buylistOkBtn" class="btn-lg btn-success">결재하기</button>
+                    <button type="button" id="buylistcancelBtn" class="btn-lg btn-danger">취소하기</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>
