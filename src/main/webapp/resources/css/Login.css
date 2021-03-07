@@ -1,0 +1,37 @@
+.center_login1 {
+    margin: 0 auto;
+}
+.center_login2 {
+    margin-top: 12%;
+    margin-left: 40%;
+}
+
+.login_icon {
+   position: relative;
+    right: 5px;
+    bottom: 2px;
+}
+
+.login_button {
+    position:relative;
+    left: 2.85rem;
+    bottom: 3px;
+}
+.total_size_login {
+    width: 20rem;
+    height: 22rem;
+}
+
+.p_login_font {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.input_login_bar {
+    width: 13rem;
+    height: 2rem;
+    border: 2px solid #5a6268;
+    border-radius: 3px;
+}
+/**/

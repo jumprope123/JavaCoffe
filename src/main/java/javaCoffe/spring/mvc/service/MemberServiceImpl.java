@@ -1,7 +1,5 @@
 package javaCoffe.spring.mvc.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javaCoffe.spring.mvc.dao.MemberDAO;
 import javaCoffe.spring.mvc.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,14 +47,11 @@ public class MemberServiceImpl implements MemberService{
         return isLogin;
     }
 
-    @Override
-    public Object checkLogin(MemberService msrv) {
-        return null;
-    }
 
     @Override
-    public String readRegDate(String userid) {
-        return mdao.readRegdate(userid);
+    public String readRegDate(String name) {
+        return mdao.readRegdate(name);
     }
 
 }
+//

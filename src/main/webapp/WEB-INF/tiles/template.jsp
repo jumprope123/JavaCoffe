@@ -11,9 +11,10 @@
     <!-- http cache control 관련 코드 : meta-->
 
 
-    <link rel="stylesheet" href="/css/login.css">
-<%--    <link rel="stylesheet" href="/css/find.css">--%>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/Member.css">
+    <link rel="stylesheet" href="/css/Login.css">
+<%--    <link rel="stylesheet" href="/css/find.css">--%>
     <link rel="stylesheet" href="/css/customCSS.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/reset.css">
@@ -54,3 +55,4 @@
 </body>
 </html>
 
+<!-- main -->
