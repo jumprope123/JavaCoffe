@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+   <insert id="insertBoard" statementType="PREPARED"
+           parameterType="javaCoffe.spring.mvc.vo.BoardVO">
+      insert into Board(title, userid, contents, fname1, fname2, fname3,
+                        fsize1, fsize2, fsize3, ftype1, ftype2, ftype3,uuid)
+      value (#{title},#{userid},#{contents},#{fname1},#{fname2},#{fname3},
+             #{fsize1},#{fsize2},#{fsize3},#{ftype1},#{ftype2},#{ftype3},#{uuid})
+   </insert>
+
+   <select id="selectList" statementType="PREPARED" parameterType="int"
+             resultType="javaCoffe.spring.mvc.vo.BoardVO">
+      select bno,title,userid,regdate,thumbs,views from Board
+      order by bno desc
+      limit #{startnum} , 10
+   </select>
+
+   <select id="selectOne" statementType="PREPARED" parameterType="String"
+           resultType="javaCoffe.spring.mvc.vo.BoardVO" >
+        select * from Board where bno = #{bno}
+   </select>
+
+   <select id="selectOneFname" statementType="PREPARED" parameterType="Map" resultType="javaCoffe.spring.mvc.vo.BoardVO">
+      select
+         ${order} fname1, uuid from Board
+      where bno=#{bno}
+   </select>
+
+   <update id="downCount" statementType="PREPARED" parameterType="int">
+      update Board set ${order} =  ${order}  +1 where bno = ${bno}
+   </update>
+
+   <update id="updateBoard" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.BoardVO">
+      update Board
+      set title = #{title}, contents = #{contents}, regdate = current_timestamp()
+      where bno = #{bno}
+   </update>
+
+   <delete id="deleteBoard" statementType="PREPARED" parameterType="String">
+      delete from Board where bno = #{bno}
+   </delete>
+
+   <select id="countBoard"  statementType="PREPARED" resultType="int">
+      select count(bno) cnt from Board
+   </select>
+
+   <update id="viewCount" statementType="PREPARED" parameterType="String">
+        update Board set views = views + 1
+        where bno = #{bno}
+   </update>
+
+   <select id="findSelectList" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.BoardVO">
+      select bno,title,userid,regdate,thumbs,views from Board
+      <if test="findType != 'ticon'">
+      where ${findType} like concat(#{findKey}, '%')</if>
+
+      <if test= "findType == 'ticon'">
+      where title like concat('%', #{findKey}, '%') or contents like concat(#{findKey}, '%')</if>
+
+      order by bno desc limit #{snum} , 10
+   </select>
+
+   <select id="findCountBoard" statementType="PREPARED" parameterType="map" resultType="int">
+    select count(bno) cnt from Board
+
+      <if test="findType != 'ticon'">
+         where ${findType} like concat(#{findKey}, '%')</if>
+
+      <if test= "findType == 'ticon'">
+         where title like concat(#{findKey}, '%') or contents like concat(#{findKey}, '%')</if>
+   </select>
+
+   <update id="updateThumbPluBoard" statementType="PREPARED">
+      update Board set thumbs = thumbs +1 where bno = #{bno};
+   </update>
+
+   <update id="updateThumbMinBoard" statementType="PREPARED">
+      update Board set thumbs = thumbs -1 where bno = #{bno};
+   </update>
+
+   <select id="selectOneThumbBoard" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.BoardVO">
+      select * from Board where bno = #{bno};
+   </select>
+
+   <select id="selectOnePreBno" statementType="PREPARED" parameterType="String" resultType="String">
+      select bno from Board where bno <![CDATA[<]]> #{bno} order by bno desc limit 1;
+   </select>
+
+   <select id="selectOneNextBno" statementType="PREPARED" parameterType="String" resultType="String">
+      select bno from Board where bno <![CDATA[>]]> #{bno} order by bno asc limit 1;
+   </select>
+
+   <select id="selectFirstBno" statementType="PREPARED" resultType="String">
+      select bno from Board order by bno asc limit 1;
+   </select>
+
+   <select id="selectLastBno" statementType="PREPARED" resultType="String">
+      select bno from Board order by bno desc limit 1;
+   </select>
+</mapper>

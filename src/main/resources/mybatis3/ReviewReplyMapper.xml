@@ -25,4 +25,8 @@
         delete from ReviewReply where replyNo = #{replyNo};
     </delete>
 
+    <select id="countReply" statementType="PREPARED" parameterType="String" resultType="int">
+        select count(replyNo) from ReviewReply where reviewNo = #{rno};
+    </select>
+
 </mapper>

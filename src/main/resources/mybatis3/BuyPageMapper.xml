@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="buyPage">
+
+    <select id="selectMD" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where code = #{code};
+    </select>
+
+    <select id="selectUser" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.MemberVO">
+        select * from MemberJoin where userid = #{userid};
+    </select>
+
+
+</mapper>
