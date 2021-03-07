@@ -165,7 +165,7 @@
 
             <div class="row margin30">
                 <div class="col-12 text-center">
-                    <button type="button" id="joinbtn" <%--onclick="checkPWReg()||checkZIPReg()||checkEmailReg()||checkPhoneReg()"--%> <%--<<<<<<<<<<<<<<<<<<<< 잠깐 해제--%>
+                    <button type="button" id="joinbtn" <%--onclick="checkPWReg()||checkZIPReg()||checkEmailReg()||checkPhoneReg()"--%> <%--<<<<<<<<<<<<<<<<<<<<< 잠깐 해제--%>
                             class="btn btn-primary">
                         <i class="bi bi-check"></i> 입력완료</button>
                     <button type="button" id="canclebtn"

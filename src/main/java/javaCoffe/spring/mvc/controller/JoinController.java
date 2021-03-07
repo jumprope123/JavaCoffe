@@ -49,7 +49,7 @@ public class JoinController {
         return "join/checkme";
     }
 
-    @PostMapping ("/join/joinme") // 회원가입 폼  뭐가 문제지<<<<<<<<<<<<<<<<
+    @PostMapping ("/join/joinme") // 회원가입 폼  뭐가 문제지<<<<<<<<<<<<<<<<<
     public ModelAndView joinme(String name2, String jumin1, String jumin2) throws UnsupportedEncodingException {
         // 뷰객체로 생성
         // jsp로 객체 넘김
@@ -63,7 +63,7 @@ public class JoinController {
         return mv;
     }
 
-    @PostMapping("/join/joinmeok") // 회원가입처리 뭐가 문제지<<<<<<<<<<<<<<<<
+    @PostMapping("/join/joinmeok") // 회원가입처리 뭐가 문제지<<<<<<<<<<<<<<<<<
     public String joinmeok(MemberVO mvo,
                            HttpServletRequest req,
                            RedirectAttributes rds) throws UnsupportedEncodingException {

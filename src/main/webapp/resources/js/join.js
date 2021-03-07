@@ -85,7 +85,7 @@ $('#joinbtn').on('click',function () {
         // 클라이언트에서 생성한 코드를 서버에서도 확인하기 위한 목적
         $('#g-recaptcha').val(grecaptcha.getResponse());
 
-        $('#joinfrm').attr('action', '/join/joinme'); // <<<< 이건가?
+        $('#joinfrm').attr('action', '/join/joinme'); // <<<<<<<<<<<<<<<< 이건가?
         $('#joinfrm').attr('method', 'post');
         $('#joinfrm').submit();
     }
