@@ -72,6 +72,7 @@ public class ReviewController {
         mv.setViewName("review/view.tiles");
         mv.addObject("review", rsrv.readOneReview(rno)); // 상세본문 읽어오기
         mv.addObject("rp", rrsrv.readReply(rno)); //리플 읽어오기
+        mv.addObject("reviewCnt",rrsrv.readReplyCnt(rno)); // 해당 rno에 달린 총 댓글숫자 읽어오기
         rsrv.viewCountReview(rno); // 본문 조회수 증가시키기
         return mv;
     }
@@ -115,9 +116,9 @@ public class ReviewController {
     // 후기게시글 삭제하기
     @PostMapping("/review/delview")
     public String delview(String rno){
-    ReviewVO nrvo = rsrv.readOneReview(rno);
-    rsrv.delReview(nrvo);
-    return "redirect:/review/list?cp=1";
+        ReviewVO nrvo = rsrv.readOneReview(rno);
+        rsrv.delReview(nrvo);
+        return "redirect:/review/list?cp=1";
     }
 
     // 수정페이지

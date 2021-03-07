@@ -135,14 +135,14 @@ $('#reviewcmtbtn').on('click',function () {
 })
 
 // 대댓글을 위한 댓글의 추가 버튼 클릭시
-function addReply(commentNo) {
-    $('#replyModal').modal('show');
+function addReplyforReview(commentNo) {
+    $('#replyModalForReview').modal('show');
     $('#commentNo').val(commentNo); // 대댓글 작성시 부모댓글의 번호를 cno에 저장
 } //대댓글 대화상자 띄우기
 
 //대댓글 작성하기
-$('#rpbtn').on('click',function () {
-    if ($('#rereply').val()=='') alert('내용을 작성하시오');
+$('#rpbtnForReview').on('click',function () {
+    if ($('#rereplyForReview').val()=='') alert('내용을 작성하시오');
     else {
         $('#rpfrm').attr('method','post');
         $('#rpfrm').attr('action','/review/replyok');
@@ -199,15 +199,20 @@ $('#delcencelrpbtn').on('click',function () {
 // 수정하기 버튼
 $('#upReviewBtn').on('click',function () {
     if (confirm("정말 수정하시겠습니까?")){
-    location.href = "/review/update?rno=" + $('#rno').val();}
+        location.href = "/review/update?rno=" + $('#rno').val();}
 })
 
 // 삭제하기 버튼
 $('#rmReviewBtn').on('click',function () {
-    if (confirm('정말 삭제하시겠습니까?')){
-        $('#hiddenform').attr('method','post');
-        $('#hiddenform').attr('action','/review/delview');
-        $('#hiddenform').submit();
+    var review = $('#reviewCnt').val() // 댓글의 수 확인
+    if (review != 0){ //댓글이 1개 이상이면
+        alert('댓글이 달린 게시글은 삭제할 수 없습니다.');
+    } else { //댓글이 없으면
+        if (confirm('정말 삭제하시겠습니까?')) {
+            $('#hiddenform').attr('method', 'post');
+            $('#hiddenform').attr('action', '/review/delview');
+            $('#hiddenform').submit();
+        }
     }
 })
 

@@ -147,3 +147,6 @@ $('#go2index').on('click',function () {
     location.href = '/index';
 })
 //
+
+
+

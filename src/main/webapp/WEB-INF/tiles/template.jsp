@@ -14,10 +14,12 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/Member.css">
     <link rel="stylesheet" href="/css/Login.css">
+<%--    <link rel="stylesheet" href="/css/find.css">--%>
     <link rel="stylesheet" href="/css/customCSS.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <%-- 추가 스타일 --%>
     <title>JAVAPRESSO</title>
 </head>
 <body>
@@ -36,8 +38,19 @@
 <script src="/js/login.js"></script>
 <script src="/js/join.js"></script>
 <script src="/js/zipcode.js"></script>
+<script src="/js/board.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- _findshop-hwang -->
+<script src="/js/findshop.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1CCvsEeWN2zyvgcL8RGZ67905NDrwOgM&callback=initMap&region=kr"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1CCvsEeWN2zyvgcL8RGZ67905NDrwOgM&libraries=places"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1CCvsEeWN2zyvgcL8RGZ67905NDrwOgM&callback=initAutocomplete&libraries=places&v=weekly"></script>
+<!-- // _findshop-hwang -->
+<script src="/js/admin.js"></script>
+<script src="/js/eshop.js"></script>
+<script src="/js/buylist.js"></script>
 
 </body>
 </html>

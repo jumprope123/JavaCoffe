@@ -82,7 +82,7 @@
     <div class="row margin1050 mt-5">
         <h3><i class="bi bi-chat-square-dots-fill"></i>&nbsp;댓글 남기기</h3>
     </div>
-
+    <input type="hidden" id="reviewCnt" value="${reviewCnt}">
     <div class="row margin1050">
         <table class="table tblines">
             <c:forEach var="r" items="${rp}">
@@ -94,7 +94,7 @@
                                 <div>
                                     <div style="display: inline-block" class="text-left">${fn:substring(r.regdate,0,19)}</div>
                                     <div style="float: right">
-                                    <a href="javascript:addReply('${r.replyNo}')">[추가]</a>
+                                    <a href="javascript:addReplyforReview('${r.replyNo}')">[추가]</a>
                                     <a href="javascript:modiReply('${r.replyNo}','${r.reply}')">[수정]</a>
                                     <a href="javascript:delReply('${r.replyNo}')">[삭제]</a></div> <%--대댓글이 있는 리플은 삭제못하게 하고싶은데 어떻게?--%>
                                 </div>
@@ -136,7 +136,7 @@
 
 
 <!-- 대댓글 작성을 위한 모달대화상자 -->
-<div class="modal hide" id="replyModal" role="dialog">
+<div class="modal hide" id="replyModalForReview" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -144,14 +144,14 @@
             </div>
             <div class="modal-body">
                 <form name="rpfrm" id="rpfrm" class="well form-inline">
-                    <textarea name="reply" id="rereply" rows="8" cols="75" class="span4"></textarea>
+                    <textarea name="reply" id="rereplyForReview" rows="8" cols="75" class="span4"></textarea>
                     <input type="hidden" name="userid" value="testReReplyId<%--${UID}--%>">
                     <input type="hidden" name="reviewNo" value="${param.rno}">
                     <input type="hidden" name="commentNo" id="commentNo">
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="rpbtn" class="btn btn-warning">대댓글 작성</button>
+                <button type="button" id="rpbtnForReview" class="btn btn-warning">대댓글 작성</button>
                 <button type="button" id="rpcencelbtn" class="btn btn-secondary">취소</button>
             </div>
         </div>
