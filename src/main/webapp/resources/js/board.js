@@ -159,6 +159,25 @@ $('#Boardcancelbtn').on('click',function () {   //취소하기
     history.go(-1);
 });
 
+$(document).ready(function () { //첨부파일명 변경
+    $("#file1b").change(function () {
+        var file1name = $(this)[0].files[0].name;
+        document.getElementById('file1bLable').innerText = file1name;
+    })
+})
+$(document).ready(function () { //첨부파일명 변경
+    $("#file2b").change(function () {
+        var file1name = $(this)[0].files[0].name;
+        document.getElementById('file2bLable').innerText = file1name;
+    })
+})
+$(document).ready(function () { //첨부파일명 변경
+    $("#file3b").change(function () {
+        var file1name = $(this)[0].files[0].name;
+        document.getElementById('file3bLable').innerText = file1name;
+    })
+})
+
 
 //update
 $('#Boardupbdokbtn').on('click',function () {    //수정완료

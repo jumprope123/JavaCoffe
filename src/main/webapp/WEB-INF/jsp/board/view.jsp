@@ -37,17 +37,21 @@
         </div>
         <div class="col-6 text-right">
                 <button type="button" id="newbd" class="btn btn-light">
-                    <i class="bi bi-plus-circle-fill bidragup"></i>새글쓰기</button>
+                    <i class="bi bi-plus-circle-fill bidragup"></i>&nbsp;새글쓰기</button>
         </div>
     </div><!--버튼들-->
 
     <div class="row margin1050">
         <table class="table">
-            <tr><th colspan="2" class="tblines2 tbbg1">
-                <h2>${bd.title}</h2></th></tr><!--제목-->
-            <tr class="tbbg2"><td>${bd.userid}</td>
-                <td class="text-right">${bd.regdate} / ${bd.thumbs} / ${bd.views}</td></tr><!--작성자,작성일,조회수-->
-            <tr><td colspan="2" class="tbbg3 tblines2">
+            <tr><th colspan="2" class="tblines2 tbbg4" >
+                <h2><strong>Title&nbsp;:&nbsp;${bd.title}</strong></h2></th></tr><!--제목-->
+            <tr class=" font-weight-bold tbbg4">
+                <td><i class="bi bi-person"></i> : ${bd.userid}</td>
+                <td class="text-right"><i class="bi bi-calendar"></i> :${bd.regdate}
+                    | <i class="bi bi-hand-thumbs-up-fill"></i> : <span id="thumbs">${bd.thumbs}</span>
+                    | <i class="bi bi-eye"></i> : ${bd.views}</td>
+            </tr>
+            <tr><td colspan="2" class=" tblines2">
                 ${fn:replace(bd.contents, newChar, "<br>")}
             </td></tr><!--본문-->
             <tr><td class="text-left">첨부1</td><!--첨부파일-->
@@ -90,7 +94,7 @@
 <%--            </c:if>--%>
 
             <button type="button" id="listbdbtn" class="btn btn-dark">
-                <i class="bi bi-card-list bidragup"></i>목록으로</button>
+                <i class="bi bi-card-list bidragup"></i>&nbsp;목록으로</button>
         </div>
     </div><!--버튼들-->
 
