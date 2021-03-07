@@ -1,7 +1,10 @@
-
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
+
+
+
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <style>
     .zipsize {
@@ -49,17 +52,17 @@
                         <label class="col-2 col-form-label text-right"
                                for="name">이름</label>
                         <input type="text" name="name" id="name"
-                               class="form-control col-2 border-info" readonly value="${param.name}">
+                               class="form-control col-2 border-info" readonly value="${name2}">          <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
                     </div><!--이름-->          <%--param 쿼리문을 받아서 넘어온값을 value값으로.ID값을 넣어주면 적용됨--%>
 
                     <div class="form-group row">
                         <label class="col-2 col-form-label  text-right"
                                for="jumin1">주민등록번호</label>
                         <input type="text" name="jumin1" id="jumin1"
-                               class="form-control col-2 border-info" readonly value="${param.jumin1}">
+                               class="form-control col-2 border-info" readonly value="${jumin1}">
                         <label class="col-form-label">&nbsp;&ndash;&nbsp;</label>
                         <input type="password" name="jumin2" id="jumin2"
-                               class="form-control col-2 border-info" readonly value="${param.jumin2}">
+                               class="form-control col-2 border-info" readonly value="${jumin2}">
                     </div><!--주민번호-->
 
                     <div class="form-group row">
@@ -162,7 +165,7 @@
 
             <div class="row margin30">
                 <div class="col-12 text-center">
-                    <button type="button" id="joinbtn" onclick="checkPWReg()||checkZIPReg()||checkEmailReg()||checkPhoneReg()"
+                    <button type="button" id="joinbtn" <%--onclick="checkPWReg()||checkZIPReg()||checkEmailReg()||checkPhoneReg()"--%> <%--<<<<<<<<<<<<<<<<<<<< 잠깐 해제--%>
                             class="btn btn-primary">
                         <i class="bi bi-check"></i> 입력완료</button>
                     <button type="button" id="canclebtn"
@@ -171,7 +174,7 @@
                 </div>
             </div><!--버튼들-->
 
-            <input type="hidden" name="jumin2" id="jumin">
+            <input type="hidden" name="jumin" id="jumin">
             <input type="hidden" name="sample6_postcode1" id="sample6_postcode1">
             <input type="hidden" name="email" id="email">
             <input type="hidden" name="phone" id="phone">

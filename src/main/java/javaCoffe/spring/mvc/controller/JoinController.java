@@ -1,9 +1,10 @@
 package javaCoffe.spring.mvc.controller;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
 import javaCoffe.spring.mvc.service.MemberService;
 import javaCoffe.spring.mvc.utils.GoogleCaptchaUtilforJoin;
 import javaCoffe.spring.mvc.vo.MemberVO;
-import org.apache.logging.log4j.core.tools.picocli.CommandLine;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ public class JoinController {
         this.msrv = msrv;
         this.guctilfj = guctilfj;
     }
+
     @GetMapping("/join/login")
     public String login() {
         return "join/login.tiles";
@@ -47,20 +49,21 @@ public class JoinController {
         return "join/checkme";
     }
 
-    @PostMapping("/join/joinme") // 회원가입 폼
-    public ModelAndView joinme(MemberVO mvo) throws UnsupportedEncodingException {
+    @PostMapping ("/join/joinme") // 회원가입 폼  뭐가 문제지<<<<<<<<<<<<<<<<
+    public ModelAndView joinme(String name2, String jumin1, String jumin2) throws UnsupportedEncodingException {
         // 뷰객체로 생성
         // jsp로 객체 넘김
         // list
         ModelAndView mv = new ModelAndView();
-        String param1 = "?name=" + (mvo.getName());
         mv.setViewName("join/joinme.tiles");
-       // mv.addObject("name2",param);
+        mv.addObject("name2",name2);
+        mv.addObject("jumin1",jumin1);
+        mv.addObject("jumin2",jumin2);
 
         return mv;
     }
 
-    @PostMapping("/join/joinmeok") // 회원가입처리
+    @PostMapping("/join/joinmeok") // 회원가입처리 뭐가 문제지<<<<<<<<<<<<<<<<
     public String joinmeok(MemberVO mvo,
                            HttpServletRequest req,
                            RedirectAttributes rds) throws UnsupportedEncodingException {
@@ -73,7 +76,6 @@ public class JoinController {
         String returnPage = "redirect:/join/joinme" + param;
 
 
-
         // 클라이언트에서 생성한 captcha 코드를 가져옴
         String gCaptcha = req.getParameter("g-recaptcha");
 
@@ -83,13 +85,17 @@ public class JoinController {
         if (guctilfj.checkCaptchaforJoin(gCaptcha)) {
             msrv.newMember(mvo);
             String regdate = msrv.readRegDate(mvo.getName());
+
             returnPage = "redirect:/join/joinok?name=" +
                     URLEncoder.encode(mvo.getName(),"UTF-8")+"&email="+mvo.getEmail()+"&regdate="+regdate;
+
         }else {
             rds.addFlashAttribute("checkCaptchaforJoin","자동가입방지 확인이 실패했어요");
             rds.addFlashAttribute("mvo",mvo);
         }
+
         return returnPage;
+
     }
 
 
