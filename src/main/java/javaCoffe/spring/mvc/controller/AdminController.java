@@ -38,9 +38,11 @@ public class AdminController {
     }
 
     @GetMapping("/admin/handle")
-    public ModelAndView handler(ModelAndView mv){
+    public ModelAndView handler(ModelAndView mv, String cp){
+        if (cp == null || cp.isEmpty()) {cp = "1";}
         mv.setViewName("admin/handle.tiles");
-        mv.addObject("data" , adsrv.readBuyData());
+        mv.addObject("data" , adsrv.readBuyData(cp)); //30개씩 뽑아서 넘김
+        mv.addObject("dataCnt",adsrv.countData());
         return mv;
     }
 

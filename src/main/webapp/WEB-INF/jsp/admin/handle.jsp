@@ -1,6 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
     .singleDay{
@@ -8,6 +9,26 @@
         font-size: 16px;
     }
 </style>
+
+<%-- 페이지당 게시물 수 30로 설정--%>
+<fmt:parseNumber var="cp" value="${param.cp}"/>
+<fmt:parseNumber var="pp" value="30"/>
+<fmt:parseNumber var="dataCnt" value="${dataCnt}"/>
+
+<fmt:parseNumber var="sp" value="${((cp-1) / 10)}" integerOnly="true"/>
+<fmt:parseNumber var="sp" value="${sp * 10 + 1}"/>
+<fmt:parseNumber var="ep" value="${sp + 9}"/>
+
+<fmt:parseNumber var="tp" value="${dataCnt/pp}" integerOnly="true"/>
+<c:if test="${(dataCnt % pp) > 0}">
+    <fmt:parseNumber var="tp" value="${tp + 1}"/>
+</c:if>
+
+<fmt:parseNumber var="snum" value="${dataCnt - (cp - 1) * pp}" integerOnly="true"/>
+
+<%--네비게이션 링크--%>
+<c:set var="navlnk" value="/admin/handle?cp="/>
+
 <%-- 이미지 출력을 위한 기본 주소 설정 --%>
 <%-- http://localhost/eshop/_thumb/small_글번호_파일명 --%>
 <c:set var="baseImgURL" value="http://localhost/eshop"/>
@@ -66,6 +87,32 @@
                     </c:forEach>
                 </tbody>
             </table>
+            <%--하단 페이지 바--%>
+            <div class="row">
+                <div class="col-12">
+                    <ul class="pagination justify-content-center">
+                        <%--'이전'이 표시되어야 할 때는 cp > 10 --%>
+                        <li class="page-item <c:if test="${sp lt 11}">disabled</c:if>">
+                            <a href="${navlnk}${sp - 10}" class="page-link">이전</a></li>
+
+                        <c:forEach var="i" begin="${sp}" end="${ep}" step="1">
+                            <c:if test="${i le tp}">
+                                <c:if test="${i ne cp}">
+                                    <li class="page-item"><a href="${navlnk}${i}" class="page-link font-weight-bold">${i}</a></li>
+                                </c:if>
+
+                                <c:if test="${i eq cp}">
+                                    <li class="page-item active"><a href="${navlnk}${i}" class="page-link font-weight-bold">${i}</a></li>
+                                </c:if>
+                            </c:if>
+                        </c:forEach>
+
+                        <%--'다음'이 표시되어야 할 때는 ?--%>
+                        <li class="page-item <c:if test="${ep gt tp}">disabled</c:if>">
+                            <a href="${navlnk}${sp+10}" class="page-link">다음</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

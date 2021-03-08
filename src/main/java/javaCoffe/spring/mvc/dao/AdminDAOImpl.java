@@ -22,12 +22,17 @@ public class AdminDAOImpl implements AdminDAO{
     }
 
     @Override
-    public List<BuyPageVO> readAllData() {
-        return sqlSession.selectList("admin.selectAllData");
+    public List<BuyPageVO> readAllData(int snum) {
+        return sqlSession.selectList("admin.selectAllData",snum);
     }
 
     @Override
     public void processModify(Map<String, Object> map) {
         sqlSession.update("admin.processModify",map);
+    }
+
+    @Override
+    public int countData() {
+        return sqlSession.selectOne("admin.countData");
     }
 }

@@ -52,7 +52,10 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public List<BuyPageVO> readBuyData() { return adao.readAllData(); }
+    public List<BuyPageVO> readBuyData(String cp) {
+        int snum = (Integer.parseInt(cp) - 1) * 30;
+        return adao.readAllData(snum);
+    }
 
     @Override
     public void processModi(int buyno, String process) {
@@ -60,5 +63,10 @@ public class AdminServiceImpl implements AdminService{
         map.put("buyno",buyno);
         map.put("process",process);
         adao.processModify(map);
+    }
+
+    @Override
+    public int countData() {
+        return adao.countData();
     }
 }
