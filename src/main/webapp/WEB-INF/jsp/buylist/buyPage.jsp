@@ -144,6 +144,7 @@
                     <div class="row mt-2 align-items-center">
                         <div class="col-2 offset-1">적립</div>
                         <div class="col-3 text-right" style="border-bottom: 1px solid RGB(229,229,229)"><span id="forPlusPoint"><fmt:parseNumber value="${(evo.dcprice * salesCnt)/10}" integerOnly="true" /></span>원</div>
+                        <div class="col-6 text-danger">총 상품금액의 10%가 포인트로 적립됩니다.</div>
                         <input type="hidden" name="plusPoint" id="plusPoint" >
                     </div>
                 </div>
