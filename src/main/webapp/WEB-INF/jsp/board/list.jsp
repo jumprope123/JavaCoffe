@@ -38,9 +38,9 @@
 
     <div class="row margin1050">
         <div class="col-12">
-            <table class="table table-striped text-center table-hover">
-                <thead style="background: #BF8577">
-                <tr><th style="width:7%">번호</th>
+            <table class="table table-striped tblines text-center table-hover">
+                <thead style="background: #a5a2a1;">
+                <tr class="text-white"><th style="width:7%">번호</th>
                     <th>제목</th>
                     <th style="width:12%">작성자</th>
                     <th style="width:13%">작성일</th>
@@ -48,8 +48,8 @@
                     <th style="width:7%">조회</th></tr>
                 </thead>
                 <tbody>
-                <tr class="text-danger" style="background: #e8e7e7"><th>공지</th>
-                    <th><span class="badge-danger bi bi-cup-fill"> Hot </span>&nbsp;고객센터입니다. 불편한점을 적어주시면 신속하게 반영하도록 노력하겠습니다 <br/>타인에 대한 비방과 욕설은 금지입니다</th>
+                <tr class="text-info" style="background: #e8e7e7"><th class="text-danger">공지</th>
+                    <th><span class="badge-danger bi bi-cup-fill"> Hot </span>&nbsp;고객센터입니다. 건의사항을 적어주시면 신속하게 반영하도록 노력하겠습니다 <br/>타인에 대한 비방과 욕설은 금지입니다</th>
                     <th>운영자</th>
                     <th>2021-02-20</th>
                     <th>10</th>
@@ -73,7 +73,7 @@
 <%--        <c:if test="${not empty UID }">--%>
             <div class="col-6">
                 <div class="form-group row">
-                    <select name="findtype" id="findtype" class="form-control col-4">
+                    <select name="findtype" id="findtype" class="form-control col-3">
                         <option value="title">제목</option>
                         <option value="ticon">제목 + 내용</option>
                         <option value="contents">내용</option>
@@ -86,7 +86,7 @@
             </div>
             <div class="col-6 text-right">
                 <button type="button" id="newbd" class="btn btn-light">
-                    <i class="bi bi-plus-circle-fill bidragup"></i>&nbsp;새 글 쓰기</button>
+                    <i class="bi bi-pencil-square bidragup"></i>&nbsp;새 글 쓰기</button>
             </div>
 <%--        </c:if>--%>
     </div><!--새 글 쓰기-->
