@@ -16,6 +16,10 @@
       update BoardReply set reply = #{reply} , regdate = current_timestamp where cno = #{cno};
    </update>
 
+   <delete id="deleteReplyBoard" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.ReplyVO">
+      delete from BoardReply where cno = #{cno};
+   </delete>
+
    <select id="lastRno" statementType="PREPARED" resultType="String">
       select auto_increment from information_schema.TABLES
       where TABLE_NAME = 'BoardReply';

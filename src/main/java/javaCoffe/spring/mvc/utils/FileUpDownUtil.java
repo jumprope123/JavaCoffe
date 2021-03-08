@@ -134,6 +134,7 @@ public class FileUpDownUtil {
         //abc.123.xyz.png   : fnames[3] -> png
         int pos=ofname.lastIndexOf(".");
         String ftype = ofname.substring(pos + 1);
+        ftype = ftype.toLowerCase();
         String fname = ofname.substring(0,pos);
 
         String nfname = fname + uuid + "." + ftype; // 새로운 파일명 생성

@@ -215,9 +215,17 @@ public class BoardController {
     //댓글 수정하기
     @PostMapping("/board/replyModiOk")
     public String replyModiOk(ReplyVO rvo){
+
         String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
         brsrv.updateRePly(rvo);
         return returnPage;
     }
 
+    // 댓글 삭제하기
+    @PostMapping("/board/delreply")
+    public String replydel(ReplyVO rvo){
+        String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
+        brsrv.delRePly(rvo);
+        return returnPage;
+    }
 }
