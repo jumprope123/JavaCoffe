@@ -112,13 +112,35 @@
                     </div>
                 </div>
             </div>
+            <div class="row mt-3"><div class="col-12" style="border-bottom: 1px solid RGB(246,246,246);"></div></div>
+            <div class="row mt-3">
+                <div class="col-9">
+                    <div class="row font-weight-bold h5">할인 및 포인트</div>
+                    <div class="row text-success">자바커피 포인트 결제</div>
+                    <div class="row mt-4 align-items-center">
+                        <div class="col-2 offset-1">보유</div>
+                        <div class="col-3 text-right" style="border-bottom: 1px solid RGB(229,229,229)">${mvo.points}원</div>
+                        <input type="hidden" id="buyPagePoints" value="${mvo.points}">
+                    </div>
+                    <div class="row mt-2 align-items-center">
+                        <div class="col-2 offset-1">사용</div>
+                        <input type="number" class="col-3 form-control" id="buyPageUsePoints" name="buyPageUsePoints" value="0">
+                    </div>
+                </div>
+            </div>
+
+
             <div class="row mt-5"><div class="col-12" style="border-bottom: 1px solid grey;"></div></div>
             <div class="row mt-3">
-                <div class="col-12 h4 text-center">총 결제금액 : <span class="text-danger h1">${evo.dcprice * salesCnt}원</span></div>
+                <div class="col-4 offset-4 text-center">총 상품금액 : ${evo.dcprice * salesCnt}원</div>
+                <div class="col-4 offset-4 text-center">배송비 : (+)${evo.shipPay}원</div>
+                <div class="col-4 offset-4 text-center">포인트 : (-)<span id="finalUsingPoint">0</span>원</div>
+                <input type="hidden" id="beforeFinalPrice" value="${(evo.dcprice * salesCnt) + evo.shipPay}">
+                <div class="col-12 h4 text-center">총 결제금액 : <span class="text-danger h1"><span id="finalPrice">${(evo.dcprice * salesCnt) + evo.shipPay}</span>원</span></div>
             </div>
             <div class="row mt-3 mb-3">
                 <div class="col-12 text-center">
-                    <button type="button" id="buylistOkBtn" class="btn-lg btn-success">결재하기</button>
+                    <button type="button" id="buylistOkBtn" class="btn-lg btn-success">결제하기</button>
                     <button type="button" id="buylistcancelBtn" class="btn-lg btn-danger">취소하기</button>
                 </div>
             </div>

@@ -13,6 +13,15 @@ public class MemberVO {
     private String email;
     private String phone;
     private String regdate;
+    private String points;
+
+    public String getPoints() {
+        return points;
+    }
+
+    public void setPoints(String points) {
+        this.points = points;
+    }
 
     public String getMno() {
         return mno;
