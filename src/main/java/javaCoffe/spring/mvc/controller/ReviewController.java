@@ -162,11 +162,6 @@ public class ReviewController {
     @ResponseBody
     @GetMapping("/review/thumbUp")
     public void thumbUp(String rno, String checkThumb, HttpServletResponse res){ //HttpServletResponse는 servlet의 힘을 빌려서 화면에 출력해주는데 사용.
-        System.out.println("it's working");
-        System.out.println("--------------------------");
-        System.out.println(rno);
-        System.out.println(checkThumb);
-        System.out.println("--------------------------");
         String ThumbCnt = rsrv.updateThumb(rno, checkThumb);
         res.setContentType("application/json; charset=UTF-8");
         try {

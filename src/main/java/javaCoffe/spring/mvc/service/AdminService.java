@@ -10,4 +10,6 @@ public interface AdminService {
     boolean newProduct(EshopVO evo, MultipartFile[] img);
 
     List<BuyPageVO> readBuyData();
+
+    void processModi(int buyno, String process);
 }

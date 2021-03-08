@@ -88,3 +88,13 @@ $('#cancel').on('click',function () {
     history.back();
 }) //취소하기 버튼 클릭시
 
+function processMod(buyno) {
+    var status = $('#processModify'+buyno).val();
+    $('#processVal'+buyno).text(status);
+    $.ajax({
+        url:'/admin/processModify',
+        type: 'GET',
+        data: {buyno: buyno, process:status}
+    })
+    alert(buyno+' 번의 배송상황을 '+status+' 로 수정하였습니다');
+}

@@ -17,4 +17,8 @@
         select * from BuyPage;
     </select>
 
+    <select id="processModify" statementType="PREPARED" parameterType="map">
+        update BuyPage set process = #{process} where buyno = #{buyno};
+    </select>
+
 </mapper>
