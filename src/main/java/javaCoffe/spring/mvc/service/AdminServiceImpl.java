@@ -2,6 +2,7 @@ package javaCoffe.spring.mvc.service;
 
 import javaCoffe.spring.mvc.dao.AdminDAO;
 import javaCoffe.spring.mvc.utils.ImageUploadUtilForAdmin;
+import javaCoffe.spring.mvc.vo.BuyPageVO;
 import javaCoffe.spring.mvc.vo.EshopVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,4 +48,7 @@ public class AdminServiceImpl implements AdminService{
         imgutilforAdmin.imageCropResize(evo.getFnames().split("[/]")[0],id);
         return true;
     }
+
+    @Override
+    public List<BuyPageVO> readBuyData() { return adao.readAllData(); }
 }

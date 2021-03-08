@@ -13,5 +13,8 @@
         select AUTO_INCREMENT -1 eno from information_schema.TABLES where TABLE_NAME = 'eshop';
     </select>
 
+    <select id="selectAllData" statementType="PREPARED" resultType="javaCoffe.spring.mvc.vo.BuyPageVO">
+        select * from BuyPage;
+    </select>
 
 </mapper>

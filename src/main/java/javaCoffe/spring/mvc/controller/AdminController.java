@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AdminController {
@@ -31,5 +32,12 @@ public class AdminController {
             returnPage = "redirect:/eshop/list?bigGenre=coffe&cp=1";
         }
         return returnPage;
+    }
+
+    @GetMapping("/admin/handle")
+    public ModelAndView handler(ModelAndView mv){
+        mv.setViewName("/admin/handle.tiles");
+        mv.addObject("data" , adsrv.readBuyData());
+        return mv;
     }
 }
