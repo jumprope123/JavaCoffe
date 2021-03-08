@@ -38,9 +38,30 @@ public class AdminController {
     }
 
     @GetMapping("/admin/handle")
-    public ModelAndView handler(ModelAndView mv){
+    public ModelAndView handler(ModelAndView mv, String cp){
+        if (cp == null || cp.isEmpty()) {cp = "1";}
         mv.setViewName("admin/handle.tiles");
-        mv.addObject("data" , adsrv.readBuyData());
+        mv.addObject("data" , adsrv.readBuyData(cp)); //30개씩 뽑아서 넘김
+        mv.addObject("dataCnt",adsrv.countData());
+        return mv;
+    }
+
+    @GetMapping("/admin/find")
+    public ModelAndView find(ModelAndView mv, String cp , String adminSearchTxt){
+        if (cp == null || cp.isEmpty()) {
+            cp = "1";
+        }
+        switch (adminSearchTxt){
+            case "1" : adminSearchTxt = "배송준비중"; break;
+            case "2" : adminSearchTxt = "배송중"; break;
+            case "3" : adminSearchTxt = "배송완료"; break;
+            case "4" : adminSearchTxt = "반품요청"; break;
+            default: adminSearchTxt = "반품"; break;
+        }
+
+        mv.setViewName("admin/handle.tiles");
+        mv.addObject("data" , adsrv.readBuyData(cp, adminSearchTxt)); //30개씩 뽑아서 넘김
+        mv.addObject("dataCnt",adsrv.countData(adminSearchTxt));
         return mv;
     }
 

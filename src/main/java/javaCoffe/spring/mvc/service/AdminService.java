@@ -9,7 +9,13 @@ import java.util.List;
 public interface AdminService {
     boolean newProduct(EshopVO evo, MultipartFile[] img);
 
-    List<BuyPageVO> readBuyData();
+    List<BuyPageVO> readBuyData(String cp);
 
     void processModi(int buyno, String process);
+
+    int countData();
+
+    List<BuyPageVO> readBuyData(String cp, String adminSearchTxt);
+
+    int countData(String adminSearchTxt);
 }

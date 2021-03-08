@@ -9,7 +9,13 @@ import java.util.Map;
 public interface AdminDAO {
     String insertNewProduct(EshopVO evo);
 
-    List<BuyPageVO> readAllData();
+    List<BuyPageVO> readAllData(int snum);
 
     void processModify(Map<String, Object> map);
+
+    int countData();
+
+    List<BuyPageVO> readAllDataSearch(Map<String, Object> map);
+
+    int countDataSearch(String adminSearchTxt);
 }
