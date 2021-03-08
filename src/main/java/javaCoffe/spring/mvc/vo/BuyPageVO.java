@@ -27,11 +27,12 @@ public class BuyPageVO {
     private int plusPoint;
     private int afterFinalPrice;
     private int eno;
+    private String process;
 
     public BuyPageVO() {
     }
 
-    public BuyPageVO(int buyno, String fnames, String brand, String title, int shipPay, int purchase, int discount, int totalOgprice, int totalDcprice, String deliveryZipcode, String deliveryUserAddr1, String deliveryUserAddr2, String deliveryUserAddr3, String userid, String orderUsername, String orderUserphone, String orderUseremail, String orderRequest, String receiveName, String receivePhone, String receiveEmail, int beforePoint, int buyPageUsePoints, int plusPoint, int afterFinalPrice, int eno) {
+    public BuyPageVO(int buyno, String fnames, String brand, String title, int shipPay, int purchase, int discount, int totalOgprice, int totalDcprice, String deliveryZipcode, String deliveryUserAddr1, String deliveryUserAddr2, String deliveryUserAddr3, String userid, String orderUsername, String orderUserphone, String orderUseremail, String orderRequest, String receiveName, String receivePhone, String receiveEmail, int beforePoint, int buyPageUsePoints, int plusPoint, int afterFinalPrice, int eno, String process) {
         this.buyno = buyno;
         this.fnames = fnames;
         this.brand = brand;
@@ -58,6 +59,7 @@ public class BuyPageVO {
         this.plusPoint = plusPoint;
         this.afterFinalPrice = afterFinalPrice;
         this.eno = eno;
+        this.process = process;
     }
 
     public int getBuyno() {
@@ -267,6 +269,14 @@ public class BuyPageVO {
     public void setEno(int eno) {
         this.eno = eno;
     }
+
+    public String getProcess() {
+        return process;
+    }
+
+    public void setProcess(String process) {
+        this.process = process;
+    }
 }
 
 /*
@@ -349,4 +359,5 @@ plusPoint 적립포인트 (이거 나중에 포인트에 더해줘야함)
 afterFinalPrice 최종결재금액
  <input type="hidden" id="afterFinalPrice" name="afterFinalPrice" value="${(evo.dcprice * salesCnt) + evo.shipPay}">
 
+process 배송상황
 //받는분 주소는 배송지주소와 동일*/

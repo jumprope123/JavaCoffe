@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("adsrv")
 public class AdminServiceImpl implements AdminService{
@@ -51,4 +53,12 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public List<BuyPageVO> readBuyData() { return adao.readAllData(); }
+
+    @Override
+    public void processModi(int buyno, String process) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("buyno",buyno);
+        map.put("process",process);
+        adao.processModify(map);
+    }
 }

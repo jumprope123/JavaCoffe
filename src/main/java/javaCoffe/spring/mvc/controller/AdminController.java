@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class AdminController {
@@ -36,8 +39,14 @@ public class AdminController {
 
     @GetMapping("/admin/handle")
     public ModelAndView handler(ModelAndView mv){
-        mv.setViewName("/admin/handle.tiles");
+        mv.setViewName("admin/handle.tiles");
         mv.addObject("data" , adsrv.readBuyData());
         return mv;
+    }
+
+    @ResponseBody
+    @GetMapping("/admin/processModify")
+    public void processModify(int buyno, String process){
+        adsrv.processModi(buyno,process);
     }
 }

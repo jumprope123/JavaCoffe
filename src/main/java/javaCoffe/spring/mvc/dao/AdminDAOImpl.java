@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service("adao")
 public class AdminDAOImpl implements AdminDAO{
@@ -23,5 +24,10 @@ public class AdminDAOImpl implements AdminDAO{
     @Override
     public List<BuyPageVO> readAllData() {
         return sqlSession.selectList("admin.selectAllData");
+    }
+
+    @Override
+    public void processModify(Map<String, Object> map) {
+        sqlSession.update("admin.processModify",map);
     }
 }
