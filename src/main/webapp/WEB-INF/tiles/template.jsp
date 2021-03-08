@@ -23,7 +23,7 @@
     <title>JAVAPRESSO</title>
 </head>
 <body>
-<div class="container1">
+<div class="container1" style="min-width: 1850px;">
     <tiles:insertAttribute name="header"/>
 
     <tiles:insertAttribute name="main" />
