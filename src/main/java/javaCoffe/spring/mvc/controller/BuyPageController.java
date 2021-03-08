@@ -1,6 +1,8 @@
 package javaCoffe.spring.mvc.controller;
 
 import javaCoffe.spring.mvc.service.BuyPageService;
+import javaCoffe.spring.mvc.service.MemberService;
+import javaCoffe.spring.mvc.vo.BuyPageVO;
 import javaCoffe.spring.mvc.vo.EshopVO;
 import javaCoffe.spring.mvc.vo.MemberVO;
 import org.apache.http.HttpRequest;
@@ -34,5 +36,21 @@ public class BuyPageController {
         mv.addObject("finalPrice",finalPrice);
         mv.addObject("salesCnt",salesCnt);
         return mv;
+    }
+
+    @PostMapping("/buylist/buyProcess")
+    public String buyPrecess(BuyPageVO buyvo){ //따로 결재를 안할거라서 그냥 String리턴으로 받음
+        String returnPage = "redirect:/buylist/buyOK"; //지금은 ok페이지만존재
+        int insertResult = buysrv.insertData(buyvo);
+        if (insertResult > 0) {
+            returnPage = "redirect:/buylist/buyOK";
+        }
+        buysrv.changePoint(buyvo);//사용한 포인트만큼 차감하고, 적립된 포인트만큼 증가시켜주기
+        return returnPage;
+    }
+
+    @GetMapping("/buylist/buyOK")
+    public String buyOK(){
+        return "buylist/buyOK.tiles";
     }
 }

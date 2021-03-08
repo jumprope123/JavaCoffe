@@ -26,4 +26,21 @@ $('#buyPageUsePoints').on('input',function () {
     $('#buyPageUsePoints').val(resultPoint);
     $('#finalUsingPoint').text(resultPoint)
     $('#finalPrice').text(beforeFinalPrice - resultPoint);
+    $('#afterFinalPrice').val(beforeFinalPrice - resultPoint);
 })
+
+
+$('#buylistcancelBtn').on('click',function () {
+    if (confirm('정말 취소하시겠습니까?')){
+        history.back();
+    }
+})
+
+$('#buylistOkBtn').on('click',function () {
+    $('#buyPageForm').attr('method','post');
+    $('#buyPageForm').attr('action','/buylist/buyProcess');
+    $('#buyPageForm').submit();
+})
+
+var forPlusPoint = $('#forPlusPoint').text();
+$('#plusPoint').val(forPlusPoint);
