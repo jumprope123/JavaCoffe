@@ -239,7 +239,7 @@
                                 </div>
                             </div>
                             <form id="eshopViewForm" class="row form-group mt-3">
-                                <input type="hidden" id="eshopUserid" name="userid" value="testid">
+                                <input type="hidden" id="eshopUserid" name="userid" value="testUserId">
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-12" style="border-top: 1px solid RGB(233,233,233);"></div>

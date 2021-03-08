@@ -26,11 +26,12 @@ public class BuyPageVO {
     private int buyPageUsePoints;
     private int plusPoint;
     private int afterFinalPrice;
+    private int eno;
 
     public BuyPageVO() {
     }
 
-    public BuyPageVO(int buyno, String fnames, String brand, String title, int shipPay, int purchase, int discount, int totalOgprice, int totalDcprice, String deliveryZipcode, String deliveryUserAddr1, String deliveryUserAddr2, String deliveryUserAddr3, String userid, String orderUsername, String orderUserphone, String orderUseremail, String orderRequest, String receiveName, String receivePhone, String receiveEmail, int beforePoint, int buyPageUsePoints, int plusPoint, int afterFinalPrice) {
+    public BuyPageVO(int buyno, String fnames, String brand, String title, int shipPay, int purchase, int discount, int totalOgprice, int totalDcprice, String deliveryZipcode, String deliveryUserAddr1, String deliveryUserAddr2, String deliveryUserAddr3, String userid, String orderUsername, String orderUserphone, String orderUseremail, String orderRequest, String receiveName, String receivePhone, String receiveEmail, int beforePoint, int buyPageUsePoints, int plusPoint, int afterFinalPrice, int eno) {
         this.buyno = buyno;
         this.fnames = fnames;
         this.brand = brand;
@@ -56,6 +57,7 @@ public class BuyPageVO {
         this.buyPageUsePoints = buyPageUsePoints;
         this.plusPoint = plusPoint;
         this.afterFinalPrice = afterFinalPrice;
+        this.eno = eno;
     }
 
     public int getBuyno() {
@@ -257,6 +259,14 @@ public class BuyPageVO {
     public void setAfterFinalPrice(int afterFinalPrice) {
         this.afterFinalPrice = afterFinalPrice;
     }
+
+    public int getEno() {
+        return eno;
+    }
+
+    public void setEno(int eno) {
+        this.eno = eno;
+    }
 }
 
 /*
@@ -266,6 +276,9 @@ buyno 프라이머리키
 
 fnames 사진
 <input type="hidden" name="fnames" value="${evo.fnames}">
+
+eno 사진번호
+<input type="hidden" name="eno" value="${evo.eno}">
 
 brand 판매자
 <input type="hidden" name="brand" value="${evo.brand}">
