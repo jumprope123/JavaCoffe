@@ -125,5 +125,14 @@
         <div id="shop_info_window">
         </div>
     </div>
+    <c:forEach var="f" items="${fsinfo}">
+        <tr><td>${f.sname}</td>
+            <td>${f.address}</td>
+            <td>${f.jibeon}</td>
+    </c:forEach>
+    <c:forEach var="l" items="${location}">
+    <tr><td>${l.lat}</td>
+        <td>${l.lng}</td>
+    </c:forEach>
 </main>
 
