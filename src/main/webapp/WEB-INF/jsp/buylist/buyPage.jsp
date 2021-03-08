@@ -31,6 +31,7 @@
                         <div class="col-3">
                             <img src="${thumbURL}${evo.eno}_${fn:split(evo.fnames,"[/]")[0]}" style="border-radius: 50%">
                             <input type="hidden" name="fnames" value="${evo.fnames}">
+                            <input type="hidden" name="eno" value="${evo.eno}">
                         </div> <%--사진--%>
                         <div class="col-9 font-weight-bold text-left">${evo.title}</div>
                         <input type="hidden" name="title" value="${evo.title}"><%--상품정보--%>
