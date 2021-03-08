@@ -14,4 +14,8 @@ public interface AdminDAO {
     void processModify(Map<String, Object> map);
 
     int countData();
+
+    List<BuyPageVO> readAllDataSearch(Map<String, Object> map);
+
+    int countDataSearch(String adminSearchTxt);
 }

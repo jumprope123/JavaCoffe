@@ -98,3 +98,8 @@ function processMod(buyno) {
     })
     alert(buyno+' 번의 배송상황을 '+status+' 로 수정하였습니다');
 }
+
+$('#adminFindBtn').on('click',function () {
+    var adminSearchTxt = $('#adminSearchTxt').val()
+    location.href = '/admin/find?cp=1&adminSearchTxt='+adminSearchTxt;
+})

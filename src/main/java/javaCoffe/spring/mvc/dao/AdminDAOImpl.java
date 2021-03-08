@@ -35,4 +35,14 @@ public class AdminDAOImpl implements AdminDAO{
     public int countData() {
         return sqlSession.selectOne("admin.countData");
     }
+
+    @Override
+    public List<BuyPageVO> readAllDataSearch(Map<String, Object> map) {
+        return sqlSession.selectList("admin.selectAllDataSearch",map);
+    }
+
+    @Override
+    public int countDataSearch(String adminSearchTxt) {
+        return sqlSession.selectOne("admin.countDataSearch",adminSearchTxt);
+    }
 }

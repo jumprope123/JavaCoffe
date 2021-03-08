@@ -69,4 +69,18 @@ public class AdminServiceImpl implements AdminService{
     public int countData() {
         return adao.countData();
     }
+
+    @Override
+    public List<BuyPageVO> readBuyData(String cp, String adminSearchTxt) {
+        int snum = (Integer.parseInt(cp) - 1) * 30;
+        Map<String,Object> map = new HashMap<>();
+        map.put("snum",snum);
+        map.put("adminSearchTxt",adminSearchTxt);
+        return adao.readAllDataSearch(map);
+    }
+
+    @Override
+    public int countData(String adminSearchTxt) {
+        return adao.countDataSearch(adminSearchTxt);
+    }
 }

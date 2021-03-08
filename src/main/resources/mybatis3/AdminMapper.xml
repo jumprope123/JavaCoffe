@@ -24,4 +24,12 @@
     <select id="countData" statementType="PREPARED" resultType="int">
         select count(buyno) cnt from BuyPage;
     </select>
+
+    <select id="selectAllDataSearch" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.BuyPageVO">
+        select * from BuyPage where process = #{adminSearchTxt} order by buyno desc limit #{snum}, 30;
+    </select>
+
+    <select id="countDataSearch" statementType="PREPARED" parameterType="String" resultType="int">
+        select count(buyno) cnt from BuyPage where process = #{adminSearchTxt};
+    </select>
 </mapper>

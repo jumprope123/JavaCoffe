@@ -28,6 +28,9 @@
 
 <%--네비게이션 링크--%>
 <c:set var="navlnk" value="/admin/handle?cp="/>
+<c:if test="${not empty param.adminSearchTxt}">
+    <c:set var="navlnk" value="/admin/find?adminSearchTxt=${param.adminSearchTxt}&cp="/>
+</c:if>
 
 <%-- 이미지 출력을 위한 기본 주소 설정 --%>
 <%-- http://localhost/eshop/_thumb/small_글번호_파일명 --%>
@@ -37,9 +40,22 @@
 
 <div id="main" class="singleDay container">
     <div class="row text-center">
-    <div class="col-10 offset-1 text-center">
-        <div class="row mt-4">
-            <div class="col-12 h1">주문상황 확인 시스템</div>
+        <div class="col-10 offset-1 text-center">
+            <div class="row mt-4">
+                <div class="col-12 h1">주문상황 확인 시스템</div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-10 offset-1  text-right">
+            <select id="adminSearchTxt" class="p-2">
+                <option value="1" <c:if test="${param.adminSearchTxt == '1'}">selected</c:if>>배송준비중</option>
+                <option value="2" <c:if test="${param.adminSearchTxt == '2'}">selected</c:if>>배송중</option>
+                <option value="3" <c:if test="${param.adminSearchTxt == '3'}">selected</c:if>>배송완료</option>
+                <option value="4" <c:if test="${param.adminSearchTxt == '4'}">selected</c:if>>반품요청</option>
+                <option value="5" <c:if test="${param.adminSearchTxt == '5'}">selected</c:if>>반품</option>
+            </select>
+            <button type="button" id="adminFindBtn" class="btn btn-dark"><i class="bi bi-search bidragup"></i>검색하기</button>
         </div>
     </div>
     <div class="row mt-4">

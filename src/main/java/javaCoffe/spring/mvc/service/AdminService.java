@@ -14,4 +14,8 @@ public interface AdminService {
     void processModi(int buyno, String process);
 
     int countData();
+
+    List<BuyPageVO> readBuyData(String cp, String adminSearchTxt);
+
+    int countData(String adminSearchTxt);
 }
