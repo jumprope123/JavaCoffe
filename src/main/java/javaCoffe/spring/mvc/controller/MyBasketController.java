@@ -17,6 +17,11 @@ public class MyBasketController {
 
     @Autowired private MyBasketService mbsrv;
 
+//    @GetMapping("/mybasket/list")
+//    public String list(){
+//        return "/mybasket/list.tiles";
+//    }
+
     @PostMapping("/mybasket/list")
     public ModelAndView list(ModelAndView mv, HttpServletRequest req, HttpSession sess){
         mv.setViewName("mybasket/list.tiles");

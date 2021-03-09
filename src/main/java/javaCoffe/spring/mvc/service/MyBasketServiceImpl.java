@@ -39,8 +39,11 @@ public class MyBasketServiceImpl implements MyBasketService{
 
     @Override
     public boolean removemb(String mbno) {
+        boolean isOk = false;
+        int cnt = mbdao.deletemb(mbno);
+        if(cnt>0) isOk = true;
 
-        return false;
+        return isOk;
     }
 
     @Override
