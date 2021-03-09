@@ -1,5 +1,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>   <%--<<<<< 이건 나중에 생각해보기--%>
 
 <header id="top">
     <div id="header">
@@ -13,25 +15,33 @@
                 </div>
                 <div class="header_customer">
                     <div class="header_login">
-                        <button data-toggle="dropdown" class="LoginDropdownButton dropdown-toggle" class="LoginDropdownButton" id="hloginbtn" aria-expanded="false">
-                            로그인 하기
-                            <!--aria-expanded="false"-->
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <form class="form-inline login-form" action="/examples/actions/confirmation.php" method="post">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                        <input type="text" class="form-control" placeholder="Username" required>
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                        <input type="text" class="form-control" placeholder="Password" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                </form>
-                            </li>
-                        </ul>
+                        <c:if test="${empty sessionScope.UID}">
+                            <button data-toggle="dropdown" class="LoginDropdownButton dropdown-toggle" class="LoginDropdownButton" id="hloginbtn" aria-expanded="false">
+                                로그인 하기
+                                <!--aria-expanded="false"-->
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <form class="form-inline login-form" action="/login/login" method="post">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input type="text" name="userid" id="userID" class="form-control" placeholder="Username" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                            <input type="text" name="passwd" id="userPW" class="form-control" placeholder="Password" required>
+                                        </div>
+                                        <button id="s_hloginbtn" type="submit" class="btn btn-primary">Login</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </c:if>
+                        <c:if test="${!empty sessionScope.UID}">
+                                <button data-toggle="dropdown" class="LoginDropdownButton dropdown-toggle" class="LoginDropdownButton" id="hloginbtn1" aria-expanded="false">
+                                   로그아웃
+                                    <!--aria-expanded="false"-->
+                                </button>
+                        </c:if>
                     </div>
                     <div class="header_join">
                         <button class="JoinDropdownButton" id="hjoinbtn">
@@ -146,4 +156,7 @@
             </div>
         </nav>
     </div>
+    <script>
+        hloginbtn
+    </script>
 </header>
