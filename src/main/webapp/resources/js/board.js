@@ -77,7 +77,7 @@ $('#rmbdbtn').on('click', function () {
 $('#bdcmtbtn').on('click',function () {
     if ($('#reply').val() == '') alert('댓글을 작성하세요');
     else {
-        $('#uid').val('테스트계정');
+        $('#uid').val();
         $('#replyfrm').attr('method','post');
         $('#replyfrm').attr('action','/board/replyok');
         $('#replyfrm').submit();
@@ -103,8 +103,8 @@ $('#modifyokbtn').on('click',function () {
     else {
         $('#mmrpfrm').attr('method','post');
         $('#mmrpfrm').attr('action','/board/replyModiOk');
-        alert($('#modiReplyForBoard').val());
-        alert($('#modifyreplycno').val());
+        //alert($('#modiReplyForBoard').val());
+        //alert($('#modifyreplycno').val());
         $('#mmrpfrm').submit();
     }
 })

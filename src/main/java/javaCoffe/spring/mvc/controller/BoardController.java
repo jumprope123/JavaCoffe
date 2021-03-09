@@ -201,34 +201,30 @@ public class BoardController {
         return returnPage ;
     }
 
-    //댓글쓰기 //로그인 한 사람만 허용
+    //댓글쓰기
     @PostMapping("/board/replyok")
-    public String replyok(ReplyVO rvo, HttpSession sess){
+    public String replyok(ReplyVO rvo){
         String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
 
-        if(sess.getAttribute("UID") != null) {
-            if (rvo.getCno() == null) brsrv.newReply(rvo);
-            else brsrv.newReReply(rvo);
-        }
+        if (rvo.getCno() == null) brsrv.newReply(rvo);
+        else brsrv.newReReply(rvo);
 
         return returnPage;
     }
 
     //댓글 수정하기
     @PostMapping("/board/replyModiOk")
-    public String replyModiOk(ReplyVO rvo, HttpSession sess, String userid){
+    public String replyModiOk(ReplyVO rvo){
 
         String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
-        if(sess.getAttribute("UID").equals(userid))
         brsrv.updateRePly(rvo);
         return returnPage;
     }
 
     // 댓글 삭제하기
     @PostMapping("/board/delreply")
-    public String replydel(ReplyVO rvo, HttpSession sess, String userid){
+    public String replydel(ReplyVO rvo){
         String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
-        if(sess.getAttribute("UID").equals(userid))
         brsrv.delRePly(rvo);
         return returnPage;
     }

@@ -109,7 +109,7 @@
             <c:if test="${r.cno eq r.rno}">
                 <tr><td><h4>${r.userid}</h4></td>
                     <td>
-                        <div class="cmtbg1">${r.regdate}</div>
+                        <div>${r.regdate}</div>
                         <span style="float:right">
                             <c:if test="${not empty UID}">
                                 <a href="javascript:addReply('${r.rno}')">[추가]</a>
@@ -129,10 +129,8 @@
                     <td>
                         <ul class="list-unstyled">
                             <li>
-                                <div class="cmtbg2">
                                     <h4 style="display: inline-block">${r.userid}</h4>
                                     <span class="pushright">${r.regdate}</span>
-                                </div>
                                 <p>${r.reply}</p>
                             </li>
                         </ul>
@@ -167,7 +165,7 @@
             <div class="modal-body">
                 <form name="rpfrm" id="rpfrm" class="well form-inline">
                     <textarea name="reply" id="rereply" rows="8" cols="75" class="span4"></textarea>
-                    <input type="hidden" name="userid" value="{UID}"<%--${UID}--%>>
+                    <input type="hidden" name="userid" value="${UID}"<%--${UID}--%>>
                     <input type="hidden" name="bno" value="${param.bno}">
                     <input type="hidden" name="cno" id="cno">
                 </form>
@@ -187,7 +185,7 @@
             <div class="modal-body">
                 <form name="mmrpfrm" id="mmrpfrm" class="well form-inline">
                     <textarea name="reply" id="modiReplyForBoard" rows="8" cols="75" class="span4"></textarea>
-                    <input type="hidden" name="userid" value="{UID}"<%--${UID}--%>>
+                    <input type="hidden" name="userid" value="${UID}"<%--${UID}--%>>
                     <input type="hidden" name="bno" value="${param.bno}">
                     <input type="hidden" name="cno" id="modifyreplycno">
                 </form>
@@ -206,7 +204,7 @@
         <div class="modal-content">
             <div class="modal-header"><h3 class="modal-title">삭제한 댓글은 복구할 수 없습니다 <br />댓글을 정말 삭제하시겠습니까?</h3></div>
                 <form name="dmrpfrm" id="dmrpfrm" class="well form-inline">
-                    <input type="hidden" name="userid" value="{UID}"<%--${UID}--%>>
+                    <input type="hidden" name="userid" value="${UID}"<%--${UID}--%>>
                     <input type="hidden" name="bno" value="${param.bno}">
                     <input type="hidden" name="cno" id="deletereplycno">
                 </form>
