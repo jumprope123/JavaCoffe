@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class AdminController {
@@ -19,8 +20,11 @@ public class AdminController {
     private AdminService adsrv;
 
     @GetMapping("/admin/write")
-    public String write(){
-        return "admin/write.tiles";
+    public ModelAndView write(ModelAndView mv ,HttpSession sess){
+        mv.setViewName("admin/write.tiles");
+        String UID = (String) sess.getAttribute("UID");
+        mv.addObject("UID",UID);
+        return mv;
     }
 
     @GetMapping("/eshop/fail")
@@ -38,9 +42,11 @@ public class AdminController {
     }
 
     @GetMapping("/admin/handle")
-    public ModelAndView handler(ModelAndView mv, String cp){
+    public ModelAndView handler(ModelAndView mv, String cp, HttpSession sess){
         if (cp == null || cp.isEmpty()) {cp = "1";}
         mv.setViewName("admin/handle.tiles");
+        String UID = (String) sess.getAttribute("UID");
+        mv.addObject("UID",UID);
         mv.addObject("data" , adsrv.readBuyData(cp)); //30개씩 뽑아서 넘김
         mv.addObject("dataCnt",adsrv.countData());
         return mv;
