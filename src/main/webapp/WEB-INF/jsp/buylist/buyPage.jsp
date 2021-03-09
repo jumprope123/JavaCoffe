@@ -40,7 +40,7 @@
                             <input type="hidden" name="fnames" value="${evo.fnames}">
                             <input type="hidden" name="eno" value="${evo.eno}">
                         </div> <%--사진--%>
-                        <div class="col-9 font-weight-bold text-left">${evo.title}</div>
+                        <div class="col-9 font-weight-bold text-center">${evo.title}</div>
                         <input type="hidden" name="title" value="${evo.title}"><%--상품정보--%>
                     </div>
                 </div>
