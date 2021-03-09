@@ -120,7 +120,8 @@ header {
 
 .nav_wrap {
     margin: 0 auto;
-    width: 776px;
+    /*width: 776px;*/
+    width:800px;
     height: 76px;
 }
 
