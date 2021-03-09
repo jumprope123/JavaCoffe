@@ -10,6 +10,12 @@
     }
 </style>
 
+<c:if test="${UID ne 'javapresso'}">
+    <script>
+        location.href="/index";
+    </script>
+</c:if>
+
 <%-- 페이지당 게시물 수 30로 설정--%>
 <fmt:parseNumber var="cp" value="${param.cp}"/>
 <fmt:parseNumber var="pp" value="30"/>
