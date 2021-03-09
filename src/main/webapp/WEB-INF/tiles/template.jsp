@@ -22,7 +22,7 @@
     <%-- 추가 스타일 --%>
     <title>JAVAPRESSO</title>
 </head>
-<body>
+<body id="body" onresize="showscrollbar()">
 <div class="container1" style="min-width: 1850px;">
     <tiles:insertAttribute name="header"/>
 
@@ -30,6 +30,16 @@
 
     <tiles:insertAttribute name="footer"/>
 </div>
+
+<script>
+    function showscrollbar() {
+        if (window.innerWidth < 1850){
+            $('#body').css('overflow-x','scroll');
+        }else {
+            $('#body').css('overflow-x','hidden');
+        }
+    }
+</script>
 <!--로그인 모달-->
 <%--<tiles:insertAttribute name="modal"/>--%>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"> </script>
