@@ -41,7 +41,8 @@
                 </ul>
             </div>
         </div>
-        <div style="height: 120px; border-top: #95999c solid 1px; border-bottom: #95999c solid 1px; margin: 20px;" class="mb_product_list">
+
+        <div class="mb_product_list">
             <div class="mb_product_info">
                 <input class="mb_product_cb mt50" style="float:left;" type="checkbox">
                 <div class="mb_product_img" style="float:left; width: 120px; height: 120px;">

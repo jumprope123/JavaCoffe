@@ -169,6 +169,10 @@ ul li {
   clear:both; float:left; margin: 20px; text-align: center;  width: 940px; height: 60px; border: #5a6268 4px solid
 }
 
+.mb_product_list {
+  height: 120px; border-top: #95999c solid 1px; border-bottom: #95999c solid 1px; margin: 20px;
+}
+
 .mb_bottom_box {
   margin-bottom:50px; width: 100%; height: fit-content; text-align: center
 }
