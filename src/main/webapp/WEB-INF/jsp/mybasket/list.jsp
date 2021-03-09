@@ -14,19 +14,19 @@
 <main id="middle" style="border-bottom: #5a6268 5px solid;">
     <div id="mb_wrap">
         <div class="cart_header">
-            <a href="#"><img src="./img/javapressologo.png" alt="로고입니다"></a>
+            <a href="#"><img src="/img/mybasket/javapressologo.png" alt="로고입니다"></a>
         </div>
         <div id="mb_body">
             <div class="mb_body_header">
                 <div class="cart_title">
-                    <img src="./img/cart.png" alt="carticon">
+                    <img src="/img/mybasket/cart.png" alt="carticon">
                     <h1>장바구니</h1>
                 </div>
                 <div class="mb_list_header">
                     <ul class="mb_list_ul">
                         <li class="mb_list_item"><h3>01</h3><h2> 옵션선택 &nbsp;</h2></li>
                         <li class="mb_list_item"><h4>&nbsp;02</h4><h5> 장바구니</h5>
-                            <img src="./img/arow.png" alt="화살표"></li>
+                            <img src="/img/mybasket/arow.png" alt="화살표"></li>
                         <li class="mb_list_item"><h3>&nbsp;03</h3><h2> 주문/결제 &nbsp;</h2></li>
                         <li class="mb_list_item"><h3>&nbsp;04</h3><h2> 주문완료 &nbsp;</h2></li>
                     </ul>
@@ -41,13 +41,14 @@
                 </ul>
             </div>
         </div>
-
+        <c:if test="${!empty sessionScope.UID}">
+        <c:forEach var="mb" items="${mbvo}">
         <div class="mb_product_list">
             <div class="mb_product_info">
                 <input class="mb_product_cb mt50" style="float:left;" type="checkbox">
                 <div class="mb_product_img" style="float:left; width: 120px; height: 120px;">
                     <a class="mb_product_link" href="#">
-                        <img style="margin: 21px; width: 78px; height: 78px;" src="./img/cart.png" alt="상품입니다.">
+                        <img style="margin: 21px; width: 78px; height: 78px;" src="/img/mybasket/cart.png" alt="상품입니다.">
                     </a>
                 </div>
                 <ul class="mb_product_ul" style="float:left; width: 588px; height: 120px;">
@@ -105,4 +106,23 @@
             <button class="mb_bottom_button" id ="going_buying">구매하기</button>
         </div>
     </div>
+    </c:forEach>
+    </c:if>
+
+    <c:if test="${empty sessionScope.UID}">
+    <div class="mb_login_none_box">
+        <div>
+            <ul>
+                <li>
+                    <img class="b-inline" src="/img/mybasket/warning.png" alt="경고">
+                    <h3 class="fs-20 b-inline" style="margin-bottom: 20px">장바구니에 담은 상품이 없습니다.</h3>
+                </li>
+                <li class="mt10">
+                    <h4 class="fs-16 b-inline">로그인을 하시면, 장바구니에 보관된 상품을 확인하실 수 있습니다.</h4>&nbsp;&nbsp;
+                    <button class="mb_login_btn">로그인 하기</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </c:if>
 </main>
