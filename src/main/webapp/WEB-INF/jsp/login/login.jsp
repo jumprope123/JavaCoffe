@@ -67,19 +67,6 @@
     </div>
 </div>
 <script>
-$('#userID').on('blur', function () { checkLogin(); })
-
-    function checkLogin() {
-        $.ajax({ url: 'login/checkLogin',
-        type: 'GET',
-        data : { uid: $('#userID').val() }
-        })
-            .done()
-            .fail();
-    }
-
-
-
    function submitLoginForm(form) {
        form.userID.value = form.userID.value.trim();
        if (form.userID.value.length == 0) {

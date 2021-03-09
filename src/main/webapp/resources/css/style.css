@@ -76,6 +76,20 @@ header {
     transition: all 0.3s;
 }
 
+.header_customer .header_login>#hloginbtn1 {
+    width: 230px;
+    height: 40px;
+    font-size: 0.875rem;
+    line-height: 1.2em;
+    letter-spacing: 1px;
+    border: 1px solid #fff;
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
 .header_customer .header_join {
     position: relative;
     display: inline-block;
@@ -96,6 +110,8 @@ header {
     transition: all 0.3s;
 }
 
+
+
 .header_join>#hjoinbtn:hover {
     color: black;
     background: white;
@@ -106,6 +122,10 @@ header {
     background: white;
 }
 
+.header_customer .header_login>#hloginbtn1:hover {
+    color: black;
+    background: white;
+}
 #header>.header_navbar {
     width: 100%;
     height: 76px;

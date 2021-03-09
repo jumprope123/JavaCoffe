@@ -39,6 +39,7 @@ public class LoginController {
         return "login/loginfail.tiles";
     }
 
+
     @PostMapping("/login/loginfail")
     public String loginfailok(MemberVO mvo, HttpSession sess) {
         String returnPage = "redirect:/login/loginfail";
@@ -49,4 +50,18 @@ public class LoginController {
         return returnPage;
     }
 
+ /*  @GetMapping("/login/loginok")
+    public String logout(HttpSession sess){
+
+        // 세션객체를 서버에서 제거함
+        sess.invalidate();
+
+        return "redirect:/login/login";
+    }*/
+
+    @GetMapping("/login/loginDel")
+    public String logindel(HttpSession sess){
+        sess.removeAttribute("UID");
+        return "redirect:/login/login";
+    }
 }
