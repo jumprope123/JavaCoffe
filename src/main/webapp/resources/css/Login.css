@@ -1,13 +1,19 @@
 .center_login1 {
     margin: 0 auto;
 }
+/*
 .center_login2 {
-    margin-top: 12%;
-    margin-left: 40%;
+    margin-top: 25%;
+    margin-left: 80%;
 }
+.total_size_login {
+    width: 20rem;
+    height: 22rem;
+}
+*/
 
 .login_icon {
-   position: relative;
+    position: relative;
     right: 5px;
     bottom: 2px;
 }
@@ -16,10 +22,6 @@
     position:relative;
     left: 2.85rem;
     bottom: 3px;
-}
-.total_size_login {
-    width: 20rem;
-    height: 22rem;
 }
 
 .p_login_font {
@@ -34,4 +36,3 @@
     border: 2px solid #5a6268;
     border-radius: 3px;
 }
-/**/

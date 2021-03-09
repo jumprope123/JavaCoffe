@@ -4,8 +4,8 @@ import javaCoffe.spring.mvc.dao.MemberDAO;
 import javaCoffe.spring.mvc.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.servlet.http.HttpSession;
+
 
 @Service("msrv")
 public class MemberServiceImpl implements MemberService{
@@ -17,8 +17,11 @@ public class MemberServiceImpl implements MemberService{
     public String newMember(MemberVO mvo) {
         String result = "회원가입 실패";
         int cnt = mdao.insertMember(mvo);
+
         if (cnt > 0) result = "회원가입 성공";
         return result;
+
+
     }
 
 
@@ -40,14 +43,11 @@ public class MemberServiceImpl implements MemberService{
         // 입력한 아이디/비밀번호가 member 테이블에 있는지 확인
         // 있으면 : 1을 반환, 없으면 : 0을 반환
         if (mdao.selectLogin(mvo) > 0) {
-            sess.setAttribute("UID",mvo.getUserid());
+            sess.setAttribute("UID", mvo.getUserid());
             isLogin = true;
         }
-
         return isLogin;
     }
-
-
     @Override
     public String readRegDate(String name) {
         return mdao.readRegdate(name);
