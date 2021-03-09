@@ -49,7 +49,7 @@ public class MyBasketServiceImpl implements MyBasketService{
         Map<String, Object> param = new HashMap<>();
         param.put("code",mbcode);
         param.put("userid",userid);
-        param.put("salesCnt",mbamount);
+        param.put("mbamount",mbamount);
         int cnt = mbdao.insertmb(param);
         if (cnt > 0) return result;
         return result;

@@ -24,10 +24,10 @@ public class MyBasketController {
         int mbamount = Integer.parseInt(req.getParameter("eshopViewNum"));
         int mbprice = Integer.parseInt(req.getParameter("priceForResult"));
         int totalprice = mbamount * mbprice;
-        Object userid = sess.getAttribute("UID");
+        String userid = (String) sess.getAttribute("UID");
 //        MyBasketVO embvo = mbsrv.readOneMB();
         mbsrv.newMBProduct(mbcode, userid, mbamount);
-        List<MyBasketVO> mbvo = mbsrv.readProduct((String) userid);
+        List<MyBasketVO> mbvo = mbsrv.readProduct(userid);
         mv.addObject("mbvo",mbvo);
         mv.addObject("totalprice",totalprice);
         mv.addObject("mbamount",mbamount);
@@ -37,8 +37,8 @@ public class MyBasketController {
     @GetMapping("/mybasket/delete") //삭제하기
     public String delete(String mbno, HttpSession sess, String userid){
 
-        //if(sess.getAttribute("UID").equals(userid))
-        mbsrv.removemb(mbno);
+        if(sess.getAttribute("UID").equals(userid))
+            mbsrv.removemb(mbno);
 
         return "redirect:/mybasket/list";
     }

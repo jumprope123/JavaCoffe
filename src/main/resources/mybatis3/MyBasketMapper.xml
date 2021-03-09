@@ -7,7 +7,7 @@
 
     <insert id="insertmb" parameterType="map" statementType="PREPARED">
         insert into MyBasket (mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount)
-        select code as mycode, stuck as mystuck, dcprice as myprice, #{userid} as myuuid, shipPay as myshipPay, title as mypname, ${salesCnt} as myamount from eshop
+        select code as mycode, stuck as mystuck, dcprice as myprice, #{userid} as myuuid, shipPay as myshipPay, title as mypname, #{mbamount} as myamount from eshop
         where code = #{code};
     </insert>
 
