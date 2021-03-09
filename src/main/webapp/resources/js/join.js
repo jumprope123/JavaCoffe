@@ -31,11 +31,11 @@ $('#check2btn').on('click',function (){
     }else if (!$('#usejm').is(':checked')){
         alert('주민등록번호 처리에 동의해주세요')
     }else {
-        location.href = '/join/joinme?name=' + $('#name2').val()
-            + '&jumin1=' + $('#jumin1').val()
-            + '&jumin2=' + $('#jumin2').val();
+        //location.href = '/join/joinme?name=' + $('#name2').val()    //<<<<<<<<<<<<<<<< 뭐가 문제지--
+        //    + '&jumin1=' + $('#jumin1').val()
+        //    + '&jumin2=' + $('#jumin2').val();
         $('#chkfrm').attr('method','post');
-        $('#chkfrm').attr('action','/join/joinme');
+        $('#chkfrm').attr('action','/join/joinme');  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         $('#chkfrm').submit();
 
     }
@@ -85,7 +85,7 @@ $('#joinbtn').on('click',function () {
         // 클라이언트에서 생성한 코드를 서버에서도 확인하기 위한 목적
         $('#g-recaptcha').val(grecaptcha.getResponse());
 
-        $('#joinfrm').attr('action', '/join/joinme'); // <<<<<<<<<<<<<<<< 이건가?
+        $('#joinfrm').attr('action', '/join/joinmeok'); // <<<<<<<<<<<<<<<< 이건가?
         $('#joinfrm').attr('method', 'post');
         $('#joinfrm').submit();
     }
@@ -130,7 +130,6 @@ function checkuid() {  // 아이디 중복체크 버튼 생성
         .done(function (data) {
             if (data.trim() == '0') {
                 var msg0 = alert('사용 가능 아이디입니다');
-                $('#uidmsg').attr('style', 'color: blue !important');
             } else if (data.trim() == '1'){
                 var msg1 = alert('사용 불가 아이디입니다');
             }

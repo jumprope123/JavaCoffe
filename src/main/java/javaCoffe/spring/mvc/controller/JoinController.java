@@ -1,11 +1,7 @@
 package javaCoffe.spring.mvc.controller;
-
-import com.fasterxml.jackson.annotation.JacksonInject;
 import javaCoffe.spring.mvc.service.MemberService;
 import javaCoffe.spring.mvc.utils.GoogleCaptchaUtilforJoin;
 import javaCoffe.spring.mvc.vo.MemberVO;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,17 +17,11 @@ public class JoinController {
     private MemberService msrv;
     private GoogleCaptchaUtilforJoin guctilfj;
 
-    @Autowired
+
     public JoinController (MemberService msrv, GoogleCaptchaUtilforJoin guctilfj) {
         this.msrv = msrv;
         this.guctilfj = guctilfj;
     }
-
-    @GetMapping("/join/login")
-    public String login() {
-        return "join/login.tiles";
-    }
-
 
     @GetMapping("/join/agree")
     public String agree() {
@@ -41,12 +31,6 @@ public class JoinController {
     @GetMapping("/join/checkme")
     public String checkme() {
         return "join/checkme.tiles";
-    }
-
-    @PostMapping("/join/checkme")
-    public String checkmeok() {
-
-        return "join/checkme";
     }
 
     @PostMapping ("/join/joinme") // 회원가입 폼  뭐가 문제지<<<<<<<<<<<<<<<<<
@@ -76,6 +60,7 @@ public class JoinController {
         String returnPage = "redirect:/join/joinme" + param;
 
 
+
         // 클라이언트에서 생성한 captcha 코드를 가져옴
         String gCaptcha = req.getParameter("g-recaptcha");
 
@@ -83,21 +68,19 @@ public class JoinController {
         // 결과 : true => 테이블에 회원정보 저장, /join/joinok 이동
         // 결과 : false =>  /join/joinme 이동
         if (guctilfj.checkCaptchaforJoin(gCaptcha)) {
-            msrv.newMember(mvo);
+            msrv.newMember(mvo); // <<<<<<<<<<<<<<<<<<<<
+
             String regdate = msrv.readRegDate(mvo.getName());
 
             returnPage = "redirect:/join/joinok?name=" +
                     URLEncoder.encode(mvo.getName(),"UTF-8")+"&email="+mvo.getEmail()+"&regdate="+regdate;
-
         }else {
             rds.addFlashAttribute("checkCaptchaforJoin","자동가입방지 확인이 실패했어요");
             rds.addFlashAttribute("mvo",mvo);
         }
-
         return returnPage;
 
     }
-
 
     @GetMapping("/join/joinok")
     public ModelAndView joinok(ModelAndView mv,String name, String email, String regdate) {

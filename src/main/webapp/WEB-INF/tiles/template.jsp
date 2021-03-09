@@ -35,9 +35,11 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"> </script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/review.js"></script>
+<%-- Login,Joing - Woo --%>
 <script src="/js/login.js"></script>
 <script src="/js/join.js"></script>
 <script src="/js/zipcode.js"></script>
+<%-- Login,Joing - Woo --%>
 <script src="/js/board.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -31,7 +31,7 @@
     <%--실명회원 가입 부분--%>
     <div class="card card-body bg-light margin1050">
         <h3 class="margin30 font-weight-bold real_join">실명확인 회원가입</h3>
-        <form id="chkfrm" action="/join/joinme" method="post">
+        <form id="chkfrm" action="/join/joinme" method="post"> <%--<<<<<<<<<<<<<<<<<<<<<<<<< 뭐가문제지--%>
             <div class="row">
                 <div class="col-5 offset-1">
                     <div class="form-group row">
@@ -56,7 +56,7 @@
                         <label class="col-4"></label>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" id="usejm"
-                                   class="custom-control-input" onclick="checkName() || checkJuminNo()">
+                                   class="custom-control-input"> <%--onclick="checkName() || checkJuminNo()">--%> <%--<<<<<<<<<<<<<<<<<<<<<<<<<<<<잠깐 해제--%>
                             <label for="usejm" class="custom-control-label ">
                                 주민등록번호 처리에 동의합니다.
                             </label>

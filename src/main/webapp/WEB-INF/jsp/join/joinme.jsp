@@ -45,7 +45,7 @@
     <div class="card card-body bg-light margin1050">
         <h3 class="font-weight-bold normal_join">일반회원</h3>
 
-        <form name="joinfrm" id="joinfrm" action="/join/joinok" method="post">
+        <form name="joinfrm" id="joinfrm" action="/join/joinok.jsp" method="post">   <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
             <div class="row margin30">
                 <div class="col-11 offset-1">
                     <div class="form-group row">
@@ -59,10 +59,10 @@
                         <label class="col-2 col-form-label  text-right"
                                for="jumin1">주민등록번호</label>
                         <input type="text" name="jumin1" id="jumin1"
-                               class="form-control col-2 border-info" readonly value="${jumin1}">
+                               class="form-control col-2 border-info" readonly value="${jumin1}">   <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
                         <label class="col-form-label">&nbsp;&ndash;&nbsp;</label>
                         <input type="password" name="jumin2" id="jumin2"
-                               class="form-control col-2 border-info" readonly value="${jumin2}">
+                               class="form-control col-2 border-info" readonly value="${jumin2}">   <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
                     </div><!--주민번호-->
 
                     <div class="form-group row">
@@ -71,8 +71,9 @@
                         <input type="text" name="userid" id="newid"
                                class="form-control col-2 border-info"
                                value="${mvo.userid}">
-                     <button type="button" id="checkuidbtn" class="btn btn-secondary" onclick="checkuid()||checkIDReg()" style="margin-left: 8px;">중복확인</button>
+                        <button type="button" id="checkuidbtn" class="btn btn-secondary" onclick="checkuid()" style="margin-left: 8px;">중복확인</button>
                     </div><!--아이디-->
+                    <%--<p id="idmsg">영문 4자리이상 대,소문자 및 숫자만 입력가능합니다.</p>--%>
 
                     <div class="form-group row">
                         <label class="col-2 col-form-label text-right"
@@ -165,7 +166,7 @@
 
             <div class="row margin30">
                 <div class="col-12 text-center">
-                    <button type="button" id="joinbtn" <%--onclick="checkPWReg()||checkZIPReg()||checkEmailReg()||checkPhoneReg()"--%> <%--<<<<<<<<<<<<<<<<<<<<< 잠깐 해제--%>
+                    <button type="button" id="joinbtn" onclick="checkPWReg()||checkEmailReg()||checkPhoneReg()||checkIDReg()"
                             class="btn btn-primary">
                         <i class="bi bi-check"></i> 입력완료</button>
                     <button type="button" id="canclebtn"
@@ -181,9 +182,10 @@
 
         </form>
     </div><!-- 정보입력 -->
+</div><!-- main -->
     <script>
         function checkIDReg() { //아이디 유효성 검사 구문
-            var IDExp = /^[A-za-z0-9]{7,16}$/g;
+            var IDExp = /^[A-za-z0-9]{4,16}$/g;
             var ID = document.getElementById("newid");
 
             if (IDExp.test(ID.value) === false) {
@@ -202,21 +204,20 @@
                 alert("비밀번호형식이 맞지 않습니다.");
                 $("#newpwd").val("")
                 $("#repwd").val("")
-                $("#newpwd").focus();
                 return false;
             }
         }
-        function checkZIPReg() { // 우편번호 유효성 검사 구문
-            var ZIPExp = /^[0-9]{3,4}-[0-9]{3,4}$/
-            var ZIP = document.getElementById("sample6_detailAddress");
+        //function checkZIPReg() { // 우편번호 유효성 검사 구문 필요없는듯
+        //    var ZIPExp = /^[0-9]{3,4}-[0-9]{3,4}$/
+        //    var ZIP = document.getElementById("sample6_detailAddress");
 
-            if (ZIPExp.test(ZIP.value) === false) {
-                alert("주소형식이 맞지 않습니다.");
-                $("#sample6_detailAddress").val("")
-                $("#sample6_detailAddress").focus();
-                return false
-            }
-        }
+            //if (ZIPExp.test(ZIP.value) === false) {
+             //   alert("주소형식이 맞지 않습니다.");
+             //   $("#sample6_detailAddress").val("")
+             //   $("#sample6_detailAddress").focus();
+             //   return false
+           // }
+       // }
         function checkEmailReg(){ // 이메일 유효성 검사 구문
             var EmailExp = /^[a-zA-Z0-9]+$/;
             var EMAIL = document.getElementById("email1");
@@ -224,7 +225,6 @@
             if (EmailExp.test(EMAIL.value) === false) {
                 alert("이메일형식이 맞지 않습니다.");
                 $("#email1").val("")
-                $("#email1").focus();
                 return false
             }
         }
@@ -240,15 +240,10 @@
                 $('#hp1').val("")
                 $('#hp2').val("")
                 $('#hp3').val("")
-                $('#hp2').focus();
                 return false
             }
         }
     </script>
-
-</div><!-- main -->
-
-
 <div class="all_agree_bottom"></div>
 
 <!-- main -->
