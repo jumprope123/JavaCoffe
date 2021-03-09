@@ -77,21 +77,21 @@
     <div class="row margin1050">
         <div class="col-6 ">
             <!--로그인 했고, 이 글이 내가 작성한 글이라면 버튼들이 보임-->
-<%--            <c:if test="${not empty UID and UID eq bd.userid}"><!--empty가 비어있지 않고 UID가 bd.userid와 같을 때-->--%>
+            <c:if test="${not empty UID and UID eq bd.userid}"><!--empty가 비어있지 않고 UID가 bd.userid와 같을 때-->
                 <button type="button" id="upbdbtn" class="btn btn-warning">
                     <i class="bi bi-pencil-square bidragup"></i>수정하기</button>
 
                 <button type="button" id="rmbdbtn" class="btn btn-danger">
                     <i class="bi bi-trash-fill bidragup"></i>삭제하기</button>
-<%--            </c:if>--%>
+            </c:if>
         </div>
         <div class="col-6 text-right">
-<%--            <c:if test="${not empty UID }">--%>
+            <c:if test="${not empty UID }">
             <input type="hidden" id="thumbBoard" name="thumbBoard" value="no">
             <button type="button" id="thumbbtn" class="btn btn-success">
                 <i class="bi bi-hand-thumbs-up bidragup"></i>추천하기
             </button>
-<%--            </c:if>--%>
+            </c:if>
 
             <button type="button" id="listbdbtn" class="btn btn-dark">
                 <i class="bi bi-card-list bidragup"></i>&nbsp;목록으로</button>
@@ -111,13 +111,13 @@
                     <td>
                         <div class="cmtbg1">${r.regdate}</div>
                         <span style="float:right">
-<%--                            <c:if test="${not empty UID}">--%>
+                            <c:if test="${not empty UID}">
                                 <a href="javascript:addReply('${r.rno}')">[추가]</a>
-<%--                            </c:if>--%>
-<%--                            <c:if test="${UID eq r.userid}">--%>
+                            </c:if>
+                            <c:if test="${UID eq r.userid}">
                                 <a href="javascript:modiReplyForBoard('${r.rno}','${r.reply}')">[수정]</a>
                                 <a href="javascript:delReplyForBoard('${r.rno}')">[삭제]</a>
-<%--                            </c:if>--%>
+                            </c:if>
                         </span>
                         <p>${r.reply}</p>
                     </td>
@@ -143,7 +143,7 @@
         </table>
     </div><!--댓글들-->
 
-<%--    <c:if test="${not empty UID}">--%>
+    <c:if test="${not empty UID}">
     <div class="row margin1050">
         <form id="replyfrm" class="card card-body bg-light ">
             <div class="form-group row justify-content-center">
@@ -156,7 +156,7 @@
             <input type="hidden" name="userid" id="uid" value="${UID}">
         </form>
     </div><!--댓글폼-->
-<%--    </c:if>--%>
+    </c:if>
 </div>
 
 <!--대댓글 작성을 위한 모달 대화 상자-->
@@ -167,7 +167,7 @@
             <div class="modal-body">
                 <form name="rpfrm" id="rpfrm" class="well form-inline">
                     <textarea name="reply" id="rereply" rows="8" cols="75" class="span4"></textarea>
-                    <input type="hidden" name="userid" value="testRRid"<%--${UID}--%>>
+                    <input type="hidden" name="userid" value="{UID}"<%--${UID}--%>>
                     <input type="hidden" name="bno" value="${param.bno}">
                     <input type="hidden" name="cno" id="cno">
                 </form>
@@ -187,7 +187,7 @@
             <div class="modal-body">
                 <form name="mmrpfrm" id="mmrpfrm" class="well form-inline">
                     <textarea name="reply" id="modiReplyForBoard" rows="8" cols="75" class="span4"></textarea>
-                    <input type="hidden" name="userid" value="testRRid"<%--${UID}--%>>
+                    <input type="hidden" name="userid" value="{UID}"<%--${UID}--%>>
                     <input type="hidden" name="bno" value="${param.bno}">
                     <input type="hidden" name="cno" id="modifyreplycno">
                 </form>
@@ -206,7 +206,7 @@
         <div class="modal-content">
             <div class="modal-header"><h3 class="modal-title">삭제한 댓글은 복구할 수 없습니다 <br />댓글을 정말 삭제하시겠습니까?</h3></div>
                 <form name="dmrpfrm" id="dmrpfrm" class="well form-inline">
-                    <input type="hidden" name="userid" value="testRRid"<%--${UID}--%>>
+                    <input type="hidden" name="userid" value="{UID}"<%--${UID}--%>>
                     <input type="hidden" name="bno" value="${param.bno}">
                     <input type="hidden" name="cno" id="deletereplycno">
                 </form>
