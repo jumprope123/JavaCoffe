@@ -1,4 +1,12 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<c:if test="${empty UID}">
+    <script>
+        alert('로그인 페이지로 이동합니다.');
+        location.href="/login/login";
+    </script>
+</c:if>
 
 <div id="main">
     <div class="row">

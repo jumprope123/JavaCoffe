@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class BuyPageController {
         int priceForResult = Integer.parseInt(req.getParameter("priceForResult"));
         int finalPrice = salesCnt * priceForResult;
         MemberVO mvo = buysrv.readUser(userid); // userid를 이용해 Member의 정보 뽑아옴
-        EshopVO evo = buysrv.readMD(code); //넘겨받은 코드를 통해 상품정보 읽어오기, 다만 List<EshopVO>형태로 만들어야 나중에 장바구니랑 jsp 에서 호환가능
+        EshopVO evo = buysrv.readMD(code); //넘겨받은 코드를 통해 상품정보 읽어오기
         mv.addObject("evo",evo);
         mv.addObject("mvo",mvo);
         mv.addObject("finalPrice",finalPrice);
@@ -49,7 +50,10 @@ public class BuyPageController {
     }
 
     @GetMapping("/buylist/buyOK")
-    public String buyOK(){
-        return "buylist/buyOK.tiles";
+    public ModelAndView buyOK(ModelAndView mv, HttpSession sess){
+        mv.setViewName("buylist/buyOK.tiles");
+        String UID = (String) sess.getAttribute("UID");
+        mv.addObject("UID",UID);
+        return mv;
     }
 }
