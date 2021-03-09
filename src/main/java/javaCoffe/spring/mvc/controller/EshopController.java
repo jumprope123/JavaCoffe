@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 public class EshopController {
@@ -149,9 +151,11 @@ public class EshopController {
 
 // 여기부터 view
     @GetMapping("eshop/view")
-    public ModelAndView view(ModelAndView mv, String eno){
+    public ModelAndView view(ModelAndView mv, String eno, HttpSession sess){
         mv.setViewName("eshop/view.tiles");
+        String UID = (String) sess.getAttribute("UID");
         mv.addObject("viewData",esrv.readMDData(eno)); //merchandise data를 읽어옴
+        mv.addObject("UID",UID);
         return mv;
     }
 

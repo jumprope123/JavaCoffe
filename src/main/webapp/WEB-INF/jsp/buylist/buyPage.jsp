@@ -9,6 +9,13 @@
 <%--<c:set var="baseImgURL" value="http://13.125.205.40:8447/eshop" />--%>
 <c:set var="thumbURL" value="${baseImgURL}/_thumb/small_"/>
 
+<c:if test="${empty UID}">
+    <script>
+        alert('로그인 페이지로 이동합니다.');
+        location.href="/login/login";
+    </script>
+</c:if>
+
 <div id="main">
     <div class="row">
         <form id="buyPageForm" class="col-8 offset-2">
@@ -86,9 +93,7 @@
                         <div class="col-2 text-left font-weight-bold h5">주문인정보</div>
                         <div class="col-10 text-left">- 주문인 정보는 수정할 수 없습니다.</div>
                     </div>
-                    <%--여기 나중에 세션값으로 변경필수--%>
-                    <input type="hidden" name="userid" value="testUserId">
-                    <%--여기 나중에 세션값으로 변경필수--%>
+                    <input type="hidden" name="userid" value="${UID}">
                     <div class="row mt-3">
                         <div class="col-2 offset-1">이름</div>
                         <input class="form-control col-5" name="orderUsername" value="${mvo.name}" readonly>
