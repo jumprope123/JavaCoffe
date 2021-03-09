@@ -29,7 +29,7 @@
                                         </div>
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="text" name="passwd" id="userPW" class="form-control" placeholder="Password" required>
+                                            <input type="password" name="passwd" id="userPW" class="form-control" placeholder="Password" required>
                                         </div>
                                         <button id="s_hloginbtn" type="submit" class="btn btn-primary">Login</button>
                                     </form>
