@@ -103,3 +103,11 @@ $('#adminFindBtn').on('click',function () {
     var adminSearchTxt = $('#adminSearchTxt').val()
     location.href = '/admin/find?cp=1&adminSearchTxt='+adminSearchTxt;
 })
+
+$('#goToAdminWrite').on('click',function () {
+    location.href = '/admin/write';
+})
+
+$('#goToAdminHandle').on('click',function () {
+    location.href = '/admin/handle';
+})
