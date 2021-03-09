@@ -43,12 +43,22 @@
                                 </button>
                         </c:if>
                     </div>
+                    <c:if test="${empty sessionScope.UID}">
                     <div class="header_join">
                         <button class="JoinDropdownButton" id="hjoinbtn">
                             회원가입은 여기에서
                             <!--aria-expanded="false"-->
                         </button>
                     </div>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.UID}">
+                    <div class="header_join">
+                        <button class="JoinDropdownButton" id="h_mybasket">
+                            장바구니로 이동
+                            <!--aria-expanded="false"-->
+                        </button>
+                    </div>
+                    </c:if>
                 </div>
                 <!-- 헤더 커스텀(로그인, 회원가입) -->
             </div>

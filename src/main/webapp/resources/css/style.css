@@ -96,6 +96,27 @@ header {
     margin-left: 18px;
 }
 
+.header_customer .header_join>#h_mybasket {
+    width: 293px;
+    height: 40px;
+    font-size: 0.875rem;
+    line-height: 1.2em;
+    letter-spacing: 1px;
+    border: 1px solid #fff;
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+
+
+.header_join>#h_mybasket:hover {
+    color: black;
+    background: white;
+}
+
 .header_customer .header_join>#hjoinbtn {
     width: 293px;
     height: 40px;
