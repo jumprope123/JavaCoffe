@@ -5,7 +5,6 @@ import javaCoffe.spring.mvc.service.MemberService;
 import javaCoffe.spring.mvc.vo.BuyPageVO;
 import javaCoffe.spring.mvc.vo.EshopVO;
 import javaCoffe.spring.mvc.vo.MemberVO;
-import org.apache.http.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
