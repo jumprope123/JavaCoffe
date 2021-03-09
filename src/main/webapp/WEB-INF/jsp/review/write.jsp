@@ -1,13 +1,15 @@
 <%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%--구글 리캡챠 사용을 위한 api--%>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 
-<%--로그인 하지 않았으면 list페이지로 강제 전환--%>
-<%--<c:if test="${UID ne rvo.userid}">--%>
-<%--    <c:redirect url="/review/list?cp=1"/>--%>
-<%--</c:if>--%>
+<c:if test="${empty UID}">
+    <script>
+        alert('로그인 페이지로 이동합니다.');
+        location.href="/login/login";
+    </script>
+</c:if>
 
 <div id="main"  class="container">
     <div class="margin30">
@@ -31,7 +33,7 @@
             </div>
             <div class="form-group row">
                 <label for="userid" class="col-form-label col-2 text-right">작성자</label>
-                <input type="text" id="userid" name="userid" class="form-control col-9 bg-light" readonly value="testid<%--${UID}--%>">
+                <input type="text" id="userid" name="userid" class="form-control col-9 bg-light" readonly value="${UID}">
             </div>
             <div class="form-group row">
                 <label for="contents" class="col-form-label col-2 text-right">본문내용</label>

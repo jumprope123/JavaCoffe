@@ -6,7 +6,11 @@
 <mapper namespace="eshop">
 
     <select id="selectCoffeGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} order by eno desc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} order by eno desc limit #{snum}, #{cntNum};
+    </select>
+
+    <select id="selectCoffeGenreWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by eno desc limit #{snum}, #{cntNum};
     </select>
 
     <select id="countBigGenre" statementType="PREPARED" parameterType="String" resultType="int">
@@ -14,11 +18,11 @@
     </select>
 
     <select id="selectCoffeGenreByThumbs" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} order by thumbs desc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} order by thumbs desc limit #{snum}, #{cntNum};
     </select>
 
     <select id="selectCoffeGenreByThumbsWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by thumbs desc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by thumbs desc limit #{snum}, #{cntNum};
     </select>
 
     <select id="countBigGenreAndSmallGenre" statementType="PREPARED" parameterType="map" resultType="int">
@@ -26,44 +30,48 @@
     </select>
 
     <select id="selectCoffeGenreBySalesVolumn" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} order by salesVolumn desc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} order by salesVolumn desc limit #{snum}, #{cntNum};
     </select>
 
     <select id="selectCoffeGenreBySalesVolumnWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by salesVolumn desc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by salesVolumn desc limit #{snum}, #{cntNum};
     </select>
 
     <select id="selectCoffeGenreByCheap" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} order by dcprice asc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} order by dcprice asc limit #{snum}, #{cntNum};
     </select>
 
     <select id="selectCoffeGenreByCheapWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by dcprice asc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by dcprice asc limit #{snum}, #{cntNum};
     </select>
 
     <select id="selectCoffeGenreByExpensive" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} order by dcprice desc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} order by dcprice desc limit #{snum}, #{cntNum};
     </select>
 
     <select id="selectCoffeGenreByExpensiveWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by dcprice desc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by dcprice desc limit #{snum}, #{cntNum};
     </select>
 
     <select id="selectCoffeGenreByComment" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} order by Comment desc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} order by Comment desc limit #{snum}, #{cntNum};
     </select>
 
     <select id="selectCoffeGenreByCommentWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by Comment desc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by Comment desc limit #{snum}, #{cntNum};
     </select>
 
     <!--일찍 등록한게 일찍뜨도록-->
     <select id="selectCoffeGenreByRegdate" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} order by regdate asc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} order by regdate asc limit #{snum}, #{cntNum};
     </select>
 
     <select id="selectCoffeGenreByRegdateWithSmallGenre" statementType="PREPARED" parameterType="map" resultType="javaCoffe.spring.mvc.vo.EshopVO">
-        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by regdate asc limit #{snum}, 20;
+        select * from eshop where bigGenre = #{bigGenre} and smallGenre = #{smallGenre} order by regdate asc limit #{snum}, #{cntNum};
+    </select>
+
+    <select id="selectOneMDData" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.EshopVO">
+        select * from eshop where eno = #{eno}
     </select>
 
 </mapper>

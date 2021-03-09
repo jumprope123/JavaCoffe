@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
+
+
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <style>
     .zipsize {
@@ -43,24 +45,24 @@
     <div class="card card-body bg-light margin1050">
         <h3 class="font-weight-bold normal_join">일반회원</h3>
 
-        <form name="joinfrm" id="joinfrm">
+        <form name="joinfrm" id="joinfrm" action="/join/joinok.jsp" method="post">   <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
             <div class="row margin30">
                 <div class="col-11 offset-1">
                     <div class="form-group row">
                         <label class="col-2 col-form-label text-right"
                                for="name">이름</label>
                         <input type="text" name="name" id="name"
-                               class="form-control col-2 border-info" readonly value="${param.name}">
+                               class="form-control col-2 border-info" readonly value="${name2}">          <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
                     </div><!--이름-->          <%--param 쿼리문을 받아서 넘어온값을 value값으로.ID값을 넣어주면 적용됨--%>
 
                     <div class="form-group row">
                         <label class="col-2 col-form-label  text-right"
                                for="jumin1">주민등록번호</label>
                         <input type="text" name="jumin1" id="jumin1"
-                               class="form-control col-2 border-info" readonly value="${param.jumin1}">
+                               class="form-control col-2 border-info" readonly value="${jumin1}">   <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
                         <label class="col-form-label">&nbsp;&ndash;&nbsp;</label>
                         <input type="password" name="jumin2" id="jumin2"
-                               class="form-control col-2 border-info" readonly value="${param.jumin2}">
+                               class="form-control col-2 border-info" readonly value="${jumin2}">   <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
                     </div><!--주민번호-->
 
                     <div class="form-group row">
@@ -69,20 +71,17 @@
                         <input type="text" name="userid" id="newid"
                                class="form-control col-2 border-info"
                                value="${mvo.userid}">
-                        <span id="uidmsg" class="col-form-label text-danger">
-                           &nbsp;&nbsp;7~16 자의 영문 소문자, 숫자와 특수기호(_)만
-                           사용할 수 있습니다.
-                        </span>
+                        <button type="button" id="checkuidbtn" class="btn btn-secondary" onclick="checkuid()" style="margin-left: 8px;">중복확인</button>
                     </div><!--아이디-->
+                    <%--<p id="idmsg">영문 4자리이상 대,소문자 및 숫자만 입력가능합니다.</p>--%>
 
                     <div class="form-group row">
                         <label class="col-2 col-form-label text-right"
                                for="newpwd">비밀번호</label>
                         <input type="password" name="passwd" id="newpwd"
                                class="form-control col-2 border-info">
-                        <span class="col-form-label text-danger">
-                           &nbsp;&nbsp;7~16 자의 영문 소문자, 숫자와 특수문자
-                           사용할 수 있습니다.
+                        <span id="pwmsg" class="col-form-label text-danger">
+                           &nbsp;&nbsp;7~16 자의 영문자,숫자,특수문자를 입력하세요.
                         </span>
                     </div><!--비밀번호-->
 
@@ -92,7 +91,7 @@
                         <input type="password" name="repwd" id="repwd"
                                class="form-control col-2 border-info">
                         <span class="col-form-label text-danger">
-                           &nbsp;&nbsp;이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요.
+                           &nbsp;&nbsp;비밀번호를 한번 더 입력하세요.
                         </span>
                     </div><!--비밀번호 확인-->
 
@@ -105,7 +104,7 @@
                             </div>
                         <div class="row">
                                 <label class="col-2 col-form-label text-right"></label>
-                                <input type="text" class="input_text zipsize" name="userAddr1" style="height: 2rem;" id="sample6_address" placeholder="주소"><br>
+                                <input type="text" class="input_text zipsize" name="userAddr1" style="height: 2.5rem;" id="sample6_address" placeholder="주소"><br>
                                 <input type="text" class="input_text zipsize" name="userAddr2" id="sample6_detailAddress" placeholder="상세주소">
                                 <input type="text" class="input_text zipsize" name="userAddr3" id="sample6_extraAddress" placeholder="추가주소">
                         </div>
@@ -124,7 +123,7 @@
                             <span class="input-group-text igborder">@</span>
                         </div>
                         <input type="text" name="email2" id="email2" readonly
-                               class="form-control col-2 border-info igborder"
+                               class="form-control col-2 border-info igborder" style="margin-left: 3px;"
                                value="${mvo.email}">&nbsp;
                         <select id="email3" class="form-control col-2 border-info igborder">
                             <option>선택</option>
@@ -154,22 +153,20 @@
                                class="form-control col-1 border-info"
                                value="${mvo.phone}">
                     </div><!--전화번호-->
-<%--
-                    <div class="form-group row">
-                        <label class="col-2 text-info text-right">자동가입방지</label>
-                        <div class="g-recaptcha"
-                             data-sitekey="6Le81joaAAAAAJt1AUAXPyoaNPoS0XkPFWvF3tp8"></div>
-                        <input type="hidden" name="g-recaptcha" id="g-recaptcha">
-                        <span style="color: red">${checkCaptcha}</span>
 
-                    </div><!--자동가입방지-->--%>
+                   <div class="form-group row">
+                        <label class="col-2 text-right" style="padding-top: 1.8rem;">자동가입방지</label>
+                        <div class="g-recaptcha" data-sitekey="6Le81joaAAAAAJt1AUAXPyoaNPoS0XkPFWvF3tp8"></div>
+                        <input type="hidden" name="g-recaptcha" id="g-recaptcha">
+                        <span style="color: red">${checkCaptchaforJoin}</span>
+                   </div><!--자동가입방지-->
 
                 </div>
             </div>
 
             <div class="row margin30">
                 <div class="col-12 text-center">
-                    <button type="button" id="joinbtn"
+                    <button type="button" id="joinbtn" onclick="checkPWReg()||checkEmailReg()||checkPhoneReg()||checkIDReg()"
                             class="btn btn-primary">
                         <i class="bi bi-check"></i> 입력완료</button>
                     <button type="button" id="canclebtn"
@@ -185,9 +182,68 @@
 
         </form>
     </div><!-- 정보입력 -->
-
 </div><!-- main -->
+    <script>
+        function checkIDReg() { //아이디 유효성 검사 구문
+            var IDExp = /^[A-za-z0-9]{4,16}$/g;
+            var ID = document.getElementById("newid");
 
+            if (IDExp.test(ID.value) === false) {
+                alert("아이디형식이 맞지 않습니다.");
+                $("#newid").val("");
+                $("#newid").focus();
+                return false;
+            }
+        }
+        function checkPWReg() { // 비밀번호 유효성 검사 구문
+            var PWExp = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{7,16}$/
+            var PW = document.getElementById("newpwd");
+           // var REPW = document.getElementById("repwd");
 
+            if(PWExp.test(PW.value) === false ){
+                alert("비밀번호형식이 맞지 않습니다.");
+                $("#newpwd").val("")
+                $("#repwd").val("")
+                return false;
+            }
+        }
+        //function checkZIPReg() { // 우편번호 유효성 검사 구문 필요없는듯
+        //    var ZIPExp = /^[0-9]{3,4}-[0-9]{3,4}$/
+        //    var ZIP = document.getElementById("sample6_detailAddress");
+
+            //if (ZIPExp.test(ZIP.value) === false) {
+             //   alert("주소형식이 맞지 않습니다.");
+             //   $("#sample6_detailAddress").val("")
+             //   $("#sample6_detailAddress").focus();
+             //   return false
+           // }
+       // }
+        function checkEmailReg(){ // 이메일 유효성 검사 구문
+            var EmailExp = /^[a-zA-Z0-9]+$/;
+            var EMAIL = document.getElementById("email1");
+
+            if (EmailExp.test(EMAIL.value) === false) {
+                alert("이메일형식이 맞지 않습니다.");
+                $("#email1").val("")
+                return false
+            }
+        }
+
+        function checkPhoneReg() {
+            var PhoneExp = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/
+            var PHONE1 = document.getElementById("hp1");
+            var PHONE2 = document.getElementById("hp2");
+            var PHONE3 = document.getElementById("hp3");
+
+            if (PhoneExp.test(PHONE1.value) && (PHONE2.value) && (PHONE3.value) === false) {
+                alert("전화번호형식이 맞지 않습니다.");
+                $('#hp1').val("")
+                $('#hp2').val("")
+                $('#hp3').val("")
+                return false
+            }
+        }
+    </script>
 <div class="all_agree_bottom"></div>
 
+<!-- main -->

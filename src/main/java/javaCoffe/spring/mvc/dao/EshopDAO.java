@@ -9,6 +9,8 @@ import java.util.Map;
 public interface EshopDAO {
     List<EshopVO> CoffeInfo(Map<String, Object> param);
 
+    List<EshopVO> CoffeInfoWithSmallGenre(Map<String, Object> param);
+
     int selectCountBigGenre(String bigGenre);
 
     List<EshopVO> CoffeInfoByThumbs(Map<String, Object> param);
@@ -36,4 +38,6 @@ public interface EshopDAO {
     List<EshopVO> CoffeInfoByRegdate(Map<String, Object> param);
 
     List<EshopVO> CoffeInfoByRegdateWithSmallGenre(Map<String, Object> param);
+
+    EshopVO readOneMDData(String eno);
 }

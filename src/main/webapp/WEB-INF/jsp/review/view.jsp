@@ -22,10 +22,12 @@
             <button type="button" class="btn btn-light" id="nextbtn">
                 다음게시물 <i class="bi bi-chevron-right bidragup"></i></button>
         </div>
+    <c:if test="${not empty UID}">
         <div class="col-6 text-right">
                 <button type="button" class="btn btn-light" id="newReview">
                     <i class="bi bi-plus-circle-fill bidragup"></i>새글쓰기</button>
         </div>
+    </c:if>
     </div><!-- 버튼틀 -->
 
     <div class="row margin1050">
@@ -54,21 +56,21 @@
     </div> <!--본문글-->
     <div class="row margin1050">
         <div class="col-6">
-            <%--로그인 했고 이 글이 내가 작성한 글이라면?--%>
-<%--            <c:if test="${not empty UID and UID eq review.userid}">--%>
+<%--            로그인 했고 이 글이 내가 작성한 글이라면?--%>
+            <c:if test="${not empty UID and UID eq review.userid}">
                 <button type="button" class="btn btn-primary" id="upReviewBtn">
                     <i class="bi bi-check-circle bidragup"></i> 수정하기</button>
                 <button type="button" class="btn btn-danger" id="rmReviewBtn">
                     <i class="bi bi-x-circle bidragup"></i> 삭제하기</button>
-<%--            </c:if>--%>
+            </c:if>
         </div>
         <div class="col-6 text-right">
-<%--            <c:if test="${not empty UID}">--%>
+            <c:if test="${not empty UID}">
                 <input type="hidden" id="thumb" name="thumb" value="no">
                 <button type="button" id="thumbBtn" class="btn btn-success">
                     <i class="bi bi-hand-thumbs-up bidragup"></i>추천하기
                 </button>
-<%--            </c:if>--%>
+            </c:if>
             <button type="button" class="btn btn-dark" id="listReviewBtn">
                 <i class="bi bi-list bidragup"></i> 목록으로</button>
         </div>
@@ -94,9 +96,14 @@
                                 <div>
                                     <div style="display: inline-block" class="text-left">${fn:substring(r.regdate,0,19)}</div>
                                     <div style="float: right">
-                                    <a href="javascript:addReplyforReview('${r.replyNo}')">[추가]</a>
-                                    <a href="javascript:modiReply('${r.replyNo}','${r.reply}')">[수정]</a>
-                                    <a href="javascript:delReply('${r.replyNo}')">[삭제]</a></div> <%--대댓글이 있는 리플은 삭제못하게 하고싶은데 어떻게?--%>
+                                    <c:if test="${not empty UID}"> <%--로그인 되어있다면--%>
+                                        <a href="javascript:addReplyforReview('${r.replyNo}')">[추가]</a>
+                                    </c:if>
+
+                                    <c:if test="${not empty UID and UID eq r.userid}"> <%--로그인 되어있고, 댓글작성인이랑 동일한 아이디라면--%>
+                                        <a href="javascript:modiReply('${r.replyNo}','${r.reply}')">[수정]</a>
+                                        <a href="javascript:delReply('${r.replyNo}')">[삭제]</a></div>
+                                    </c:if>
                                 </div>
                                 <p class="mt-1">${fn:replace(r.reply,newChar,'<br>')}</p>
                             </td>
@@ -120,6 +127,7 @@
             </c:forEach>
         </table>
     </div>
+    <c:if test="${not empty UID}"> <%--로그인되어있다면--%>
         <div class="row margin1050">
             <form id="replyfrm" class="card card-body bg-light">
                 <div class="form-group row justify-content-center">
@@ -128,10 +136,10 @@
                     <span><button type="button" id="reviewcmtbtn" class="btn-dark pushtop50"><i class="bi bi-chat-text-fill bidragup"></i>댓글쓰기</button></span>
                 </div>
                 <input type="hidden" name="reviewNo" value="${param.rno}">
-                <input type="hidden" name="userid" id="uid" value="${UID}">
+                <input type="hidden" name="userid" id="uidForReview" value="${UID}">
             </form>
         </div><!--댓글폼-->
-
+    </c:if>
 </div>
 
 
@@ -145,7 +153,7 @@
             <div class="modal-body">
                 <form name="rpfrm" id="rpfrm" class="well form-inline">
                     <textarea name="reply" id="rereplyForReview" rows="8" cols="75" class="span4"></textarea>
-                    <input type="hidden" name="userid" value="testReReplyId<%--${UID}--%>">
+                    <input type="hidden" name="userid" value="${UID}">
                     <input type="hidden" name="reviewNo" value="${param.rno}">
                     <input type="hidden" name="commentNo" id="commentNo">
                 </form>
