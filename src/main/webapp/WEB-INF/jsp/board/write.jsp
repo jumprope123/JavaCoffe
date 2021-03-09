@@ -45,30 +45,30 @@
             <div class="form-group row">
                 <label for="contents" class="col-form-label col-2 text-right">파일첨부</label>
                 <div class="custom-file col-9">
-                    <input type="file" id="file1" name="file" class="custom-file-input">
-                    <label class="custom-file-label">첨부할 파일을 선택하세요</label>
+                    <input type="file" id="file1b" name="file" class="custom-file-input">
+                    <label class="custom-file-label" id="file1bLable">첨부할 파일을 선택하세요(업로드 후 수정/삭제 불가합니다)</label>
                 </div>
                 <div class="custom-file col-9 offset-2">
-                    <input type="file" id="file2" name="file" class="custom-file-input">
-                    <label class="custom-file-label">첨부할 파일을 선택하세요</label>
+                    <input type="file" id="file2b" name="file" class="custom-file-input">
+                    <label class="custom-file-label" id="file2bLable">첨부할 파일을 선택하세요(업로드 후 수정/삭제 불가합니다)</label>
                 </div>
                 <div class="custom-file col-9 offset-2">
-                    <input type="file" id="file3" name="file" class="custom-file-input">
-                    <label class="custom-file-label">첨부할 파일을 선택하세요</label>
+                    <input type="file" id="file3b" name="file" class="custom-file-input">
+                    <label class="custom-file-label" id="file3bLable">첨부할 파일을 선택하세요(업로드 후 수정/삭제 불가합니다)</label>
                 </div>
             </div><!--파일첨부 끝-->
-<%--            <div class="form-group row">--%>
-<%--                <label class="col-2 text-right text-danger" >자동 입력방지</label>--%>
-<%--                <div class="g-recaptcha"--%>
-<%--                     data-sitekey = "6LfG1joaAAAAADEkugKdcD0aHQEHMTHMBwTiiouJ"></div>--%>
-<%--                <input type="hidden" name="g-recaptcha" id="g-recaptcha">--%>
-<%--            </div>--%>
+            <div class="form-group row">
+                <label class="col-2 text-right text-danger" >자동 입력방지</label>
+                <div class="g-recaptcha"
+                     data-sitekey = "6LfA1joaAAAAAOU9f2VaZdKu9Z4C_tWErqdpFnqf"></div>
+                <input type="hidden" name="g-recaptcha" id="g-recaptcha">
+            </div>
         </div><!--새글쓰기 폼-->
 
         <div class="row margin1050">
             <div class="col-12 text-center">
                 <button type="button" id="newbdbtn" class="btn btn-primary"><i class="bi bi-check"></i>입력완료</button>
-                <button type="button" id="cancelbtn" class="btn btn-danger"><i class="bi bi-x"></i> 취소하기</button>
+                <button type="button" id="Boardcancelbtn" class="btn btn-danger"><i class="bi bi-x"></i> 취소하기</button>
             </div>
         </div>
     </form>

@@ -1,6 +1,7 @@
 <%@ page pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<script src = "https://www.google.com/recaptcha/api.js"></script>
 <!--로그인하지않았다면 list페이지로 강제 전환-->
 <%--<c:if test="test${empty UID}">--%>
 <%--    <c:redirect url="/board/list?cp=1"/>--%>
@@ -16,10 +17,6 @@
         <div class="row margin1050">
             <div class="col-6">
                 <h4><i class="bi bi-plus-circle-fill bidragup"></i> 새글쓰기</h4>
-            </div>
-            <div class="col-6 text-right">
-                <button type="button" id="listbdbtn" class="btn btn-light"><i class="bi bi-card-list bidragup"></i>목록으로</button>
-
             </div>
         </div><!--상단버튼-->
 
@@ -37,9 +34,11 @@
                 <textarea type="text" id="contents" name="contents" class="form-control col-9"
                           rows="15">${bd.contents}</textarea>
             </div>
-            <div class="row">
-                <label class="col-2 text-right">자동가입방지</label>
-                <img src="../../img/google_recaptcha.gif" width="40%" height="40%" style="margin-left: -3px;">
+            <div class="form-group row">
+                <label class="col-2 text-right text-danger" >자동 입력방지</label>
+                <div class="g-recaptcha"
+                     data-sitekey = "6LfA1joaAAAAAOU9f2VaZdKu9Z4C_tWErqdpFnqf"></div>
+                <input type="hidden" name="g-recaptcha" id="g-recaptcha">
             </div>
         </div><!--수정하기 폼-->
 
@@ -48,15 +47,10 @@
 
         <div class="row margin1050">
             <div class="col-12 text-center">
-                <button type="button" id="upbdokbtn" class="btn btn-primary"><i class="bi bi-check"></i>수정완료</button>
-                <button type="button" id="ccupbdbtn" class="btn btn-danger"><i class="bi bi-x"></i> 취소하기</button>
+                <button type="button" id="Boardupbdokbtn" class="btn btn-primary"><i class="bi bi-check"></i>수정완료</button>
+                <button type="button" id="Boardccupbdbtn" class="btn btn-danger"><i class="bi bi-x"></i> 취소하기</button>
             </div>
         </div>
     </form>
 
-    <footer class="row margin30">
-        <div class="col text-right fatdiv bg-light">
-            <h6>Copyright &copy; Lorem Ipsum 2021. All Right Reserved. Created By Bootstrap4</h6>
-        </div>
-    </footer>
 </div>

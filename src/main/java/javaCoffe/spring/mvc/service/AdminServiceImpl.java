@@ -2,13 +2,16 @@ package javaCoffe.spring.mvc.service;
 
 import javaCoffe.spring.mvc.dao.AdminDAO;
 import javaCoffe.spring.mvc.utils.ImageUploadUtilForAdmin;
+import javaCoffe.spring.mvc.vo.BuyPageVO;
 import javaCoffe.spring.mvc.vo.EshopVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("adsrv")
 public class AdminServiceImpl implements AdminService{
@@ -46,5 +49,38 @@ public class AdminServiceImpl implements AdminService{
         String id = adao.insertNewProduct(evo); // 넘겨서 저장
         imgutilforAdmin.imageCropResize(evo.getFnames().split("[/]")[0],id);
         return true;
+    }
+
+    @Override
+    public List<BuyPageVO> readBuyData(String cp) {
+        int snum = (Integer.parseInt(cp) - 1) * 30;
+        return adao.readAllData(snum);
+    }
+
+    @Override
+    public void processModi(int buyno, String process) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("buyno",buyno);
+        map.put("process",process);
+        adao.processModify(map);
+    }
+
+    @Override
+    public int countData() {
+        return adao.countData();
+    }
+
+    @Override
+    public List<BuyPageVO> readBuyData(String cp, String adminSearchTxt) {
+        int snum = (Integer.parseInt(cp) - 1) * 30;
+        Map<String,Object> map = new HashMap<>();
+        map.put("snum",snum);
+        map.put("adminSearchTxt",adminSearchTxt);
+        return adao.readAllDataSearch(map);
+    }
+
+    @Override
+    public int countData(String adminSearchTxt) {
+        return adao.countDataSearch(adminSearchTxt);
     }
 }

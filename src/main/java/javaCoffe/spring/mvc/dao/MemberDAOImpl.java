@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -32,9 +33,8 @@ public class MemberDAOImpl implements MemberDAO{
     }
 
     @Override
-    public String readRegdate(String userid) {
-        return sqlSession.selectOne("member.getRegdate",userid);
+    public String readRegdate(String name) {
+        return sqlSession.selectOne("member.getRegdate",name);
     }
-
-
 }
+//

@@ -28,6 +28,12 @@ public class BoardReplyDAOImpl implements BoardReplyDAO {
         return sqlSession.insert("reply.insertBoardReply", rvo);
     }
 
+    @Override
+    public int updateReply(ReplyVO rvo) { return sqlSession.update("reply.updateReplyBoard",rvo); }
+
+    @Override
+    public int deleteReply(ReplyVO rvo) { return sqlSession.delete("reply.deleteReplyBoard",rvo); }
+
     public String selectLastRno(){
         return sqlSession.selectOne("reply.lastRno");
     }

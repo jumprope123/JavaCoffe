@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%--페이지당 게시물 수 20개로 설정--%>
+<%--페이지당 게시물 수 cnt개로 설정--%>
 <fmt:parseNumber var="cp" value="${param.cp}"/>
 <fmt:parseNumber var="pp" value="${cnt}"/>
 <fmt:parseNumber var="bigGenreCnt" value="${bigGenreCnt}"/>
@@ -76,7 +76,7 @@
             </ul>
             <p class="text-center text-danger font-weight-bold mt-2" style="font-size: 1.2em">수량별 묶음 배송</p>
             <ul class="nav .nav-pills nav-stacked justify-content-center">
-                <li class="dropdown dropright text-center bg-black" s style=" min-width: 250px; padding: 10px 40px;">
+                <li class="dropdown dropright text-center bg-black" style=" min-width: 250px; padding: 10px 40px;">
                     <a class="dropdown-toggle font-weight-bold text-white" data-toggle="dropdown" style="font-size: 1.2em;">음료수 [캔/페트/병]</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/eshop/list?bigGenre=drink&smallGenre=fatcan&cp=1">뚱캔</a></li>
@@ -175,7 +175,7 @@
                                     <c:forEach var="b" items="${bigGenres}">
                                     <li class="list-inline-item" style="margin-bottom: 10px;">
                                         <div class="card" style="width: 230px; border: none;">
-                                            <div class="text-center center" style="width: 230px; height: 150px; border: 1px solid #E0E0E0;">
+                                            <div class="text-center center" style="width: 230px; height: 150px; border: 1px solid #E0E0E0; cursor: pointer" onclick="javascript:showimgForEshop('${b.eno}')">
                                                 <img src="${thumbURL}${b.eno}_${fn:split(b.fnames,"[/]")[0]}" class="card-img-top" style="width: 150px; height: 145px; margin-top: 1px;">
                                             </div>
                                             <div class="card-body text-center" style="margin-top: -10px;">

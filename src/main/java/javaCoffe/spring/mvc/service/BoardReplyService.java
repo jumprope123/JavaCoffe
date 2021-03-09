@@ -10,4 +10,8 @@ public interface BoardReplyService {
  boolean newReply(ReplyVO rvo);
 
  boolean newReReply(ReplyVO rvo);
+
+ boolean updateRePly(ReplyVO rvo);
+
+ boolean delRePly(ReplyVO rvo);
 }

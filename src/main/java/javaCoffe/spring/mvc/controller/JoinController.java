@@ -1,15 +1,11 @@
 package javaCoffe.spring.mvc.controller;
-
 import javaCoffe.spring.mvc.service.MemberService;
-import javaCoffe.spring.mvc.utils.GoogleCaptchaUtil;
+import javaCoffe.spring.mvc.utils.GoogleCaptchaUtilforJoin;
 import javaCoffe.spring.mvc.vo.MemberVO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
@@ -19,12 +15,12 @@ import java.net.URLEncoder;
 public class JoinController {
 
     private MemberService msrv;
-    private GoogleCaptchaUtil gcutil;
+    private GoogleCaptchaUtilforJoin guctilfj;
 
-    @Autowired
-    public JoinController (MemberService msrv, GoogleCaptchaUtil gcutil) {
+
+    public JoinController (MemberService msrv, GoogleCaptchaUtilforJoin guctilfj) {
         this.msrv = msrv;
-        this.gcutil = gcutil;
+        this.guctilfj = guctilfj;
     }
 
     @GetMapping("/join/agree")
@@ -37,12 +33,21 @@ public class JoinController {
         return "join/checkme.tiles";
     }
 
-    @GetMapping("/join/joinme") // 회원가입 폼
-    public String joinme() {
-        return "join/joinme.tiles";
+    @PostMapping ("/join/joinme") // 회원가입 폼  뭐가 문제지<<<<<<<<<<<<<<<<<
+    public ModelAndView joinme(String name2, String jumin1, String jumin2) throws UnsupportedEncodingException {
+        // 뷰객체로 생성
+        // jsp로 객체 넘김
+        // list
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("join/joinme.tiles");
+        mv.addObject("name2",name2);
+        mv.addObject("jumin1",jumin1);
+        mv.addObject("jumin2",jumin2);
+
+        return mv;
     }
 
-    @PostMapping("/join/joinme") // 회원가입처리
+    @PostMapping("/join/joinmeok") // 회원가입처리 뭐가 문제지<<<<<<<<<<<<<<<<<
     public String joinmeok(MemberVO mvo,
                            HttpServletRequest req,
                            RedirectAttributes rds) throws UnsupportedEncodingException {
@@ -54,30 +59,35 @@ public class JoinController {
         param += "&jumin2=" + mvo.getJumin().split("-")[1];
         String returnPage = "redirect:/join/joinme" + param;
 
+
+
         // 클라이언트에서 생성한 captcha 코드를 가져옴
         String gCaptcha = req.getParameter("g-recaptcha");
 
         // captcha코드의 유효성을 확인함
         // 결과 : true => 테이블에 회원정보 저장, /join/joinok 이동
         // 결과 : false =>  /join/joinme 이동
-        if (gcutil.checkCaptcha(gCaptcha)) {
-            msrv.newMember(mvo);
-            String regdate = msrv.readRegDate(mvo.getUserid());
-            returnPage = "redirect:/join/joinok?id="+mvo.getUserid()+"&email="+mvo.getEmail()+"&regdate="+regdate;
+        if (guctilfj.checkCaptchaforJoin(gCaptcha)) {
+            msrv.newMember(mvo); // <<<<<<<<<<<<<<<<<<<<
+
+            String regdate = msrv.readRegDate(mvo.getName());
+
+            returnPage = "redirect:/join/joinok?name=" +
+                    URLEncoder.encode(mvo.getName(),"UTF-8")+"&email="+mvo.getEmail()+"&regdate="+regdate;
         }else {
-            rds.addFlashAttribute("checkCaptcha","자동가입방지 확인이 실패했어요");
+            rds.addFlashAttribute("checkCaptchaforJoin","자동가입방지 확인이 실패했어요");
             rds.addFlashAttribute("mvo",mvo);
         }
         return returnPage;
+
     }
 
-
     @GetMapping("/join/joinok")
-    public ModelAndView joinok(ModelAndView mv,String userid, String email, String regdate) {
+    public ModelAndView joinok(ModelAndView mv,String name, String email, String regdate) {
         // 방금 가입한 회원의 이름,이메일,가입일을 추출
         // 모델(mvo)에 담아서 joinok.jsp로 보냄
         mv.setViewName("join/joinok.tiles");
-        mv.addObject("userid",userid);
+        mv.addObject("name",name);
         mv.addObject("email",email);
         mv.addObject("regdate",regdate);
         return mv;
@@ -101,3 +111,4 @@ public class JoinController {
 
     }
 }
+//
