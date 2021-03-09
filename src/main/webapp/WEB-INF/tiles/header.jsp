@@ -8,7 +8,7 @@
         <div class="top_wrapper">
             <div class="header_top">
                 <div class="hlogo">
-                    <a class="logo_linked_home" href="#">
+                    <a class="logo_linked_home" href="/index">
                         <img alt="로고" class="header_logo" height="30px" src="../img/base/javapressologo.png" width="170px" />
                     </a>
                     <!-- 헤더 로고 -->
