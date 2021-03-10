@@ -127,16 +127,26 @@ public class KakaoController {
         String userid = memberService.checkUserid("uid");
         int resultour = memberService.compareID(kakaoID);
 
+        String uidUID = (String) sess.getAttribute("UID");
+        System.out.println("-------------------");
+        System.out.println(uidUID);
+        System.out.println("-------------------");
 
-        if (resultkakao == 0) {
 
-            System.out.println("로그인실패");
-            returnPage= "redirect:/login/loginok?joinorbind=true";
+        if (uidUID == null) { //로그인 하지 않은 경우
 
-        } else {
-            userid = memberService.getUserId(kakaoID);
-            sess.setAttribute("UID", userid);
-            returnPage = "redirect:/index";
+            if (resultkakao == 0) {
+
+                System.out.println("로그인실패");
+                returnPage = "redirect:/login/login?joinorbind=100";
+
+            } else {
+                userid = memberService.getUserId(kakaoID);
+                sess.setAttribute("UID", userid);
+                returnPage = "redirect:/index";
+            }
+        }else { //로그인을 한 경우
+           int cnt = memberService.inputKakao(uidUID,kakaoID);
         }
         return returnPage;
     }

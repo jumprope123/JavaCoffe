@@ -43,6 +43,7 @@
 
     }
 </style>
+
 <div id="main margin30 container">
     <div class="margin30 container center_login1 center_login2 total_size_login ">
         <form onsubmit="submitLoginForm(this); return false;"
@@ -71,14 +72,23 @@
         </form>
 
         <%--===========================여기서 부터--%>
-        <div>
-                <p id="joinorbindP">${joinorbind}</p>
-            <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
-                    src="/img/login/kakao_login_btn.png" onclick="linkUser()" width="208px;"></a>
-        </div>
-        <div>
-            <a href="/auth/kakao/unlink">카카오 앱 연결 해제</a>
-        </div>
+        <input type="hidden" id="joinorbind" value="${joinorbind}">
+
+        <c:if test="${joinorbind eq 200}">
+            <div>
+                <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
+                src="/img/login/kakao_login_btn.png" onclick="linkUser()" width="208px;"></a>
+            </div>
+            <div>
+                <a href="/auth/kakao/unlink">카카오 앱 연결 해제</a>
+            </div>
+        </c:if>
+        <c:if test="${joinorbind eq 100}">
+            <div>
+                <p>먼저, JavaPresso의 회원으로 로그인을 해주세요.</p>
+                <p>로그인 후, 카카오아이디를 연동하시면 카카오아이디로도 로그인을 하실 수 있습니다.</p>
+            </div>
+        </c:if>
         <%-- 카카오 구현 중==============================--%>
     </div>
 </div>

@@ -5,6 +5,8 @@ import javaCoffe.spring.mvc.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 //
 @Service("msrv")
@@ -64,6 +66,14 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public String getUserId(int kakaoID) {
         return mdao.getUserId(kakaoID);
+    }
+
+    @Override
+    public int inputKakao(String uidUID, int kakaoID) {
+        Map map = new HashMap<String,Object>();
+        map.put("uidUID",uidUID);
+        map.put("kakaoID",kakaoID);
+        return mdao.inputKakao(map);
     }
 
 }

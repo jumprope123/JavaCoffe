@@ -48,6 +48,11 @@ public class MemberDAOImpl implements MemberDAO{
         return sqlSession.selectOne("member.getUserId",kakaoID);
     }
 
+    @Override
+    public int inputKakao(Map map) {
+        return sqlSession.update("member.updateKakao",map);
+    }
+
     //=====================카카오 로그인 설정==========================
 }
 //

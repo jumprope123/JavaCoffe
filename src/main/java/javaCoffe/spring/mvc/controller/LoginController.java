@@ -23,8 +23,13 @@ public class LoginController {
     private MemberService msrv;
 
     @GetMapping("/login/login")
-    public String login() {
-        return "login/login.tiles";
+    public ModelAndView login(ModelAndView mv, String joinorbind) {
+        mv.setViewName("login/login.tiles");
+        if (joinorbind == null || joinorbind.isEmpty()) { // joinorbind가 없으면 200을 대입. 있으면 100
+            joinorbind = "200";
+        }
+        mv.addObject("joinorbind",joinorbind);
+        return mv;
     }
 
 
@@ -62,19 +67,7 @@ public class LoginController {
     }
 
 
-    //=========여기서 부터 카카오 구현중
-    @GetMapping("/login/loginok")
-    public ModelAndView kakao(String joinorbind) {
-        ModelAndView mv = new ModelAndView();
 
-        if (joinorbind == null || joinorbind.isEmpty()) {
-            joinorbind = "false";
-        }
-        mv.setViewName("login/login");
-        mv.addObject("joinorbind",joinorbind);
-
-        return mv;
-    } // ============ 팀장님
 //
 
     // ============================ woo 만약 kakaoID 값을 체크해서 있으면 index 없으면 loginfail로 이동
