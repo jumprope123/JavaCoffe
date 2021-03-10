@@ -63,6 +63,9 @@
 <script src="/js/admin.js"></script>
 <script src="/js/eshop.js"></script>
 <script src="/js/buylist.js"></script>
+<!-- mybasket-hwang -->
+<script src="/js/mybasket.js"></script>
+<!-- // mybasket-hwang -->
 
 </body>
 </html>

@@ -12,7 +12,13 @@
     </insert>
 
     <select id="selectListmb" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.MyBasketVO">
-        select mbno, mycode, mystuck, myprice, myuuid, myshipPay, mypname, myshipPay from MyBasket
+        select mbno, mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount from MyBasket
+        where myuuid = #{userid}
+        order by mbno desc;
+    </select>
+
+    <select id="selectShipPaycnt" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.MyBasketVO">
+        select mbno, mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount from MyBasket
         where myuuid = #{userid}
         order by mbno desc;
     </select>

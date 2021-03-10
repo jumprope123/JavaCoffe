@@ -18,8 +18,12 @@ public class MyBasketController {
     @Autowired private MyBasketService mbsrv;
 
     @GetMapping("/mybasket/list")
-    public String list(){
-        return "mybasket/list.tiles";
+    public ModelAndView list(ModelAndView mv, HttpSession sess){
+        mv.setViewName("mybasket/list.tiles");
+        String userid = (String) sess.getAttribute("UID");
+        List<MyBasketVO> mbvo = mbsrv.readProduct(userid);
+        mv.addObject("mbvo",mbvo);
+        return mv;
     }
 
     @PostMapping("/mybasket/list")
@@ -27,22 +31,16 @@ public class MyBasketController {
         mv.setViewName("mybasket/list.tiles");
         String mbcode = req.getParameter("eshopViewCode");
         int mbamount = Integer.parseInt(req.getParameter("eshopViewNum"));
-        int mbprice = Integer.parseInt(req.getParameter("priceForResult"));
-        int totalprice = mbamount * mbprice;
+//        int mbprice = Integer.parseInt(req.getParameter("priceForResult"));
         String userid = (String) sess.getAttribute("UID");
 //        MyBasketVO embvo = mbsrv.readOneMB();
         mbsrv.newMBProduct(mbcode, userid, mbamount);
-        List<MyBasketVO> mbvo = mbsrv.readProduct(userid);
-        mv.addObject("mbvo",mbvo);
-        mv.addObject("totalprice",totalprice);
-        mv.addObject("mbamount",mbamount);
         return mv;
     }
 
     @GetMapping("/mybasket/delete") //삭제하기
-    public String delete(String mbno, HttpSession sess, String userid){
-
-        if(sess.getAttribute("UID").equals(userid))
+    public String delete(HttpServletRequest req){
+            String mbno = req.getParameter("mbno");
             mbsrv.removemb(mbno);
 
         return "redirect:/mybasket/list";
