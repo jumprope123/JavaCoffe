@@ -49,6 +49,7 @@
 <!-- // _findshop-hwang -->
 <script src="/js/admin.js"></script>
 <script src="/js/eshop.js"></script>
+<script src="/js/coffeMachine.js"></script>
 
 </body>
 </html>
