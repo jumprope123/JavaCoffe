@@ -39,8 +39,6 @@ $('#mb_login_btn').on('click',function (){
 
 let mbnum = document.getElementById('mbnum_result').innerText;
 
-console.log(mbnum);
-
 for (let i = 1; i <= mbnum; i++) {
     $("#mb_cancel_btn"+i).on('click', function () {
         if (confirm('정말로 이 상품을 장바구니에서 삭제하겠습니까?')) {
