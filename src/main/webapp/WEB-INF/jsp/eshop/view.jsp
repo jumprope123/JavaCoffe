@@ -16,7 +16,8 @@
 </style>
 <div id="main">
     <div class="row">
-        <div class="col-2" style="margin-top: 150px;">
+        <div class="col-2">
+            <a href="/index"><img src="/img/eshop/javacoffeLogo.jpg"></a>
             <p class="text-center text-danger font-weight-bold mt-2" style="font-size: 1.2em;">6만원이상 무료배송</p>
             <ul class="nav .nav-pills nav-stacked justify-content-center">
                 <li class="dropdown dropright text-center bg-black" style="min-width: 250px; padding: 10px 40px;">
