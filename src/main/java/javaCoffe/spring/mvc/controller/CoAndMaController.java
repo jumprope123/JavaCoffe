@@ -41,25 +41,6 @@ public class CoAndMaController {
     }
 
 
-    @GetMapping("coffemachine/view2")
-    public ModelAndView description1(ModelAndView mv, String kof){
-
-
-        mv.setViewName("coffemachine/view2");
-
-
-        return mv;
-    }
-    @GetMapping("coffemachine/view1")
-    public ModelAndView description2(ModelAndView mv, String kof){
-
-
-        mv.setViewName("coffemachine/view1");
-
-
-        return mv;
-    }
-
 
     @GetMapping("/CoffeeAndMachine/researchPrint")
     public ModelAndView researchPrint(ModelAndView mv, String kof){
