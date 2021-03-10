@@ -31,9 +31,11 @@
     ul.nav li.dropdown:hover > ul.dropdown-menu{display:block; margin:0;}
     .pd5 {padding: 5px}
 </style>
+
 <div id="main">
     <div class="row">
-        <div class="col-2" style="margin-top: 150px;">
+        <div class="col-2">
+            <a href="/index"><img src="/img/eshop/javacoffeLogo.jpg"></a>
             <p class="text-center text-danger font-weight-bold mt-2" style="font-size: 1.2em;">6만원이상 무료배송</p>
             <ul class="nav .nav-pills nav-stacked justify-content-center">
                 <li class="dropdown dropright text-center bg-black" style="min-width: 250px; padding: 10px 40px;">
@@ -221,7 +223,26 @@
                 </div>
             </div>
         </div> <%--section--%>
-        <div class="col-2"></div><%--여기에는 장바구니나 방금본 목록같은거 둥둥띄워서 따라다니게 하기--%>
+        <div class="col-2">
+            <c:if test="${UID eq 'javapresso'}">
+                <div class="mt-5" style="border: 10px outset brown;">
+                    <div class="row mt-2">
+                        <div class="col-12 text-center h3"><span class="bg-success rounded-pill">&nbsp;관리자전용&nbsp;</span></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <button type="button" id="goToAdminWrite" class="btn btn-lg btn-dark text-white">상품추가</button>
+                            <button type="button" id="goToAdminHandle" class="btn btn-lg btn-dark text-white">배송관리</button>
+                        </div>
+                    </div>
+                    <div class="row mt-2 mb-2">
+                        <div class="col-12 text-center">
+                            <span class="text-danger">Welcome back. manager!</span>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+        </div><%--여기에는 장바구니나 방금본 목록같은거 둥둥띄워서 따라다니게 하기--%>
     </div>
 </div>
 

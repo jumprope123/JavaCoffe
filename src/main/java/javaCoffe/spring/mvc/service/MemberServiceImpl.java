@@ -1,14 +1,14 @@
 package javaCoffe.spring.mvc.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javaCoffe.spring.mvc.dao.MemberDAO;
 import javaCoffe.spring.mvc.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
+//
 @Service("msrv")
 public class MemberServiceImpl implements MemberService{
 
@@ -19,6 +19,7 @@ public class MemberServiceImpl implements MemberService{
     public String newMember(MemberVO mvo) {
         String result = "회원가입 실패";
         int cnt = mdao.insertMember(mvo);
+
         if (cnt > 0) result = "회원가입 성공";
         return result;
     }
@@ -42,21 +43,38 @@ public class MemberServiceImpl implements MemberService{
         // 입력한 아이디/비밀번호가 member 테이블에 있는지 확인
         // 있으면 : 1을 반환, 없으면 : 0을 반환
         if (mdao.selectLogin(mvo) > 0) {
-            sess.setAttribute("UID",mvo.getUserid());
+            sess.setAttribute("UID", mvo.getUserid());
             isLogin = true;
         }
-
         return isLogin;
     }
-
     @Override
-    public Object checkLogin(MemberService msrv) {
-        return null;
+    public String readRegDate(String name) {
+        return mdao.readRegdate(name);
+    }
+
+    @Override   // 원래 int kakaoID만 했는데 이런식으로 데이터가 있는지 확인하는 구문인데 맞는건지?
+    public int compareID(int kakaoID) {
+        int compareKakaoID = 0;
+        if (mdao.compareID(kakaoID) > 0) {
+        //sess.setAttribute("kakaoID", mvo.getKakaoID());
+            compareKakaoID = 1;
+        }
+        return compareKakaoID;
     }
 
     @Override
-    public String readRegDate(String userid) {
-        return mdao.readRegdate(userid);
+    public String getUserId(int kakaoID) {
+        return mdao.getUserId(kakaoID);
+    }
+
+    @Override
+    public int inputKakao(String uidUID, int kakaoID) {
+        Map map = new HashMap<String,Object>();
+        map.put("uidUID",uidUID);
+        map.put("kakaoID",kakaoID);
+        return mdao.inputKakao(map);
     }
 
 }
+//

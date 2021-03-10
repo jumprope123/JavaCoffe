@@ -1,44 +1,78 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>   <%--<<<<< 이건 나중에 생각해보기--%>
 
 <header id="top">
     <div id="header">
         <div class="top_wrapper">
             <div class="header_top">
                 <div class="hlogo">
-                    <a class="logo_linked_home" href="#">
+                    <a class="logo_linked_home" href="/index">
                         <img alt="로고" class="header_logo" height="30px" src="../img/base/javapressologo.png" width="170px" />
                     </a>
                     <!-- 헤더 로고 -->
                 </div>
                 <div class="header_customer">
                     <div class="header_login">
-                        <button data-toggle="dropdown" class="LoginDropdownButton dropdown-toggle" class="LoginDropdownButton" id="hloginbtn" aria-expanded="false">
-                            로그인 하기
-                            <!--aria-expanded="false"-->
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <form class="form-inline login-form" action="/examples/actions/confirmation.php" method="post">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                        <input type="text" class="form-control" placeholder="Username" required>
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                        <input type="text" class="form-control" placeholder="Password" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                </form>
-                            </li>
-                        </ul>
+                        <c:if test="${empty sessionScope.UID}">
+                            <button data-toggle="dropdown" class="LoginDropdownButton dropdown-toggle" class="LoginDropdownButton" id="hloginbtn" aria-expanded="false">
+                                로그인 하기
+                                <!--aria-expanded="false"-->
+                            </button>
+                            <div>
+
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <form class="form-inline login-form" action="/login/login" method="post">
+                                        <div class="input-group" style="width: 225px; margin-left: 2px">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input type="text" name="userid" id="userID" class="form-control bidragup"  placeholder="Username" required>
+                                        </div>
+                                        <div class="input-group" style="width: 225px; margin-left: 2px" >
+                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                            <input type="password" name="passwd" id="userPW" class="form-control bidragup"  placeholder="Password" required>
+                                        </div>
+                                        <button id="s_hloginbtn" type="submit" class="btn btn-primary bidragdown2" style="margin-left: 2px">Login</button>
+                                        <p id="joinorbindP">${joinorbind}</p>
+                                        <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
+                                                src="../img/login/kakao_login_medium.png" class="bidragdown2" width="66.09px" height="38px" style="margin-left: 3px"></a>
+                                    </form>
+                                </li>
+                            </ul>
+                        </c:if>
+                        <c:if test="${!empty sessionScope.UID}">
+                                <button data-toggle="dropdown" class="LoginDropdownButton dropdown-toggle" class="LoginDropdownButton" id="hloginbtn1" aria-expanded="false">
+                                   로그아웃
+                                    <!--aria-expanded="false"-->
+                                </button>
+                        </c:if>
                     </div>
+                    <c:if test="${empty sessionScope.UID}">
                     <div class="header_join">
                         <button class="JoinDropdownButton" id="hjoinbtn">
                             회원가입은 여기에서
                             <!--aria-expanded="false"-->
                         </button>
                     </div>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.UID}">
+                    <div class="header_join">
+                        <button class="JoinDropdownButton" id="h_mybasket">
+                            장바구니로 이동
+                            <!--aria-expanded="false"-->
+                        </button>
+                    </div>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.UID}">
+                        <div class="header_memberInfo">
+                            <button class="JoinDropdownButton" id="h_mymemberinfo">
+                                ${UID}님 정보 보기
+                                <!--aria-expanded="false"-->
+                            </button>
+                        </div>
+                    </c:if>
                 </div>
                 <!-- 헤더 커스텀(로그인, 회원가입) -->
             </div>
@@ -91,7 +125,7 @@
                             <div class="navbar_element">
                     <span class="navbar_icon" style="width: 30px; height: 20px;">
                     </span>
-                                <div class="navbar_title">게시판</div>
+                                <div class="navbar_title">고객센터</div>
                             </div>
                         </a>
                         <span class="VisuallyHidden">
@@ -124,7 +158,7 @@
                         </a>
                         <span class="VisuallyHidden">
                   <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
-                    서브 메뉴 마장찾기 열기
+                    서브 메뉴 매장찾기 열기
                   </button>
                 </span>
                     </li>
@@ -146,4 +180,7 @@
             </div>
         </nav>
     </div>
+    <script>
+        hloginbtn
+    </script>
 </header>

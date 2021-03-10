@@ -125,9 +125,10 @@ $('#reviewFindBtn').on('click',function () {
 
 //댓글남기기 버튼 클릭시
 $('#reviewcmtbtn').on('click',function () {
+    var uidForReview = $('#uidForReview').val();
     if ($('#reply').val() == '') alert('댓글을 작성하세요');
     else {
-        $('#uid').val('테스트계정'); //나중에 삭제
+        $('#uid').val(uidForReview);
         $('#replyfrm').attr('method','post');
         $('#replyfrm').attr('action','/review/replyok');
         $('#replyfrm').submit();

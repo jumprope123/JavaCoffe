@@ -118,36 +118,84 @@ $('#eshopViewXIcon').on('click',function () {
 $('#eshopViewNum').on('change',function () {
     var rawInput = $('#eshopViewNum').val();
     var typeint = parseInt(rawInput); //무조건 숫자형으로 바꿈
+    var eshopHiddenStock = parseInt($('#eshopHiddenStock').val()); //재고받아옴
     if (isNaN(typeint)) typeint = 1;
     if (typeint <= 0) typeint = 1;
     $('#eshopViewNum').val(typeint);
+    if (typeint>eshopHiddenStock) {
+        alert('주문수량은 재고를 초과할 수 없습니다.');
+        typeint = 1;
+        $('#eshopViewNum').val(typeint);
+    }
     var priceForResult = parseInt($('#priceForResult').val());
     var resultPrice = typeint * priceForResult
     $('#eshopResultPrice').text(resultPrice+'원');
+    $('#ehsopFinalResultPrice').text(resultPrice);
 })
 
 $('#eshopUpBtn').on('click',function () {
     var rawInput = $('#eshopViewNum').val();
     var typeint = parseInt(rawInput); //무조건 숫자형으로 바꿈
+    var eshopHiddenStock = parseInt($('#eshopHiddenStock').val()); //재고받아옴
     var newint = typeint + 1;
     $('#eshopViewNum').val(newint);
+    if (newint>eshopHiddenStock){
+        alert('주문수량은 재고를 초과할 수 없습니다.');
+        newint = 1;
+        $('#eshopViewNum').val(newint);
+    }
     var priceForResult = parseInt($('#priceForResult').val());
     var resultPrice = newint * priceForResult
     $('#eshopResultPrice').text(resultPrice+'원');
+    $('#ehsopFinalResultPrice').text(resultPrice);
 })
 
 $('#eshopDownBtn').on('click',function () {
     var rawInput = $('#eshopViewNum').val();
     var typeint = parseInt(rawInput); //무조건 숫자형으로 바꿈
+    var eshopHiddenStock = parseInt($('#eshopHiddenStock').val()); //재고받아옴
     var newint = typeint - 1;
     if (newint <= 0) newint = 1;
     $('#eshopViewNum').val(newint);
+    if (newint>eshopHiddenStock){
+        alert('주문수량은 재고를 초과할 수 없습니다.');
+        newint = 1;
+        $('#eshopViewNum').val(newint);
+    }
     var priceForResult = parseInt($('#priceForResult').val());
     var resultPrice = newint * priceForResult
     $('#eshopResultPrice').text(resultPrice+'원');
+    $('#ehsopFinalResultPrice').text(resultPrice);
 })
 
 $('#eshopCuponBtn').on('click',function () {
     alert('저희가 돈이없어서 ㅠㅠ 쿠폰은 없다구용~');
 })
 
+
+function jumpToImgExplain() {
+    location.href ="#eshopExplainImg"
+}
+
+function jumpToImgExchange() {
+    location.href ="#eshopExchangeImg"
+}
+
+$('#eshopToMybasketBtn').on('click',function () {
+    var eshopViewNum = parseInt($('#eshopViewNum').val());
+    var priceForResult = parseInt($('#priceForResult').val());
+    var finalPrice = eshopViewNum * priceForResult;
+
+    $.ajax({
+        url: '/mybasket/list',
+        type: 'POST',
+        data: {eshopViewCode: $('#eshopViewCode').val(), eshopViewNum: $('#eshopViewNum').val(), priceForResult: finalPrice}
+    });
+    alert('장바구니에 추가되었습니다');
+})
+
+$('#eshopToBuyPageBtn').on('click',function () {
+    $('#eshopViewForm').attr('method', 'post');
+    $('#eshopViewForm').attr('action', '/buylist/buyPage');
+    $('#eshopViewForm').submit();//구매페이지로 코드,수량,가격(개당) 보냄
+})

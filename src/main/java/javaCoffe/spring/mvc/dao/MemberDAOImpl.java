@@ -6,9 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
-
+//
 @Repository("mdao")
 public class MemberDAOImpl implements MemberDAO{
 
@@ -32,9 +33,26 @@ public class MemberDAOImpl implements MemberDAO{
     }
 
     @Override
-    public String readRegdate(String userid) {
-        return sqlSession.selectOne("member.getRegdate",userid);
+    public String readRegdate(String name) {
+        return sqlSession.selectOne("member.getRegdate",name);
     }
 
+    //=====================카카오 로그인 설정==========================
+    @Override
+    public int compareID(int kakaoID) {
+        return sqlSession.selectOne("member.compareID",kakaoID);
+    }
 
+    @Override
+    public String getUserId(int kakaoID) {
+        return sqlSession.selectOne("member.getUserId",kakaoID);
+    }
+
+    @Override
+    public int inputKakao(Map map) {
+        return sqlSession.update("member.updateKakao",map);
+    }
+
+    //=====================카카오 로그인 설정==========================
 }
+//

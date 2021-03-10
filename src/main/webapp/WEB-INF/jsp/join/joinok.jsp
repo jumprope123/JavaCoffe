@@ -1,11 +1,7 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
-
-
-
 
 <div id="main margin30 container">
     <div class="margin30 container">
@@ -45,7 +41,7 @@
         <hr class="bg-white">
         <p class="site_agreefont">회원가입 이후 아이디와 비밀번호는 안전하게 보호하도록 약속드리겠습니다 <br>
             Javapresso에서 즐거운 시간 되십시오</p>
-        <p>이름 :${userid}</p>
+        <p>이름 :${name}</p>
         <p>이메일 : ${email}</p>
         <p>가입일시 : ${regdate}</p>
     </div>
@@ -58,3 +54,4 @@
     </div>
 </div><!-- main -->
 <div class="all_agree_bottom"></div>
+<!-- main -->
