@@ -102,7 +102,7 @@
     }else if(sum>20){
         out.println(" '블랙' 색상에 제품b 입니다.");
     }else{
-        out.println(" '실버' 색상에 제품b 입니다.");
+        out.println(" '실버' 색상에 제품c 입니다.");
     }
 
 
