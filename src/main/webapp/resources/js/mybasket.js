@@ -29,6 +29,8 @@ $(document).ready(function(){
             });
         }
     });
+
+
 });
 
 $('#total_list_select_check')
@@ -52,6 +54,19 @@ for (let i = 1; i <= mbnum; i++) {
             alert('장바구니에서 해당 상품이 삭제되었습니다.');
             location.href = '/mybasket/list';
         }
+    });
+}
+
+for (let k = 1; k <= mbnum; k++) {
+    $("#mb_item_amount"+k).change(function() {
+        let mbnotemp = document.getElementById('mb_product_mbno'+k).innerText
+        let mbamounttemp = $(this).val();
+        $.ajax({
+            url: '/mybasket/update',
+            type: 'POST',
+            data: {mbno: mbnotemp, mbamount: mbamounttemp}
+        })
+        location.href = '/mybasket/list'
     });
 }
 

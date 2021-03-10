@@ -30,5 +30,7 @@
 <!--        select code as mycode, stuck as mystuck, dcprice as myprice, #{userid} as myuuid, shipPay as myshipPay, title as mypname, ${salesCnt} as myamount from eshop-->
 <!--        where code = #{code}-->
 <!--    </select>-->
-
+    <update id="updatemb" parameterType="javaCoffe.spring.mvc.vo.MyBasketVO" statementType="PREPARED">
+        update MyBasket set myamount = #{myamount} where mbno = #{mbno};
+    </update>
 </mapper>
