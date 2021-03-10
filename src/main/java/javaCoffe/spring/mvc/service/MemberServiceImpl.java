@@ -44,6 +44,7 @@ public class MemberServiceImpl implements MemberService{
         // 있으면 : 1을 반환, 없으면 : 0을 반환
         if (mdao.selectLogin(mvo) > 0) {
             sess.setAttribute("UID", mvo.getUserid());
+
             isLogin = true;
         }
         return isLogin;
@@ -74,6 +75,11 @@ public class MemberServiceImpl implements MemberService{
         map.put("uidUID",uidUID);
         map.put("kakaoID",kakaoID);
         return mdao.inputKakao(map);
+    }
+
+    @Override
+    public int readAboutkakao(String userid) {
+        return mdao.readAboutKakao(userid);
     }
 
 }

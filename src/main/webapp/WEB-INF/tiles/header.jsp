@@ -72,7 +72,16 @@
                                 <!--aria-expanded="false"-->
                             </button>
                         </div>
+                        <%--   여기에 추가함 -> session값이 있는데, 카카오아이디값이 없을때--%>
+                        <c:if test="${sessionScope.AboutKakao eq 0}">
+                            <div style="margin-left: 20px">
+                                <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" id="kakao_login_btn_" class="kakao_login_btn_position">
+                                    <img src="/img/login/kakao_login_btn.png"  width="208px;" height="40px"></a>
+                            </div>
+                        </c:if>
+                        <%--                여기에 추가함--%>
                     </c:if>
+
                 </div>
                 <!-- 헤더 커스텀(로그인, 회원가입) -->
             </div>
@@ -181,6 +190,5 @@
         </nav>
     </div>
     <script>
-        hloginbtn
     </script>
 </header>

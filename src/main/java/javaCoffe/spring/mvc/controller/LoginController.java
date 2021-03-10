@@ -22,6 +22,7 @@ public class LoginController {
     @Autowired
     private MemberService msrv;
 
+
     @GetMapping("/login/login")
     public ModelAndView login(ModelAndView mv, String joinorbind) {
         mv.setViewName("login/login.tiles");
@@ -39,8 +40,13 @@ public class LoginController {
 
         if (msrv.checkLogin(mvo, sess)) // 로그인 성공시
             returnPage = "redirect:/index";
-
-        System.out.println("잘되는건가?");
+//여기서부터
+        String userid = (String) sess.getAttribute("UID");
+        int result = msrv.readAboutkakao(userid);
+        sess.setAttribute("AboutKakao",result); //0이면 연동안함 1이면 연동되잇음.
+        System.out.println(result);
+        sess.setAttribute("UID", userid);
+//여기까지
         return returnPage;
     }
 
@@ -63,6 +69,7 @@ public class LoginController {
     @GetMapping("/login/loginDel")
     public String logindel(HttpSession sess){
         sess.removeAttribute("UID");
+        sess.removeAttribute("AboutKakao");
         return "redirect:/login/login";
     }
 
