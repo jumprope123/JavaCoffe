@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybasket">
+
+    <insert id="insertmb" parameterType="map" statementType="PREPARED">
+        insert into MyBasket (mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount)
+        select code as mycode, stuck as mystuck, dcprice as myprice, #{userid} as myuuid, shipPay as myshipPay, title as mypname, #{mbamount} as myamount from eshop
+        where code = #{code};
+    </insert>
+
+    <select id="selectListmb" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.MyBasketVO">
+        select mbno, mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount from MyBasket
+        where myuuid = #{userid}
+        order by mbno desc;
+    </select>
+
+    <select id="selectShipPaycnt" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.MyBasketVO">
+        select mbno, mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount from MyBasket
+        where myuuid = #{userid}
+        order by mbno desc;
+    </select>
+
+    <delete id="deletemb" parameterType="String" statementType="PREPARED">
+        delete from MyBasket where mbno = #{mbno}
+    </delete>
+<!--    <select id="selectOnemb" parameterType="map" resultType="javaCoffe.spring.mvc.vo.MyBasketVO">-->
+<!--        select code as mycode, stuck as mystuck, dcprice as myprice, #{userid} as myuuid, shipPay as myshipPay, title as mypname, ${salesCnt} as myamount from eshop-->
+<!--        where code = #{code}-->
+<!--    </select>-->
+
+</mapper>

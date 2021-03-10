@@ -3,15 +3,21 @@ package javaCoffe.spring.mvc.service;
 import javaCoffe.spring.mvc.vo.MemberVO;
 
 import javax.servlet.http.HttpSession;
-
+import java.util.Map;
+//
 public interface MemberService {
+
     String newMember(MemberVO mvo);
 
     String checkUserid(String uid);
 
     boolean checkLogin(MemberVO mvo, HttpSession sess);
 
-    Object checkLogin(MemberService msrv);
+    String readRegDate(String name);
 
-    String readRegDate(String userid);
+    int compareID(int kakaoID);
+
+    String getUserId(int kakaoID);
+
+    int inputKakao(String uidUID, int kakaoID);
 }

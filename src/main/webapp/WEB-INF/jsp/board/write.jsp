@@ -5,13 +5,13 @@
 <script src = "https://www.google.com/recaptcha/api.js"></script>
 
 <!--로그인하지않았다면 list페이지로 강제 전환-->
-<%--<c:if test="test${empty UID}">--%>
-<%--    <c:redirect url="/board/list?cp=1"/>--%>
-<%--</c:if>--%>
+<c:if test="test${empty UID}">
+    <c:redirect url="/board/list?cp=1"/>
+</c:if>
 
 <div id = "main" class="container">
     <div class="margin30">
-        <h3><i class="bi bi-chat-dots-fill bidragup"></i>게시판 </h3>
+        <h3><i class="bi bi-chat-dots-fill bidragup"></i>고객센터</h3>
         <hr>
     </div>
 
@@ -45,16 +45,16 @@
             <div class="form-group row">
                 <label for="contents" class="col-form-label col-2 text-right">파일첨부</label>
                 <div class="custom-file col-9">
-                    <input type="file" id="file1" name="file" class="custom-file-input">
-                    <label class="custom-file-label">첨부할 파일을 선택하세요</label>
+                    <input type="file" id="file1b" name="file" class="custom-file-input">
+                    <label class="custom-file-label" id="file1bLable">첨부할 파일을 선택하세요(업로드 후 수정/삭제 불가합니다)</label>
                 </div>
                 <div class="custom-file col-9 offset-2">
-                    <input type="file" id="file2" name="file" class="custom-file-input">
-                    <label class="custom-file-label">첨부할 파일을 선택하세요</label>
+                    <input type="file" id="file2b" name="file" class="custom-file-input">
+                    <label class="custom-file-label" id="file2bLable">첨부할 파일을 선택하세요(업로드 후 수정/삭제 불가합니다)</label>
                 </div>
                 <div class="custom-file col-9 offset-2">
-                    <input type="file" id="file3" name="file" class="custom-file-input">
-                    <label class="custom-file-label">첨부할 파일을 선택하세요</label>
+                    <input type="file" id="file3b" name="file" class="custom-file-input">
+                    <label class="custom-file-label" id="file3bLable">첨부할 파일을 선택하세요(업로드 후 수정/삭제 불가합니다)</label>
                 </div>
             </div><!--파일첨부 끝-->
             <div class="form-group row">
