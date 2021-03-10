@@ -1,5 +1,5 @@
 package javaCoffe.spring.mvc.vo;
-
+//
 public class OAuthToken {
     private String access_token;
     private String token_type;

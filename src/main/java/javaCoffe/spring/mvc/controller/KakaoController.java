@@ -120,7 +120,7 @@ public class KakaoController {
         System.out.println("kakaoblog password: " + garbagePassword);
 
         String returnPage = "redirect:/index";
-
+//
         int kakaoID = kakaoProfile.getId();
         int resultkakao = memberService.compareID(kakaoID);
 

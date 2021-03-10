@@ -38,7 +38,7 @@ public class KakaoProfile {
         this.kakao_account = kakao_account;
     }
 }
-
+//
 class KakaoAccount {
   public Boolean profile_needs_agreement;
   public Profile profile;
