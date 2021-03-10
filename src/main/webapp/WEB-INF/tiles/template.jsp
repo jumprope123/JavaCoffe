@@ -64,6 +64,7 @@
 <script src="/js/eshop.js"></script>
 <script src="/js/buylist.js"></script>
 <script src="/js/memberInfo.js"></script>
+<script src="/js/mybasket.js"></script>
 
 </body>
 </html>

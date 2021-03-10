@@ -5,13 +5,13 @@
 <script src = "https://www.google.com/recaptcha/api.js"></script>
 
 <!--로그인하지않았다면 list페이지로 강제 전환-->
-<%--<c:if test="test${empty UID}">--%>
-<%--    <c:redirect url="/board/list?cp=1"/>--%>
-<%--</c:if>--%>
+<c:if test="test${empty UID}">
+    <c:redirect url="/board/list?cp=1"/>
+</c:if>
 
 <div id = "main" class="container">
     <div class="margin30">
-        <h3><i class="bi bi-chat-dots-fill bidragup"></i>게시판 </h3>
+        <h3><i class="bi bi-chat-dots-fill bidragup"></i>고객센터</h3>
         <hr>
     </div>
 
