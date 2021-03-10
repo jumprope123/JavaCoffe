@@ -58,6 +58,7 @@
                         <ul class="mb_product_ul" style="float:left; width: 588px; height: 120px;">
                             <li class="mb_product_item_info mb_product_item_info_one1">
                                 <a href="#" class="b-inline">
+                                    <p style="display: none" id="mb_product_mbno">${mb.mbno}</p>
                                     <h3 id="mb_product_name">${mb.mypname}</h3></a></li>
                             <li class="mb_product_item_info mb_product_item_info_one2">
                                 <h5 id="mb_product_arrival_date">금요일 3/25 도착 예정</h5>

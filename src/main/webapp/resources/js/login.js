@@ -13,6 +13,11 @@ $('#h_mybasket').on('click',function (){
     location.href = '/mybasket/list';
 });
 
+$('#h_mymemberinfo').on('click',function (){
+    location.href = '/member/memberInfo';
+});
+
+
 $('#s_hloginbtn').on('click',function (){
     $('#s_hloginbtn').attr('action', '/index'); //
     $('#s_hloginbtn').attr('method', 'post');

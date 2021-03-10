@@ -44,3 +44,15 @@ create table MemberJoin (
 insert into MemberJoin (name, jumin, userid, passwd, zipcode, userAddr1, userAddr2, userAddr3, email, phone)
 values ();
 
+create table MyBasket (
+    mbno int primary key NOT NULL auto_increment,
+    mycode varchar(100) not null,
+    mystuck int not null,
+    myprice int default 0,
+    myuuid varchar(20) not null,
+    myshipPay int default 0,
+    mypname varchar(100) not null,
+    myamount int default 0,
+    FOREIGN KEY (mycode) REFERENCES eshop (code)
+);
+
