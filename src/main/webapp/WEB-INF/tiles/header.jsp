@@ -65,6 +65,14 @@
                         </button>
                     </div>
                     </c:if>
+                    <c:if test="${!empty sessionScope.UID}">
+                        <div class="header_memberInfo">
+                            <button class="JoinDropdownButton" id="h_mymemberinfo">
+                                ${UID}님 정보 보기
+                                <!--aria-expanded="false"-->
+                            </button>
+                        </div>
+                    </c:if>
                 </div>
                 <!-- 헤더 커스텀(로그인, 회원가입) -->
             </div>

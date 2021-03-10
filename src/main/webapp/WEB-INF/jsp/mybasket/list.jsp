@@ -41,9 +41,14 @@
                 </ul>
             </div>
         </div>
+        <div class="list_mb_wrap">
         <c:if test="${!empty sessionScope.UID}">
             <fmt:parseNumber var="mbtotalprice" value="0"/>
             <fmt:parseNumber var="mbtotalshipPay" value="0"/>
+            <fmt:parseNumber var="totalstatic_product" value="0"/>
+            <fmt:parseNumber var="totaltemp_product" value="0"/>
+            <fmt:parseNumber var="totalstatic_shipPay" value="0"/>
+            <fmt:parseNumber var="totaltemp_shipPay" value="0"/>
             <c:forEach var="mb" items="${mbvo}">
                 <c:set var="mbtotalprice" value="${mbtotalprice + mb.myprice}" />
                 <c:set var="mbtotalshipPay" value="${mbtotalshipPay + mb.myshipPay}" />
@@ -58,9 +63,10 @@
                         <ul class="mb_product_ul" style="float:left; width: 588px; height: 120px;">
                             <li class="mb_product_item_info mb_product_item_info_one1">
                                 <a href="#" class="b-inline">
+                                    <p style="display: none" id="mb_product_mbno">${mb.mbno}</p>
                                     <h3 id="mb_product_name">${mb.mypname}</h3></a></li>
                             <li class="mb_product_item_info mb_product_item_info_one2">
-                                <h5 id="mb_product_arrival_date">금요일 3/25 도착 예정</h5>
+                                <h5 id="mb_product_arrival_date"></h5>
                                 <button class="mb_cancel_btn">&nbsp;X&nbsp;</button>
                                 <h6 id="mb_product_total_price">&nbsp;${mb.myprice * mb.myamount}원&nbsp;</h6>
                                 <select id="mb_item_amount">
@@ -95,46 +101,51 @@
                         </ul>
                         <div class="mb_small_price_info">
                             <div style="margin-top: 10px; margin-right: 20px">
+                                <c:set var="totaltemp_product" value="${mb.myprice * mb.myamount}" />
+                                <c:set var="totaltemp_shipPay" value="${mb.myshipPay}" />
                                 <h4 class="b-inline fs-14">상품가격 </h4><h2 class="b-inline fs-16" style="font-weight: 700;">${mb.myprice * mb.myamount}</h2><h3 class="b-inline fs-14">&nbsp;원 </h3> <h3 class="b-inline fs-16" style="font-weight: 700;"> + </h3>
                                 <h4  class="b-inline fs-14"> 배송비 </h4><h2 class="b-inline fs-16"  style="font-weight: 700;">${mb.myshipPay}</h2><h3 class="b-inline fs-14">&nbsp;원 </h3> <h3 class="b-inline fs-16" style="font-weight: 700;"> = </h3>
-                                <h4 class="b-inline fs-14"> 주문금액 </h4><h2 class="b-inline fs-16"  style="font-weight: 700;">${mb.myprice * mb.myamount + mb.myshipPay}</h2><h2 class="b-inline fs-14">&nbsp;원 </h2>
+                                <h4 class="b-inline fs-14"> 주문금액 </h4><h2 class="b-inline fs-16"  style="font-weight: 700;">${totaltemp}</h2><h2 class="b-inline fs-14">&nbsp;원 </h2>
+                                <c:set var="totalstatic_product" value="${totalstatic_product + totaltemp_product}" />
+                                <c:set var="totalstatic_shipPay" value="${totalstatic_shipPay + totaltemp_shipPay}" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                </c:forEach>
-            </c:if>
-            <c:if test="${!empty sessionScope.UID}">
+            </c:forEach>
+        </c:if>
+        <c:if test="${!empty sessionScope.UID}">
+            <div>
+                <div class="mb_total_price_info">
+                    <div style="margin-top: 10px; ">
+                        <h4 class="b-inline fs-16">총 상품가격 </h4><h2 class="b-inline fs-20"> ${totalstatic_product}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> + </h3>
+                        <h4 class="b-inline fs-16"> 총 배송비 </h4><h2 class="b-inline fs-20"> ${totalstatic_shipPay}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> = </h3>
+                        <h4 class="b-inline fs-16"> 총 주문금액</h4><h2 class="b-inline fs-20" style="color: red"> ${totalstatic_shipPay + totalstatic_product}</h2><h2 class="b-inline fs-16">&nbsp;원 </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="mb_bottom_box">
+                <button class="mb_bottom_button" id ="going_shopping">계속 쇼핑하기</button>
+                <button class="mb_bottom_button" id ="going_buying">구매하기</button>
+            </div>
+        </c:if>
+        <c:if test="${empty sessionScope.UID}">
+            <div class="mb_login_none_box">
                 <div>
-                    <div class="mb_total_price_info">
-                        <div style="margin-top: 10px; ">
-                            <h4 class="b-inline fs-16">총 상품가격 </h4><h2 class="b-inline fs-20"> ${mbtotalprice}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> + </h3>
-                            <h4 class="b-inline fs-16"> 총 배송비 </h4><h2 class="b-inline fs-20"> ${mbtotalshipPay}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> = </h3>
-                            <h4 class="b-inline fs-16"> 총 주문금액</h4><h2 class="b-inline fs-20" style="color: red"> ${mbtotalprice+mbtotalshipPay}</h2><h2 class="b-inline fs-16">&nbsp;원 </h2>
-                        </div>
-                    </div>
+                    <ul>
+                        <li>
+                            <img style="vertical-align: top !important;" class="b-inline" src="/img/mybasket/warning.png" alt="경고">
+                            <h3 class="fs-20 b-inline" style="margin-bottom: 20px">장바구니에 담은 상품이 없습니다.</h3>
+                        </li>
+                        <li class="mt10">
+                            <h4 class="fs-16 b-inline">로그인을 하시면, 장바구니에 보관된 상품을 확인하실 수 있습니다.</h4>&nbsp;&nbsp;
+                            <button id="mb_login_btn" class="mb_login_btn">로그인 하기</button>
+                        </li>
+                    </ul>
                 </div>
-                <div class="mb_bottom_box">
-                    <button class="mb_bottom_button" id ="going_shopping">계속 쇼핑하기</button>
-                    <button class="mb_bottom_button" id ="going_buying">구매하기</button>
-                </div>
-            </c:if>
-            <c:if test="${empty sessionScope.UID}">
-                <div class="mb_login_none_box">
-                    <div>
-                        <ul>
-                            <li>
-                                <img style="vertical-align: top !important;" class="b-inline" src="/img/mybasket/warning.png" alt="경고">
-                                <h3 class="fs-20 b-inline" style="margin-bottom: 20px">장바구니에 담은 상품이 없습니다.</h3>
-                            </li>
-                            <li class="mt10">
-                                <h4 class="fs-16 b-inline">로그인을 하시면, 장바구니에 보관된 상품을 확인하실 수 있습니다.</h4>&nbsp;&nbsp;
-                                <button id="mb_login_btn" class="mb_login_btn">로그인 하기</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </c:if>
+            </div>
+        </c:if>
+        </div>
     </div>
 </main>
