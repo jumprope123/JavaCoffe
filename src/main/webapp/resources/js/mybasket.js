@@ -1,3 +1,12 @@
+$('#eshopToMybasketBtn').on('click',function() {
+    let x = document.getElementById("#mb_product_arrival_date");
+    let today = new Date();
+    let month = today.getMonth() + 1;  // 월
+    let date = today.getDate();  // 날짜
+    let day = today.getDay();  // 요일
+    x.innerText = month + "/" + date + "(" + day + ")";
+    alert(month + "/" + date + "(" + day + ")")
+});
 $('#mb_login_btn').on('click',function (){
     location.href = '/login/login';
 });
