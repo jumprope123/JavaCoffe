@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
-
+//
 @Repository("mdao")
 public class MemberDAOImpl implements MemberDAO{
 
@@ -36,5 +36,18 @@ public class MemberDAOImpl implements MemberDAO{
     public String readRegdate(String name) {
         return sqlSession.selectOne("member.getRegdate",name);
     }
+
+    //=====================카카오 로그인 설정==========================
+    @Override
+    public int compareID(int kakaoID) {
+        return sqlSession.selectOne("member.compareID",kakaoID);
+    }
+
+    @Override
+    public String getUserId(int kakaoID) {
+        return sqlSession.selectOne("member.getUserId",kakaoID);
+    }
+
+    //=====================카카오 로그인 설정==========================
 }
 //

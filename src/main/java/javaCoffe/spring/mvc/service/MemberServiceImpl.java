@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 
-
+//
 @Service("msrv")
 public class MemberServiceImpl implements MemberService{
 
@@ -20,8 +20,6 @@ public class MemberServiceImpl implements MemberService{
 
         if (cnt > 0) result = "회원가입 성공";
         return result;
-
-
     }
 
 
@@ -51,6 +49,21 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public String readRegDate(String name) {
         return mdao.readRegdate(name);
+    }
+
+    @Override   // 원래 int kakaoID만 했는데 이런식으로 데이터가 있는지 확인하는 구문인데 맞는건지?
+    public int compareID(int kakaoID) {
+        int compareKakaoID = 0;
+        if (mdao.compareID(kakaoID) > 0) {
+        //sess.setAttribute("kakaoID", mvo.getKakaoID());
+            compareKakaoID = 1;
+        }
+        return compareKakaoID;
+    }
+
+    @Override
+    public String getUserId(int kakaoID) {
+        return mdao.getUserId(kakaoID);
     }
 
 }

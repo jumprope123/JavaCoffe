@@ -23,7 +23,7 @@
 
 <div id = "main" class="container">
     <div class="margin30">
-        <h3><i class="bi bi-chat-dots-fill bidragup"></i>게시판</h3>
+        <h3><i class="bi bi-chat-dots-fill bidragup"></i>고객센터</h3>
         <hr>
     </div>
 
@@ -145,7 +145,7 @@
     <div class="row margin1050">
         <form id="replyfrm" class="card card-body bg-light ">
             <div class="form-group row justify-content-center">
-                <label class="pushtop50 text-primary font-weight-bold" >${UID}</label>&nbsp;
+                <label class="pushtop28 text-primary font-weight-bold" >${UID}</label>&nbsp;
                 <textarea id="reply" name="reply" row="5" class="form-control col-7" style="resize: none"></textarea>&nbsp;
                 <span><button type="button" id="bdcmtbtn" class="btn btn-dark pushtop50">
                         <i class="bi bi-chat-text-fill bidragup"></i> 댓글쓰기</button></span>

@@ -6,7 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.HashMap;
 
 
 @Controller
@@ -32,8 +39,6 @@ public class LoginController {
         return returnPage;
     }
 
-
-    // 일단 여기까지 !!!!!!!!!!!!!!!!!!!!!!
     @GetMapping("/login/loginfail")
     public String loginfail(){
         return "login/loginfail.tiles";
@@ -50,18 +55,31 @@ public class LoginController {
         return returnPage;
     }
 
- /*  @GetMapping("/login/loginok")
-    public String logout(HttpSession sess){
-
-        // 세션객체를 서버에서 제거함
-        sess.invalidate();
-
-        return "redirect:/login/login";
-    }*/
-
     @GetMapping("/login/loginDel")
     public String logindel(HttpSession sess){
         sess.removeAttribute("UID");
         return "redirect:/login/login";
     }
+
+
+    //=========여기서 부터 카카오 구현중
+    @GetMapping("/login/loginok")
+    public ModelAndView kakao(String joinorbind, MemberVO mvo, HttpSession sess) {
+        ModelAndView mv = new ModelAndView();
+
+        if (joinorbind == null || joinorbind.isEmpty()) {
+            joinorbind = "false";
+        }
+        mv.setViewName("login/login");
+        mv.addObject("joinorbind",joinorbind);
+
+        return mv;
+    } // ============ 팀장님
+//
+
+    // ============================ woo 만약 kakaoID 값을 체크해서 있으면 index 없으면 loginfail로 이동
+
+
+    //===========================================
+
 }
