@@ -1,5 +1,5 @@
 package javaCoffe.spring.mvc.vo;
-
+//
 public class MemberVO {
     private String mno;
     private String name;

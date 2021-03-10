@@ -74,7 +74,7 @@
         <div>
             <p id="joinorbindP">${joinorbind}</p>
             <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
-                    src="/img/login/kakao_login_btn_img.png" onclick="linkUser()" width="208px;"></a>
+                    src="/img/login/kakao_login_btn.png" onclick="linkUser()" width="208px;"></a>
         </div>
         <div>
             <a href="/auth/kakao/unlink">카카오 앱 연결 해제</a>
