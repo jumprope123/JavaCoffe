@@ -30,7 +30,7 @@
     <!--mybaits 설정 #1-->
     <bean id="sqlSessionFactory"
           class="org.mybatis.spring.SqlSessionFactoryBean"
-          p:dataSource-ref="dbcpDataSource" /> <!--여기왠오류가-->
+          p:dataSource-ref="dbcpDataSource"
           p:mapperLocations="classpath*:mybatis3/*Mapper.xml"/>
     <!--    *Mapper.xml로 끝나는 모든 xml을 읽어라-->
 
