@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -32,8 +33,11 @@ public class ReviewController {
 
 
     @GetMapping("/review/write")
-    public String review(){
-        return "review/write.tiles";
+    public ModelAndView review(ModelAndView mv, HttpSession sess){
+        mv.setViewName("review/write.tiles");
+        String UID = (String) sess.getAttribute("UID");
+        mv.addObject("UID", UID);
+        return mv;
     }
 
     @PostMapping("/review/write")
@@ -68,8 +72,10 @@ public class ReviewController {
     }
 
     @GetMapping("/review/view")
-    public ModelAndView view(ModelAndView mv, String rno){
+    public ModelAndView view(ModelAndView mv, String rno ,HttpSession sess){
         mv.setViewName("review/view.tiles");
+        String UID = (String) sess.getAttribute("UID");
+        mv.addObject("UID", UID);
         mv.addObject("review", rsrv.readOneReview(rno)); // 상세본문 읽어오기
         mv.addObject("rp", rrsrv.readReply(rno)); //리플 읽어오기
         mv.addObject("reviewCnt",rrsrv.readReplyCnt(rno)); // 해당 rno에 달린 총 댓글숫자 읽어오기
@@ -162,11 +168,6 @@ public class ReviewController {
     @ResponseBody
     @GetMapping("/review/thumbUp")
     public void thumbUp(String rno, String checkThumb, HttpServletResponse res){ //HttpServletResponse는 servlet의 힘을 빌려서 화면에 출력해주는데 사용.
-        System.out.println("it's working");
-        System.out.println("--------------------------");
-        System.out.println(rno);
-        System.out.println(checkThumb);
-        System.out.println("--------------------------");
         String ThumbCnt = rsrv.updateThumb(rno, checkThumb);
         res.setContentType("application/json; charset=UTF-8");
         try {

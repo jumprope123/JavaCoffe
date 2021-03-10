@@ -62,12 +62,12 @@ public class BoardController {
 
     @GetMapping("/board/write")//새글쓰기 폼
     public ModelAndView write(String bno, ModelAndView mv, HttpSession sess){
-        mv.setViewName("board/write.tiles");
-        mv.addObject("bd", bsrv.readOneBoard(bno));
 
-//        //로그인 했으면 새글쓰기 폼 출력
-//        if(sess.getAttribute("UID") != null)
-//            returnPage = "board/write.tiles";
+        //로그인 했으면 새글쓰기 폼 출력
+        if(sess.getAttribute("UID") != null){
+            mv.setViewName("board/write.tiles");
+            mv.addObject("bd", bsrv.readOneBoard(bno));
+        } else {mv.setViewName("redirect:/board/list?cp=1");}
 
         return mv;
     }
@@ -107,12 +107,12 @@ public class BoardController {
     public ModelAndView update(String bno, ModelAndView mv, HttpSession sess){
 
         //로그인했으면 수정하기 창이 보이고 아니면 인덱스 화면으로 넘어감
-//        if(sess.getAttribute("UID") != null && bno != null) {
+        if(sess.getAttribute("UID") != null && bno != null) {
         mv.setViewName("board/update.tiles");
         mv.addObject("bd", bsrv.readOneBoard(bno));
-//        }else {
-//            mv.setViewName("redirect:/index");
-//        }
+        }else {
+            mv.setViewName("redirect:/index");
+        }
         return mv;
     }
 
@@ -124,13 +124,13 @@ public class BoardController {
         String returnPage = "redirect:/board/update" + param;
 
         //로그인한 사용자이면서 수정하는 글이 자신이 쓴것이라면
-        //if(sess.getAttribute("UID").equals(userid) && bsrv.modifyBoard(bvo)) {
+        if(sess.getAttribute("UID").equals(userid) && bsrv.modifyBoard(bvo)) {
         if (gcutil.checkCaptcha(gCaptcha)){
-            bsrv.modifyBoard(bvo);
+            //bsrv.modifyBoard(bvo);
 
             returnPage = "redirect:/board/view" + param;
+            }
         }
-        //}
         return returnPage;
     }
 
@@ -140,7 +140,7 @@ public class BoardController {
         //삭제하려면 로그인필요
         //또한, 자기가 작성한 글만 삭제 가능
 
-        //if(sess.getAttribute("UID").equals(userid))
+        if(sess.getAttribute("UID").equals(userid))
         bsrv.removeBoard(bno);
 
         return "redirect:/board/list?cp=" + cp;
@@ -206,7 +206,7 @@ public class BoardController {
     public String replyok(ReplyVO rvo){
         String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
 
-        if(rvo.getCno() == null) brsrv.newReply(rvo);
+        if (rvo.getCno() == null) brsrv.newReply(rvo);
         else brsrv.newReReply(rvo);
 
         return returnPage;
@@ -215,9 +215,17 @@ public class BoardController {
     //댓글 수정하기
     @PostMapping("/board/replyModiOk")
     public String replyModiOk(ReplyVO rvo){
+
         String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
         brsrv.updateRePly(rvo);
         return returnPage;
     }
 
+    // 댓글 삭제하기
+    @PostMapping("/board/delreply")
+    public String replydel(ReplyVO rvo){
+        String returnPage = "redirect:/board/view?bno=" + rvo.getBno();
+        brsrv.delRePly(rvo);
+        return returnPage;
+    }
 }

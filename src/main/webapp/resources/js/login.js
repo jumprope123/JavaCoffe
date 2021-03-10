@@ -9,9 +9,14 @@ $('#hloginbtn1').on('click',function (){
     location.href = '/login/loginDel';
 });
 
+$('#h_mybasket').on('click',function (){
+    location.href = '/mybasket/list';
+});
+
 $('#s_hloginbtn').on('click',function (){
     $('#s_hloginbtn').attr('action', '/index'); //
     $('#s_hloginbtn').attr('method', 'post');
     $('#s_hloginbtn').submit();
     location.href = '/index';
 });
+

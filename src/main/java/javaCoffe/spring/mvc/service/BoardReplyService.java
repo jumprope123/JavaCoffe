@@ -13,4 +13,5 @@ public interface BoardReplyService {
 
  boolean updateRePly(ReplyVO rvo);
 
+ boolean delRePly(ReplyVO rvo);
 }

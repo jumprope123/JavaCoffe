@@ -77,7 +77,7 @@ $('#rmbdbtn').on('click', function () {
 $('#bdcmtbtn').on('click',function () {
     if ($('#reply').val() == '') alert('댓글을 작성하세요');
     else {
-        $('#uid').val('테스트계정');
+        $('#uid').val();
         $('#replyfrm').attr('method','post');
         $('#replyfrm').attr('action','/board/replyok');
         $('#replyfrm').submit();
@@ -93,7 +93,7 @@ function addReply(cno) {
 //댓글 수정하기 창
 function modiReplyForBoard(rno,reply){
     $('#modiReplyForBoard').val(reply);
-    $('#modifyreplyrno').val(rno);
+    $('#modifyreplycno').val(rno);
     $('#replyModify').modal('show');
 }
 
@@ -103,6 +103,8 @@ $('#modifyokbtn').on('click',function () {
     else {
         $('#mmrpfrm').attr('method','post');
         $('#mmrpfrm').attr('action','/board/replyModiOk');
+        //alert($('#modiReplyForBoard').val());
+        //alert($('#modifyreplycno').val());
         $('#mmrpfrm').submit();
     }
 })
@@ -110,6 +112,23 @@ $('#modifyokbtn').on('click',function () {
 // 댓글 수정창 취소
 $('#modifycencelbtn').on('click',function () {
     $('#replyModify').modal('hide');
+})
+
+//댓글 삭제하기 모듈
+function delReplyForBoard(rno) {
+    $('#deletereplycno').val(rno);
+    $('#replyDelete').modal('show');
+}
+// 댓글 삭제완료
+$('#deleteokbtn').on('click',function () {
+    $('#dmrpfrm').attr('method','post');
+    $('#dmrpfrm').attr('action','/board/delreply');
+    $('#dmrpfrm').submit();
+})
+
+// 댓글 삭제창 취소
+$('#deletecencelbtn').on('click',function () {
+    $('#replyDelete').modal('hide');
 })
 
 // 대댓글 작성하기
@@ -140,6 +159,25 @@ $('#Boardcancelbtn').on('click',function () {   //취소하기
     history.go(-1);
 });
 
+$(document).ready(function () { //첨부파일명 변경
+    $("#file1b").change(function () {
+        var file1name = $(this)[0].files[0].name;
+        document.getElementById('file1bLable').innerText = file1name;
+    })
+})
+$(document).ready(function () { //첨부파일명 변경
+    $("#file2b").change(function () {
+        var file1name = $(this)[0].files[0].name;
+        document.getElementById('file2bLable').innerText = file1name;
+    })
+})
+$(document).ready(function () { //첨부파일명 변경
+    $("#file3b").change(function () {
+        var file1name = $(this)[0].files[0].name;
+        document.getElementById('file3bLable').innerText = file1name;
+    })
+})
+
 
 //update
 $('#Boardupbdokbtn').on('click',function () {    //수정완료
@@ -157,3 +195,4 @@ $('#Boardupbdokbtn').on('click',function () {    //수정완료
 $('#Boardccupbdbtn').on('click',function () {    //취소하기
     history.go(-1);
 });
+

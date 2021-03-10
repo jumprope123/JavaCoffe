@@ -9,6 +9,13 @@
     }
 </style>
 
+<c:if test="${UID ne 'javapresso'}">
+    <script>
+        location.href="/index";
+    </script>
+</c:if>
+
+
 <div id="main" class="container singleDay">
     <form id="Adminfrm" class="margin30">
         <div class="margin1050">

@@ -8,7 +8,7 @@
         <div class="top_wrapper">
             <div class="header_top">
                 <div class="hlogo">
-                    <a class="logo_linked_home" href="#">
+                    <a class="logo_linked_home" href="/index">
                         <img alt="로고" class="header_logo" height="30px" src="../img/base/javapressologo.png" width="170px" />
                     </a>
                     <!-- 헤더 로고 -->
@@ -43,12 +43,22 @@
                                 </button>
                         </c:if>
                     </div>
+                    <c:if test="${empty sessionScope.UID}">
                     <div class="header_join">
                         <button class="JoinDropdownButton" id="hjoinbtn">
                             회원가입은 여기에서
                             <!--aria-expanded="false"-->
                         </button>
                     </div>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.UID}">
+                    <div class="header_join">
+                        <button class="JoinDropdownButton" id="h_mybasket">
+                            장바구니로 이동
+                            <!--aria-expanded="false"-->
+                        </button>
+                    </div>
+                    </c:if>
                 </div>
                 <!-- 헤더 커스텀(로그인, 회원가입) -->
             </div>
@@ -101,7 +111,7 @@
                             <div class="navbar_element">
                     <span class="navbar_icon" style="width: 30px; height: 20px;">
                     </span>
-                                <div class="navbar_title">게시판</div>
+                                <div class="navbar_title">고객센터</div>
                             </div>
                         </a>
                         <span class="VisuallyHidden">
@@ -134,7 +144,7 @@
                         </a>
                         <span class="VisuallyHidden">
                   <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
-                    서브 메뉴 마장찾기 열기
+                    서브 메뉴 매장찾기 열기
                   </button>
                 </span>
                     </li>

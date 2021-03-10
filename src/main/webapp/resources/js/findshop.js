@@ -1,25 +1,3 @@
-function getLocation(){
-    $.ajax({
-        url: '/findshop/first',
-        type: 'GET',
-    })
-        .done(function(data){
-            // 서버로부터 넘어온 데이터는 JSON형식이므로
-            // 출력시 Object로 보여짐
-
-            $.each(data, function(){ // 행단위 반복처리
-                var loc = [];
-                $.each(this, function(k, v){ // 열단위 반복처리
-                    if(v != null) loc = v;
-                });
-            });
-        })
-
-        .fail(function(xhr, status, error){
-            alert(xhr, status, + "/" + error);
-        });
-}
-
 function initAutocomplete(listener) {
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 37.55902624, lng: 126.9749014 },

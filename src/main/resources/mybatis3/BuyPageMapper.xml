@@ -13,5 +13,12 @@
         select * from MemberJoin where userid = #{userid};
     </select>
 
+    <insert id="insertData" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.BuyPageVO">
+        insert into BuyPage (fnames, brand, title, shipPay, purchase, discount, totalOgprice, totalDcprice, deliveryZipcode, deliveryUserAddr1, deliveryUserAddr2, deliveryUserAddr3, userid, orderUsername, orderUserphone, orderUseremail, orderRequest, receiveName, receivePhone, receiveEmail, beforePoint, buyPageUsePoints, plusPoint, afterFinalPrice, eno)
+        values (#{fnames}, #{brand}, #{title}, #{shipPay}, #{purchase}, #{discount}, #{totalOgprice}, #{totalDcprice}, #{deliveryZipcode}, #{deliveryUserAddr1}, #{deliveryUserAddr2}, #{deliveryUserAddr3}, #{userid}, #{orderUsername}, #{orderUserphone}, #{orderUseremail}, #{orderRequest}, #{receiveName}, #{receivePhone}, #{receiveEmail}, #{beforePoint}, #{buyPageUsePoints}, #{plusPoint}, #{afterFinalPrice}, #{eno})
+    </insert>
 
+    <update id="changePoints" statementType="PREPARED" parameterType="map">
+        update MemberJoin set points = #{points} where userid = #{userid}
+    </update>
 </mapper>
