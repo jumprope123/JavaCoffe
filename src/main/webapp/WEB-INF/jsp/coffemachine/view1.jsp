@@ -60,7 +60,7 @@
             </div>
 
             <div>
-                <div class="coffemachine_info_detail" style="text-align: justify">
+                <div class="coffemachine_info_detail">
                     <p>카페에서 즐기는 다양한 레시피를 이제 집에서도 쉽게 만들어보세요.
                         <br>네스프레소 바리스타는 아이스 커피부터 라테 아트까지, 20가지 이상의 레시피를 누구나 간편하게 만들 수 있게 해주는 레시피 메이커입니다.
                         네스프레소 바리스타는 아이스 커피부터 라테 아트까지, 20가지 이상의 레시피를 누구나 간편하게 만들 수 있게 해주는 레시피 메이커입니다.</p>
