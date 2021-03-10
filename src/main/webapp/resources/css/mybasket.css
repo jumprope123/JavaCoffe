@@ -27,7 +27,7 @@ ul li {
 
 #mb_wrap {
   width: 980px;
-  height: 900px;
+  height: 1000px;
   margin: 0px auto;
   background: #fff;
   border-top: #986f38 solid 3px;
@@ -181,21 +181,21 @@ ul li {
 .mb_bottom_box {
   margin-bottom:50px; width: 100%; height: fit-content; text-align: center
 }
-#mb_product_arrival_date {
+.mb_product_arrival_date {
   display: inline; float:left; margin-right: 100px;
 }
 
-#mb_product_total_price {
+.mb_product_total_price {
   display: inline; float:right;
 }
 
 .mb_cancel_btn {
   float:right; margin-right: 10px; border: #0D0A0A 1px solid
 }
-#mb_item_amount {
+.mb_item_amount {
   width: 52px; display: inline-block; float:right; margin-right: 50px;
 }
-#mb_product_name {
+.mb_product_name {
   display: inline; font-weight: bold; font-size: 16px;
 }
 
