@@ -20,3 +20,9 @@ $('#s_hloginbtn').on('click',function (){
     location.href = '/index';
 });
 
+var joinorbindP = $('#joinorbindP').val();
+if (joinorbindP == "true"){
+    alert('회원가입 후 sns연동해주세요.')
+}
+
+

@@ -64,7 +64,7 @@ public class LoginController {
 
     //=========여기서 부터 카카오 구현중
     @GetMapping("/login/loginok")
-    public ModelAndView kakao(String joinorbind, MemberVO mvo, HttpSession sess) {
+    public ModelAndView kakao(String joinorbind) {
         ModelAndView mv = new ModelAndView();
 
         if (joinorbind == null || joinorbind.isEmpty()) {

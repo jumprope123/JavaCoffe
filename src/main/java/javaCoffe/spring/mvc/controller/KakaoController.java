@@ -131,7 +131,7 @@ public class KakaoController {
         if (resultkakao == 0) {
 
             System.out.println("로그인실패");
-            returnPage= "redirect:/login/login?joinorbind=true";
+            returnPage= "redirect:/login/loginok?joinorbind=true";
 
         } else {
             userid = memberService.getUserId(kakaoID);
