@@ -1,14 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>커피 머신 조사</title>
-</head>
-<body>
-<h2> 커피 머신 조사</h2>
-<form action="researchPrint.jsp" method="post">
+<%@ page pageEncoding="UTF-8" %>
+<div style="width: 800px;" id="main">
+<form action="/CoffeeAndMachine/researchPrint2" method="get">
     <table>
         <tr>
             <td>고객명 : </td>
@@ -27,27 +19,27 @@
         <tr>
             <td>가격대</td>
             <td>
-                <input type="checkbox" name ="cbody" value="1">10만원대
-                <input type="checkbox" name ="cbody" value="2" checked>20만원대
-                <input type="checkbox" name ="cbody" value="3">30만원 이상
+                <input type="radio" name ="cbody" value="1">10만원대
+                <input type="radio" name ="cbody" value="2" checked>20만원대
+                <input type="radio" name ="cbody" value="3">30만원 이상
             </td>
         </tr>
 
         <tr>
             <td>전기사용량</td>
             <td>
-                <input type="checkbox" name="bitter" value="1">500W 이하
-                <input type="checkbox" name="bitter" value="2" checked>1000W
-                <input type="checkbox" name="bitter" value="3">1000W 초과
+                <input type="radio" name="bitter" value="1">500W 이하
+                <input type="radio" name="bitter" value="2" checked>1000W
+                <input type="radio" name="bitter" value="3">1000W 초과
             </td>
         </tr>
 
         <tr>
-            <td>디자인</td>
+            <td>디자인/색상</td>
             <td>
-                <input type="checkbox" name="roasting" value="1">실버
-                <input type="checkbox" name="roasting" value="2" checked>블랙
-                <input type="checkbox" name="roasting" value="3">화이트
+                <input type="radio" name="roasting" value="1">실버
+                <input type="radio" name="roasting" value="2" checked>블랙
+                <input type="radio" name="roasting" value="3">화이트
             </td>
         </tr>
 
@@ -62,13 +54,11 @@
 
         <tr align="center">
             <td><input type="submit" value="전송"></td>
-            <td><input type="reset" value="취소"></td>
+            <td><input type="reset" value="초기화"></td>
 
         </tr>
 
     </table>
 
 </form>
-
-</body>
-</html>
+</div>

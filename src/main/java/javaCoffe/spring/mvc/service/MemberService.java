@@ -19,4 +19,7 @@ public interface MemberService {
 
     String getUserId(int kakaoID);
 
+    int inputKakao(String uidUID, int kakaoID);
+
+    int readAboutkakao(String userid);
 }
