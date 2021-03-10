@@ -15,5 +15,9 @@ public interface MemberDAO {
 
     String readRegdate(String name);
 
+    int compareID(int kakaoID);
+
+    String getUserId(int kakaoID);
+
 }
 //
