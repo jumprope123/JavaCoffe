@@ -29,5 +29,16 @@
         select regdate from MemberJoin where name = #{name};
     </select>
 
+    <select id="compareID" statementType="PREPARED"
+            parameterType="int" resultType="int">
+        select count(userid)kakao from MemberJoin
+        where kakaoID = #{kakaoID}
+    </select>
+
+    <select id="getUserId" statementType="PREPARED" parameterType="int" resultType="String">
+        select userid from MemberJoin
+        where kakaoID = #{kakaoID}
+    </select>
+
 <!---->
 </mapper>

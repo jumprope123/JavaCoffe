@@ -7,7 +7,7 @@
     }
     .center_login2 {
         margin-top: 9%;
-        margin-left: 45%;
+        margin-left: 43%;
     }
     .total_size_login {
         width: 20rem;
@@ -38,11 +38,17 @@
         border: 2px solid #5a6268;
         border-radius: 3px;
     }
+
+    .kakao_login_btn_position{
+        position: relative;
+        right: 16px;
+    }
 </style>
 
 <div id="main margin30 container">
     <div class="margin30 container center_login1 center_login2 total_size_login ">
-        <form onsubmit="submitLoginForm(this); return false;" action="/login/loginfail" method="post">
+        <form onsubmit="submitLoginForm(this); return false;"
+              action="/login/loginfail" method="post">
             <p class="p_login_font"><i class="bi bi-person-square login_icon"></i>로그인 페이지</p>
             <div class="form-group row">
                 <label for="userid"></label>
@@ -66,6 +72,14 @@
                 <a href="/join/agree" class="text-center" style="margin-left: 5px">회원가입</a>
             </div>
         </form>
+
+        <%--===========================여기서 부터--%>
+        <div>
+            <p id="joinorbindP">${joinorbind}</p>
+            <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
+                    src="/img/login/kakao_login_btn_img.png" width="208px;"></a>
+        </div>
+        <%-- 카카오 구현 중==============================--%>
     </div>
 </div>
 <script>

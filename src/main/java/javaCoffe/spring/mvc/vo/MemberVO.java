@@ -14,6 +14,15 @@ public class MemberVO {
     private String phone;
     private String regdate;
     private String points;
+    private String kakaoID;
+
+    public String getKakaoID() {
+        return kakaoID;
+    }
+
+    public void setKakaoID(String kakaoID) {
+        this.kakaoID = kakaoID;
+    }
 
     public String getPoints() {
         return points;

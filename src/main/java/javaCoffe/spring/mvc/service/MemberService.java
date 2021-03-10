@@ -15,4 +15,8 @@ public interface MemberService {
 
     String readRegDate(String name);
 
+    int compareID(int kakaoID);
+
+    String getUserId(int kakaoID);
+
 }
