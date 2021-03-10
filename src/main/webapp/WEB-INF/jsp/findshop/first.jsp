@@ -59,7 +59,7 @@
                         </ul>
                     </div>
                     <div class="form_search" id="search">
-                        <form accept-charset="UTF-8" action="." id="locationForm" method="get" role="search">
+                        <form accept-charset="UTF-8" action="" id="locationForm" method="get" role="search">
                             <div class="location">
                                 <label class="a11y-hidden" for="pac-input"></label>
                                 <input aria-describedby="locationExplanation" autocomplete="off" class="form_text controls" id="pac-input" placeholder="주소, 우편번호, 시/도" tabindex="1" type="text" value="">
