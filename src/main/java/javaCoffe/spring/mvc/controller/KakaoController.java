@@ -134,20 +134,24 @@ public class KakaoController {
 
 
         if (uidUID == null) { //로그인 하지 않은 경우
-
-            if (resultkakao == 0) {
+            // 카카오로그인 하기를 눌러서 로그인 한 경우
+            if (resultkakao == 0) { //우리 데이터베이스에 없는 카카오아이디다
 
                 System.out.println("로그인실패");
                 returnPage = "redirect:/login/login?joinorbind=100";
 
-            } else {
-                userid = memberService.getUserId(kakaoID);
-                sess.setAttribute("UID", userid);
+            } else { // 우리 데이터베이스에 있는 카카오 아이디다. 그래서 session값에 해당 카카오아이디와 맞는 userid를 찾아와서 넣어준다. 즉 로그인시킨다.
                 returnPage = "redirect:/index";
+                userid = memberService.getUserId(kakaoID);
+                sess.setAttribute("UID",userid);
             }
-        }else { //로그인을 한 경우
-           int cnt = memberService.inputKakao(uidUID,kakaoID);
+
+        }else { //로그인을 한 경우 즉, 연동하기 버튼을 눌렀을때
+           int cnt = memberService.inputKakao(uidUID,kakaoID); //session값과 kakaoid값을 가지고 가서 연동을 시켜준다.
+            sess.setAttribute("AboutKakao",1); //왜냐! 카카오아이디를 연동했으니까. 연동하기가 없어져야 하니까!
+            returnPage = "redirect:/index";
         }
+
         return returnPage;
     }
 }

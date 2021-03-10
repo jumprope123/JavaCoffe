@@ -44,5 +44,9 @@
          update MemberJoin set kakaoID = #{kakaoID} where userid = #{uidUID}
     </insert>
 
+    <select id="selectAboutKakao" statementType="PREPARED" parameterType="String" resultType="int">
+        select count(userid) from MemberJoin where userid = #{userid} and kakaoID IS NOT null;
+    </select>
+
 <!---->
 </mapper>

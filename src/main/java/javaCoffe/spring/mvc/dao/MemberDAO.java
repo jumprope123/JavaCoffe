@@ -21,5 +21,7 @@ public interface MemberDAO {
     String getUserId(int kakaoID);
 
     int inputKakao(Map map);
+
+    int readAboutKakao(String userid);
 }
 //
