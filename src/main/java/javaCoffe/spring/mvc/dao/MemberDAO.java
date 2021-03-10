@@ -3,6 +3,7 @@ package javaCoffe.spring.mvc.dao;
 import javaCoffe.spring.mvc.vo.MemberVO;
 
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 //
 
 public interface MemberDAO {
@@ -19,5 +20,6 @@ public interface MemberDAO {
 
     String getUserId(int kakaoID);
 
+    int inputKakao(Map map);
 }
 //
