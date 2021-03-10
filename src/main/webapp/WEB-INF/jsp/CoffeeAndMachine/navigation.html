@@ -1,22 +1,36 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:http="http://www.w3.org/1999/xhtml">
 <head>
-    <link href="navigation.css" rel="stylesheet" type="text/css">
+    <link href="navi.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <title>Title</title>
+
+
+
+
 </head>
 <body>
+
+
 <nav>
     <ul>
-        <li><a href="#">홈</a></li>
-        <li><a href="http://localhost:8080/researchForm.jsp">커피선택 가이드</a></li>
-        <li><a href="http://localhost:8080/researchForm2.jsp">커피머신 선택 가이드</a></li>
-        <li><a href="#">커피원두지식</a></li>
-        <li><a href="#">머신지식</a></li>
+        <li><button onclick='open_form("http://localhost:8080/index.jsp")'>홈</button></li>
+        <li><button onclick='open_form("http://localhost:8080/researchForm.jsp")'>커피원두 선택 가이드</button></li>
+        <li ><button onclick='open_form("http://localhost:8080/researchForm2.jsp")'>커피머신 선택 가이드</button></li>
+        <li><button onclick='open_form("http://localhost:8080/description1.jsp")'>커피원두지식</button></li>
+        <li><button onclick='open_form("http://localhost:8080/description2.jsp")'>커피머신지식</button></li>
     </ul>
 </nav>
-<iframe id="iframeS" src="http://localhost:8080/researchForm.jsp" width="500" height="300"
-        STYLE="position: absolute; right:200px; bottom:300px; left: 500px;"></iframe>
+
+<iframe id="iframeS" src="http://localhost:8080/index.jsp" width="600" height="400"
+        STYLE="position: absolute; left: 400px; bottom: 300px;"></iframe>
+
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script>
+    function open_form(url){
+        $('#iframeS').attr('src' , url);
+    }
+</script>
 
 </body>
 </html>

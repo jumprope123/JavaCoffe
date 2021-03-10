@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/customCSS.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/navi.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <%-- 추가 스타일 --%>
     <title>JAVAPRESSO</title>
@@ -66,6 +67,12 @@
 <script src="/js/buylist.js"></script>
 <script src="/js/memberInfo.js"></script>
 <script src="/js/mybasket.js"></script>
+<script>
+    function open_form(url){
+        $('#iframeS').attr('src' , url);
+    }
+</script>
+
 
 </body>
 </html>
