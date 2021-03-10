@@ -102,7 +102,7 @@
                 </span>
                     </li>
                     <li class="navbar_Item">
-                        <a class="navbar_anchor" href="#">
+                        <a class="navbar_anchor" href="/CoffeeAndMachine/navi">
                             <div class="navbar_element">
                     <span class="navbar_icon" style="width: 30px; height: 20px;">
                     </span>
