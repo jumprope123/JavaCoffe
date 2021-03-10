@@ -11,7 +11,7 @@
 
 <div id = "main" class="container">
     <div class="margin30">
-        <h3><i class="bi bi-chat-dots-fill bidragup"></i>게시판 </h3>
+        <h3><i class="bi bi-chat-dots-fill bidragup"></i>고객센터</h3>
         <hr>
     </div>
 
