@@ -40,7 +40,7 @@ public class MyBasketController {
 
     @GetMapping("/mybasket/delete") //삭제하기
     public String delete(HttpServletRequest req){
-            String mbno = req.getParameter("");
+            String mbno = req.getParameter("mbno");
             mbsrv.removemb(mbno);
 
         return "redirect:/mybasket/list";

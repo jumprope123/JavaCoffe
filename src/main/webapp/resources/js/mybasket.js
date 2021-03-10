@@ -7,17 +7,12 @@ $('.mb_cancel_btn').on('click',function (){
         location.href = '/mybasket/delete'
         $.ajax({
             url: '/mybasket/delete',
-            type: 'GET',
-            data: {mbno: $('#mbno').val(), checkThumb: checkThumb}
+            type: 'POST',
+            data: {mbno: $('#mbno').val()}
         })
     }
 });
 
-$('#rmbdbtn').on('click', function () {
-    if (confirm('정말로 이 글을 삭제하시겠습니까?')) {
-        let param = '?bno=' + $('#bno').val();
-        param += "&cp=" + $('#cp').val()
-        param += "&userid=" + $('#userid').val();
-        location.href = '/board/delete' + param;
-    }
-})
+$('#going_shopping').on('click',function (){
+    location.href = '/eshop/list?bigGenre=coffe&cp=1';
+});

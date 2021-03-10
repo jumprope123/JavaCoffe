@@ -68,7 +68,11 @@
                                     <c:if test="${mb.mystuck gt 11}">
                                         <fmt:parseNumber var="mbinit" value="10"/>
                                     </c:if>
-                                    <c:forEach var="i" begin="1" end="${mbinit}" step="1">
+                                    <c:forEach var="i" begin="1" end="${mb.myamount-1}" step="1">
+                                        <option value="${i}">${i}</option>
+                                    </c:forEach>
+                                    <option value="${mb.myamount}" selected>${mb.myamount}</option>
+                                    <c:forEach var="i" begin="${mb.myamount + 1}" end="${mbinit}" step="1">
                                         <option value="${i}">${i}</option>
                                     </c:forEach>
                                 </select>

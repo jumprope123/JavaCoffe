@@ -91,8 +91,8 @@
                                         <strong>${f.sname}</strong>
                                     </div>
                                     <div class="shop-address" style="text-align: left;">
-                                        ${f.address}<br>
-                                        ${f.jibeon}<br>
+                                            ${f.address}<br>
+                                            ${f.jibeon}<br>
                                         <div class="phone" aria-label="전화번호 :  080-734-1111&nbsp;">
                                             Tel. ${f.phone}
                                         </div>
@@ -114,25 +114,14 @@
                 <a></a>
             </div>
             <fmt:parseNumber var="lsno" value="0"/>
-    <c:forEach var="l" items="${location}">
-        <p id="lsname${l.sno}" style="display: none">${l.sname}</p>
-        <p id="llat${l.sno}" style="display: none">${l.lat}</p>
-        <p id="llng${l.sno}" style="display: none">${l.lng}</p>
-        <c:set var="lsno" value="${lsno + 1}" />
-    </c:forEach>
+            <c:forEach var="l" items="${location}">
+                <p id="lsname${l.sno}" style="display: none">${l.sname}</p>
+                <p id="llat${l.sno}" style="display: none">${l.lat}</p>
+                <p id="llng${l.sno}" style="display: none">${l.lng}</p>
+                <c:set var="lsno" value="${lsno + 1}" />
+            </c:forEach>
             <p style="display: none" id="lsno">${lsno}</p>
         </div>
-        <div id="shop_info_window">
-        </div>
     </div>
-    <c:forEach var="f" items="${fsinfo}">
-        <tr><td>${f.sname}</td>
-            <td>${f.address}</td>
-            <td>${f.jibeon}</td>
-    </c:forEach>
-    <c:forEach var="l" items="${location}">
-    <tr><td>${l.lat}</td>
-        <td>${l.lng}</td>
-    </c:forEach>
 </main>
 
