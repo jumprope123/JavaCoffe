@@ -98,11 +98,11 @@
             }
 
     if(sum>50){
-        out.println(" '화이트' 색상에 제품a 입니다.");
+        out.println(" '화이트' 색상에 <b>제품a</b> 입니다.");
     }else if(sum>20){
-        out.println(" '블랙' 색상에 제품b 입니다.");
+        out.println(" '블랙' 색상에 <b>제품b</b> 입니다.");
     }else{
-        out.println(" '실버' 색상에 제품c 입니다.");
+        out.println(" '실버' 색상에 <b>제품c</b> 입니다.");
     }
 
 
