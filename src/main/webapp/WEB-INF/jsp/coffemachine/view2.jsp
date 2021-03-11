@@ -74,7 +74,7 @@
             </div>
 
             <div>
-                <div class="coffemachine_info_detail" style="text-align: justify">
+                <div class="coffemachine_info_detail">
                     <p><b>케이프 타운 엔비보 룽고</b><br>
                     <br>커피 무역 항로의 주요 항구였던 남아프리카공화국의 케이프타운에서는 풍부한 바디감과 진한 우디향의 강도 높은 커피를 즐겨 왔습니다. 케이프타운의 로컬 커피스타일을 즐겨 보세요.
                     <br><br>[룽고 커피란?] 룽고 커피란 이탈리아어로 “길다”라는 뜻으로, 에스프레소보다 오래 추출하여 110ml로 즐기는 커피 입니다.
@@ -120,7 +120,7 @@
             </div>
 
             <div>
-                <div class="coffemachine_info_detail" style="text-align: justify">
+                <div class="coffemachine_info_detail">
                     <p><b>스톡홀름 포티시오 룽고</b><br>
                         <br>스웨덴에서는 북유럽의 긴 겨울을 지내면서 이웃과 함께 다크 로스팅된 맥아향의 커피를 즐기는 커피타임인 피카를 가졌습니다. 시나몬롤과 잘 어울리는 깊은 풍미의 진한 맥아향 커피로 피카를 즐겨 보세요.
                         <br><br>[룽고 커피란?] 룽고 커피란 이탈리아어로 “길다”라는 뜻으로, 에스프레소보다 오래 추출하여 110ml로 즐기는 커피 입니다.
@@ -166,7 +166,7 @@
             </div>
 
             <div>
-                <div class="coffemachine_info_detail" style="text-align: justify">
+                <div class="coffemachine_info_detail">
                     <p><b>비엔나 리니지오 룽고</b><br>
                         <br>비엔나 커피하우스에서 커피 애호가들은 부드러운 바디감을 가진 곡물향의 커피를 즐겨 왔습니다. 부드럽고 균형감 있는 풍미의 커피가 선사하는 오스트리아의 우아한 커피 문화를 느껴 보세요.
                         <br><br>[룽고 커피란?] 룽고 커피란 이탈리아어로 “길다”라는 뜻으로, 에스프레소보다 오래 추출하여 110ml로 즐기는 커피 입니다.
