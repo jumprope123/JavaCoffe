@@ -3,6 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<%-- 이미지 출력을 위한 기본 주소 설정 --%>
+<%-- http://localhost/eshop/_thumb/small_글번호_파일명 --%>
+<c:set var="baseImgURL" value="http://localhost/eshop"/>
+<%--<c:set var="baseImgURL" value="http://13.125.205.40:8447/eshop" />--%>
+<c:set var="thumbURL" value="${baseImgURL}/_thumb/small_"/>
+
 <head>
     <link rel="stylesheet" href="/css/mybasket.css">
     <style>
@@ -34,36 +40,45 @@
             </div>
             <div class="mb_thead_wrap">
                 <ul>
-                    <li style="float:left; margin-top: 4px; margin-left: 20px;"><input type="checkbox"><h5 class="fs-13a" style="margin-left: 10px;">전체선택</h5></li>
-                    <li style="float:left; margin-top: 4px; margin-left: 350px;"><h5 class="fs-13a">상품정보</h5></li>
+                    <li style="float:left; margin-top: 4px; margin-left: 20px;"><input id="total_list_select_check" type="checkbox"><h5 class="fs-13a" style="margin-left: 10px;">전체선택</h5></li>
+                    <li id="all_product_remove_li" style="display: none; float:left; margin-top: 4px; margin-left: 20px;"><button style="background:#fff; width: 60px; height: 20px; border: #5a6268 1px solid; border-radius: 3px; :hover {background:#e4606d; color:#fff;}" id="all_product_remove_btn">전체삭제</button></li>
+                    <li id="small_move_mb_center" style="float:left; margin-top: 4px; margin-left: 295px;"><h5 class="fs-13a">상품정보</h5></li>
                     <li style="float:right; margin-top: 4px; margin-right: 40px;"><h5 class="fs-13a">배송비</h5></li>
                     <li style="float:right; margin-top: 4px; margin-right: 60px;"><h5 class="fs-13a">상품금액</h5></li>
                 </ul>
             </div>
         </div>
+        <div class="list_mb_wrap">
         <c:if test="${!empty sessionScope.UID}">
+            <fmt:parseNumber var="mbnum" value="0"/>
             <fmt:parseNumber var="mbtotalprice" value="0"/>
             <fmt:parseNumber var="mbtotalshipPay" value="0"/>
+            <fmt:parseNumber var="totalstatic_product" value="0"/>
+            <fmt:parseNumber var="totaltemp_product" value="0"/>
+            <fmt:parseNumber var="totalstatic_shipPay" value="0"/>
+            <fmt:parseNumber var="totaltemp_shipPay" value="0"/>
             <c:forEach var="mb" items="${mbvo}">
+                <c:set var="mbnum" value="${mbnum+1}" />
                 <c:set var="mbtotalprice" value="${mbtotalprice + mb.myprice}" />
                 <c:set var="mbtotalshipPay" value="${mbtotalshipPay + mb.myshipPay}" />
                 <div class="mb_product_list">
                     <div class="mb_product_info">
-                        <input class="mb_product_cb mt50" style="float:left;" type="checkbox">
+                        <input name="mb_product_cb" id="mb_product_cb${mbnum}" class="mb_product_cb mt50" style="float:left;" type="checkbox">
                         <div class="mb_product_img" style="float:left; width: 120px; height: 120px;">
                             <a class="mb_product_link" href="#">
-                                <img style="margin: 21px; width: 78px; height: 78px;" src="/img/mybasket/cart.png" alt="상품입니다.">
+                                <img src="${thumbURL}${mb.myeno}_${fn:split(mb.myfnames,"[/]")[0]}" style="margin: 21px; width: 78px; height: 78px;" alt="상품입니다.">
                             </a>
                         </div>
                         <ul class="mb_product_ul" style="float:left; width: 588px; height: 120px;">
                             <li class="mb_product_item_info mb_product_item_info_one1">
                                 <a href="#" class="b-inline">
-                                    <h3 id="mb_product_name">${mb.mypname}</h3></a></li>
+                                    <p style="display: none" id="mb_product_mbno${mbnum}">${mb.mbno}</p>
+                                    <h3 class="mb_product_name" id="mb_product_name${mbnum}">${mb.mypname}</h3></a></li>
                             <li class="mb_product_item_info mb_product_item_info_one2">
-                                <h5 id="mb_product_arrival_date">금요일 3/25 도착 예정</h5>
-                                <button class="mb_cancel_btn">&nbsp;X&nbsp;</button>
-                                <h6 id="mb_product_total_price">&nbsp;${mb.myprice * mb.myamount}원&nbsp;</h6>
-                                <select id="mb_item_amount">
+                                <h5 style="font-size: 12px; color: #34ce57" class="mb_product_arrival_date" id="mb_product_arrival_date${mbnum}"></h5>
+                                <button id="mb_cancel_btn${mbnum}" class="mb_cancel_btn">&nbsp;X&nbsp;</button>
+                                <h6 class="mb_product_total_price" id="mb_product_total_price${mbnum}">&nbsp;${mb.myprice * mb.myamount}원&nbsp;</h6>
+                                <select class="mb_item_amount" id="mb_item_amount${mbnum}">
                                     <fmt:parseNumber var="mbinit" value="${mb.mystuck}"/>
                                     <c:if test="${mb.mystuck gt 11}">
                                         <fmt:parseNumber var="mbinit" value="10"/>
@@ -76,65 +91,71 @@
                                         <option value="${i}">${i}</option>
                                     </c:forEach>
                                 </select>
-                                <h6 id="mb_product_price" style="display: inline; float:right;">&nbsp;${mb.myprice}원&nbsp;</h6>
+                                <h6 class="mb_product_price" id="mb_product_price${mbnum}" style="display: inline; float:right;">&nbsp;${mb.myprice}원&nbsp;</h6>
                             </li>
                         </ul>
                         <ul>
                             <li class="mb_product_item_info" style="width: 90px; height: 120px; float:right;">
                                 <div style="text-align: center; margin-top: 50px;">
-                                    <h5 id="mb_product_shipment_price">${mb.myshipPay}원</h5>
+                                    <h5 class="mb_product_shipment_price" id="mb_product_shipment_price${mbnum}">${mb.myshipPay}원</h5>
                                     <a href="#"><h5>묶음배송추가</h5><img style="width: 16px; height: 16px;" src="/img/mybasket/arow.png" alt="화살표"></a>
                                 </div>
                             </li>
 
                             <li class="mb_product_item_info mb_product_item_info_two">
                                 <div class="mt50">
-                                    <h5 class="mb_product_total_price">${mb.myprice * mb.myamount}원</h5>
+                                    <h5 id="mb_product_total_price${mbnum}" class="mb_product_total_price">${mb.myprice * mb.myamount}원</h5>
                                 </div>
                             </li>
                         </ul>
                         <div class="mb_small_price_info">
                             <div style="margin-top: 10px; margin-right: 20px">
-                                <h4 class="b-inline fs-14">상품가격 </h4><h2 class="b-inline fs-16" style="font-weight: 700;">${mb.myprice * mb.myamount}</h2><h3 class="b-inline fs-14">&nbsp;원 </h3> <h3 class="b-inline fs-16" style="font-weight: 700;"> + </h3>
-                                <h4  class="b-inline fs-14"> 배송비 </h4><h2 class="b-inline fs-16"  style="font-weight: 700;">${mb.myshipPay}</h2><h3 class="b-inline fs-14">&nbsp;원 </h3> <h3 class="b-inline fs-16" style="font-weight: 700;"> = </h3>
-                                <h4 class="b-inline fs-14"> 주문금액 </h4><h2 class="b-inline fs-16"  style="font-weight: 700;">${mb.myprice * mb.myamount + mb.myshipPay}</h2><h2 class="b-inline fs-14">&nbsp;원 </h2>
+                                <c:set var="totaltemp_product" value="${mb.myprice * mb.myamount}" />
+                                <c:set var="totaltemp_shipPay" value="${mb.myshipPay}" />
+                                <h4 class="b-inline fs-14">상품가격 </h4><h2 class="b-inline fs-16" id="mb_product_info_price${mbnum}" style="font-weight: 700;">${mb.myprice * mb.myamount}</h2><h3 class="b-inline fs-14">&nbsp;원 </h3> <h3 class="b-inline fs-16" style="font-weight: 700;"> + </h3>
+                                <h4  class="b-inline fs-14"> 배송비 </h4><h2 class="b-inline fs-16" id="mb_product_info_shipPay${mbnum}" style="font-weight: 700;">${mb.myshipPay}</h2><h3 class="b-inline fs-14">&nbsp;원 </h3> <h3 class="b-inline fs-16" style="font-weight: 700;"> = </h3>
+                                <h4 class="b-inline fs-14"> 주문금액 </h4><h2 class="b-inline fs-16" id="mb_product_info_totalprice${mbnum}" style="font-weight: 700;">${totaltemp_product + totaltemp_shipPay}</h2><h2 class="b-inline fs-14">&nbsp;원 </h2>
+                                <c:set var="totalstatic_product" value="${totalstatic_product + totaltemp_product}" />
+                                <c:set var="totalstatic_shipPay" value="${totalstatic_shipPay + totaltemp_shipPay}" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                </c:forEach>
-            </c:if>
-            <c:if test="${!empty sessionScope.UID}">
+            </c:forEach>
+        </c:if>
+        <c:if test="${!empty sessionScope.UID}">
+            <div>
+                <div class="mb_total_price_info">
+                    <div style="margin-top: 10px; ">
+                        <h4 class="b-inline fs-16">총 상품가격 </h4><h2 id="total_mb_product_price" class="b-inline fs-20"> ${totalstatic_product}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> + </h3>
+                        <h4 class="b-inline fs-16"> 총 배송비 </h4><h2 id="total_mb_shipPay_price" class="b-inline fs-20"> ${totalstatic_shipPay}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> = </h3>
+                        <h4 class="b-inline fs-16"> 총 주문금액</h4><h2 id="total_mb_order_price"  class="b-inline fs-20" style="color: red"> ${totalstatic_shipPay + totalstatic_product}</h2><h2 class="b-inline fs-16">&nbsp;원 </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="mb_bottom_box">
+                <button class="mb_bottom_button" id ="going_shopping">계속 쇼핑하기</button>
+                <button class="mb_bottom_button" id ="going_buying">구매하기</button>
+            </div>
+        </c:if>
+        <c:if test="${empty sessionScope.UID}">
+            <div class="mb_login_none_box">
                 <div>
-                    <div class="mb_total_price_info">
-                        <div style="margin-top: 10px; ">
-                            <h4 class="b-inline fs-16">총 상품가격 </h4><h2 class="b-inline fs-20"> ${mbtotalprice}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> + </h3>
-                            <h4 class="b-inline fs-16"> 총 배송비 </h4><h2 class="b-inline fs-20"> ${mbtotalshipPay}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> = </h3>
-                            <h4 class="b-inline fs-16"> 총 주문금액</h4><h2 class="b-inline fs-20" style="color: red"> ${mbtotalprice+mbtotalshipPay}</h2><h2 class="b-inline fs-16">&nbsp;원 </h2>
-                        </div>
-                    </div>
+                    <ul>
+                        <li>
+                            <img style="vertical-align: top !important;" class="b-inline" src="/img/mybasket/warning.png" alt="경고">
+                            <h3 class="fs-20 b-inline" style="margin-bottom: 20px">장바구니에 담은 상품이 없습니다.</h3>
+                        </li>
+                        <li class="mt10">
+                            <h4 class="fs-16 b-inline">로그인을 하시면, 장바구니에 보관된 상품을 확인하실 수 있습니다.</h4>&nbsp;&nbsp;
+                            <button id="mb_login_btn" class="mb_login_btn">로그인 하기</button>
+                        </li>
+                    </ul>
                 </div>
-                <div class="mb_bottom_box">
-                    <button class="mb_bottom_button" id ="going_shopping">계속 쇼핑하기</button>
-                    <button class="mb_bottom_button" id ="going_buying">구매하기</button>
-                </div>
-            </c:if>
-            <c:if test="${empty sessionScope.UID}">
-                <div class="mb_login_none_box">
-                    <div>
-                        <ul>
-                            <li>
-                                <img style="vertical-align: top !important;" class="b-inline" src="/img/mybasket/warning.png" alt="경고">
-                                <h3 class="fs-20 b-inline" style="margin-bottom: 20px">장바구니에 담은 상품이 없습니다.</h3>
-                            </li>
-                            <li class="mt10">
-                                <h4 class="fs-16 b-inline">로그인을 하시면, 장바구니에 보관된 상품을 확인하실 수 있습니다.</h4>&nbsp;&nbsp;
-                                <button id="mb_login_btn" class="mb_login_btn">로그인 하기</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </c:if>
+            </div>
+        </c:if>
+            <p style="display: none" id="mbnum_result">${mbnum}</p>
+        </div>
     </div>
 </main>

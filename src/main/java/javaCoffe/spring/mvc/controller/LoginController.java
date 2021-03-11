@@ -22,9 +22,15 @@ public class LoginController {
     @Autowired
     private MemberService msrv;
 
+
     @GetMapping("/login/login")
-    public String login() {
-        return "login/login.tiles";
+    public ModelAndView login(ModelAndView mv, String joinorbind) {
+        mv.setViewName("login/login.tiles");
+        if (joinorbind == null || joinorbind.isEmpty()) { // joinorbind가 없으면 200을 대입. 있으면 100
+            joinorbind = "200";
+        }
+        mv.addObject("joinorbind",joinorbind);
+        return mv;
     }
 
 
@@ -34,8 +40,13 @@ public class LoginController {
 
         if (msrv.checkLogin(mvo, sess)) // 로그인 성공시
             returnPage = "redirect:/index";
-
-        System.out.println("잘되는건가?");
+//여기서부터
+        String userid = (String) sess.getAttribute("UID");
+        int result = msrv.readAboutkakao(userid);
+        sess.setAttribute("AboutKakao",result); //0이면 연동안함 1이면 연동되잇음.
+        System.out.println(result);
+        sess.setAttribute("UID", userid);
+//여기까지
         return returnPage;
     }
 
@@ -58,23 +69,12 @@ public class LoginController {
     @GetMapping("/login/loginDel")
     public String logindel(HttpSession sess){
         sess.removeAttribute("UID");
+        sess.removeAttribute("AboutKakao");
         return "redirect:/login/login";
     }
 
 
-    //=========여기서 부터 카카오 구현중
-    @GetMapping("/login/loginok")
-    public ModelAndView kakao(String joinorbind, MemberVO mvo, HttpSession sess) {
-        ModelAndView mv = new ModelAndView();
 
-        if (joinorbind == null || joinorbind.isEmpty()) {
-            joinorbind = "false";
-        }
-        mv.setViewName("login/login");
-        mv.addObject("joinorbind",joinorbind);
-
-        return mv;
-    } // ============ 팀장님
 //
 
     // ============================ woo 만약 kakaoID 값을 체크해서 있으면 index 없으면 loginfail로 이동

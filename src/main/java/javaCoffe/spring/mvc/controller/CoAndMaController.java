@@ -41,6 +41,7 @@ public class CoAndMaController {
     }
 
 
+
     @GetMapping("CoffeeAndMachine/view2")
     public ModelAndView description1(ModelAndView mv, String kof){
 
@@ -59,6 +60,7 @@ public class CoAndMaController {
 
         return mv;
     }
+
 
 
     @GetMapping("/CoffeeAndMachine/researchPrint")

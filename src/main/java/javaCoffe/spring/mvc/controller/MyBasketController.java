@@ -38,12 +38,23 @@ public class MyBasketController {
         return mv;
     }
 
-    @GetMapping("/mybasket/delete") //삭제하기
-    public String delete(HttpServletRequest req){
-            String mbno = req.getParameter("mbno");
-            mbsrv.removemb(mbno);
+    @PostMapping("/mybasket/delete") //삭제하기
+    public ModelAndView delete(ModelAndView mv, HttpServletRequest req){
+        mv.setViewName("mybasket/list.tiles");
+        String mbno = req.getParameter("mbno");
+        mbsrv.removemb(mbno);
 
-        return "redirect:/mybasket/list";
+        return mv;
+    }
+
+    @PostMapping("/mybasket/update") //삭제하기
+    public ModelAndView update(ModelAndView mv, HttpServletRequest req){
+        mv.setViewName("mybasket/list.tiles");
+        String mbno = req.getParameter("mbno");
+        String myamount = req.getParameter("mbamount");
+        mbsrv.updatemb(mbno, myamount);
+
+        return mv;
     }
 
 //    @GetMapping("/mybasket/update") //개수 업데이트 // 수정한 개수 다시 받아야함...

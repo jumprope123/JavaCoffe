@@ -14,4 +14,6 @@ public interface MyBasketService {
     boolean removemb(String mbno);
 
     boolean newMBProduct(String mbcode, Object userid, int mbamount);
+
+    boolean updatemb(String mbno, String myamount);
 }
