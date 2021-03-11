@@ -43,7 +43,8 @@
                             </ul>
                         </c:if>
                         <c:if test="${!empty sessionScope.UID}">
-                                <button data-toggle="dropdown" class="LoginDropdownButton dropdown-toggle" class="LoginDropdownButton" id="hloginbtn1" aria-expanded="false">
+                            <%-- 스크립트 함수 추가 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--%>
+                                <button data-toggle="dropdown" class="LoginDropdownButton dropdown-toggle" class="LoginDropdownButton"  id="hloginbtn1" aria-expanded="false" onclick="logout()">
                                    로그아웃
                                     <!--aria-expanded="false"-->
                                 </button>
@@ -76,7 +77,7 @@
                         <c:if test="${sessionScope.AboutKakao eq 0}">
                             <div style="margin-left: 20px">
                                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" id="kakao_login_btn_" class="kakao_login_btn_position">
-                                    <img src="/img/login/kakao_login_btn.png"  width="208px;" height="40px"></a>
+                                    <img src="../img/login/kakao_connec_login.png"  width="208px;" height="40px"></a>
                             </div>
                         </c:if>
                         <%--                여기에 추가함--%>
@@ -189,6 +190,4 @@
             </div>
         </nav>
     </div>
-    <script>
-    </script>
 </header>

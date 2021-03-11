@@ -79,14 +79,10 @@
                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
                 src="/img/login/kakao_login_btn.png" onclick="linkUser()" width="208px;"></a>
             </div>
-            <div>
-                <a href="/auth/kakao/unlink">카카오 앱 연결 해제</a>
-            </div>
         </c:if>
         <c:if test="${joinorbind eq 100}">
-            <div>
-                <p>먼저, JavaPresso의 회원으로 로그인을 해주세요.</p>
-                <p>로그인 후, 카카오아이디를 연동하시면 카카오아이디로도 로그인을 하실 수 있습니다.</p>
+            <div class="text-muted" style="border: 2px solid #117a8b; border-radius: 4px; position: relative; right: 1.1rem; width: 208px">
+               먼저, JavaPresso의 회원가입을 해주세요. 회원가입후, 카카오아이디를 연동하시면 카카오로그인이 가능합니다.
             </div>
         </c:if>
         <%-- 카카오 구현 중==============================--%>
