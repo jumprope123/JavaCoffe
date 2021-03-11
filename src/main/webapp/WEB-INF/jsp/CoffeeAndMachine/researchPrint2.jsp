@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>커피 선호도 조사결과</title>
+    <title>머신 추천 알고리즘 결과</title>
     <style type="text/css">
         b {
             font-size: 16pt;
@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<h2>커피 설문 결과</h2>
+<h2>머신 추천 알고리즘 결과</h2>
 <%
     request.setCharacterEncoding("UTF-8");
 
@@ -98,11 +98,11 @@
             }
 
     if(sum>50){
-        out.println(" '화이트' 색상에 제품a 입니다.");
+        out.println(" '화이트' 색상에 <b>제품a</b> 입니다.");
     }else if(sum>20){
-        out.println(" '블랙' 색상에 제품b 입니다.");
+        out.println(" '블랙' 색상에 <b>제품b</b> 입니다.");
     }else{
-        out.println(" '실버' 색상에 제품c 입니다.");
+        out.println(" '실버' 색상에 <b>제품c</b> 입니다.");
     }
 
 

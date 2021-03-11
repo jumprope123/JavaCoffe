@@ -1,12 +1,12 @@
 <%@ page pageEncoding="UTF-8" %>
 <div style="width: 800px;" id="main">
-<h2> 커피 선호도 조사</h2>
+<h2>커피 추천 알고리즘</h2>
 <form action="/CoffeeAndMachine/researchPrint" method="get">
     <table>
         <tr>
             <td>고객명 : </td>
             <td>
-                <input type="text" name="name" size="20">
+                <input type="text" name="name" size="20" value="${userid}">
             </td>
         </tr>
         <tr>

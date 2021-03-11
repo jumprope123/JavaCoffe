@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>커피 선호도 조사결과</title>
+    <title>커피 추천 알고리즘 결과</title>
     <style type="text/css">
         b {
             font-size: 16pt;
@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<h2>커피 설문 결과</h2>
+<h2>커피 추천 알고리즘 결과</h2>
 <%
     request.setCharacterEncoding("UTF-8");
 
@@ -96,14 +96,14 @@
 
 
 
-        out.println("총 점수는" + sum + "입니다");
+        out.println("총 커피지수는" + sum + "입니다");
 
         if(sum >10){
-            out.println("강렬한 커피를 좋아하시는 당신께 '커피3' 을 추천해드립니다.");
+            out.println("강렬한 커피를 좋아하시는 당신께 <b>'커피3'</b> 을 추천해드립니다.");
         } else if(sum >6){
-            out.println("중간정도의  커피를 좋아하시는 당신께 '커피2' 을 추천해드립니다.");
+            out.println("중간정도의  커피를 좋아하시는 당신께 <b>'커피2'</b> 을 추천해드립니다.");
         } else{
-            out.println("마일드한 커피를 좋아하시는 당신께 '커피1' 을 추천해드립니다.");
+            out.println("마일드한 커피를 좋아하시는 당신께 <b>'커피1'</b> 을 추천해드립니다.");
         }
 
 %>
