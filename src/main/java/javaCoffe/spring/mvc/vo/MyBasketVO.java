@@ -9,6 +9,8 @@ public class MyBasketVO {
     private String myshipPay;
     private String mypname;
     private String myamount;
+    private String myfnames;
+    private String myeno;
 
     public MyBasketVO(String mbno, String myamount) {
         this.mbno = mbno;
@@ -77,5 +79,21 @@ public class MyBasketVO {
 
     public void setMyamount(String myamount) {
         this.myamount = myamount;
+    }
+
+    public String getMyfnames() {
+        return myfnames;
+    }
+
+    public void setMyfnames(String myfnames) {
+        this.myfnames = myfnames;
+    }
+
+    public String getMyeno() {
+        return myeno;
+    }
+
+    public void setMyeno(String myeno) {
+        this.myeno = myeno;
     }
 }
