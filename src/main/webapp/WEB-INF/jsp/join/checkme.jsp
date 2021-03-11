@@ -56,7 +56,7 @@
                         <label class="col-4"></label>
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" id="usejm"
-                                   class="custom-control-input"> <%--onclick="checkName() || checkJuminNo()">--%> <%--<<<<<<<<<<<<<<<<<<<<<<<<<<<<잠깐 해제--%>
+                                   class="custom-control-input" onclick="checkName() || checkJuminNo()">
                             <label for="usejm" class="custom-control-label ">
                                 주민등록번호 처리에 동의합니다.
                             </label>

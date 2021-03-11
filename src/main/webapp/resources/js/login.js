@@ -27,7 +27,7 @@ $('#s_hloginbtn').on('click',function (){
 
 
 var joinorbind = $('#joinorbind').val();
-if (joinorbind == "100"){
+if (joinorbind == 100){
     alert('회원가입 후 sns연동해주세요.');
 }
 /*  여기서 부터 카카오  코드*/

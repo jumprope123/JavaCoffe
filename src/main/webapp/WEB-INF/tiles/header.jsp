@@ -35,9 +35,9 @@
                                             <input type="password" name="passwd" id="userPW" class="form-control bidragup"  placeholder="Password" required>
                                         </div>
                                         <button id="s_hloginbtn" type="submit" class="btn btn-primary bidragdown2" style="margin-left: 2px">Login</button>
-                                        <p id="joinorbindP">${joinorbind}</p>
+                                        <p style="display: none" id="joinorbindP">${joinorbind}</p>
                                         <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
-                                                src="../img/login/kakao_login_medium.png" class="bidragdown2" width="66.09px" height="38px" style="margin-left: 3px"></a>
+                                                src="../img/login/kakao_login_medium.png" class="bidragdown2" width="66.09px" height="38px" style="margin-left: 1.2rem"></a>
                                     </form>
                                 </li>
                             </ul>

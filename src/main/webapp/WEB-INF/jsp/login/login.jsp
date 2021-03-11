@@ -5,8 +5,9 @@
         margin: 0 auto;
     }
     .center_login2 {
-        margin-top: 9%;
-        margin-left: 43%;
+        margin-top: 5.5rem;
+        margin-bottom: 5.5rem;
+        margin-left: 54rem;
     }
     .total_size_login {
         width: 20rem;
