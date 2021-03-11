@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>커피 선호도 조사결과</title>
+    <title>커피 추천 알고리즘 결과</title>
     <style type="text/css">
         b {
             font-size: 16pt;
@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<h2>커피 설문 결과</h2>
+<h2>커피 추천 알고리즘 결과</h2>
 <%
     request.setCharacterEncoding("UTF-8");
 

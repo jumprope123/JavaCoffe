@@ -29,16 +29,16 @@
 </style>
 <div id="main margin30 container" style="height: 700px;">
 
-<h5>커피와 머신 추천</h5>
+
   <ul class="coffee_and_machine_ul">
     <li class="coffee_and_machine_li"><button class="coffee_and_machine_btn" onclick='open_form("/CoffeeAndMachine/intro")'>현 페이지</button></li>
     <li class="coffee_and_machine_li"><button class="coffee_and_machine_btn" onclick='open_form("/CoffeeAndMachine/researchForm")'>커피원두 선택 가이드</button></li>
     <li class="coffee_and_machine_li"><button class="coffee_and_machine_btn" onclick='open_form("/CoffeeAndMachine/researchForm2")'>커피머신 선택 가이드</button></li>
-    <li class="coffee_and_machine_li"><button class="coffee_and_machine_btn" onclick='open_form("/coffeemachine/view2")'>커피원두지식</button></li>
-    <li class="coffee_and_machine_li"><button class="coffee_and_machine_btn" onclick='open_form("/coffeemachine/view1")'>커피머신지식</button></li>
+    <li class="coffee_and_machine_li"><button class="coffee_and_machine_btn" onclick='open_form("/CoffeeAndMachine/view2")'>커피 원두지식</button></li>
+    <li class="coffee_and_machine_li"><button class="coffee_and_machine_btn" onclick='open_form("/CoffeeAndMachine/view1")'>커피 머신지식</button></li>
   </ul>
 
-  <iframe id="iframeS" src="/CoffeeAndMachine/intro" scrolling="no" frameborder="no" width="700" height="400"
+  <iframe id="iframeS" src="/CoffeeAndMachine/intro" scrolling="yes" frameborder="no" width="1200" height="700"
           STYLE="position: absolute; top: 200px; left: 400px; "></iframe>
 
 </div>

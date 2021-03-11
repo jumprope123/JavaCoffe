@@ -41,20 +41,20 @@ public class CoAndMaController {
     }
 
 
-    @GetMapping("coffemachine/view2")
+    @GetMapping("CoffeeAndMachine/view2")
     public ModelAndView description1(ModelAndView mv, String kof){
 
 
-        mv.setViewName("coffemachine/view2");
+        mv.setViewName("CoffeeAndMachine/view2");
 
 
         return mv;
     }
-    @GetMapping("coffemachine/view1")
+    @GetMapping("CoffeeAndMachine/view1")
     public ModelAndView description2(ModelAndView mv, String kof){
 
 
-        mv.setViewName("coffemachine/view1");
+        mv.setViewName("CoffeeAndMachine/view1");
 
 
         return mv;

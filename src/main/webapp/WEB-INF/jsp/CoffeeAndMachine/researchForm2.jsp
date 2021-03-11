@@ -1,5 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <div style="width: 800px;" id="main">
+    <h2> 머신 추천 알고리즘</h2>
 <form action="/CoffeeAndMachine/researchPrint2" method="get">
     <table>
         <tr>

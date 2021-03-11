@@ -2,14 +2,20 @@ package javaCoffe.spring.mvc.dao;
 
 
 import javaCoffe.spring.mvc.vo.CoAndMaVO;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository("cdvo")
+@Repository("camdao")
 public class CoAndMaDAOImpl implements CoAndMaDAO {
 
+    @Autowired
+    private SqlSession sqlSession;
+
     @Override
-    public int insertCoAndMa(CoAndMaVO cdvo) {
-        return 0;
+    public int insertCoAndMa(CoAndMaVO cdvo)
+    {
+        return sqlSession.insert("cam.insertCoAndMa", cdvo);
     }
 
     @Override
