@@ -109,7 +109,6 @@
             ceshop = "커피1";
             check_co = true; }
 
-
     if(check_co = true) {
 
                 out.println("<br>추천된 상품 " + ceshop + " 구매 바로가기 버튼<br>");

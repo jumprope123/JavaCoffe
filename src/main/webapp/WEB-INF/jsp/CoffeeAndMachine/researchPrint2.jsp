@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
-<html>
+
 <head>
     <meta charset="UTF-8">
     <title>머신 추천 알고리즘 결과</title>
@@ -122,10 +120,8 @@
     }
 </script>
 
-
 <br>
 <b><a href="javascript:history.go(-1)">다시</a></b>
 
 
 </body>
-</html>
