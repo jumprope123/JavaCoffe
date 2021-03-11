@@ -5,7 +5,7 @@
 
 <mapper namespace="findshop">
     <select id="selectList" statementType="PREPARED" resultType="javaCoffe.spring.mvc.vo.FindShopVO">
-        select sno, sname, address, jibeon, phone
+        select sname, address, jibeon, phone
         from FindShop
         order by sno
     </select>

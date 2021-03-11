@@ -58,4 +58,14 @@ public class MyBasketServiceImpl implements MyBasketService{
         return result;
     }
 
+    @Override
+    public boolean updatemb(String mbno, String myamount) {
+        MyBasketVO mbvo = new MyBasketVO(mbno, myamount);
+        boolean isOk = false;
+        int cnt = mbdao.updatemb(mbvo);
+        if(cnt>0) isOk = true;
+
+        return isOk;
+    }
+
 }

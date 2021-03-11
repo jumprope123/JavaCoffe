@@ -12,5 +12,7 @@ public interface MyBasketDAO {
 
     int deletemb(String mbno);
 
+    int updatemb(MyBasketVO mbvo);
+
 //    MyBasketVO selectOnemb(Map<String, Object> param);
 }

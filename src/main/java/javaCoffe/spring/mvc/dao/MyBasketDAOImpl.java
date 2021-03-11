@@ -29,6 +29,11 @@ public class MyBasketDAOImpl implements MyBasketDAO{
         return sqlSession.delete("mybasket.deletemb",mbno);
     }
 
+    @Override
+    public int updatemb(MyBasketVO mbvo) {
+        return sqlSession.update("mybasket.updatemb",mbvo);
+    }
+
 //    @Override
 //    public MyBasketVO selectOnemb(Map<String, Object> param) {
 //        return sqlSession.selectOne("mybasket.selectOnemb", param);

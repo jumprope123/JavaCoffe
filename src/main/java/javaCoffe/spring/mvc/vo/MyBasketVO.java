@@ -10,6 +10,11 @@ public class MyBasketVO {
     private String mypname;
     private String myamount;
 
+    public MyBasketVO(String mbno, String myamount) {
+        this.mbno = mbno;
+        this.myamount = myamount;
+    }
+
     public String getMbno() {
         return mbno;
     }

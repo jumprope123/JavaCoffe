@@ -18,7 +18,7 @@ public class FindShopController {
 
 
     @GetMapping("/findshop/first")
-    public ModelAndView findresult(ModelAndView mv){
+    public ModelAndView first(ModelAndView mv){
         mv.setViewName("findshop/first.tiles");
         mv.addObject("fsinfo", fsrv.readFindShop());
         mv.addObject("location",fsrv.readLocation());
