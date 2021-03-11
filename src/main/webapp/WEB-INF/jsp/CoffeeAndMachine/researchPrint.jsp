@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
-<html>
 <head>
     <meta charset="UTF-8">
     <title>커피 추천 알고리즘 결과</title>
@@ -94,23 +91,43 @@
         }
 
 
+        out.println("총 커피지수는" + sum + "입니다<br>");
 
-
-        out.println("총 커피지수는" + sum + "입니다");
+        String ceshop;
+        boolean check_co;
 
         if(sum >10){
             out.println("강렬한 커피를 좋아하시는 당신께 <b>'커피3'</b> 을 추천해드립니다.");
+            ceshop = "커피3";
+            check_co = true;
         } else if(sum >6){
             out.println("중간정도의  커피를 좋아하시는 당신께 <b>'커피2'</b> 을 추천해드립니다.");
+            ceshop = "커피2";
+            check_co = true;
         } else{
-            out.println("마일드한 커피를 좋아하시는 당신께 <b>'커피1'</b> 을 추천해드립니다.");
-        }
+            out.println("마일드한 커피를 좋아하시는 당신께 <b>'커피1'</b> 을 추천해드립니다.<br>");
+            ceshop = "커피1";
+            check_co = true; }
+
+
+    if(check_co = true) {
+
+                out.println("<br>추천된 상품 " + ceshop + " 구매 바로가기 버튼<br>");
+
+    }
 
 %>
 
+<button type="button" class="eshop_link" name="eshoplinkBtn" onclick="clikevent()">
+eshop
+</button>
+        <br>
         <br>
 <b><a href="javascript:history.go(-1)">다시</a></b>
-
-
 </body>
-</html>
+
+<script>
+    function clikevent() {
+        window.open('/eshop/list?bigGenre=coffe&cp=1');
+    }
+</script>
