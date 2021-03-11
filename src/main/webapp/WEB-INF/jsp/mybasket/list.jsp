@@ -3,6 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<%-- 이미지 출력을 위한 기본 주소 설정 --%>
+<%-- http://localhost/eshop/_thumb/small_글번호_파일명 --%>
+<c:set var="baseImgURL" value="http://localhost/eshop"/>
+<%--<c:set var="baseImgURL" value="http://13.125.205.40:8447/eshop" />--%>
+<c:set var="thumbURL" value="${baseImgURL}/_thumb/small_"/>
+
 <head>
     <link rel="stylesheet" href="/css/mybasket.css">
     <style>
@@ -60,7 +66,7 @@
                         <input name="mb_product_cb" id="mb_product_cb${mbnum}" class="mb_product_cb mt50" style="float:left;" type="checkbox">
                         <div class="mb_product_img" style="float:left; width: 120px; height: 120px;">
                             <a class="mb_product_link" href="#">
-                                <img style="margin: 21px; width: 78px; height: 78px;" src="/img/mybasket/cart.png" alt="상품입니다.">
+                                <img src="${thumbURL}${mb.myeno}_${fn:split(mb.myfnames,"[/]")[0]}" style="margin: 21px; width: 78px; height: 78px;" alt="상품입니다.">
                             </a>
                         </div>
                         <ul class="mb_product_ul" style="float:left; width: 588px; height: 120px;">

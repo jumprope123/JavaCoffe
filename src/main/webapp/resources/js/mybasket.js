@@ -1,4 +1,12 @@
 $(document).ready(function(){
+    $("input:checkbox[id='total_list_select_check']").each(function() {
+        $("#all_product_remove_li").css('display', 'inline');
+        $("#small_move_mb_center").css('margin-left' , '213px');
+        this.checked = true;
+    });
+    $("input:checkbox[name='mb_product_cb']").each(function() {
+        this.checked = true;
+    });
     let x = document.getElementById('#mb_product_arrival_date');
     let today = new Date();
     let month = today.getMonth() + 1;  // 월
@@ -18,69 +26,137 @@ $(document).ready(function(){
 
     $("#total_list_select_check").change(function(){
         if($("#total_list_select_check").is(":checked")) {
-            alert("전체 상품을 체크했습니다");
             $("input:checkbox[name='mb_product_cb']").each(function() {
                 this.checked = true;
             });
             $("#all_product_remove_li").css('display', 'inline');
             $("#small_move_mb_center").css('margin-left' , '213px');
+            changecart(x)
+
         }else{
-            alert("체크 해제되었습니다!");
             $("input:checkbox[name='mb_product_cb']").each(function() {
                 this.checked = false;
             });
             $("#all_product_remove_li").css('display', 'none');
             $("#small_move_mb_center").css('margin-left' , '295px');
+            changecart(x)
         }
     });
-
-
 });
 
 let mbnum = document.getElementById('mbnum_result').innerText;
-//
-// let checked = new Array(mbnum);
-// let product_temp = 0;
-// let shipPay_temp = 0;
-// let product_static_temp = 0;
-// let shipPay_static_temp = 0;
-// let total_price_temp = 0;
-//
-// // checked 초기화
-// for (let v = 0; v <mbnum-1; v++){
-//     checked[v] = false;
-// }
-//
-// for (let j = 1; j <= mbnum; j++) {
-//     product_temp = document.getElementById('mb_product_info_price'+j).innerText;
-//     shipPay_temp = document.getElementById('mb_product_info_shipPay'+j).innerText;
-//
-//     $("#mb_product_cb" + j).change(function () {
-//         if ($("#mb_product_cb"+j).is(":checked")) {
-//
-//             if (checked[j-1] == false) {
-//                 product_static_temp += parseInt(product_temp);
-//                 shipPay_static_temp += parseInt(shipPay_temp);
-//                 total_price_temp = parseInt(product_static_temp) + parseInt(shipPay_static_temp);
-//                 // 스택 총 값에 해당 스택 상품값과 스택 배송비 추가 하는 로직
-//                 // 그 값을 웹에 보내는 로직
-//             }
-//             checked[j - 1] = true;
-//         }
-//         if (!$("#mb_product_cb"+j).is(":checked")){
-//             if (checked[j-1]==true){
-//                 product_static_temp -= parseInt(product_temp);
-//                 shipPay_static_temp -= parseInt(shipPay_temp);
-//                 total_price_temp = parseInt(product_static_temp) + parseInt(shipPay_static_temp);
-//                 // 스택 총 값에 해당 스택 상품값과 스택 배송비 뺴는 로직
-//             }
-//             checked[j-1]==false;
-//         }
-//         $("#total_mb_product_price").text(product_static_temp);
-//         $("#total_mb_shipPay_price").text(shipPay_static_temp);
-//         $("#total_mb_order_price").text(total_price_temp);
-//     });
-// }
+
+let checked = new Array(mbnum);
+let product_temp = 0;
+let shipPay_temp = 0;
+let product_static_temp = 0;
+let shipPay_static_temp = 0;
+let total_price_temp = 0;
+
+// checked 초기화
+for (let v = 0; v <4-1; v++){
+    checked[v] = false;
+}
+
+$("#mb_product_cb" + 1).change(function() { changecart(1) } );
+$("#mb_product_cb" + 2).change(function() { changecart(2) } );
+$("#mb_product_cb" + 3).change(function() { changecart(3) } );
+$("#mb_product_cb" + 4).change(function() { changecart(4) } );
+
+function changecart(x) {
+
+    if ($(this).is(":checked")) {  // 체크되면 체크 항목의 가격 배송비를 전체 금액에 합산
+        product_static_temp = 0;
+        shipPay_static_temp = 0;
+        total_price_temp = 0;
+        if ($('#mb_product_cb1').is(":checked")){
+            product_temp = parseInt($('#mb_product_info_price1').text());
+            product_static_temp = product_static_temp + product_temp;
+
+            shipPay_temp = parseInt($('#mb_product_info_shipPay1').text());
+            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+
+            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+
+        }
+        if ($('#mb_product_cb2').is(":checked")){
+            product_temp = parseInt($('#mb_product_info_price2').text());
+            product_static_temp = product_static_temp + product_temp;
+
+            shipPay_temp = parseInt($('#mb_product_info_shipPay2').text());
+            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+
+            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+        }
+        if ($('#mb_product_cb3').is(":checked")){
+            product_temp = parseInt($('#mb_product_info_price3').text());
+            product_static_temp = product_static_temp + product_temp;
+
+            shipPay_temp = parseInt($('#mb_product_info_shipPay3').text());
+            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+
+            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+        }
+        if ($('#mb_product_cb4').is(":checked")){
+            product_temp = parseInt($('#mb_product_info_price4').text());
+            product_static_temp = product_static_temp + product_temp;
+
+            shipPay_temp = parseInt($('#mb_product_info_shipPay4').text());
+            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+
+            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+        }
+            // 스택 총 값에 해당 스택 상품값과 스택 배송비 추가 하는 로직
+            // 그 값을 웹에 보내는 로직
+
+    } else {    // 체크가 해제되면 체크 항목의 가격 배송비를 전체 금액에서 빼기
+        product_static_temp = 0;
+        shipPay_static_temp = 0;
+        total_price_temp = 0;
+        if ($('#mb_product_cb1').is(":checked")){
+            product_temp = parseInt($('#mb_product_info_price1').text());
+            product_static_temp = product_static_temp + product_temp;
+
+            shipPay_temp = parseInt($('#mb_product_info_shipPay1').text());
+            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+
+            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+
+        }
+        if ($('#mb_product_cb2').is(":checked")){
+            product_temp = parseInt($('#mb_product_info_price2').text());
+            product_static_temp = product_static_temp + product_temp;
+
+            shipPay_temp = parseInt($('#mb_product_info_shipPay2').text());
+            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+
+            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+        }
+        if ($('#mb_product_cb3').is(":checked")){
+            product_temp = parseInt($('#mb_product_info_price3').text());
+            product_static_temp = product_static_temp + product_temp;
+
+            shipPay_temp = parseInt($('#mb_product_info_shipPay3').text());
+            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+
+            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+        }
+        if ($('#mb_product_cb4').is(":checked")){
+            product_temp = parseInt($('#mb_product_info_price4').text());
+            product_static_temp = product_static_temp + product_temp;
+
+            shipPay_temp = parseInt($('#mb_product_info_shipPay4').text());
+            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+
+            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+        }
+            // 스택 총 값에 해당 스택 상품값과 스택 배송비 뺴는 로직
+
+    }
+    $("#total_mb_product_price").text(product_static_temp);
+    $("#total_mb_shipPay_price").text(shipPay_static_temp);
+    $("#total_mb_order_price").text(product_static_temp + shipPay_static_temp);
+}
 
 $('#mb_login_btn').on('click',function (){
     location.href = '/login/login';
@@ -135,3 +211,10 @@ for (let k = 1; k <= mbnum; k++) {
 $('#going_shopping').on('click',function (){
     location.href = '/eshop/list?bigGenre=coffe&cp=1';
 });
+
+// checked 된것만 구매페이지로 던지기
+
+
+
+
+// 구매후에 해당 상품들 장바구니에서 삭제
