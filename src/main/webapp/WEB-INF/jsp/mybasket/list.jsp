@@ -35,7 +35,8 @@
             <div class="mb_thead_wrap">
                 <ul>
                     <li style="float:left; margin-top: 4px; margin-left: 20px;"><input id="total_list_select_check" type="checkbox"><h5 class="fs-13a" style="margin-left: 10px;">전체선택</h5></li>
-                    <li style="float:left; margin-top: 4px; margin-left: 350px;"><h5 class="fs-13a">상품정보</h5></li>
+                    <li id="all_product_remove_li" style="display: none; float:left; margin-top: 4px; margin-left: 20px;"><button style="background:#fff; width: 60px; height: 20px; border: #5a6268 1px solid; border-radius: 3px; :hover {background:#e4606d; color:#fff;}" id="all_product_remove_btn">전체삭제</button></li>
+                    <li id="small_move_mb_center" style="float:left; margin-top: 4px; margin-left: 295px;"><h5 class="fs-13a">상품정보</h5></li>
                     <li style="float:right; margin-top: 4px; margin-right: 40px;"><h5 class="fs-13a">배송비</h5></li>
                     <li style="float:right; margin-top: 4px; margin-right: 60px;"><h5 class="fs-13a">상품금액</h5></li>
                 </ul>
@@ -121,9 +122,9 @@
             <div>
                 <div class="mb_total_price_info">
                     <div style="margin-top: 10px; ">
-                        <h4 class="b-inline fs-16">총 상품가격 </h4><h2 class="b-inline fs-20"> ${totalstatic_product}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> + </h3>
-                        <h4 class="b-inline fs-16"> 총 배송비 </h4><h2 class="b-inline fs-20"> ${totalstatic_shipPay}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> = </h3>
-                        <h4 class="b-inline fs-16"> 총 주문금액</h4><h2 class="b-inline fs-20" style="color: red"> ${totalstatic_shipPay + totalstatic_product}</h2><h2 class="b-inline fs-16">&nbsp;원 </h2>
+                        <h4 class="b-inline fs-16">총 상품가격 </h4><h2 id="total_mb_product_price" class="b-inline fs-20"> ${totalstatic_product}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> + </h3>
+                        <h4 class="b-inline fs-16"> 총 배송비 </h4><h2 id="total_mb_shipPay_price" class="b-inline fs-20"> ${totalstatic_shipPay}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> = </h3>
+                        <h4 class="b-inline fs-16"> 총 주문금액</h4><h2 id="total_mb_order_price"  class="b-inline fs-20" style="color: red"> ${totalstatic_shipPay + totalstatic_product}</h2><h2 class="b-inline fs-16">&nbsp;원 </h2>
                     </div>
                 </div>
             </div>
