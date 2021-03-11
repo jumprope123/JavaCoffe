@@ -1,4 +1,12 @@
 $(document).ready(function(){
+    $("input:checkbox[id='total_list_select_check']").each(function() {
+        $("#all_product_remove_li").css('display', 'inline');
+        $("#small_move_mb_center").css('margin-left' , '213px');
+        this.checked = true;
+    });
+    $("input:checkbox[name='mb_product_cb']").each(function() {
+        this.checked = true;
+    });
     let x = document.getElementById('#mb_product_arrival_date');
     let today = new Date();
     let month = today.getMonth() + 1;  // 월
@@ -23,6 +31,7 @@ $(document).ready(function(){
             });
             $("#all_product_remove_li").css('display', 'inline');
             $("#small_move_mb_center").css('margin-left' , '213px');
+            changecart(x)
 
         }else{
             $("input:checkbox[name='mb_product_cb']").each(function() {
@@ -30,6 +39,7 @@ $(document).ready(function(){
             });
             $("#all_product_remove_li").css('display', 'none');
             $("#small_move_mb_center").css('margin-left' , '295px');
+            changecart(x)
         }
     });
 });
