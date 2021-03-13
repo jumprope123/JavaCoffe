@@ -156,7 +156,7 @@
 
                    <div class="form-group row">
                         <label class="col-2 text-right" style="padding-top: 1.8rem;">자동가입방지</label>
-                        <div class="g-recaptcha" data-sitekey="6Le81joaAAAAAJt1AUAXPyoaNPoS0XkPFWvF3tp8"></div>
+                        <div class="g-recaptcha" data-sitekey="6LfA1joaAAAAAOU9f2VaZdKu9Z4C_tWErqdpFnqf"></div>
                         <input type="hidden" name="g-recaptcha" id="g-recaptcha">
                         <span style="color: red">${checkCaptchaforJoin}</span>
                    </div><!--자동가입방지-->

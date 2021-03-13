@@ -117,20 +117,6 @@
                 </span>
                     </li>
                     <li class="navbar_Item">
-                        <a class="navbar_anchor" href="#">
-                            <div class="navbar_element">
-                    <span class="navbar_icon" style="width: 30px; height: 20px;">
-                    </span>
-                                <div class="navbar_title">머신추천</div>
-                            </div>
-                        </a>
-                        <span class="VisuallyHidden">
-                  <button aria-expanded="false" class="navbar_button" tabindex="-1" type="button">
-                    서브 메뉴 머신추천 열기
-                  </button>
-                </span>
-                    </li>
-                    <li class="navbar_Item">
                         <a class="navbar_anchor" href="/board/list?cp=1">
                             <div class="navbar_element">
                     <span class="navbar_icon" style="width: 30px; height: 20px;">

@@ -76,8 +76,8 @@
         <%--===========================여기서 부터--%>
         <div>
             <p id="joinorbindP">${joinorbind}</p>
-            <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
-                    src="/img/login/kakao_login_btn" width="208px;"></a>
+            <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position">
+                <img src="/img/login/kakao_login_btn.png" width="208px;"></a>
         </div>
         <%-- 카카오 구현 중==============================--%>
     </div>

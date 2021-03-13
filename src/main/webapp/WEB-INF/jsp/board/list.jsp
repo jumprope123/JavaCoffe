@@ -84,10 +84,12 @@
                     <i class="bi bi-search"></i> 검색</button>
                 </div>
             </div>
+            <c:if test="${not empty sess}">
             <div class="col-6 text-right">
                 <button type="button" id="newbd" class="btn btn-light">
                     <i class="bi bi-pencil-square bidragup"></i>&nbsp;새 글 쓰기</button>
             </div>
+            </c:if>
 <%--        </c:if>--%>
     </div><!--새 글 쓰기-->
 

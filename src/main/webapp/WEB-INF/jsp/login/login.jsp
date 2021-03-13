@@ -77,8 +77,8 @@
 
         <c:if test="${joinorbind eq 200}">
             <div>
-                <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
-                src="/img/login/kakao_login_btn.png" onclick="linkUser()" width="208px;"></a>
+                <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position">
+                    <img src="/img/login/kakao_login_btn.png" onclick="linkUser()" width="208px;"></a>
             </div>
         </c:if>
         <c:if test="${joinorbind eq 100}">
