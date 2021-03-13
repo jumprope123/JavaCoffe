@@ -40,8 +40,8 @@
 
 <%-- 이미지 출력을 위한 기본 주소 설정 --%>
 <%-- http://localhost/eshop/_thumb/small_글번호_파일명 --%>
-<c:set var="baseImgURL" value="http://localhost/eshop"/>
-<%--<c:set var="baseImgURL" value="http://13.125.205.40:8447/eshop" />--%>
+<%--<c:set var="baseImgURL" value="http://localhost/eshop"/>--%>
+<c:set var="baseImgURL" value="http://13.125.205.40:8447/cdn" />
 <c:set var="thumbURL" value="${baseImgURL}/_thumb/small_"/>
 
 <div id="main" class="singleDay">

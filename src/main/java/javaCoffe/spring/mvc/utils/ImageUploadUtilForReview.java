@@ -11,6 +11,11 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -20,8 +25,8 @@ import java.util.*;
 public class ImageUploadUtilForReview {
 
     // 이미지 업로드 경로 설정
-     private String IMG_UPLOAD_PATH = "C:/Java/nginx-1.19.6/html/cdn/"; //window
-//    private String IMG_UPLOAD_PATH = "/home/centos/imgupload/"; // linux
+//     private String IMG_UPLOAD_PATH = "C:/Java/nginx-1.19.6/html/cdn/"; //window
+    private String IMG_UPLOAD_PATH = "/home/centos/cdn/"; // linux
 
     // 갤러리에 이미지 첨부시 파일 존재 여부 확인
     public boolean checkGalleryFiles(MultipartFile[] img) {
@@ -71,10 +76,10 @@ public class ImageUploadUtilForReview {
             // 업로드한 파일의 퍼미션을 설정
             // 즉, 업로드한 파일의 권한을 755(rwxr-xr-x)로 설정
             // read : 4, write : 2, execute: 1
-//            String perms = "rwxr-xr-x";
-//            Path img = Paths.get(tfname);
-//            Set<PosixFilePermission> pfp = PosixFilePermissions.fromString(perms);
-//            Files.setPosixFilePermissions(img, pfp);  // linux
+            String perms = "rwxr-xr-x";
+            Path img = Paths.get(tfname);
+            Set<PosixFilePermission> pfp = PosixFilePermissions.fromString(perms);
+            Files.setPosixFilePermissions(img, pfp);  // linux
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -107,10 +112,10 @@ public class ImageUploadUtilForReview {
             // 업로드한 파일의 퍼미션을 설정
             // 즉, 업로드한 파일의 권한을 755(rwxr-xr-x)로 설정
             // read : 4, write : 2, execute: 1
-//            String perms = "rwxr-xr-x";
-//            Path img = Paths.get(IMG_UPLOAD_PATH + nfname);
-//            Set<PosixFilePermission> pfp = PosixFilePermissions.fromString(perms);
-//            Files.setPosixFilePermissions(img, pfp);  // linux
+            String perms = "rwxr-xr-x";
+            Path img = Paths.get(IMG_UPLOAD_PATH + nfname);
+            Set<PosixFilePermission> pfp = PosixFilePermissions.fromString(perms);
+            Files.setPosixFilePermissions(img, pfp);  // linux
 
         } catch (Exception ex) {
             ex.printStackTrace();

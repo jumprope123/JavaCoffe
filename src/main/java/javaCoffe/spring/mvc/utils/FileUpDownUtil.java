@@ -29,8 +29,8 @@ public class FileUpDownUtil {
     // -> commons.apache.org
     //3. Servlet 3.x부터 파일업로드 내장 - MultipartFile
 
-    private String uploadPath = "c:/Java/pdsupload/";
-    //private String uploadPath = "/home/centos/pdsupload/";
+//    private String uploadPath = "c:/Java/pdsupload/";
+    private String uploadPath = "/home/centos/cdn/";
     // 파일 업로드시 저장된 경로 지정
 
     // 업로드 처리 메서드

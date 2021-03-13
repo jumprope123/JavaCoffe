@@ -48,3 +48,6 @@ function logout() {
 })*/
 
 
+$('#hjoinbtn').on('click',function () {
+    location.href = "/join/agree"
+})

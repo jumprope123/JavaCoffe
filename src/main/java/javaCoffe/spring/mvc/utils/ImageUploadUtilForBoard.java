@@ -20,8 +20,8 @@ import java.util.Set;
 public class ImageUploadUtilForBoard {
 
     // 이미지 업로드 경로 설정
-    private String IMG_UPLOAD_PATH = "C:/Java/nginx-1.19.6/html/cdn/";
-    //private String IMG_UPLOAD_PATH = "/home/centos/imgupload/";
+//    private String IMG_UPLOAD_PATH = "C:/Java/nginx-1.19.6/html/cdn/";
+    private String IMG_UPLOAD_PATH = "/home/centos/cdn/";
 
     // 갤러리에 이미지 첨부시 파일 존재 여부 확인
     public boolean checkGalleryFiles(MultipartFile[] img) {

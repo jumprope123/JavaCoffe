@@ -38,13 +38,14 @@ public class BoardController {
     }
 
     @GetMapping("/board/list")//게시판 목록 출력
-    public ModelAndView list(ModelAndView mv, String cp){
+    public ModelAndView list(ModelAndView mv, String cp, HttpSession sess){
         //if (cp == null) cp = "1";
         //header.jsp에 ?cp=1를 추가했기 때문에 더이상 필요 없음
 
         mv.setViewName("board/list.tiles");
         mv.addObject("bds", bsrv.readBoard(cp));
         mv.addObject("bdcnt", bsrv.countBoard()); //총게시물 수
+        mv.addObject("sess",sess);
 
         return mv;
     }
