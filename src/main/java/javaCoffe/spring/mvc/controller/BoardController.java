@@ -45,7 +45,7 @@ public class BoardController {
         mv.setViewName("board/list.tiles");
         mv.addObject("bds", bsrv.readBoard(cp));
         mv.addObject("bdcnt", bsrv.countBoard()); //총게시물 수
-        mv.addObject("sess",sess);
+        mv.addObject("sess",sess.getAttribute("UID"));
 
         return mv;
     }
