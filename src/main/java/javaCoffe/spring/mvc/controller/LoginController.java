@@ -4,15 +4,20 @@ import javaCoffe.spring.mvc.service.MemberService;
 import javaCoffe.spring.mvc.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 
 
@@ -67,19 +72,55 @@ public class LoginController {
     }
 
     @GetMapping("/login/loginDel")
-    public String logindel(HttpSession sess){
+    public String logindel(HttpSession sess, HttpServletRequest request){
+
         sess.removeAttribute("UID");
         sess.removeAttribute("AboutKakao");
+
         return "redirect:/login/login";
     }
+/////////////////////////////////////////////////////////////////////// 과연 이거인것인가 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   @GetMapping("/auth/kakao/logout")
+    public void kakaoLogout(String access_Token) {
+        String reqURL ="https://kapi.kakao.com/v1/user/logout";
+        try {
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
+            int responseCode = conn.getResponseCode();
+            System.out.println("responseCode : " + responseCode);
 
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-//
+            String result = "";
+            String line = "";
 
-    // ============================ woo 만약 kakaoID 값을 체크해서 있으면 index 없으면 loginfail로 이동
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+            System.out.println(result);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            System.out.println("============================"); /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        }
+    }
 
+    @RequestMapping(value ="/auth/kakao/logoutok" , method = RequestMethod.POST)
+    public String logout(MemberVO mvo, Model model, RedirectAttributes redirectAttributes, HttpServletRequest request, HttpSession sess , SessionStatus sessionStatus) {
+/*        HttpSession sess = request.getSession(false);  //<<<<<<<<<<<<<<<<<<<<<<<<<< 2021.3.11 수정 2
+        request.getSession(true).invalidate();*/
 
-    //===========================================
+        kakaoLogout((String)sess.getAttribute("access_Token"));
+        sessionStatus.setComplete(); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 2021.3.11 수정 4
+        sess.removeAttribute("access_Token");
+        sess.removeAttribute("userid");  // <<<<<<<<<<<<<<<<<<<<<<<<<< 2021.3.11 수정 1*/
+        sess.invalidate();
 
+        System.out.println("============================"); /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        return "redirect:/index";
+    }
+///////////////////////////////////////////////////////////////////////
 }

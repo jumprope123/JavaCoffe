@@ -45,24 +45,24 @@
     <div class="card card-body bg-light margin1050">
         <h3 class="font-weight-bold normal_join">일반회원</h3>
 
-        <form name="joinfrm" id="joinfrm" action="/join/joinok.jsp" method="post">   <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
+        <form name="joinfrm" id="joinfrm" action="/join/joinok.jsp" method="post">
             <div class="row margin30">
                 <div class="col-11 offset-1">
                     <div class="form-group row">
                         <label class="col-2 col-form-label text-right"
                                for="name">이름</label>
                         <input type="text" name="name" id="name"
-                               class="form-control col-2 border-info" readonly value="${name2}">          <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
+                               class="form-control col-2 border-info" readonly value="${name2}">
                     </div><!--이름-->          <%--param 쿼리문을 받아서 넘어온값을 value값으로.ID값을 넣어주면 적용됨--%>
 
                     <div class="form-group row">
                         <label class="col-2 col-form-label  text-right"
                                for="jumin1">주민등록번호</label>
                         <input type="text" name="jumin1" id="jumin1"
-                               class="form-control col-2 border-info" readonly value="${jumin1}">   <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
+                               class="form-control col-2 border-info" readonly value="${jumin1}">
                         <label class="col-form-label">&nbsp;&ndash;&nbsp;</label>
                         <input type="password" name="jumin2" id="jumin2"
-                               class="form-control col-2 border-info" readonly value="${jumin2}">   <%--<<<<<<<<<<<<<<<< 뭐가 문제지--%>
+                               class="form-control col-2 border-info" readonly value="${jumin2}">
                     </div><!--주민번호-->
 
                     <div class="form-group row">

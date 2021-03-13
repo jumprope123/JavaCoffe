@@ -27,9 +27,24 @@ $('#s_hloginbtn').on('click',function (){
 
 
 var joinorbind = $('#joinorbind').val();
-if (joinorbind == "100"){
+if (joinorbind == 100){
     alert('회원가입 후 sns연동해주세요.');
 }
+/*  여기서 부터 카카오  코드*/
+function logout() {
+    alert('로그아웃 완료')
+}
 
+/*  여기서 부터 카카오  코드*/
+
+
+//로그아웃 끝
+
+/*$(document).click(function () {
+    document.getElementById("hloginbtn1").onclick = function (){
+        sessionStorage.removeItem("kakaoID")
+        alert('로그아웃 뱀')
+    }
+})*/
 
 

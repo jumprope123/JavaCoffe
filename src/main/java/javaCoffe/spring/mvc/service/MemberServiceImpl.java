@@ -45,6 +45,7 @@ public class MemberServiceImpl implements MemberService{
         if (mdao.selectLogin(mvo) > 0) {
             sess.setAttribute("UID", mvo.getUserid());
 
+
             isLogin = true;
         }
         return isLogin;

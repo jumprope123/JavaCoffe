@@ -129,7 +129,8 @@ public class KakaoController {
 
         String uidUID = (String) sess.getAttribute("UID");
         System.out.println("-------------------");
-        System.out.println(uidUID);
+        System.out.println("this kakaoID val : " + kakaoID);
+        System.out.println("this user val : " + uidUID);
         System.out.println("-------------------");
 
 
@@ -151,7 +152,10 @@ public class KakaoController {
             sess.setAttribute("AboutKakao",1); //왜냐! 카카오아이디를 연동했으니까. 연동하기가 없어져야 하니까!
             returnPage = "redirect:/index";
         }
-
+        System.out.println("-------------------");                  /*<<<<<<<<<<<<<<<<<<<<<<< 여기까지 진행되는지?*/
+        System.out.println("this kakaoID val : " + kakaoID);
+        System.out.println("this user val : " + uidUID);
+        System.out.println("-------------------");
         return returnPage;
     }
 }
