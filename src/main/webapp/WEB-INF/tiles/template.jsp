@@ -68,6 +68,10 @@
 <script src="/js/buylist.js"></script>
 <script src="/js/memberInfo.js"></script>
 <script src="/js/mybasket.js"></script>
+<script src="/js/coffeMachine.js"></script>
+<script src="/js/researchPrint.js"></script>
+
+
 <script>
     function open_form(url){
         $('#iframeS').attr('src' , url);
