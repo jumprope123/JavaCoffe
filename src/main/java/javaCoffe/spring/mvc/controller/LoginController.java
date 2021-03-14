@@ -68,6 +68,14 @@ public class LoginController {
         if (msrv.checkLogin(mvo,sess))
             returnPage = "redirect:/index";
 
+          //여기서부터
+        String userid = (String) sess.getAttribute("UID");
+        int result = msrv.readAboutkakao(userid);
+        sess.setAttribute("AboutKakao",result); //0이면 연동안함 1이면 연동되잇음.
+        System.out.println(result);
+        sess.setAttribute("UID", userid);
+        //여기까지
+        
         return returnPage;
     }
 
