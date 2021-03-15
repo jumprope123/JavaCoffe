@@ -9,6 +9,19 @@
         select * from eshop where code = #{code};
     </select>
 
+    <select id="selectMBEL" statementType="PREPARED" parameterType="java.util.ArrayList" resultType="javaCoffe.spring.mvc.vo.MyBasket_EshopVO">
+        SELECT mbno, mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount, myfnames, myeno,
+               brand, ogprice, dcprice, salesVolumn
+        FROM MyBasket M LEFT OUTER JOIN eshop e
+        ON M.mycode = e.code
+        WHERE mbno IN (
+        <foreach collection="array" item="mbno" index="index" separator=",">
+            ${mbno}
+        </foreach>
+        )
+        order by mbno;
+    </select>
+
     <select id="selectUser" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.MemberVO">
         select * from MemberJoin where userid = #{userid};
     </select>

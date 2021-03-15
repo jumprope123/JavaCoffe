@@ -6,8 +6,8 @@
 <mapper namespace="mybasket">
 
     <insert id="insertmb" parameterType="map" statementType="PREPARED">
-        insert into MyBasket (mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount , myfnames, myeno)
-        select code as mycode, stuck as mystuck, dcprice as myprice, #{userid} as myuuid, shipPay as myshipPay, title as mypname, #{mbamount} as myamount, fnames as myfnames, eno as myeno from eshop
+        insert into MyBasket (mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount , myfnames, myeno, mybrand)
+        select code as mycode, stuck as mystuck, dcprice as myprice, #{userid} as myuuid, shipPay as myshipPay, title as mypname, #{mbamount} as myamount, fnames as myfnames, eno as myeno, brand as mybrand from eshop
         where code = #{code};
     </insert>
 
