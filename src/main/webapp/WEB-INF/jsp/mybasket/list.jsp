@@ -122,6 +122,11 @@
                         </div>
                     </div>
                 </div>
+                    <input type="hidden" id="mb_myprice_one${mbnum}" value="${mb.myprice}" disabled>  <%--1개만 넘어왓을때 그 가격--%>
+                    <input type="hidden" id="eshopViewCode_one${mbnum}" name="eshopViewCode" value="${mb.mycode}" disabled>  <%--상품코드--%>
+                    <input type="hidden" id="mb_item_amount_one${mbnum}" name="eshopViewNum" disabled> <%--몇개인지 js에서 처리함--%>
+                    <input type="hidden" id="mb_product_info_price_one${mbnum}" name="priceForResult" disabled>  <%--얼마인지--%>
+
                     <input type="hidden" id="eno_mb${mbnum}" name="eno" value="${mb.myeno}" disabled>
                     <input type="hidden" id="fnames_mb${mbnum}" name="fnames" value="${mb.myfnames}"disabled>
                     <input type="hidden" id="brand_mb${mbnum}" name="brand" value="${mb.mybrand}"disabled><%--현재 null값--%>
@@ -131,6 +136,7 @@
                     <input type="hidden" id="discount_mb${mbnum}" name="discount" disabled> <%--개별상품 총 할인액 수정필요--%>
                     <input type="hidden" id="dcPrice_mb${mbnum}" name="dcPrice" disabled><%--개별상품 총 할인된가격 수정필요--%>
                     <input type="hidden" id="ogPrice_mb${mbnum}" name="ogPrice" disabled><%--개별상품 총 할인안된가격 수정필요--%>
+                    <input type="hidden" id="mycode_mb${mbnum}" name="mycode" disabled><%--해당상품코드넘기기--%>
             </c:forEach>
             </form>
         </c:if>

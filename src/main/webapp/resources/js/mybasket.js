@@ -255,8 +255,13 @@ for (let k = 1; k <= mbnum; k++) {
 };
 
 for (let k = 1; k <= mbnum; k++) {//추가
-    let mbnotemp = document.getElementById('mb_product_mbno'+k).innerText
     let mbamounttemp =  $("#mb_item_amount"+k).val();
+
+    $('#mb_item_amount_one'+k).val(mbamounttemp);
+    var mb_myprice_one = $('#mb_myprice_one'+k).val()
+    var priceForResult = (parseInt(mb_myprice_one) * parseInt(mbamounttemp));
+    $('#mb_product_info_price_one'+k).val(priceForResult);
+
     $("#purchase_mb"+k).val(mbamounttemp);
 };
 
@@ -271,9 +276,12 @@ $('#going_buying').on('click',function (){
     // let totalshipPay_buyshop = $('#total_mb_shipPay_price').text();
     // let totalprice_buyshop = $('#total_mb_order_price').text();
 
+    var checkCnt = 0; //몇개나 체크됫는지 체크하는 변수
+
     for (let vv_idx = 1; vv_idx <= mbnum; vv_idx++){
         let mb_indexx = "#mb_product_cb" + vv_idx;
         if ($(mb_indexx).is(":checked")) {
+            checkCnt = checkCnt + 1; //체크되잇으면 1더함
             // let mbnotempp = document.getElementById('mb_product_mbno'+vv_idx).innerText
             // mbnototal = mbnototal + mbnotempp + ",";
             $('#eno_mb'+vv_idx).attr("disabled",false)
@@ -285,6 +293,11 @@ $('#going_buying').on('click',function (){
             $('#discount_mb'+vv_idx).attr("disabled",false)
             $('#dcPrice_mb'+vv_idx).attr("disabled",false)
             $('#ogPrice_mb'+vv_idx).attr("disabled",false)
+            $('#mycode_mb'+vv_idx).attr("disabled",false)
+            $('#mb_myprice_one'+vv_idx).attr("disabled",false)
+            $('#eshopViewCode_one'+vv_idx).attr("disabled",false)
+            $('#mb_item_amount_one'+vv_idx).attr("disabled",false)
+            $('#mb_product_info_price_one'+vv_idx).attr("disabled",false)
         }
     }
     // mbnototal = mbnototal.slice(0,-1);
@@ -300,11 +313,17 @@ $('#going_buying').on('click',function (){
     // })
     // location.href = '/buylist/mb_buyPage'
 
-
-    $('#going_buying_form').attr('method','POST');
-    $('#going_buying_form').attr('action','/buylist/mb_buyPage'); //나중에 /buylist/buyPageBind로 변경하세요
+if (checkCnt > 1) { //2개이상일때
+    $('#going_buying_form').attr('method', 'POST');
+    $('#going_buying_form').attr('action', '/buylist/mb_buyPage'); //나중에 /buylist/buyPageBind로 변경하세요
     $('#going_buying_form').submit();
+}else { // 1개일때
+    $('#going_buying_form').attr('method', 'POST');
+    $('#going_buying_form').attr('action', '/buylist/buyPage');
+    $('#going_buying_form').submit();
+}
 });
+
 
 
 // 구매후에 해당 상품들 장바구니에서 삭제

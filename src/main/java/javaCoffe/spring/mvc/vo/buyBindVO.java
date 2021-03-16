@@ -10,6 +10,7 @@ public class buyBindVO {
     private String discount; // 개별 할인액
     private String dcPrice ; // 개별 할인 후 금액
     private String ogPrice; //개별 할인전 금액
+    private String mycode; // 상품 코드
 
     public buyBindVO() {
     }
@@ -22,7 +23,7 @@ public class buyBindVO {
         this.purchase = purchase;
     }
 
-    public buyBindVO(String eno, String fnames, String brand, String title, String shipPay, String purchase, String discount, String dcPrice, String ogPrice) {
+    public buyBindVO(String eno, String fnames, String brand, String title, String shipPay, String purchase, String discount, String dcPrice, String ogPrice, String mycode) {
         this.eno = eno;
         this.fnames = fnames;
         this.brand = brand;
@@ -32,6 +33,7 @@ public class buyBindVO {
         this.discount = discount;
         this.dcPrice = dcPrice;
         this.ogPrice = ogPrice;
+        this.mycode = mycode;
     }
 
     public String getEno() {
@@ -104,5 +106,13 @@ public class buyBindVO {
 
     public void setOgPrice(String ogPrice) {
         this.ogPrice = ogPrice;
+    }
+
+    public String getMycode() {
+        return mycode;
+    }
+
+    public void setMycode(String mycode) {
+        this.mycode = mycode;
     }
 }

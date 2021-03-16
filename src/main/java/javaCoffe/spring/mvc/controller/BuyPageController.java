@@ -24,7 +24,8 @@ public class BuyPageController {
 
     // 상품상세페이지 -> 구매페이지
     @PostMapping("/buylist/buyPage")
-    public ModelAndView buyPage(ModelAndView mv, HttpServletRequest req, String userid){
+    public ModelAndView buyPage(ModelAndView mv, HttpServletRequest req, HttpSession sess){
+        String userid = (String) sess.getAttribute("UID");
         mv.setViewName("buylist/buyPage.tiles");
         String code = req.getParameter("eshopViewCode");
         int salesCnt = Integer.parseInt(req.getParameter("eshopViewNum"));
