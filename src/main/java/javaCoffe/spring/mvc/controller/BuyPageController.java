@@ -53,23 +53,38 @@ public class BuyPageController {
 
         System.out.println(bbvo.getEno());
         System.out.println(bbvo.getFnames());
-        System.out.println(bbvo.getBrand()); //db에 값이없어요 ㅠ 채워주세요
+        System.out.println(bbvo.getBrand());
         System.out.println(bbvo.getTitle());
         System.out.println(bbvo.getShipPay());
         System.out.println(bbvo.getPurchase());
+        System.out.println(bbvo.getMycode());
+        int allproductprice = 0;
+        int allshipPay = 2500; //묶음배송시 shipPay는 .. ?
+
         for (int i=0; i<bbvoCnt; i++){
             String eno = bbvo.getEno().split(",")[i];
             String fnames = bbvo.getFnames().split(",")[i];
-//            String brand = bbvo.getBrand().split(",")[i];
+            String brand = bbvo.getBrand().split(",")[i];
             String title = bbvo.getTitle().split(",")[i];
             String shipPay = bbvo.getShipPay().split(",")[i];
             String purchase = bbvo.getPurchase().split(",")[i];
-//            String discount = bbvo.getDiscount().split(",")[i]; //미구현상태
-//            String dcPrice = bbvo.getDcPrice().split(",")[i]; //미구현상태
-//            String ogPrice = bbvo.getOgPrice().split(",")[i]; //미구현상태
-            buyBindVO b = new buyBindVO(eno,fnames,title,shipPay,purchase); //나중에 brand,discount dcprice ogprice도 추가해야함
+            String discount = bbvo.getDiscount().split(",")[i];
+            String dcPrice = bbvo.getDcPrice().split(",")[i];
+            String ogPrice = bbvo.getOgPrice().split(",")[i];
+            String code = bbvo.getMycode().split(",")[i];
+
+            int totalDcPrice = Integer.parseInt(dcPrice) * Integer.parseInt(purchase);
+            allproductprice = allproductprice + totalDcPrice;
+
+            buyBindVO b = new buyBindVO(eno,fnames,brand, title,shipPay,purchase, discount, dcPrice, ogPrice, code);
             bbvos.add(b);
         }
+
+        int totalprice = allproductprice + allshipPay;
+
+        mv.addObject("allproductprice",allproductprice);
+        mv.addObject("allshipPay",allshipPay);
+        mv.addObject("totalprice",totalprice);
         mv.addObject("mvo",mvo);
         mv.addObject("bbvos",bbvos);
 
