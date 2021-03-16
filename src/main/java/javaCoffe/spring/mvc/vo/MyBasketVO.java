@@ -12,6 +12,15 @@ public class MyBasketVO {
     private String myfnames;
     private String myeno;
     private String mybrand;
+    private String myogprice;
+
+    public String getMyogprice() {
+        return myogprice;
+    }
+
+    public void setMyogprice(String myogprice) {
+        this.myogprice = myogprice;
+    }
 
     public String getMybrand() {
         return mybrand;

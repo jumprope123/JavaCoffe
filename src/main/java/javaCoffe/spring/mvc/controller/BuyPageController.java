@@ -60,14 +60,15 @@ public class BuyPageController {
         for (int i=0; i<bbvoCnt; i++){
             String eno = bbvo.getEno().split(",")[i];
             String fnames = bbvo.getFnames().split(",")[i];
-//            String brand = bbvo.getBrand().split(",")[i];
+            String brand = bbvo.getBrand().split(",")[i];
             String title = bbvo.getTitle().split(",")[i];
             String shipPay = bbvo.getShipPay().split(",")[i];
             String purchase = bbvo.getPurchase().split(",")[i];
-//            String discount = bbvo.getDiscount().split(",")[i]; //미구현상태
-//            String dcPrice = bbvo.getDcPrice().split(",")[i]; //미구현상태
-//            String ogPrice = bbvo.getOgPrice().split(",")[i]; //미구현상태
-            buyBindVO b = new buyBindVO(eno,fnames,title,shipPay,purchase); //나중에 brand,discount dcprice ogprice도 추가해야함
+            String discount = bbvo.getDiscount().split(",")[i]; //미구현상태
+            String dcPrice = bbvo.getDcPrice().split(",")[i]; //미구현상태
+            String ogPrice = bbvo.getOgPrice().split(",")[i]; //미구현상태
+            String mycode = bbvo.getMycode().split(",")[i];
+            buyBindVO b = new buyBindVO(eno,fnames,brand,title,shipPay,purchase,discount,dcPrice, ogPrice, mycode); //나중에 brand,discount dcprice ogprice도 추가해야함
             bbvos.add(b);
         }
         mv.addObject("mvo",mvo);
