@@ -136,7 +136,7 @@
                     <input type="hidden" id="discount_mb${mbnum}" name="discount" disabled> <%--개별상품 총 할인액 수정필요--%>
                     <input type="hidden" id="dcPrice_mb${mbnum}" name="dcPrice" disabled><%--개별상품 총 할인된가격 수정필요--%>
                     <input type="hidden" id="ogPrice_mb${mbnum}" name="ogPrice" disabled><%--개별상품 총 할인안된가격 수정필요--%>
-                    <input type="hidden" id="mycode_mb${mbnum}" name="mycode" disabled><%--해당상품코드넘기기--%>
+                    <input type="hidden" id="mycode_mb${mbnum}" name="mycode" value="${mb.mycode}" disabled><%--해당상품코드넘기기--%>
             </c:forEach>
             </form>
         </c:if>
