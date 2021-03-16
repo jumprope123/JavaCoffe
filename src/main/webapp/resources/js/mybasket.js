@@ -266,19 +266,28 @@ $('#going_shopping').on('click',function (){
 
 // checked 된것만 구매페이지로 던지기
 $('#going_buying').on('click',function (){
-    let mbnototal = ""
-    let totalproductprice_buyshop = $('#total_mb_product_price').text();
-    let totalshipPay_buyshop = $('#total_mb_shipPay_price').text();
-    let totalprice_buyshop = $('#total_mb_order_price').text();
+    // let mbnototal = ""
+    // let totalproductprice_buyshop = $('#total_mb_product_price').text();
+    // let totalshipPay_buyshop = $('#total_mb_shipPay_price').text();
+    // let totalprice_buyshop = $('#total_mb_order_price').text();
 
     for (let vv_idx = 1; vv_idx <= mbnum; vv_idx++){
         let mb_indexx = "#mb_product_cb" + vv_idx;
         if ($(mb_indexx).is(":checked")) {
-            let mbnotempp = document.getElementById('mb_product_mbno'+vv_idx).innerText
-            mbnototal = mbnototal + mbnotempp + ",";
+            // let mbnotempp = document.getElementById('mb_product_mbno'+vv_idx).innerText
+            // mbnototal = mbnototal + mbnotempp + ",";
+            $('#eno_mb'+vv_idx).attr("disabled",false)
+            $('#fnames_mb'+vv_idx).attr("disabled",false)
+            $('#brand_mb'+vv_idx).attr("disabled",false)
+            $('#title_mb'+vv_idx).attr("disabled",false)
+            $('#shipPay_mb'+vv_idx).attr("disabled",false)
+            $('#purchase_mb'+vv_idx).attr("disabled",false)
+            $('#discount_mb'+vv_idx).attr("disabled",false)
+            $('#dcPrice_mb'+vv_idx).attr("disabled",false)
+            $('#ogPrice_mb'+vv_idx).attr("disabled",false)
         }
     }
-    mbnototal = mbnototal.slice(0,-1);
+    // mbnototal = mbnototal.slice(0,-1);
     // $.ajax({
     //     url: '/buylist/mb_buyPage',
     //     type: 'POST',
