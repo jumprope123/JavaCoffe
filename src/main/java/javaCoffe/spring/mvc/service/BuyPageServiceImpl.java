@@ -4,10 +4,12 @@ import javaCoffe.spring.mvc.dao.BuyPageDAO;
 import javaCoffe.spring.mvc.vo.BuyPageVO;
 import javaCoffe.spring.mvc.vo.EshopVO;
 import javaCoffe.spring.mvc.vo.MemberVO;
+import javaCoffe.spring.mvc.vo.MyBasket_EshopVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -41,5 +43,9 @@ public class BuyPageServiceImpl implements BuyPageService{
         return buydao.changePoints(map);
     }
 
+    @Override
+    public List<MyBasket_EshopVO> readMBEL(int[] mbno) {
+        return buydao.selectMBEL(mbno);
+    }
 
 }

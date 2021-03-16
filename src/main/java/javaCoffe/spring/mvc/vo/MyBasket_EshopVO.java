@@ -1,6 +1,6 @@
 package javaCoffe.spring.mvc.vo;
 
-public class MyBasketVO {
+public class MyBasket_EshopVO {
     private String mbno;
     private String mycode;
     private String mystuck;
@@ -11,38 +11,12 @@ public class MyBasketVO {
     private String myamount;
     private String myfnames;
     private String myeno;
-    private String mybrand;
-    private String myogprice;
-    private String mydiscount;
-
-    public String getMydiscount() {
-        return mydiscount;
-    }
-
-    public void setMydiscount(String mydiscount) {
-        this.mydiscount = mydiscount;
-    }
-
-    public String getMyogprice() {
-        return myogprice;
-    }
-
-    public void setMyogprice(String myogprice) {
-        this.myogprice = myogprice;
-    }
-
-    public String getMybrand() {
-        return mybrand;
-    }
-
-    public void setMybrand(String mybrand) {
-        this.mybrand = mybrand;
-    }
-
-    public MyBasketVO(String mbno, String myamount) {
-        this.mbno = mbno;
-        this.myamount = myamount;
-    }
+    private String brand;
+    private int ogprice;
+    private int dcprice;
+    private int thumbs;
+    private int salesVolumn;
+    private String shipPay;
 
     public String getMbno() {
         return mbno;
@@ -122,5 +96,53 @@ public class MyBasketVO {
 
     public void setMyeno(String myeno) {
         this.myeno = myeno;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public int getOgprice() {
+        return ogprice;
+    }
+
+    public void setOgprice(int ogprice) {
+        this.ogprice = ogprice;
+    }
+
+    public int getDcprice() {
+        return dcprice;
+    }
+
+    public void setDcprice(int dcprice) {
+        this.dcprice = dcprice;
+    }
+
+    public int getThumbs() {
+        return thumbs;
+    }
+
+    public void setThumbs(int thumbs) {
+        this.thumbs = thumbs;
+    }
+
+    public int getSalesVolumn() {
+        return salesVolumn;
+    }
+
+    public void setSalesVolumn(int salesVolumn) {
+        this.salesVolumn = salesVolumn;
+    }
+
+    public String getShipPay() {
+        return shipPay;
+    }
+
+    public void setShipPay(String shipPay) {
+        this.shipPay = shipPay;
     }
 }

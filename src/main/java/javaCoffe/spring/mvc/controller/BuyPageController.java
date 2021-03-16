@@ -1,19 +1,19 @@
 package javaCoffe.spring.mvc.controller;
 
 import javaCoffe.spring.mvc.service.BuyPageService;
-import javaCoffe.spring.mvc.service.MemberService;
-import javaCoffe.spring.mvc.vo.BuyPageVO;
-import javaCoffe.spring.mvc.vo.EshopVO;
-import javaCoffe.spring.mvc.vo.MemberVO;
+import javaCoffe.spring.mvc.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -22,8 +22,10 @@ public class BuyPageController {
     @Autowired
     private BuyPageService buysrv;
 
+    // 상품상세페이지 -> 구매페이지
     @PostMapping("/buylist/buyPage")
-    public ModelAndView buyPage(ModelAndView mv, HttpServletRequest req, String userid){
+    public ModelAndView buyPage(ModelAndView mv, HttpServletRequest req, HttpSession sess){
+        String userid = (String) sess.getAttribute("UID");
         mv.setViewName("buylist/buyPage.tiles");
         String code = req.getParameter("eshopViewCode");
         int salesCnt = Integer.parseInt(req.getParameter("eshopViewNum"));
@@ -35,6 +37,43 @@ public class BuyPageController {
         mv.addObject("mvo",mvo);
         mv.addObject("finalPrice",finalPrice);
         mv.addObject("salesCnt",salesCnt);
+        return mv;
+    }
+
+    // 장바구니 -> 구매페이지
+    @PostMapping("/buylist/mb_buyPage")
+    public ModelAndView mb_buyPage(ModelAndView mv, HttpSession sess, buyBindVO bbvo){
+        mv.setViewName("buylist/mb_buyPage.tiles");
+
+        String userid = (String) sess.getAttribute("UID");
+        MemberVO mvo = buysrv.readUser(userid); // userid를 이용해 Member의 정보 뽑아옴
+
+        int bbvoCnt = bbvo.getEno().split(",").length; //총 몇개의 데이터가 넘어왔는지를 bbvoCnt에 담음
+        List<buyBindVO> bbvos = new ArrayList<>();
+
+        System.out.println(bbvo.getEno());
+        System.out.println(bbvo.getFnames());
+        System.out.println(bbvo.getBrand()); //db에 값이없어요 ㅠ 채워주세요
+        System.out.println(bbvo.getTitle());
+        System.out.println(bbvo.getShipPay());
+        System.out.println(bbvo.getPurchase());
+        for (int i=0; i<bbvoCnt; i++){
+            String eno = bbvo.getEno().split(",")[i];
+            String fnames = bbvo.getFnames().split(",")[i];
+            String brand = bbvo.getBrand().split(",")[i];
+            String title = bbvo.getTitle().split(",")[i];
+            String shipPay = bbvo.getShipPay().split(",")[i];
+            String purchase = bbvo.getPurchase().split(",")[i];
+            String discount = bbvo.getDiscount().split(",")[i]; //미구현상태
+            String dcPrice = bbvo.getDcPrice().split(",")[i]; //미구현상태
+            String ogPrice = bbvo.getOgPrice().split(",")[i]; //미구현상태
+            String mycode = bbvo.getMycode().split(",")[i];
+            buyBindVO b = new buyBindVO(eno,fnames,brand,title,shipPay,purchase,discount,dcPrice, ogPrice, mycode); //나중에 brand,discount dcprice ogprice도 추가해야함
+            bbvos.add(b);
+        }
+        mv.addObject("mvo",mvo);
+        mv.addObject("bbvos",bbvos);
+
         return mv;
     }
 
