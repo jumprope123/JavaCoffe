@@ -51,6 +51,7 @@ public class BuyPageController {
         int bbvoCnt = bbvo.getEno().split(",").length; //총 몇개의 데이터가 넘어왔는지를 bbvoCnt에 담음
         List<buyBindVO> bbvos = new ArrayList<>();
 
+        System.out.println("--------------------------");
         System.out.println(bbvo.getEno());
         System.out.println(bbvo.getFnames());
         System.out.println(bbvo.getBrand());
@@ -58,6 +59,7 @@ public class BuyPageController {
         System.out.println(bbvo.getShipPay());
         System.out.println(bbvo.getPurchase());
         System.out.println(bbvo.getMycode());
+        System.out.println("--------------------------");
         int allproductprice = 0;
         int allshipPay = 2500; //묶음배송시 shipPay는 .. ?
 
@@ -71,12 +73,12 @@ public class BuyPageController {
             String discount = bbvo.getDiscount().split(",")[i];
             String dcPrice = bbvo.getDcPrice().split(",")[i];
             String ogPrice = bbvo.getOgPrice().split(",")[i];
-            String code = bbvo.getMycode().split(",")[i];
+            String mycode = bbvo.getMycode().split(",")[i];
 
             int totalDcPrice = Integer.parseInt(dcPrice) * Integer.parseInt(purchase);
             allproductprice = allproductprice + totalDcPrice;
 
-            buyBindVO b = new buyBindVO(eno,fnames,brand, title,shipPay,purchase, discount, dcPrice, ogPrice, code);
+            buyBindVO b = new buyBindVO(eno,fnames,brand, title,shipPay,purchase, discount, dcPrice, ogPrice, mycode);
 
             bbvos.add(b);
         }
@@ -88,7 +90,6 @@ public class BuyPageController {
         mv.addObject("totalprice",totalprice);
         mv.addObject("mvo",mvo);
         mv.addObject("bbvos",bbvos);
-
         return mv;
     }
 
