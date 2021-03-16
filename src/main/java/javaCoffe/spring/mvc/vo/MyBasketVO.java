@@ -13,6 +13,15 @@ public class MyBasketVO {
     private String myeno;
     private String mybrand;
     private String myogprice;
+    private String mydiscount;
+
+    public String getMydiscount() {
+        return mydiscount;
+    }
+
+    public void setMydiscount(String mydiscount) {
+        this.mydiscount = mydiscount;
+    }
 
     public String getMyogprice() {
         return myogprice;

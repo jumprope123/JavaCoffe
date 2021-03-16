@@ -32,7 +32,12 @@
                 <div class="col-1 text-center">할인액</div>
                 <div class="col-2 text-center">상품금액(할인포함)</div>
             </div> <%--최상단 글정보--%>
+            <fmt:parseNumber var="allproductprice" value="0"/>
+            <fmt:parseNumber var="allshipPay" value="0"/>
+            <fmt:parseNumber var="totalprice" value="0"/>
             <c:forEach var="mbe" items="${bbvos}">
+                <c:set var="allproductprice" value="${allproductprice + mbe.dcPrice * mbe.purchase}" />
+                <c:set var="allshipPay" value="${allshipPay + mbe.shipPay}" />
                 <div class="row align-items-center mt-3">
                     <div class="col-5 text-center">
                         <div class="row align-items-center">
@@ -53,16 +58,16 @@
                     <input type="hidden" name="shipPay" value="${mbe.shipPay}">
                     <div class="col-1 text-center">${mbe.purchase}개</div>
                     <input type="hidden" name="purchase" value="${mbe.purchase}">
-<%--                    <div class="col-1 text-center">(-) ${(mbe.ogprice * mbe.purchase) - (mbe.dcprice * mbe.purchase)}원</div>--%>
-<%--                    <input type="hidden" name="discount" value="${(mbe.ogprice * mbe.purchase) - (mbe.dcprice * mbe.purchase)}">--%>
-<%--                    <div class="col-2">--%>
-<%--                        <div class="row">--%>
-<%--                            <div class="col-12 text-center" style="color: RGB(193,163,151);text-decoration-line: line-through; font-size: 0.8em;">${mbe.ogprice * mbe.purchase}원</div> &lt;%&ndash;할인전가격&ndash;%&gt;--%>
-<%--                            <input type="hidden" name="TotalOgprice" value="${mbe.ogprice * mbe.purchase}">--%>
-<%--                            <div class="col-12 text-center">${mbe.dcprice * mbe.purchase}원</div> &lt;%&ndash;할인후가격&ndash;%&gt;--%>
-<%--                            <input type="hidden" name="totalDcprice" value="${mbe.dcprice * mbe.purchase}">--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                    <div class="col-1 text-center">(-) ${(mbe.ogPrice * mbe.purchase) - (mbe.dcPrice * mbe.purchase)}원</div>
+                    <input type="hidden" name="discount" value="${(mbe.ogPrice * mbe.purchase) - (mbe.dcPrice * mbe.purchase)}">
+                    <div class="col-2">
+                        <div class="row">
+                            <div class="col-12 text-center" style="color: RGB(193,163,151);text-decoration-line: line-through; font-size: 0.8em;">${mbe.ogPrice * mbe.purchase}원</div> <%--할인전가격--%>
+                            <input type="hidden" name="TotalOgprice" value="${mbe.ogPrice * mbe.purchase}">
+                            <div class="col-12 text-center">${mbe.dcPrice * mbe.purchase}원</div> <%--할인후가격--%>
+                            <input type="hidden" name="totalDcprice" value="${mbe.dcPrice * mbe.purchase}">
+                        </div>
+                    </div>
                 </div>
             </c:forEach>
             <div class="row mt-3"><div class="col-12" style="border-bottom: 1px dotted green;"></div></div>
@@ -163,12 +168,13 @@
 
             <div class="row mt-5"><div class="col-12" style="border-bottom: 1px solid grey;"></div></div>
             <div class="row mt-3">
-<%--                <div class="col-4 offset-4 text-center">총 상품금액 : ${allproductprice}원</div>--%>
-<%--                <div class="col-4 offset-4 text-center">배송비 : (+)${allshipPay}원</div>--%>
+                <div class="col-4 offset-4 text-center">총 상품금액 : ${allproductprice}원</div>
+                <div class="col-4 offset-4 text-center">배송비 : (+)${allshipPay}원</div>
                 <div class="col-4 offset-4 text-center">포인트 : (-)<span id="finalUsingPoint">0</span>원</div>
-<%--                <input type="hidden" id="beforeFinalPrice" value="${totalprice}">--%>
-<%--                <div class="col-12 h4 text-center">총 결제금액 : <span class="text-danger h1"><span id="finalPrice">${totalprice}</span>원</span></div>--%>
-<%--                <input type="hidden" id="afterFinalPrice" name="afterFinalPrice" value="${totalprice}">--%>
+                <c:set var="allshipPay" value="${allshipPay + allproductprice}" />
+                <input type="hidden" id="beforeFinalPrice" value="${totalprice}">
+                <div class="col-12 h4 text-center">총 결제금액 : <span class="text-danger h1"><span id="finalPrice">${totalprice}</span>원</span></div>
+                <input type="hidden" id="afterFinalPrice" name="afterFinalPrice" value="${totalprice}">
             </div>
             <div class="row mt-3 mb-3">
                 <div class="col-12 text-center">
