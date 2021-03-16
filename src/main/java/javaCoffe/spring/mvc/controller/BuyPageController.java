@@ -61,7 +61,7 @@ public class BuyPageController {
         System.out.println(bbvo.getMycode());
         System.out.println("--------------------------");
         int allproductprice = 0;
-        int allshipPay = 2500; //묶음배송시 shipPay는 .. ?
+        int allshipPay = 0; //묶음배송시 shipPay는 .. ?
 
         for (int i=0; i<bbvoCnt; i++){
             String eno = bbvo.getEno().split(",")[i];
@@ -78,12 +78,14 @@ public class BuyPageController {
             int totalDcPrice = Integer.parseInt(dcPrice) * Integer.parseInt(purchase);
             allproductprice = allproductprice + totalDcPrice;
 
+            allshipPay = allshipPay + Integer.parseInt(shipPay);
+
             buyBindVO b = new buyBindVO(eno,fnames,brand, title,shipPay,purchase, discount, dcPrice, ogPrice, mycode);
 
             bbvos.add(b);
         }
-
         int totalprice = allproductprice + allshipPay;
+
 
         mv.addObject("allproductprice",allproductprice);
         mv.addObject("allshipPay",allshipPay);

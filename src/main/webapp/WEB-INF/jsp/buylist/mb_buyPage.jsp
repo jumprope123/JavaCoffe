@@ -32,12 +32,7 @@
                 <div class="col-1 text-center">할인액</div>
                 <div class="col-2 text-center">상품금액(할인포함)</div>
             </div> <%--최상단 글정보--%>
-            <fmt:parseNumber var="allproductprice" value="0"/>
-            <fmt:parseNumber var="allshipPay" value="0"/>
-            <fmt:parseNumber var="totalprice" value="0"/>
             <c:forEach var="mbe" items="${bbvos}">
-                <c:set var="allproductprice" value="${allproductprice + mbe.dcPrice * mbe.purchase}" />
-                <c:set var="allshipPay" value="${allshipPay + mbe.shipPay}" />
                 <div class="row align-items-center mt-3">
                     <div class="col-5 text-center">
                         <div class="row align-items-center">
