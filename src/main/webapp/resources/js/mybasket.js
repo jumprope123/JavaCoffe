@@ -252,7 +252,13 @@ for (let k = 1; k <= mbnum; k++) {
         })
         location.href = '/mybasket/list'
     });
-}
+};
+
+for (let k = 1; k <= mbnum; k++) {//추가
+    let mbnotemp = document.getElementById('mb_product_mbno'+k).innerText
+    let mbamounttemp =  $("#mb_item_amount"+k).val();
+    $("#purchase_mb"+k).val(mbamounttemp);
+};
 
 $('#going_shopping').on('click',function (){
     location.href = '/eshop/list?bigGenre=coffe&cp=1';
@@ -273,21 +279,22 @@ $('#going_buying').on('click',function (){
         }
     }
     mbnototal = mbnototal.slice(0,-1);
-    alert(mbnototal);
-    alert(totalproductprice_buyshop);
-    alert(totalshipPay_buyshop);
-    alert(totalprice_buyshop);
-    $.ajax({
-        url: '/buylist/mb_buyPage',
-        type: 'POST',
-        data: {
-            mbno: mbnototal ,
-            totalprice: totalprice_buyshop,
-            allproductprice: totalproductprice_buyshop,
-            allshipPay: totalshipPay_buyshop
-        }
-    })
-    location.href = '/buylist/mb_buyPage'
+    // $.ajax({
+    //     url: '/buylist/mb_buyPage',
+    //     type: 'POST',
+    //     data: {
+    //         mbno: mbnototal ,
+    //         totalprice: totalprice_buyshop,
+    //         allproductprice: totalproductprice_buyshop,
+    //         allshipPay: totalshipPay_buyshop
+    //     }
+    // })
+    // location.href = '/buylist/mb_buyPage'
+
+
+    $('#going_buying_form').attr('method','POST');
+    $('#going_buying_form').attr('action','/buylist/mb_buyPage'); //나중에 /buylist/buyPageBind로 변경하세요
+    $('#going_buying_form').submit();
 });
 
 

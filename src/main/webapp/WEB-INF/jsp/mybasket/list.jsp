@@ -57,6 +57,7 @@
             <fmt:parseNumber var="totaltemp_product" value="0"/>
             <fmt:parseNumber var="totalstatic_shipPay" value="0"/>
             <fmt:parseNumber var="totaltemp_shipPay" value="0"/>
+            <form id="going_buying_form"><%--추가--%>
             <c:forEach var="mb" items="${mbvo}">
                 <c:set var="mbnum" value="${mbnum+1}" />
                 <c:set var="mbtotalprice" value="${mbtotalprice + mb.myprice}" />
@@ -121,8 +122,17 @@
                         </div>
                     </div>
                 </div>
-
+                    <input type="hidden" id="eno_mb" name="eno" value="${mb.myeno}">
+                    <input type="hidden" id="fnames_mb" name="fnames" value="${mb.myfnames}">
+                    <input type="hidden" id="brand_mb" name="brand" value="${mb.mybrand}"><%--현재 null값--%>
+                    <input type="hidden" id="title_mb" name="title" value="${mb.mypname}">
+                    <input type="hidden" id="shipPay_mb" name="shipPay" value="${mb.myshipPay}"><%--배송비는 어떻게할지 생각필요--%>
+                    <input type="hidden" id="purchase_mb${mbnum}" name="purchase"><%--js에서 핸들링--%>
+                    <input type="hidden" id="discount_mb" name="discount"> <%--개별상품 총 할인액 수정필요--%>
+                    <input type="hidden" id="dcPrice_mb" name="dcPrice"><%--개별상품 총 할인된가격 수정필요--%>
+                    <input type="hidden" id="ogPrice_mb" name="ogPrice"><%--개별상품 총 할인안된가격 수정필요--%>
             </c:forEach>
+            </form>
         </c:if>
         <c:if test="${!empty sessionScope.UID}">
             <div>

@@ -1,10 +1,7 @@
 package javaCoffe.spring.mvc.controller;
 
 import javaCoffe.spring.mvc.service.BuyPageService;
-import javaCoffe.spring.mvc.vo.BuyPageVO;
-import javaCoffe.spring.mvc.vo.EshopVO;
-import javaCoffe.spring.mvc.vo.MemberVO;
-import javaCoffe.spring.mvc.vo.MyBasket_EshopVO;
+import javaCoffe.spring.mvc.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,40 +40,38 @@ public class BuyPageController {
     }
 
     // 장바구니 -> 구매페이지
-    @RequestMapping(value="/buylist/mb_buyPage" , method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView mb_buyPage(ModelAndView mv, HttpServletRequest req, HttpSession sess){
+    @PostMapping("/buylist/mb_buyPage")
+    public ModelAndView mb_buyPage(ModelAndView mv, HttpSession sess, buyBindVO bbvo){
         mv.setViewName("buylist/mb_buyPage.tiles");
 
-        String mbno = req.getParameter("mbno");
-        System.out.println(mbno);
-
-
-        if(mbno!=null) {
-            String[] lmbno = (mbno.split(","));
-            int[] int_lmbno = Arrays.stream(lmbno).mapToInt(Integer::parseInt).toArray();
-            System.out.println("---------");
-            for (int i : int_lmbno) {
-                System.out.println(i);
-            }
-            System.out.println("---------");
-            List<MyBasket_EshopVO> mbevo = buysrv.readMBEL(int_lmbno); //넘겨받은 장바구니 번호를 통해 상품정보 읽어오기
-            mv.addObject("mbevo",mbevo);
-        }
-
-        String totalprice = req.getParameter("totalprice");
-        System.out.println(totalprice);
-        String allproductprice = req.getParameter("allproductprice");
-        System.out.println(allproductprice);
-        String allshipPay = req.getParameter("allshipPay");
-        System.out.println(allshipPay);
         String userid = (String) sess.getAttribute("UID");
         MemberVO mvo = buysrv.readUser(userid); // userid를 이용해 Member의 정보 뽑아옴
 
+        int bbvoCnt = bbvo.getEno().split(",").length; //총 몇개의 데이터가 넘어왔는지를 bbvoCnt에 담음
+        List<buyBindVO> bbvos = new ArrayList<>();
 
+        System.out.println(bbvo.getEno());
+        System.out.println(bbvo.getFnames());
+        System.out.println(bbvo.getBrand()); //db에 값이없어요 ㅠ 채워주세요
+        System.out.println(bbvo.getTitle());
+        System.out.println(bbvo.getShipPay());
+        System.out.println(bbvo.getPurchase());
+        for (int i=0; i<bbvoCnt; i++){
+            String eno = bbvo.getEno().split(",")[i];
+            String fnames = bbvo.getFnames().split(",")[i];
+//            String brand = bbvo.getBrand().split(",")[i];
+            String title = bbvo.getTitle().split(",")[i];
+            String shipPay = bbvo.getShipPay().split(",")[i];
+            String purchase = bbvo.getPurchase().split(",")[i];
+//            String discount = bbvo.getDiscount().split(",")[i]; //미구현상태
+//            String dcPrice = bbvo.getDcPrice().split(",")[i]; //미구현상태
+//            String ogPrice = bbvo.getOgPrice().split(",")[i]; //미구현상태
+            buyBindVO b = new buyBindVO(eno,fnames,title,shipPay,purchase); //나중에 brand,discount dcprice ogprice도 추가해야함
+            bbvos.add(b);
+        }
         mv.addObject("mvo",mvo);
-        mv.addObject("totalprice",totalprice);
-        mv.addObject("allproductprice",allproductprice);
-        mv.addObject("allshipPay",allshipPay);
+        mv.addObject("bbvos",bbvos);
+
         return mv;
     }
 
