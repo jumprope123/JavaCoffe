@@ -6,19 +6,19 @@
 <mapper namespace="mybasket">
 
     <insert id="insertmb" parameterType="map" statementType="PREPARED">
-        insert into MyBasket (mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount , myfnames, myeno, mybrand)
-        select code as mycode, stuck as mystuck, dcprice as myprice, #{userid} as myuuid, shipPay as myshipPay, title as mypname, #{mbamount} as myamount, fnames as myfnames, eno as myeno, brand as mybrand from eshop
+        insert into MyBasket (mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount , myfnames, myeno, mybrand, myogprice, mydiscount)
+        select code as mycode, stuck as mystuck, dcprice as myprice, #{userid} as myuuid, shipPay as myshipPay, title as mypname, #{mbamount} as myamount, fnames as myfnames, eno as myeno, brand as mybrand, ogprice as myogprice, (ogprice - dcprice) as mydiscount from eshop
         where code = #{code};
     </insert>
 
     <select id="selectListmb" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.MyBasketVO">
-        select mbno, mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount, myfnames, myeno from MyBasket
+        select mbno, mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount, myfnames, myeno, mybrand, myogprice, mydiscount from MyBasket
         where myuuid = #{userid}
         order by mbno desc;
     </select>
 
     <select id="selectShipPaycnt" statementType="PREPARED" parameterType="String" resultType="javaCoffe.spring.mvc.vo.MyBasketVO">
-        select mbno, mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount, myfnames, myeno from MyBasket
+        select mbno, mycode, mystuck, myprice, myuuid, myshipPay, mypname, myamount, myfnames, myeno, mybrand, myogprice, mydiscount from MyBasket
         where myuuid = #{userid}
         order by mbno desc;
     </select>

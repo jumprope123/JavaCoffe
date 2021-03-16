@@ -128,14 +128,16 @@
                     <input type="hidden" id="mb_product_info_price_one${mbnum}" name="priceForResult" disabled>  <%--얼마인지--%>
 
                     <input type="hidden" id="eno_mb${mbnum}" name="eno" value="${mb.myeno}" disabled>
-                    <input type="hidden" id="fnames_mb${mbnum}" name="fnames" value="${mb.myfnames}"disabled>
-                    <input type="hidden" id="brand_mb${mbnum}" name="brand" value="${mb.mybrand}"disabled><%--현재 null값--%>
+                    <input type="hidden" id="fnames_mb${mbnum}" name="fnames" value="${mb.myfnames}" disabled>
+                    <input type="hidden" id="brand_mb${mbnum}" name="brand" value="${mb.mybrand}" disabled><%--현재 null값--%>
                     <input type="hidden" id="title_mb${mbnum}" name="title" value="${mb.mypname}" disabled>
                     <input type="hidden" id="shipPay_mb${mbnum}" name="shipPay" value="${mb.myshipPay}" disabled><%--배송비는 어떻게할지 생각필요--%>
-                    <input type="hidden" id="purchase_mb${mbnum}" name="purchase" disabled><%--js에서 핸들링--%>
-                    <input type="hidden" id="discount_mb${mbnum}" name="discount" disabled> <%--개별상품 총 할인액 수정필요--%>
-                    <input type="hidden" id="dcPrice_mb${mbnum}" name="dcPrice" disabled><%--개별상품 총 할인된가격 수정필요--%>
-                    <input type="hidden" id="ogPrice_mb${mbnum}" name="ogPrice" disabled><%--개별상품 총 할인안된가격 수정필요--%>
+
+                    <input type="hidden" id="purchase_mb${mbnum}" name="purchase" value="${mb.myamount}" disabled><%--js에서 핸들링--%>
+                    <input type="hidden" id="discount_mb${mbnum}" name="discount" value="${mb.mydiscount}" disabled> <%--개별상품 총 할인액 수정필요--%>
+                    <input type="hidden" id="dcPrice_mb${mbnum}" name="dcPrice" value="${mb.myprice}" disabled><%--개별상품 총 할인된가격 수정필요--%>
+                    <input type="hidden" id="ogPrice_mb${mbnum}" name="ogPrice" value="${mb.myogprice}" disabled><%--개별상품 총 할인안된가격 수정필요--%>
+
                     <input type="hidden" id="mycode_mb${mbnum}" name="mycode" value="${mb.mycode}" disabled><%--해당상품코드넘기기--%>
             </c:forEach>
             </form>

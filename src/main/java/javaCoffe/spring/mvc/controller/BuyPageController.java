@@ -77,6 +77,7 @@ public class BuyPageController {
             allproductprice = allproductprice + totalDcPrice;
 
             buyBindVO b = new buyBindVO(eno,fnames,brand, title,shipPay,purchase, discount, dcPrice, ogPrice, code);
+
             bbvos.add(b);
         }
 
