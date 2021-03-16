@@ -10,15 +10,14 @@ public class buyBindVO {
     private String discount; // 개별 할인액
     private String dcPrice ; // 개별 할인 후 금액
     private String ogPrice; //개별 할인전 금액
-<<<<<<< HEAD
     private String mycode; // 상품 코드
-=======
->>>>>>> main
+
+
 
     public buyBindVO() {
     }
 
-<<<<<<< HEAD
+
     public buyBindVO(String eno, String fnames, String title, String shipPay, String purchase) {
         this.eno = eno;
         this.fnames = fnames;
@@ -28,9 +27,6 @@ public class buyBindVO {
     }
 
     public buyBindVO(String eno, String fnames, String brand, String title, String shipPay, String purchase, String discount, String dcPrice, String ogPrice, String mycode) {
-=======
-    public buyBindVO(String eno, String fnames, String brand, String title, String shipPay, String purchase, String discount, String dcPrice, String ogPrice) {
->>>>>>> main
         this.eno = eno;
         this.fnames = fnames;
         this.brand = brand;
@@ -40,11 +36,9 @@ public class buyBindVO {
         this.discount = discount;
         this.dcPrice = dcPrice;
         this.ogPrice = ogPrice;
-<<<<<<< HEAD
         this.mycode = mycode;
-=======
->>>>>>> main
     }
+
 
     public String getEno() {
         return eno;
@@ -117,7 +111,6 @@ public class buyBindVO {
     public void setOgPrice(String ogPrice) {
         this.ogPrice = ogPrice;
     }
-<<<<<<< HEAD
 
     public String getMycode() {
         return mycode;
@@ -126,6 +119,4 @@ public class buyBindVO {
     public void setMycode(String mycode) {
         this.mycode = mycode;
     }
-=======
->>>>>>> main
 }

@@ -50,7 +50,7 @@
                             <input type="hidden" name="title" value="${mbe.title}"><%--상품정보--%>
                         </div>
                     </div>
-                    <input type="hidden" name="code" value="${mbe.code}">
+                    <input type="hidden" name="code" value="${mbe.mycode}">
                     <div class="col-2 text-center">${mbe.brand}</div>
                     <input type="hidden" name="brand" value="${mbe.brand}">
                     <div class="col-1 text-center">${mbe.shipPay}원</div>
@@ -58,14 +58,14 @@
                     <div class="col-1 text-center">${mbe.purchase}개</div>
                     <input type="hidden" name="purchase" value="${mbe.purchase}">
 
-                    <div class="col-1 text-center">(-) ${(mbe.ogprice * mbe.purchase) - (mbe.dcprice * mbe.purchase)}원</div>
-                    <input type="hidden" name="discount" value="${(mbe.ogprice * mbe.purchase) - (mbe.dcprice * mbe.purchase)}">
+                    <div class="col-1 text-center">(-) ${(mbe.ogPrice * mbe.purchase) - (mbe.dcPrice * mbe.purchase)}원</div>
+                    <input type="hidden" name="discount" value="${(mbe.ogPrice * mbe.purchase) - (mbe.dcPrice * mbe.purchase)}">
                     <div class="col-2">
                         <div class="row">
-                            <div class="col-12 text-center" style="color: RGB(193,163,151);text-decoration-line: line-through; font-size: 0.8em;">${mbe.ogprice * mbe.purchase}원</div> <%--할인전가격--%>
-                            <input type="hidden" name="TotalOgprice" value="${mbe.ogprice * mbe.purchase}">
-                            <div class="col-12 text-center">${mbe.dcprice * mbe.purchase}원</div> <%--할인후가격--%>
-                            <input type="hidden" name="totalDcprice" value="${mbe.dcprice * mbe.purchase}">
+                            <div class="col-12 text-center" style="color: RGB(193,163,151);text-decoration-line: line-through; font-size: 0.8em;">${mbe.ogPrice * mbe.purchase}원</div> <%--할인전가격--%>
+                            <input type="hidden" name="TotalOgprice" value="${mbe.ogPrice * mbe.purchase}">
+                            <div class="col-12 text-center">${mbe.dcPrice * mbe.purchase}원</div> <%--할인후가격--%>
+                            <input type="hidden" name="totalDcprice" value="${mbe.dcPrice * mbe.purchase}">
 
                         </div>
                     </div>
