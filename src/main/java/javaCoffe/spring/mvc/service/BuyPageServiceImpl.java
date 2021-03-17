@@ -1,10 +1,7 @@
 package javaCoffe.spring.mvc.service;
 
 import javaCoffe.spring.mvc.dao.BuyPageDAO;
-import javaCoffe.spring.mvc.vo.BuyPageVO;
-import javaCoffe.spring.mvc.vo.EshopVO;
-import javaCoffe.spring.mvc.vo.MemberVO;
-import javaCoffe.spring.mvc.vo.MyBasket_EshopVO;
+import javaCoffe.spring.mvc.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,8 +41,26 @@ public class BuyPageServiceImpl implements BuyPageService{
     }
 
     @Override
+    public int changePoint(BuyPageBindVO bbvo) {
+        int ogpoints = bbvo.getBeforePoint();
+        int buyPageUsePoints = bbvo.getBuyPageUsePoints();
+        int plusPoint = bbvo.getPlusPoint();
+        int finalPoint = ogpoints - buyPageUsePoints + plusPoint;
+        String userid = bbvo.getUserid();
+        Map<String,Object> map = new HashMap<>();
+        map.put("userid",userid);
+        map.put("points",finalPoint);
+        return buydao.changePoints(map);
+    }
+
+    @Override
     public List<MyBasket_EshopVO> readMBEL(int[] mbno) {
         return buydao.selectMBEL(mbno);
+    }
+
+    @Override
+    public int insertBindData(BuyPageBindVO bbvo) {
+        return buydao.insertBindData(bbvo);
     }
 
 }

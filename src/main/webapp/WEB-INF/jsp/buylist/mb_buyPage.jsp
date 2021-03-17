@@ -58,9 +58,9 @@
                     <div class="col-2">
                         <div class="row">
                             <div class="col-12 text-center" style="color: RGB(193,163,151);text-decoration-line: line-through; font-size: 0.8em;">${mbe.ogPrice * mbe.purchase}원</div> <%--할인전가격--%>
-                            <input type="hidden" name="TotalOgprice" value="${mbe.ogPrice * mbe.purchase}">
+                            <input type="hidden" name="TotalOgPrice" value="${mbe.ogPrice * mbe.purchase}">
                             <div class="col-12 text-center">${mbe.dcPrice * mbe.purchase}원</div> <%--할인후가격--%>
-                            <input type="hidden" name="totalDcprice" value="${mbe.dcPrice * mbe.purchase}">
+                            <input type="hidden" name="totalDcPrice" value="${mbe.dcPrice * mbe.purchase}">
 
                         </div>
                     </div>
@@ -101,15 +101,15 @@
                     <input type="hidden" name="userid" value="${UID}">
                     <div class="row mt-3">
                         <div class="col-2 offset-1">이름</div>
-                        <input class="form-control col-5" name="orderUsername" value="${mvo.name}" readonly>
+                        <input class="form-control col-5" name="orderUserName" value="${mvo.name}" readonly>
                     </div>
                     <div class="row">
                         <div class="col-2 offset-1">전화번호</div>
-                        <input class="form-control col-5" name="orderUserphone" value="${mvo.phone}" readonly>
+                        <input class="form-control col-5" name="orderUserPhone" value="${mvo.phone}" readonly>
                     </div>
                     <div class="row">
                         <div class="col-2 offset-1">메일주소</div>
-                        <input class="form-control col-5" name="orderUseremail" value="${mvo.email}" readonly>
+                        <input class="form-control col-5" name="orderUserEmail" value="${mvo.email}" readonly>
                     </div>
                     <div class="row">
                         <div class="col-2 offset-1">요청사항</div>

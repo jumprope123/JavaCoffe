@@ -1,10 +1,7 @@
 package javaCoffe.spring.mvc.service;
 
 
-import javaCoffe.spring.mvc.vo.BuyPageVO;
-import javaCoffe.spring.mvc.vo.EshopVO;
-import javaCoffe.spring.mvc.vo.MemberVO;
-import javaCoffe.spring.mvc.vo.MyBasket_EshopVO;
+import javaCoffe.spring.mvc.vo.*;
 
 import java.util.List;
 
@@ -18,6 +15,9 @@ public interface BuyPageService {
 
     int changePoint(BuyPageVO buyvo);
 
+    int changePoint(BuyPageBindVO bbvo);
+
     List<MyBasket_EshopVO> readMBEL(int int_lmbno[]);
 
+    int insertBindData(BuyPageBindVO bbvo);
 }

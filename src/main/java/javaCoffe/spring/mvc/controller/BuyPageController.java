@@ -1,5 +1,6 @@
 package javaCoffe.spring.mvc.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import javaCoffe.spring.mvc.service.BuyPageService;
 import javaCoffe.spring.mvc.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,4 +114,16 @@ public class BuyPageController {
         mv.addObject("UID",UID);
         return mv;
     }
+
+    @PostMapping("/buylist/buyBindProcess")
+    public String buyBindProcess(BuyPageBindVO bbvo){//따로 결재를 안할거라서 그냥 String리턴으로 받음
+        String returnPage = "redirect:/buylist/buyOK"; //지금은 ok페이지만존재
+        int insertResult = buysrv.insertBindData(bbvo);
+        if (insertResult > 0) {
+            returnPage = "redirect:/buylist/buyOK";
+        }
+        buysrv.changePoint(bbvo);//사용한 포인트만큼 차감하고, 적립된 포인트만큼 증가시켜주기
+        return returnPage;
+    }
+
 }

@@ -1,6 +1,6 @@
 package javaCoffe.spring.mvc.vo;
 
-public class BuyPageBind {
+public class BuyPageBindVO {
     private int buyno;
     private String fnames;
     private String brand;
@@ -24,15 +24,16 @@ public class BuyPageBind {
     private String receivePhone;
     private String receiveEmail;
     private int beforePoint;
-    private int buyPageUserPoints;
+    private int buyPageUsePoints;
     private int plusPoint;
     private int afterFinalPrice;
     private String process;
+    private String code;
 
-    public BuyPageBind() {
+    public BuyPageBindVO() {
     }
 
-    public BuyPageBind(String fnames, String brand, String title, String shipPay, String purchase, String discount, String totalOgPrice, String totalDcPrice, String eno, String deliveryZipcode, String deliveryUserAddr1, String deliveryUserAddr2, String deliveryUserAddr3, String userid, String orderUserName, String orderUserPhone, String orderUserEmail, String orderRequest, String receiveName, String receivePhone, String receiveEmail, int beforePoint, int buyPageUserPoints, int plusPoint, int afterFinalPrice) {
+    public BuyPageBindVO(String fnames, String brand, String title, String shipPay, String purchase, String discount, String totalOgPrice, String totalDcPrice, String eno, String deliveryZipcode, String deliveryUserAddr1, String deliveryUserAddr2, String deliveryUserAddr3, String userid, String orderUserName, String orderUserPhone, String orderUserEmail, String orderRequest, String receiveName, String receivePhone, String receiveEmail, int beforePoint, int buyPageUsePoints, int plusPoint, int afterFinalPrice, String code) {
         this.fnames = fnames;
         this.brand = brand;
         this.title = title;
@@ -55,9 +56,10 @@ public class BuyPageBind {
         this.receivePhone = receivePhone;
         this.receiveEmail = receiveEmail;
         this.beforePoint = beforePoint;
-        this.buyPageUserPoints = buyPageUserPoints;
+        this.buyPageUsePoints = buyPageUsePoints;
         this.plusPoint = plusPoint;
         this.afterFinalPrice = afterFinalPrice;
+        this.code = code;
     }
 
     public int getBuyno() {
@@ -244,12 +246,12 @@ public class BuyPageBind {
         this.beforePoint = beforePoint;
     }
 
-    public int getBuyPageUserPoints() {
-        return buyPageUserPoints;
+    public int getBuyPageUsePoints() {
+        return buyPageUsePoints;
     }
 
-    public void setBuyPageUserPoints(int buyPageUserPoints) {
-        this.buyPageUserPoints = buyPageUserPoints;
+    public void setBuyPageUsePoints(int buyPageUsePoints) {
+        this.buyPageUsePoints = buyPageUsePoints;
     }
 
     public int getPlusPoint() {
@@ -274,5 +276,13 @@ public class BuyPageBind {
 
     public void setProcess(String process) {
         this.process = process;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
