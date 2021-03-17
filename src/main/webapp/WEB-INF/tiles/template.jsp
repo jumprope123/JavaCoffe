@@ -66,6 +66,7 @@
 <script src="/js/eshop.js"></script>
 <script src="/js/coffeMachine.js"></script>
 <script src="/js/buylist.js"></script>
+<script src="/js/buylistBind.js"></script>
 <script src="/js/memberInfo.js"></script>
 <script src="/js/mybasket.js"></script>
 <script src="/js/coffeMachine.js"></script>

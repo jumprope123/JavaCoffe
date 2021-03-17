@@ -34,4 +34,10 @@
     <update id="changePoints" statementType="PREPARED" parameterType="map">
         update MemberJoin set points = #{points} where userid = #{userid}
     </update>
+
+    <insert id="insertBindData" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.buyBindVO">
+        insert into BuyPageBind (fnames, brand, title, shipPay, purchase, discount, totalOgPrice, totalDcPrice, eno, deliveryZipcode, deliveryUserAddr1, deliveryUserAddr2, deliveryUserAddr3, userid, orderUserName, orderUserPhone, orderUserEmail, orderRequest, receiveName, receivePhone, receiveEmail, beforePoint, buyPageUsePoints, plusPoint, afterFinalPrice, code)
+        values (#{fnames}, #{brand}, #{title}, #{shipPay}, #{purchase}, #{discount}, #{totalOgPrice}, #{totalDcPrice}, #{eno}, #{deliveryZipcode}, #{deliveryUserAddr1}, #{deliveryUserAddr2}, #{deliveryUserAddr3}, #{userid}, #{orderUserName}, #{orderUserPhone}, #{orderUserEmail}, #{orderRequest}, #{receiveName}, #{receivePhone}, #{receiveEmail}, #{beforePoint}, #{buyPageUsePoints}, #{plusPoint}, #{afterFinalPrice}, #{code})
+    </insert>
+
 </mapper>
