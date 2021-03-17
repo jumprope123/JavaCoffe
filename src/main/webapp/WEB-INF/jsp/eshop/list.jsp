@@ -174,11 +174,15 @@
                             <div class="row mt-3">
                                 <ul class="list-inline text-center">
 
+                                    <fmt:parseNumber var="rmud_num" value="0"/>
                                     <c:forEach var="b" items="${bigGenres}">
                                     <li class="list-inline-item" style="margin-bottom: 10px;">
+                                        <c:set var="rmud_num" value="${rmud_num+1}"/>
                                         <div class="card" style="width: 230px; border: none;">
                                             <div class="text-center center" style="width: 230px; height: 150px; border: 1px solid #E0E0E0; cursor: pointer" onclick="javascript:showimgForEshop('${b.eno}')">
-                                                <img src="${thumbURL}${b.eno}_${fn:split(b.fnames,"[/]")[0]}" class="card-img-top" style="width: 150px; height: 145px; margin-top: 1px;">
+                                                <img src="${thumbURL}${b.eno}_${fn:split(b.fnames,"[/]")[0]}" class="card-img-top" style="position:relative; width: 150px; height: 145px; margin-top: 1px;">
+                                                <button id="eshop_remove_btn${rmud_num}" style="background:#333; color: #fff; width: 30px; height: 18px; position:absolute; top: 0px; left: 0px">삭제</button>
+                                                <button id="eshop_update_btn${rmud_num}" style="background:#333; color: #fff; width: 30px; height: 18px; position:absolute; top: 0px; left: 35px" >수정</button>
                                             </div>
                                             <div class="card-body text-center" style="margin-top: -10px;">
                                                 <p class="card-text font-weight-bold" style="color: #717188">${b.title}</p>

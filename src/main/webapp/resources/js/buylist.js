@@ -36,6 +36,8 @@ $('#buylistcancelBtn').on('click',function () {
     }
 })
 
+
+
 $('#buylistOkBtn').on('click',function () {
     $('#buyPageForm').attr('method','post');
     $('#buyPageForm').attr('action','/buylist/buyProcess');

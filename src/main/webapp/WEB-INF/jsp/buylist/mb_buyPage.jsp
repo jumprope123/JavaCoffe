@@ -171,7 +171,7 @@
             <div class="row mt-3">
                 <div class="col-4 offset-4 text-center">총 상품금액 : ${allproductprice}원</div>
                 <div class="col-4 offset-4 text-center">배송비 : (+)${allshipPay}원</div>
-
+                <c:set var="totalprice" value="${allproductprice + allshipPay}" />
                 <div class="col-4 offset-4 text-center">포인트 : (-)<span id="finalUsingPointBind">0</span>원</div>
                 <input type="hidden" id="beforeFinalPriceBind" value="${totalprice}">
                 <div class="col-12 h4 text-center">총 결제금액 : <span class="text-danger h1"><span id="finalPriceBind">${totalprice}</span>원</span></div>
