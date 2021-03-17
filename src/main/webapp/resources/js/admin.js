@@ -111,3 +111,4 @@ $('#goToAdminWrite').on('click',function () {
 $('#goToAdminHandle').on('click',function () {
     location.href = '/admin/handle';
 })
+

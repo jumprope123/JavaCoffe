@@ -37,7 +37,9 @@
             <fmt:parseNumber var="totalprice" value="0"/>
             <c:forEach var="mbe" items="${bbvos}">
                 <c:set var="allproductprice" value="${allproductprice + mbe.dcPrice * mbe.purchase}" />
-                <c:set var="allshipPay" value="${allshipPay + mbe.shipPay}" />
+                <c:if test="${mbe.shipPay gt allshipPay}">
+                    <c:set var="allshipPay" value="${mbe.shipPay}" />
+                </c:if>
                 <div class="row align-items-center mt-3">
                     <div class="col-5 text-center">
                         <div class="row align-items-center">
@@ -170,13 +172,16 @@
             <div class="row mt-5"><div class="col-12" style="border-bottom: 1px solid grey;"></div></div>
             <div class="row mt-3">
                 <div class="col-4 offset-4 text-center">총 상품금액 : ${allproductprice}원</div>
-                <div class="col-4 offset-4 text-center">배송비 : (+)${allshipPay}원</div>
+                <c:if test="${allproductprice gt 60000}">
+                    <c:set var="allshipPay" value="0" />
+                    <div class="col-4 offset-4 text-center">배송비 : (+)${allshipPay}원</div>
+                </c:if>
                 <c:set var="totalprice" value="${allproductprice + allshipPay}" />
                 <div class="col-4 offset-4 text-center">포인트 : (-)<span id="finalUsingPointBind">0</span>원</div>
                 <input type="hidden" id="beforeFinalPriceBind" value="${totalprice}">
                 <div class="col-12 h4 text-center">총 결제금액 : <span class="text-danger h1"><span id="finalPriceBind">${totalprice}</span>원</span></div>
                 <input type="hidden" id="afterFinalPriceBind" name="afterFinalPrice" value="${totalprice}">
-
+                <input type="hidden" id="afterFinalshipPayBind" name="afterFinalshipPay" value="${allshipPay}">
             </div>
             <div class="row mt-3 mb-3">
                 <div class="col-12 text-center">

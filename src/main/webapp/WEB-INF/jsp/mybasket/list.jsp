@@ -61,7 +61,9 @@
             <c:forEach var="mb" items="${mbvo}">
                 <c:set var="mbnum" value="${mbnum+1}" />
                 <c:set var="mbtotalprice" value="${mbtotalprice + mb.myprice}" />
-                <c:set var="mbtotalshipPay" value="${mbtotalshipPay + mb.myshipPay}" />
+                <c:if test="${mb.myshipPay gt mbtotalshipPay}">
+                    <c:set var="mbtotalshipPay" value="${mb.myshipPay}" />
+                </c:if>
                 <div class="mb_product_list">
                     <div class="mb_product_info">
                         <input name="mb_product_cb" id="mb_product_cb${mbnum}" class="mb_product_cb mt50" style="float:left;" type="checkbox">
@@ -114,7 +116,12 @@
                                 <c:set var="totaltemp_product" value="${mb.myprice * mb.myamount}" />
                                 <c:set var="totaltemp_shipPay" value="${mb.myshipPay}" />
                                 <h4 class="b-inline fs-14">상품가격 </h4><h2 class="b-inline fs-16" id="mb_product_info_price${mbnum}" style="font-weight: 700;">${mb.myprice * mb.myamount}</h2><h3 class="b-inline fs-14">&nbsp;원 </h3> <h3 class="b-inline fs-16" style="font-weight: 700;"> + </h3>
-                                <h4  class="b-inline fs-14"> 배송비 </h4><h2 class="b-inline fs-16" id="mb_product_info_shipPay${mbnum}" style="font-weight: 700;">${mb.myshipPay}</h2><h3 class="b-inline fs-14">&nbsp;원 </h3> <h3 class="b-inline fs-16" style="font-weight: 700;"> = </h3>
+                                <h4  class="b-inline fs-14"> 배송비 </h4>
+                                <h2 class="b-inline fs-16" id="mb_product_info_shipPay${mbnum}" style="font-weight: 700;">${mb.myshipPay}</h2><h3 class="b-inline fs-14">&nbsp;원 </h3>
+                                <c:if test="${mb.myshipPay gt 1}">
+                                    <h3 class="b-inline fs-13a" style="font-weight: 700;"> (총 상품비 6만원 이상, 무료/ 아닐시 배송비는 하나로 합쳐집니다) </h3>
+                                </c:if>
+                                <h3 class="b-inline fs-16" style="font-weight: 700;"> = </h3>
                                 <h4 class="b-inline fs-14"> 주문금액 </h4><h2 class="b-inline fs-16" id="mb_product_info_totalprice${mbnum}" style="font-weight: 700;">${totaltemp_product + totaltemp_shipPay}</h2><h2 class="b-inline fs-14">&nbsp;원 </h2>
                                 <c:set var="totalstatic_product" value="${totalstatic_product + totaltemp_product}" />
                                 <c:set var="totalstatic_shipPay" value="${totalstatic_shipPay + totaltemp_shipPay}" />
@@ -147,7 +154,18 @@
                 <div class="mb_total_price_info">
                     <div style="margin-top: 10px; ">
                         <h4 class="b-inline fs-16">총 상품가격 </h4><h2 id="total_mb_product_price" class="b-inline fs-20"> ${totalstatic_product}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> + </h3>
-                        <h4 class="b-inline fs-16"> 총 배송비 </h4><h2 id="total_mb_shipPay_price" class="b-inline fs-20"> ${totalstatic_shipPay}</h2><h3 class="b-inline fs-16">&nbsp;원 </h3> <h3 class="b-inline fs-20"> = </h3>
+                        <h4 class="b-inline fs-16"> 통합 배송비 </h4>
+                        <c:if test="${totalstatic_product gt 60000}">
+                            <c:set var="totalstatic_shipPay" value="0" />
+                            <h2 id="total_mb_shipPay_price" class="b-inline fs-20">무료</h2>
+                            <h3 class="b-inline fs-16">&nbsp</h3>
+                        </c:if>
+                        <c:if test="${totalstatic_product lt 59999}">
+                            <c:set var="totalstatic_shipPay" value="${mbtotalshipPay}" />
+                            <h2 id="total_mb_shipPay_price" class="b-inline fs-20"> ${totalstatic_shipPay}원</h2>
+                            <h3 class="b-inline fs-16">&nbsp;</h3>
+                        </c:if>
+                        <h3 class="b-inline fs-20"> = </h3>
                         <h4 class="b-inline fs-16"> 총 주문금액</h4><h2 id="total_mb_order_price"  class="b-inline fs-20" style="color: red"> ${totalstatic_shipPay + totalstatic_product}</h2><h2 class="b-inline fs-16">&nbsp;원 </h2>
                     </div>
                 </div>
