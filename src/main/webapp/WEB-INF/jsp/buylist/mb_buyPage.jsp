@@ -35,11 +35,22 @@
             <fmt:parseNumber var="allproductprice" value="0"/>
             <fmt:parseNumber var="allshipPay" value="0"/>
             <fmt:parseNumber var="totalprice" value="0"/>
-            <c:forEach var="mbe" items="${bbvos}">
-                <c:set var="allproductprice" value="${allproductprice + mbe.dcPrice * mbe.purchase}" />
-                <c:if test="${mbe.shipPay gt allshipPay}">
-                    <c:set var="allshipPay" value="${mbe.shipPay}" />
+            <fmt:parseNumber var="shipPayFirst" value="0"/>
+            <fmt:parseNumber var="shipPayBiggest" value="0"/>
+            <fmt:parseNumber var="shipPayLast" value="-1"/>
+            <c:forEach var="mmbb" items="${bbvos}">
+                <c:set var="allproductprice" value="${allproductprice + mmbb.dcPrice * mmbb.purchase}" />
+                <c:if test="${mmbb.shipPay gt shipPayBiggest}">
+                    <c:set var="shipPayBiggest" value="${mmbb.shipPay}" />
                 </c:if>
+                <c:set var="shipPayLast" value="${shipPayLast+1}" />
+            </c:forEach>
+            <c:set var="allshipPay" value="${shipPayBiggest}" />
+            <c:if test="${(shipPayBiggest eq 0) or (allproductprice gt 59999)}">
+                <c:set var="allshipPay" value="0" />
+                <c:set var="shipPayBiggest" value="0" />
+            </c:if>
+            <c:forEach var="mbe" items="${bbvos}">
                 <div class="row align-items-center mt-3">
                     <div class="col-5 text-center">
                         <div class="row align-items-center">
@@ -55,8 +66,42 @@
                     <input type="hidden" name="code" value="${mbe.mycode}">
                     <div class="col-2 text-center">${mbe.brand}</div>
                     <input type="hidden" name="brand" value="${mbe.brand}">
-                    <div class="col-1 text-center">${mbe.shipPay}원</div>
-                    <input type="hidden" name="shipPay" value="${mbe.shipPay}">
+                    <c:if test="${shipPayFirst eq 0}">
+                        <div class="col-1 text-center" style="border-top: #1e7e34 solid 1px; border-left: #1e7e34 solid 1px; border-right: #1e7e34 solid 1px;">
+                            <c:if test="${!(shipPayLast eq 1)}">
+                                &nbsp;&nbsp;
+                            </c:if>
+                            <c:if test="${shipPayLast eq 1}">
+                                <c:if test="${!(allshipPay eq 0)}">
+                                    통합 ${shipPayBiggest}원
+                                </c:if>
+                                <c:if test="${allshipPay eq 0}">
+                                    무료입니다!
+                                </c:if>
+                            </c:if>
+                        </div>
+                        <input type="hidden" name="shipPay" value="${shipPayBiggest}">
+                    </c:if>
+                    <c:if test="${shipPayFirst eq (shipPayLast/2) or shipPayFirst eq ((shipPayLast-1)/2) and !(shipPayLast eq 1)}">
+                        <div class="col-1 text-center" style="border-left: #1e7e34 solid 1px; border-right: #1e7e34 solid 1px; color: #005cbf">
+                            <c:if test="${!(allshipPay eq 0)}">
+                                통합 ${shipPayBiggest}원
+                            </c:if>
+                            <c:if test="${allshipPay eq 0}">
+                                무료입니다!
+                            </c:if>
+                        </div>
+                        <%--                        <input type="hidden" name="shipPay1" value="${mbe.shipPay}">--%>
+                    </c:if>
+                    <c:if test="${shipPayFirst gt 0 and shipPayFirst lt shipPayLast and !(shipPayFirst eq (shipPayLast/2) or shipPayFirst eq ((shipPayLast-1)/2) and !(shipPayLast eq 1))}">
+                        <div class="col-1 text-center" style="border-left: #1e7e34 solid 1px; border-right: #1e7e34 solid 1px;">&nbsp;&nbsp;</div>
+<%--                        <input type="hidden" name="shipPay1" value="${mbe.shipPay}">--%>
+                    </c:if>
+                    <c:if test="${shipPayFirst eq shipPayLast}">
+                        <div class="col-1 text-center" style="border-left: #1e7e34 solid 1px; border-right: #1e7e34 solid 1px; border-bottom: #1e7e34 solid 1px;">&nbsp;&nbsp;</div>
+<%--                        <input type="hidden" name="shipPay1" value="${mbe.shipPay}">--%>
+                    </c:if>
+                    <c:set var="shipPayFirst" value="${shipPayFirst+1}" />
                     <div class="col-1 text-center">${mbe.purchase}개</div>
                     <input type="hidden" name="purchase" value="${mbe.purchase}">
 
@@ -172,10 +217,7 @@
             <div class="row mt-5"><div class="col-12" style="border-bottom: 1px solid grey;"></div></div>
             <div class="row mt-3">
                 <div class="col-4 offset-4 text-center">총 상품금액 : ${allproductprice}원</div>
-                <c:if test="${allproductprice gt 60000}">
-                    <c:set var="allshipPay" value="0" />
-                    <div class="col-4 offset-4 text-center">배송비 : (+)${allshipPay}원</div>
-                </c:if>
+                <div class="col-4 offset-4 text-center">배송비 : (+)${allshipPay}원</div>
                 <c:set var="totalprice" value="${allproductprice + allshipPay}" />
                 <div class="col-4 offset-4 text-center">포인트 : (-)<span id="finalUsingPointBind">0</span>원</div>
                 <input type="hidden" id="beforeFinalPriceBind" value="${totalprice}">
