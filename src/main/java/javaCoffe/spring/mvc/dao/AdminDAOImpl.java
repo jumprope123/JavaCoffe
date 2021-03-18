@@ -45,4 +45,9 @@ public class AdminDAOImpl implements AdminDAO{
     public int countDataSearch(String adminSearchTxt) {
         return sqlSession.selectOne("admin.countDataSearch",adminSearchTxt);
     }
+
+    @Override
+    public int delete_eshop(int eno) {
+        return sqlSession.delete("admin.deleteEshop",eno);
+    }
 }

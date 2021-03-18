@@ -83,4 +83,13 @@ public class AdminServiceImpl implements AdminService{
     public int countData(String adminSearchTxt) {
         return adao.countDataSearch(adminSearchTxt);
     }
+
+    @Override
+    public boolean remove_eshop(int eno) {
+        boolean isOk = false;
+        int cnt = adao.delete_eshop(eno);
+        if(cnt>0) isOk = true;
+
+        return isOk;
+    }
 }

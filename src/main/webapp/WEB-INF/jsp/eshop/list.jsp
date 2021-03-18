@@ -181,8 +181,11 @@
                                         <div class="card" style="width: 230px; border: none;">
                                             <div class="text-center center" style="width: 230px; height: 150px; border: 1px solid #E0E0E0; cursor: pointer" onclick="javascript:showimgForEshop('${b.eno}')">
                                                 <img src="${thumbURL}${b.eno}_${fn:split(b.fnames,"[/]")[0]}" class="card-img-top" style="position:relative; width: 150px; height: 145px; margin-top: 1px;">
-                                                <button id="eshop_remove_btn${rmud_num}" style="background:#333; color: #fff; width: 30px; height: 18px; position:absolute; top: 0px; left: 0px">삭제</button>
-                                                <button id="eshop_update_btn${rmud_num}" style="background:#333; color: #fff; width: 30px; height: 18px; position:absolute; top: 0px; left: 35px" >수정</button>
+                                                <c:if test="${UID eq 'javapresso'}">
+                                                    <button id="eshop_remove_btn${rmud_num}" style="font-size: 13px; background:#333; color: #fff; width: 35px; height: 25px; position:absolute; top: 0px; left: 0px">삭제</button>
+                                                    <input type="hidden" id="eshop_remove_update_index${rmud_num}" value="${b.eno}">
+                                                    <button id="eshop_update_btn${rmud_num}" style="font-size: 13px; background:#333; color: #fff; width: 35px; height: 25px; position:absolute; top: 0px; left: 40px" >수정</button>
+                                                </c:if>
                                             </div>
                                             <div class="card-body text-center" style="margin-top: -10px;">
                                                 <p class="card-text font-weight-bold" style="color: #717188">${b.title}</p>
@@ -193,6 +196,7 @@
                                         </div>
                                     </li>
                                     </c:forEach>
+                                    <input type="hidden" id="eshop_remove_update_rmud_num" value="${rmud_num}">
                                 </ul>
                             </div> <%--콘텐츠 내용물 제작--%>
                         </div>

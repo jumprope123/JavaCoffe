@@ -27,7 +27,7 @@
         where eno = #{eno}
     </update>
 
-    <delete id="deleteEshop" statementType="PREPARED" parameterType="String">
+    <delete id="deleteEshop" statementType="PREPARED" parameterType="int">
         delete from eshop where eno = #{eno}
     </delete>
 

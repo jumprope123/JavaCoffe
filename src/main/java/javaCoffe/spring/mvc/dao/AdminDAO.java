@@ -18,4 +18,6 @@ public interface AdminDAO {
     List<BuyPageVO> readAllDataSearch(Map<String, Object> map);
 
     int countDataSearch(String adminSearchTxt);
+
+    int delete_eshop(int eno);
 }

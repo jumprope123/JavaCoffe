@@ -18,4 +18,6 @@ public interface AdminService {
     List<BuyPageVO> readBuyData(String cp, String adminSearchTxt);
 
     int countData(String adminSearchTxt);
+
+    boolean remove_eshop(int eno);
 }
