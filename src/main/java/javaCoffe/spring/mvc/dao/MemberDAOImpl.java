@@ -50,9 +50,6 @@ public class MemberDAOImpl implements MemberDAO{
 
     @Override
     public int inputKakao(Map map) {
-        System.out.println("this is get mapId from DAO");
-        System.out.println(map.get("kakaoID"));
-        System.out.println(map.get("uidUID"));
         return sqlSession.update("member.updateKakao",map);
     }
 
