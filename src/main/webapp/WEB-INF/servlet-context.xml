@@ -18,6 +18,7 @@
     <!-- 리소스 경로 설정 (웹에 관련된 리소스들은 다 여기로)-->
     <mvc:resources mapping="/**" location="/resources/" />
 
+
     <!-- 타일즈 설정 -->
     <bean id="tilesConfigurer"
           class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
