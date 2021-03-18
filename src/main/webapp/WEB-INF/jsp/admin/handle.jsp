@@ -85,6 +85,7 @@
                                 <td>아이디</td>
                                 <td>받는분 주소</td>
                                 <td>받는분 핸드폰</td>
+                                <td>구매일</td>
                                 <td>배송상황</td>
                                 <td>배송상황수정</td>
                             </tr>
@@ -92,18 +93,19 @@
                         <tbody>
                             <c:forEach var="d" items="${data}">
                                 <tr>
-                                    <td>${d.buyno}</td>
-                                    <td><img src="${thumbURL}${d.eno}_${fn:split(d.fnames,"[/]")[0]}" style="border-radius: 50%; width: 50px; height: 50px"></td>
-                                    <td>${d.title}</td>
-                                    <td>${d.brand}</td>
-                                    <td>${d.shipPay}</td>
-                                    <td>${d.purchase}</td>
-                                    <td>${d.afterFinalPrice}</td>
-                                    <td>${d.userid}</td>
-                                    <td>${d.deliveryUserAddr1}&nbsp;${d.deliveryUserAddr2}&nbsp;${d.deliveryUserAddr3}</td>
-                                    <td>${d.receivePhone}</td>
-                                    <td><span id="processVal${d.buyno}">${d.process}</span></td>
-                                    <td><select id="processModify${d.buyno}" onchange="processMod('${d.buyno}')">
+                                    <td class="align-middle">${d.buyno}</td>
+                                    <td class="align-middle"><img src="${thumbURL}${d.eno}_${fn:split(d.fnames,"[/]")[0]}" style="border-radius: 50%; width: 50px; height: 50px"></td>
+                                    <td class="align-middle">${d.title}</td>
+                                    <td class="align-middle">${d.brand}</td>
+                                    <td class="align-middle">${d.shipPay}</td>
+                                    <td class="align-middle">${d.purchase}</td>
+                                    <td class="align-middle">${d.afterFinalPrice}</td>
+                                    <td class="align-middle">${d.userid}</td>
+                                    <td class="align-middle">${d.deliveryUserAddr1}&nbsp;${d.deliveryUserAddr2}&nbsp;${d.deliveryUserAddr3}</td>
+                                    <td class="align-middle">${d.receivePhone}</td>
+                                    <td class="align-middle">${fn:substring(d.regdate,0,19)}</td>
+                                    <td class="align-middle"><span id="processVal${d.buyno}">${d.process}</span></td>
+                                    <td class="align-middle"><select id="processModify${d.buyno}" onchange="processMod('${d.buyno}')">
                                         <option <c:if test="${d.process eq '배송준비중'}">selected</c:if> value="배송준비중">배송준비중</option>
                                         <option <c:if test="${d.process eq '배송중'}">selected</c:if> value="배송중">배송중</option>
                                         <option <c:if test="${d.process eq '배송완료'}">selected</c:if> value="배송완료">배송완료</option>

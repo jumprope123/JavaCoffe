@@ -109,6 +109,10 @@ $('#goToAdminHandle').on('click',function () {
     location.href = '/admin/handle';
 })
 
+$('#goToAdminWrite').on('click',function () {
+    location.href = '/admin/write';
+})
+
 function goToHandelBtn(){
     location.href = '/admin/handle';
 }

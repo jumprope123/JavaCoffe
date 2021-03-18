@@ -29,6 +29,7 @@ public class BuyPageBindVO {
     private int afterFinalPrice;
     private String process;
     private String code;
+    private String regdate;// 구매일
 
     public BuyPageBindVO() {
     }
@@ -284,5 +285,13 @@ public class BuyPageBindVO {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getRegdate() {
+        return regdate;
+    }
+
+    public void setRegdate(String regdate) {
+        this.regdate = regdate;
     }
 }
