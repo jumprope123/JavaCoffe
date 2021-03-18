@@ -82,9 +82,53 @@ public class LoginController {
     @GetMapping("/login/loginDel")
     public String logindel(HttpSession sess, HttpServletRequest request){
 
+        sess.removeAttribute("UID");
+        sess.removeAttribute("AboutKakao");
+
+        return "redirect:/login/login";
+    }
+/////////////////////////////////////////////////////////////////////// 과연 이거인것인가 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   @GetMapping("/auth/kakao/logout")
+    public void kakaoLogout(String access_Token) {
+        String reqURL ="https://kapi.kakao.com/v1/user/logout";
+        try {
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+
+            int responseCode = conn.getResponseCode();
+            System.out.println("responseCode : " + responseCode);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            String result = "";
+            String line = "";
+
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+            System.out.println(result);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            System.out.println("============================"); /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        }
+    }
+
+    @RequestMapping(value ="/auth/kakao/logoutok" , method = RequestMethod.POST)
+    public String logout(MemberVO mvo, Model model, RedirectAttributes redirectAttributes, HttpServletRequest request, HttpSession sess , SessionStatus sessionStatus) {
+/*        HttpSession sess = request.getSession(false);  //<<<<<<<<<<<<<<<<<<<<<<<<<< 2021.3.11 수정 2
+        request.getSession(true).invalidate();*/
+
+        kakaoLogout((String)sess.getAttribute("access_Token"));
+        sessionStatus.setComplete(); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 2021.3.11 수정 4
+        sess.removeAttribute("access_Token");
+        sess.removeAttribute("userid");  // <<<<<<<<<<<<<<<<<<<<<<<<<< 2021.3.11 수정 1*/
         sess.invalidate();
 
-        return "redirect:https://kauth.kakao.com/oauth/logout?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&logout_redirect_uri=http://13.125.205.40:8080/index";
-
+        System.out.println("============================"); /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        return "redirect:/index";
     }
+///////////////////////////////////////////////////////////////////////
 }

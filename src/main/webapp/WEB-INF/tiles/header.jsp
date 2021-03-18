@@ -36,7 +36,7 @@
                                         </div>
                                         <button id="s_hloginbtn" type="submit" class="btn btn-primary bidragdown2" style="margin-left: 2px">Login</button>
                                         <p style="display: none" id="joinorbindP">${joinorbind}</p>
-                                        <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://13.125.205.40:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
+                                        <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" class="kakao_login_btn_position"><img
                                                 src="../img/login/kakao_login_medium.png" class="bidragdown2" width="66.09px" height="38px" style="margin-left: 1.2rem"></a>
                                     </form>
                                 </li>
@@ -44,8 +44,8 @@
                         </c:if>
                         <c:if test="${!empty sessionScope.UID}">
                             <%-- 스크립트 함수 추가 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!--%>
-                          <button data-toggle="dropdown" class="LoginDropdownButton dropdown-toggle" class="LoginDropdownButton"  id="hloginbtn1" aria-expanded="false">
-                                  로그아웃
+                                <button data-toggle="dropdown" class="LoginDropdownButton dropdown-toggle" class="LoginDropdownButton"  id="hloginbtn1" aria-expanded="false" onclick="logout()">
+                                   로그아웃
                                     <!--aria-expanded="false"-->
                                 </button>
                         </c:if>
@@ -76,7 +76,7 @@
                         <%--   여기에 추가함 -> session값이 있는데, 카카오아이디값이 없을때--%>
                         <c:if test="${sessionScope.AboutKakao eq 0}">
                             <div style="margin-left: 20px">
-                                <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://13.125.205.40:8080/auth/kakao/callback&response_type=code" id="kakao_login_btn_" class="kakao_login_btn_position">
+                                <a href="https://kauth.kakao.com/oauth/authorize?client_id=9c38cdfacc89f99ac0fe0615bba90cd9&redirect_uri=http://localhost:8080/auth/kakao/callback&response_type=code" id="kakao_login_btn_" class="kakao_login_btn_position">
                                     <img src="../img/login/kakao_connec_login.png"  width="208px;" height="40px"></a>
                             </div>
                         </c:if>
