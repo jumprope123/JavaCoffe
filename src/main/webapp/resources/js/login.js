@@ -35,7 +35,9 @@ function logout() {
     alert('로그아웃 완료')
 }
 
-/*  여기서 부터 카카오  코드*/
+
+    window.Kakao.init("9c38cdfacc89f99ac0fe0615bba90cd9")
+    console.log(Kakao.isInitialized());
 
 
 //로그아웃 끝
