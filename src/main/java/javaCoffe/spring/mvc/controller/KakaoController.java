@@ -128,10 +128,6 @@ public class KakaoController {
         int resultour = memberService.compareID(kakaoID);
 
         String uidUID = (String) sess.getAttribute("UID");
-        System.out.println("-------------------");
-        System.out.println("this kakaoID val : " + kakaoID);
-        System.out.println("this user val : " + uidUID);
-        System.out.println("-------------------");
 
 
         if (uidUID == null) { //로그인 하지 않은 경우
@@ -152,10 +148,6 @@ public class KakaoController {
             sess.setAttribute("AboutKakao",1); //왜냐! 카카오아이디를 연동했으니까. 연동하기가 없어져야 하니까!
             returnPage = "redirect:/index";
         }
-        System.out.println("-------------------");                  /*<<<<<<<<<<<<<<<<<<<<<<< 여기까지 진행되는지?*/
-        System.out.println("this kakaoID val : " + kakaoID);
-        System.out.println("this user val : " + uidUID);
-        System.out.println("-------------------");
         return returnPage;
     }
 }
