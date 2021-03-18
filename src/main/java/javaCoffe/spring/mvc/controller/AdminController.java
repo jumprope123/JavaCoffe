@@ -52,6 +52,17 @@ public class AdminController {
         return mv;
     }
 
+    @GetMapping("/admin/handleBind")
+    public ModelAndView handleBind(ModelAndView mv, String cp, HttpSession sess){
+        if (cp == null || cp.isEmpty()) {cp = "1";}
+        mv.setViewName("admin/handleBind.tiles");
+        String UID = (String) sess.getAttribute("UID");
+        mv.addObject("UID",UID);
+        mv.addObject("data" , adsrv.readBuyBindData(cp)); //30개씩 뽑아서 넘김
+        mv.addObject("dataCnt",adsrv.countBindData());
+        return mv;
+    }
+
     @GetMapping("/admin/find")
     public ModelAndView find(ModelAndView mv, String cp , String adminSearchTxt){
         if (cp == null || cp.isEmpty()) {
@@ -71,9 +82,34 @@ public class AdminController {
         return mv;
     }
 
+    @GetMapping("/admin/findBind")
+    public ModelAndView findBind(ModelAndView mv, String cp , String adminSearchTxt){
+        if (cp == null || cp.isEmpty()) {
+            cp = "1";
+        }
+        switch (adminSearchTxt){
+            case "1" : adminSearchTxt = "배송준비중"; break;
+            case "2" : adminSearchTxt = "배송중"; break;
+            case "3" : adminSearchTxt = "배송완료"; break;
+            case "4" : adminSearchTxt = "반품요청"; break;
+            default: adminSearchTxt = "반품"; break;
+        }
+
+        mv.setViewName("admin/handleBind.tiles");
+        mv.addObject("data" , adsrv.readBuyBindData(cp, adminSearchTxt)); //30개씩 뽑아서 넘김
+        mv.addObject("dataCnt",adsrv.countBindData(adminSearchTxt));
+        return mv;
+    }
+
     @ResponseBody
     @GetMapping("/admin/processModify")
     public void processModify(int buyno, String process){
         adsrv.processModi(buyno,process);
+    }
+
+    @ResponseBody
+    @GetMapping("/admin/processBindModify")
+    public void processBindModify(int buyno, String process){
+        adsrv.processBindModi(buyno,process);
     }
 }

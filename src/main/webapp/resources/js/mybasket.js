@@ -14,15 +14,15 @@ $(document).ready(function(){
     let day = today.getDay()+ 1;  // 요일
     let getday = "";
     switch (day%7){
-        case 1: getday = "월요일"; break;
-        case 2: getday = "화요일"; break;
-        case 3: getday = "수요일"; break;
-        case 4: getday = "목요일"; break;
-        case 5: getday = "금요일"; break;
-        case 6: getday = "토요일"; break;
-        case 7: getday = "일요일"; break;
+        case 0: getday = "일"; break;
+        case 1: getday = "월"; break;
+        case 2: getday = "화"; break;
+        case 3: getday = "수"; break;
+        case 4: getday = "목"; break;
+        case 5: getday = "금"; break;
+        case 6: getday = "토"; break;
     }
-    $(".mb_product_arrival_date").text(getday+ " " + month + "/" + date + " 도착 예정");
+    $(".mb_product_arrival_date").text("내일"+ "(" + getday+ ") " + month + "/" + date + " 도착 예정");
 
     $("#total_list_select_check").change(function(){
         if($("#total_list_select_check").is(":checked")) {
@@ -44,9 +44,8 @@ $(document).ready(function(){
     });
 });
 
-let mbnum = document.getElementById('mbnum_result').innerText;
+let mbnum = parseInt(document.getElementById('mbnum_result').innerText);
 
-let checked = new Array(mbnum);
 let product_temp = 0;
 let shipPay_temp = 0;
 let product_static_temp = 0;
@@ -54,14 +53,15 @@ let shipPay_static_temp = 0;
 let total_price_temp = 0;
 
 // checked 초기화
-for (let v = 0; v <4-1; v++){
-    checked[v] = false;
+for (let v_idx = 1; v_idx <= mbnum; v_idx++){
+    let mb_index = "#mb_product_cb" + v_idx;
+    $(mb_index).change(function() { changecart(v_idx) } );
 }
-
-$("#mb_product_cb" + 1).change(function() { changecart(1) } );
-$("#mb_product_cb" + 2).change(function() { changecart(2) } );
-$("#mb_product_cb" + 3).change(function() { changecart(3) } );
-$("#mb_product_cb" + 4).change(function() { changecart(4) } );
+//
+// $("#mb_product_cb" + 1).change(function() { changecart(1) } );
+// $("#mb_product_cb" + 2).change(function() { changecart(2) } );
+// $("#mb_product_cb" + 3).change(function() { changecart(3) } );
+// $("#mb_product_cb" + 4).change(function() { changecart(4) } );
 
 function changecart(x) {
 
@@ -69,90 +69,136 @@ function changecart(x) {
         product_static_temp = 0;
         shipPay_static_temp = 0;
         total_price_temp = 0;
-        if ($('#mb_product_cb1').is(":checked")){
-            product_temp = parseInt($('#mb_product_info_price1').text());
-            product_static_temp = product_static_temp + product_temp;
+        for (let vv_idx = 1; vv_idx <= mbnum; vv_idx++) {
+            let ttt = "#mb_product_cb" + vv_idx;
+            let ppp = "#mb_product_info_price" + vv_idx;
+            let sss = "#mb_product_info_shipPay" + vv_idx;
+            if ($(ttt).is(":checked")) {
+                product_temp = parseInt($(ppp).text());
+                product_static_temp = product_static_temp + product_temp;
 
-            shipPay_temp = parseInt($('#mb_product_info_shipPay1').text());
-            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+                shipPay_temp = parseInt($(sss).text());
+                shipPay_static_temp = shipPay_static_temp + shipPay_temp;
 
-            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
-
+                total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+            }
         }
-        if ($('#mb_product_cb2').is(":checked")){
-            product_temp = parseInt($('#mb_product_info_price2').text());
-            product_static_temp = product_static_temp + product_temp;
-
-            shipPay_temp = parseInt($('#mb_product_info_shipPay2').text());
-            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
-
-            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
-        }
-        if ($('#mb_product_cb3').is(":checked")){
-            product_temp = parseInt($('#mb_product_info_price3').text());
-            product_static_temp = product_static_temp + product_temp;
-
-            shipPay_temp = parseInt($('#mb_product_info_shipPay3').text());
-            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
-
-            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
-        }
-        if ($('#mb_product_cb4').is(":checked")){
-            product_temp = parseInt($('#mb_product_info_price4').text());
-            product_static_temp = product_static_temp + product_temp;
-
-            shipPay_temp = parseInt($('#mb_product_info_shipPay4').text());
-            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
-
-            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
-        }
-            // 스택 총 값에 해당 스택 상품값과 스택 배송비 추가 하는 로직
-            // 그 값을 웹에 보내는 로직
-
-    } else {    // 체크가 해제되면 체크 항목의 가격 배송비를 전체 금액에서 빼기
+    }
+    else {
         product_static_temp = 0;
         shipPay_static_temp = 0;
         total_price_temp = 0;
-        if ($('#mb_product_cb1').is(":checked")){
-            product_temp = parseInt($('#mb_product_info_price1').text());
-            product_static_temp = product_static_temp + product_temp;
+        for (let vv_idx = 1; vv_idx <= mbnum; vv_idx++) {
+            let ttte = "#mb_product_cb" + vv_idx;
+            let pppe = "#mb_product_info_price" + vv_idx;
+            let ssse = "#mb_product_info_shipPay" + vv_idx;
+            if ($(ttte).is(":checked")) {
+                product_temp = parseInt($(pppe).text());
+                product_static_temp = product_static_temp + product_temp;
 
-            shipPay_temp = parseInt($('#mb_product_info_shipPay1').text());
-            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+                shipPay_temp = parseInt($(ssse).text());
+                shipPay_static_temp = shipPay_static_temp + shipPay_temp;
 
-            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
-
+                total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+            }
         }
-        if ($('#mb_product_cb2').is(":checked")){
-            product_temp = parseInt($('#mb_product_info_price2').text());
-            product_static_temp = product_static_temp + product_temp;
-
-            shipPay_temp = parseInt($('#mb_product_info_shipPay2').text());
-            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
-
-            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
-        }
-        if ($('#mb_product_cb3').is(":checked")){
-            product_temp = parseInt($('#mb_product_info_price3').text());
-            product_static_temp = product_static_temp + product_temp;
-
-            shipPay_temp = parseInt($('#mb_product_info_shipPay3').text());
-            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
-
-            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
-        }
-        if ($('#mb_product_cb4').is(":checked")){
-            product_temp = parseInt($('#mb_product_info_price4').text());
-            product_static_temp = product_static_temp + product_temp;
-
-            shipPay_temp = parseInt($('#mb_product_info_shipPay4').text());
-            shipPay_static_temp = shipPay_static_temp + shipPay_temp;
-
-            total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
-        }
-            // 스택 총 값에 해당 스택 상품값과 스택 배송비 뺴는 로직
-
     }
+                    //     if ($('#mb_product_cb1').is(":checked")){
+                    //         product_temp = parseInt($('#mb_product_info_price1').text());
+                    //         product_static_temp = product_static_temp + product_temp;
+                    //
+                    //         shipPay_temp = parseInt($('#mb_product_info_shipPay1').text());
+                    //         shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+                    //
+                    //         total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+                    //
+                    //     }
+            //
+            //     }
+            // }
+            //    if ($('#mb_product_cb1').is(":checked")){
+            //     product_temp = parseInt($('#mb_product_info_price1').text());
+            //     product_static_temp = product_static_temp + product_temp;
+            //
+            //     shipPay_temp = parseInt($('#mb_product_info_shipPay1').text());
+            //     shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+            //
+            //     total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+            //
+            // }
+            // if ($('#mb_product_cb2').is(":checked")){
+            //     product_temp = parseInt($('#mb_product_info_price2').text());
+            //     product_static_temp = product_static_temp + product_temp;
+            //
+            //     shipPay_temp = parseInt($('#mb_product_info_shipPay2').text());
+            //     shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+            //
+            //     total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+            // }
+            // if ($('#mb_product_cb3').is(":checked")){
+            //     product_temp = parseInt($('#mb_product_info_price3').text());
+            //     product_static_temp = product_static_temp + product_temp;
+            //
+            //     shipPay_temp = parseInt($('#mb_product_info_shipPay3').text());
+            //     shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+            //
+            //     total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+            // }
+            // if ($('#mb_product_cb4').is(":checked")){
+            //     product_temp = parseInt($('#mb_product_info_price4').text());
+            //     product_static_temp = product_static_temp + product_temp;
+            //
+            //     shipPay_temp = parseInt($('#mb_product_info_shipPay4').text());
+            //     shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+            //
+            //     total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+            // }
+            // 스택 총 값에 해당 스택 상품값과 스택 배송비 추가 하는 로직
+            // 그 값을 웹에 보내는 로직
+
+            // } else {    // 체크가 해제되면 체크 항목의 가격 배송비를 전체 금액에서 빼기
+            //     product_static_temp = 0;
+            //     shipPay_static_temp = 0;
+            //     total_price_temp = 0;
+            //     if ($('#mb_product_cb1').is(":checked")){
+            //         product_temp = parseInt($('#mb_product_info_price1').text());
+            //         product_static_temp = product_static_temp + product_temp;
+            //
+            //         shipPay_temp = parseInt($('#mb_product_info_shipPay1').text());
+            //         shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+            //
+            //         total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+            //
+            //     }
+            //     if ($('#mb_product_cb2').is(":checked")){
+            //         product_temp = parseInt($('#mb_product_info_price2').text());
+            //         product_static_temp = product_static_temp + product_temp;
+            //
+            //         shipPay_temp = parseInt($('#mb_product_info_shipPay2').text());
+            //         shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+            //
+            //         total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+            //     }
+            //     if ($('#mb_product_cb3').is(":checked")){
+            //         product_temp = parseInt($('#mb_product_info_price3').text());
+            //         product_static_temp = product_static_temp + product_temp;
+            //
+            //         shipPay_temp = parseInt($('#mb_product_info_shipPay3').text());
+            //         shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+            //
+            //         total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+            //     }
+            //     if ($('#mb_product_cb4').is(":checked")){
+            //         product_temp = parseInt($('#mb_product_info_price4').text());
+            //         product_static_temp = product_static_temp + product_temp;
+            //
+            //         shipPay_temp = parseInt($('#mb_product_info_shipPay4').text());
+            //         shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+            //
+            //         total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
+            //     }
+            // 스택 총 값에 해당 스택 상품값과 스택 배송비 뺴는 로직
+        // }
     $("#total_mb_product_price").text(product_static_temp);
     $("#total_mb_shipPay_price").text(shipPay_static_temp);
     $("#total_mb_order_price").text(product_static_temp + shipPay_static_temp);
@@ -206,14 +252,77 @@ for (let k = 1; k <= mbnum; k++) {
         })
         location.href = '/mybasket/list'
     });
-}
+};
+
+for (let k = 1; k <= mbnum; k++) {//추가
+    let mbamounttemp =  $("#mb_item_amount"+k).val();
+
+    $('#mb_item_amount_one'+k).val(mbamounttemp);
+    var mb_myprice_one = $('#mb_myprice_one'+k).val()
+    var priceForResult = (parseInt(mb_myprice_one) * parseInt(mbamounttemp));
+    $('#mb_product_info_price_one'+k).val(priceForResult);
+
+    $("#purchase_mb"+k).val(mbamounttemp);
+};
 
 $('#going_shopping').on('click',function (){
     location.href = '/eshop/list?bigGenre=coffe&cp=1';
 });
 
 // checked 된것만 구매페이지로 던지기
+$('#going_buying').on('click',function (){
+    // let mbnototal = ""
+    // let totalproductprice_buyshop = $('#total_mb_product_price').text();
+    // let totalshipPay_buyshop = $('#total_mb_shipPay_price').text();
+    // let totalprice_buyshop = $('#total_mb_order_price').text();
 
+    var checkCnt = 0; //몇개나 체크됫는지 체크하는 변수
+
+    for (let vv_idx = 1; vv_idx <= mbnum; vv_idx++){
+        let mb_indexx = "#mb_product_cb" + vv_idx;
+        if ($(mb_indexx).is(":checked")) {
+            checkCnt = checkCnt + 1; //체크되잇으면 1더함
+            // let mbnotempp = document.getElementById('mb_product_mbno'+vv_idx).innerText
+            // mbnototal = mbnototal + mbnotempp + ",";
+            $('#eno_mb'+vv_idx).attr("disabled",false)
+            $('#fnames_mb'+vv_idx).attr("disabled",false)
+            $('#brand_mb'+vv_idx).attr("disabled",false)
+            $('#title_mb'+vv_idx).attr("disabled",false)
+            $('#shipPay_mb'+vv_idx).attr("disabled",false)
+            $('#purchase_mb'+vv_idx).attr("disabled",false)
+            $('#discount_mb'+vv_idx).attr("disabled",false)
+            $('#dcPrice_mb'+vv_idx).attr("disabled",false)
+            $('#ogPrice_mb'+vv_idx).attr("disabled",false)
+            $('#mycode_mb'+vv_idx).attr("disabled",false)
+            $('#mb_myprice_one'+vv_idx).attr("disabled",false)
+            $('#eshopViewCode_one'+vv_idx).attr("disabled",false)
+            $('#mb_item_amount_one'+vv_idx).attr("disabled",false)
+            $('#mb_product_info_price_one'+vv_idx).attr("disabled",false)
+        }
+    }
+    // mbnototal = mbnototal.slice(0,-1);
+    // $.ajax({
+    //     url: '/buylist/mb_buyPage',
+    //     type: 'POST',
+    //     data: {
+    //         mbno: mbnototal ,
+    //         totalprice: totalprice_buyshop,
+    //         allproductprice: totalproductprice_buyshop,
+    //         allshipPay: totalshipPay_buyshop
+    //     }
+    // })
+    // location.href = '/buylist/mb_buyPage'
+
+if (checkCnt > 1) { //2개이상일때
+    $('#going_buying_form').attr('method', 'POST');
+    $('#going_buying_form').attr('action', '/buylist/mb_buyPage'); //나중에 /buylist/buyPageBind로 변경하세요
+    $('#going_buying_form').submit();
+}else { // 1개일때
+    $('#going_buying_form').attr('method', 'POST');
+    $('#going_buying_form').attr('action', '/buylist/buyPage');
+    $('#going_buying_form').submit();
+}
+});
 
 
 

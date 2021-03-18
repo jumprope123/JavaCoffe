@@ -50,12 +50,16 @@
             <div class="row">
                 <div class="col-10 offset-1 text-center">
                     <div class="row mt-4">
-                        <div class="col-12 h1">주문상황 확인 시스템</div>
+                        <div class="col-12 h1">주문상황 확인 시스템<span class="text-danger">(단품배송)</span></div>
                     </div>
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-10 offset-1  text-right">
+                <div class="col-4 offset-4 text-center">
+                    <button class="btn btn-danger" onclick="javascript:goToHandelBtn()">단품배송보기</button>
+                    <button class="btn btn-success" onclick="javascript:goToHandelBindBtn()">묶음배송보기</button>
+                </div>
+                <div class="col-4  text-right">
                     <select id="adminSearchTxt" class="p-2">
                         <option value="1" <c:if test="${param.adminSearchTxt == '1'}">selected</c:if>>배송준비중</option>
                         <option value="2" <c:if test="${param.adminSearchTxt == '2'}">selected</c:if>>배송중</option>
@@ -81,6 +85,7 @@
                                 <td>아이디</td>
                                 <td>받는분 주소</td>
                                 <td>받는분 핸드폰</td>
+                                <td>구매일</td>
                                 <td>배송상황</td>
                                 <td>배송상황수정</td>
                             </tr>
@@ -88,18 +93,19 @@
                         <tbody>
                             <c:forEach var="d" items="${data}">
                                 <tr>
-                                    <td>${d.buyno}</td>
-                                    <td><img src="${thumbURL}${d.eno}_${fn:split(d.fnames,"[/]")[0]}" style="border-radius: 50%; width: 50px; height: 50px"></td>
-                                    <td>${d.title}</td>
-                                    <td>${d.brand}</td>
-                                    <td>${d.shipPay}</td>
-                                    <td>${d.purchase}</td>
-                                    <td>${d.afterFinalPrice}</td>
-                                    <td>${d.userid}</td>
-                                    <td>${d.deliveryUserAddr1}&nbsp;${d.deliveryUserAddr2}&nbsp;${d.deliveryUserAddr3}</td>
-                                    <td>${d.receivePhone}</td>
-                                    <td><span id="processVal${d.buyno}">${d.process}</span></td>
-                                    <td><select id="processModify${d.buyno}" onchange="processMod('${d.buyno}')">
+                                    <td class="align-middle">${d.buyno}</td>
+                                    <td class="align-middle"><img src="${thumbURL}${d.eno}_${fn:split(d.fnames,"[/]")[0]}" style="border-radius: 50%; width: 50px; height: 50px"></td>
+                                    <td class="align-middle">${d.title}</td>
+                                    <td class="align-middle">${d.brand}</td>
+                                    <td class="align-middle">${d.shipPay}</td>
+                                    <td class="align-middle">${d.purchase}</td>
+                                    <td class="align-middle">${d.afterFinalPrice}</td>
+                                    <td class="align-middle">${d.userid}</td>
+                                    <td class="align-middle">${d.deliveryUserAddr1}&nbsp;${d.deliveryUserAddr2}&nbsp;${d.deliveryUserAddr3}</td>
+                                    <td class="align-middle">${d.receivePhone}</td>
+                                    <td class="align-middle">${fn:substring(d.regdate,0,19)}</td>
+                                    <td class="align-middle"><span id="processVal${d.buyno}">${d.process}</span></td>
+                                    <td class="align-middle"><select id="processModify${d.buyno}" onchange="processMod('${d.buyno}')">
                                         <option <c:if test="${d.process eq '배송준비중'}">selected</c:if> value="배송준비중">배송준비중</option>
                                         <option <c:if test="${d.process eq '배송중'}">selected</c:if> value="배송중">배송중</option>
                                         <option <c:if test="${d.process eq '배송완료'}">selected</c:if> value="배송완료">배송완료</option>

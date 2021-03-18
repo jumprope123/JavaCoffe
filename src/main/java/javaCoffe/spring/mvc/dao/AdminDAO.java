@@ -1,5 +1,6 @@
 package javaCoffe.spring.mvc.dao;
 
+import javaCoffe.spring.mvc.vo.BuyPageBindVO;
 import javaCoffe.spring.mvc.vo.BuyPageVO;
 import javaCoffe.spring.mvc.vo.EshopVO;
 
@@ -13,9 +14,21 @@ public interface AdminDAO {
 
     void processModify(Map<String, Object> map);
 
+    void processBindModify(Map<String, Object> map);
+
     int countData();
+
+    int countBindData();
 
     List<BuyPageVO> readAllDataSearch(Map<String, Object> map);
 
+    List<BuyPageBindVO> readAllBindDataSearch(Map<String, Object> map);
+
     int countDataSearch(String adminSearchTxt);
+
+    int countBindDataSearch(String adminSearchTxt);
+
+    List<BuyPageBindVO> readAllBindData(int snum);
+
+
 }

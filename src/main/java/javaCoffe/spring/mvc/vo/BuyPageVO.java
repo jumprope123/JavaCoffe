@@ -28,6 +28,7 @@ public class BuyPageVO {
     private int afterFinalPrice;
     private int eno;
     private String process;
+    private String regdate;// 구매일
 
     public BuyPageVO() {
     }
@@ -276,6 +277,14 @@ public class BuyPageVO {
 
     public void setProcess(String process) {
         this.process = process;
+    }
+
+    public String getRegdate() {
+        return regdate;
+    }
+
+    public void setRegdate(String regdate) {
+        this.regdate = regdate;
     }
 }
 

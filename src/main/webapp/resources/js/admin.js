@@ -62,12 +62,12 @@ $(document).ready(function () {
     })
 }); // 이미지파일 업로드 기능 구현
 
-$('#inputOK').on('click',function () {
+$('#AdmininputOKBtn').on('click',function () {
     if ($('#title').val()=='') alert('제품명을 입력하세요');
     else if ($('#brand').val()=='') alert('브랜드명을 입력하세요');
     else if ($('#ogprice').val()=='') alert('할인전 가격으로 노출할 가격을 입력하세요(가짜가격)');
     else if ($('#dcprice').val()=='') alert('실제로 판매하실 가격을 입력하세요(진짜가격)');
-    else if ($('#dcprice').val() > $('#ogprice').val()) alert('할인 전 가격이 할인 후 가격보다 클 수 없습니다')
+    else if (parseInt($('#dcprice').val()) > parseInt($('#ogprice').val())) alert('할인 전 가격이 할인 후 가격보다 클 수 없습니다')
     else if ($('#bigGenre').val()=='') alert('대분류는 비어있을수가 없습니다. 관리자에게 연락하세요');
     else if ($('#smallGenre').val()=='') alert('소분류는 비어있을수가 없습니다. 관리자에게 연락하세요');
     else if ($('#code').val()=='') alert('상품코드를 입력하세요');
@@ -83,31 +83,40 @@ $('#inputOK').on('click',function () {
     }
 }) // 입력완료 버튼 클릭시 form value값들이 모두 리셋되는거 수정해야함.
 
-$('#cancel').on('click',function () {
+$('#AdminInputCancelBtn').on('click',function () {
     if (confirm('정말 취소하시겠습니까?'))
     history.back();
 }) //취소하기 버튼 클릭시
 
-function processMod(buyno) {
-    var status = $('#processModify'+buyno).val();
-    $('#processVal'+buyno).text(status);
+function processBindMod(buyno) {
+    var status = $('#processBindModify'+buyno).val();
+    $('#processBindVal'+buyno).text(status);
     $.ajax({
-        url:'/admin/processModify',
+        url:'/admin/processBindModify',
         type: 'GET',
         data: {buyno: buyno, process:status}
     })
     alert(buyno+' 번의 배송상황을 '+status+' 로 수정하였습니다');
 }
 
-$('#adminFindBtn').on('click',function () {
-    var adminSearchTxt = $('#adminSearchTxt').val()
-    location.href = '/admin/find?cp=1&adminSearchTxt='+adminSearchTxt;
+$('#adminBindFindBtn').on('click',function () {
+    var adminSearchTxt = $('#adminBindSearchTxt').val()
+    location.href = '/admin/findBind?cp=1&adminSearchTxt='+adminSearchTxt;
+})
+
+
+$('#goToAdminHandle').on('click',function () {
+    location.href = '/admin/handle';
 })
 
 $('#goToAdminWrite').on('click',function () {
     location.href = '/admin/write';
 })
 
-$('#goToAdminHandle').on('click',function () {
+function goToHandelBtn(){
     location.href = '/admin/handle';
-})
+}
+
+function goToHandelBindBtn(){
+    location.href = '/admin/handleBind';
+}

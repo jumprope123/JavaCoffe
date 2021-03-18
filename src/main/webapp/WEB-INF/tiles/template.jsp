@@ -51,7 +51,6 @@
 <script src="/js/login.js"></script>
 <script src="/js/join.js"></script>
 <script src="/js/zipcode.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <%-- Login,Joing - Woo --%>
 <script src="/js/board.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -67,6 +66,7 @@
 <script src="/js/eshop.js"></script>
 <script src="/js/coffeMachine.js"></script>
 <script src="/js/buylist.js"></script>
+<script src="/js/buylistBind.js"></script>
 <script src="/js/memberInfo.js"></script>
 <script src="/js/mybasket.js"></script>
 <script src="/js/coffeMachine.js"></script>

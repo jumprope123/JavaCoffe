@@ -18,7 +18,7 @@
 
 <div id="main">
     <div class="row">
-        <form id="buyPageForm" class="col-8 offset-2">
+        <form id="buyPageBindForm" class="col-8 offset-2">
             <div class="row mt-3">
                 <div class="col-6 text-left h4 font-weight-bold">주문/결제</div>
                 <div class="col-6 text-right">장바구니<i class="bi bi-chevron-right"></i><span class="font-weight-bold">주문/결제</span><i class="bi bi-chevron-right"></i>결제완료</div>
@@ -32,35 +32,40 @@
                 <div class="col-1 text-center">할인액</div>
                 <div class="col-2 text-center">상품금액(할인포함)</div>
             </div> <%--최상단 글정보--%>
-            <div class="row align-items-center mt-3">
-                <div class="col-5 text-center">
-                    <div class="row align-items-center">
-                        <div class="col-3">
-                            <img src="${thumbURL}${evo.eno}_${fn:split(evo.fnames,"[/]")[0]}" style="border-radius: 50%">
-                            <input type="hidden" name="fnames" value="${evo.fnames}">
-                            <input type="hidden" name="eno" value="${evo.eno}">
-                        </div> <%--사진--%>
-                        <div class="col-9 font-weight-bold text-center">${evo.title}</div>
-                        <input type="hidden" name="title" value="${evo.title}"><%--상품정보--%>
+            <c:forEach var="mbe" items="${bbvos}">
+                <div class="row align-items-center mt-3">
+                    <div class="col-5 text-center">
+                        <div class="row align-items-center">
+                            <div class="col-3">
+                                <img src="${thumbURL}${mbe.eno}_${fn:split(mbe.fnames,"[/]")[0]}" style="border-radius: 50%" width="50px"; height="50px;">
+                                <input type="hidden" name="fnames" value="${mbe.fnames}">
+                                <input type="hidden" name="eno" value="${mbe.eno}">
+                            </div> <%--사진--%>
+                            <div class="col-9 font-weight-bold text-center">${mbe.title}</div>
+                            <input type="hidden" name="title" value="${mbe.title}"><%--상품정보--%>
+                        </div>
+                    </div>
+                    <input type="hidden" name="code" value="${mbe.mycode}">
+                    <div class="col-2 text-center">${mbe.brand}</div>
+                    <input type="hidden" name="brand" value="${mbe.brand}">
+                    <div class="col-1 text-center">${mbe.shipPay}원</div>
+                    <input type="hidden" name="shipPay" value="${mbe.shipPay}">
+                    <div class="col-1 text-center">${mbe.purchase}개</div>
+                    <input type="hidden" name="purchase" value="${mbe.purchase}">
+
+                    <div class="col-1 text-center">(-) ${(mbe.ogPrice * mbe.purchase) - (mbe.dcPrice * mbe.purchase)}원</div>
+                    <input type="hidden" name="discount" value="${(mbe.ogPrice * mbe.purchase) - (mbe.dcPrice * mbe.purchase)}">
+                    <div class="col-2">
+                        <div class="row">
+                            <div class="col-12 text-center" style="color: RGB(193,163,151);text-decoration-line: line-through; font-size: 0.8em;">${mbe.ogPrice * mbe.purchase}원</div> <%--할인전가격--%>
+                            <input type="hidden" name="TotalOgPrice" value="${mbe.ogPrice * mbe.purchase}">
+                            <div class="col-12 text-center">${mbe.dcPrice * mbe.purchase}원</div> <%--할인후가격--%>
+                            <input type="hidden" name="totalDcPrice" value="${mbe.dcPrice * mbe.purchase}">
+
+                        </div>
                     </div>
                 </div>
-                <div class="col-2 text-center">${evo.brand}</div>
-                <input type="hidden" name="brand" value="${evo.brand}">
-                <div class="col-1 text-center">${evo.shipPay}원</div>
-                <input type="hidden" name="shipPay" value="${evo.shipPay}">
-                <div class="col-1 text-center">${salesCnt}개</div>
-                <input type="hidden" name="purchase" value="${salesCnt}">
-                <div class="col-1 text-center">(-) ${(evo.ogprice * salesCnt) - (evo.dcprice * salesCnt)}원</div>
-                <input type="hidden" name="discount" value="${(evo.ogprice * salesCnt) - (evo.dcprice * salesCnt)}">
-                <div class="col-2">
-                    <div class="row">
-                        <div class="col-12 text-center" style="color: RGB(193,163,151);text-decoration-line: line-through; font-size: 0.8em;">${evo.ogprice * salesCnt}원</div> <%--할인전가격--%>
-                        <input type="hidden" name="TotalOgprice" value="${evo.ogprice * salesCnt}">
-                        <div class="col-12 text-center">${evo.dcprice * salesCnt}원</div> <%--할인후가격--%>
-                        <input type="hidden" name="totalDcprice" value="${evo.dcprice * salesCnt}">
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
             <div class="row mt-3"><div class="col-12" style="border-bottom: 1px dotted green;"></div></div>
             <div class="row mt-5">
                 <div class="col-9">
@@ -96,15 +101,15 @@
                     <input type="hidden" name="userid" value="${UID}">
                     <div class="row mt-3">
                         <div class="col-2 offset-1">이름</div>
-                        <input class="form-control col-5" name="orderUsername" value="${mvo.name}" readonly>
+                        <input class="form-control col-5" name="orderUserName" value="${mvo.name}" readonly>
                     </div>
                     <div class="row">
                         <div class="col-2 offset-1">전화번호</div>
-                        <input class="form-control col-5" name="orderUserphone" value="${mvo.phone}" readonly>
+                        <input class="form-control col-5" name="orderUserPhone" value="${mvo.phone}" readonly>
                     </div>
                     <div class="row">
                         <div class="col-2 offset-1">메일주소</div>
-                        <input class="form-control col-5" name="orderUseremail" value="${mvo.email}" readonly>
+                        <input class="form-control col-5" name="orderUserEmail" value="${mvo.email}" readonly>
                     </div>
                     <div class="row">
                         <div class="col-2 offset-1">요청사항</div>
@@ -141,17 +146,17 @@
                     <div class="row mt-4 align-items-center">
                         <div class="col-2 offset-1">보유</div>
                         <div class="col-3 text-right" style="border-bottom: 1px solid RGB(229,229,229)">${mvo.points}원</div>
-                        <input type="hidden" id="buyPagePoints" name="beforePoint" value="${mvo.points}">
+                        <input type="hidden" id="buyPagePointsBind" name="beforePoint" value="${mvo.points}">
                     </div>
                     <div class="row mt-2 align-items-center">
                         <div class="col-2 offset-1">사용</div>
-                        <input type="number" class="col-3 form-control" id="buyPageUsePoints" name="buyPageUsePoints" value="0">
+                        <input type="number" class="col-3 form-control" id="buyPageUsePointsBind" name="buyPageUsePoints" value="0">
                     </div>
                     <div class="row mt-2 align-items-center">
                         <div class="col-2 offset-1">적립</div>
-                        <div class="col-3 text-right" style="border-bottom: 1px solid RGB(229,229,229)"><span id="forPlusPoint"><fmt:parseNumber value="${(evo.dcprice * salesCnt)/10}" integerOnly="true" /></span>원</div>
+                        <div class="col-3 text-right" style="border-bottom: 1px solid RGB(229,229,229)"><span id="forPlusPointBind"><fmt:parseNumber value="${(allproductprice)/10}" integerOnly="true" /></span>원</div>
                         <div class="col-6 text-danger">총 상품금액의 10%가 포인트로 적립됩니다.</div>
-                        <input type="hidden" name="plusPoint" id="plusPoint" >
+                        <input type="hidden" name="plusPoint" id="plusPointBind" >
                     </div>
                 </div>
             </div>
@@ -159,17 +164,19 @@
 
             <div class="row mt-5"><div class="col-12" style="border-bottom: 1px solid grey;"></div></div>
             <div class="row mt-3">
-                <div class="col-4 offset-4 text-center">총 상품금액 : ${evo.dcprice * salesCnt}원</div>
-                <div class="col-4 offset-4 text-center">배송비 : (+)${evo.shipPay}원</div>
-                <div class="col-4 offset-4 text-center">포인트 : (-)<span id="finalUsingPoint">0</span>원</div>
-                <input type="hidden" id="beforeFinalPrice" value="${(evo.dcprice * salesCnt) + evo.shipPay}">
-                <div class="col-12 h4 text-center">총 결제금액 : <span class="text-danger h1"><span id="finalPrice">${(evo.dcprice * salesCnt) + evo.shipPay}</span>원</span></div>
-                <input type="hidden" id="afterFinalPrice" name="afterFinalPrice" value="${(evo.dcprice * salesCnt) + evo.shipPay}">
+                <div class="col-4 offset-4 text-center">총 상품금액 : ${allproductprice}원</div>
+                <div class="col-4 offset-4 text-center">배송비 : (+)${allshipPay}원</div>
+
+                <div class="col-4 offset-4 text-center">포인트 : (-)<span id="finalUsingPointBind">0</span>원</div>
+                <input type="hidden" id="beforeFinalPriceBind" value="${totalprice}">
+                <div class="col-12 h4 text-center">총 결제금액 : <span class="text-danger h1"><span id="finalPriceBind">${totalprice}</span>원</span></div>
+                <input type="hidden" id="afterFinalPriceBind" name="afterFinalPrice" value="${totalprice}">
+
             </div>
             <div class="row mt-3 mb-3">
                 <div class="col-12 text-center">
-                    <button type="button" id="buylistOkBtn" class="btn-lg btn-success">결제하기</button>
-                    <button type="button" id="buylistcancelBtn" class="btn-lg btn-danger">취소하기</button>
+                    <button type="button" id="buylistBindOkBtn" class="btn-lg btn-success">결제하기</button>
+                    <button type="button" id="buylistBindcancelBtn" class="btn-lg btn-danger">취소하기</button>
                 </div>
             </div>
         </form>

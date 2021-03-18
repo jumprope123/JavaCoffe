@@ -1,12 +1,11 @@
 package javaCoffe.spring.mvc.dao;
 
-import javaCoffe.spring.mvc.vo.BuyPageVO;
-import javaCoffe.spring.mvc.vo.EshopVO;
-import javaCoffe.spring.mvc.vo.MemberVO;
+import javaCoffe.spring.mvc.vo.*;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
 
 @Repository("buydao")
@@ -31,6 +30,16 @@ public class BuyPageDAOImpl implements BuyPageDAO{
     @Override
     public int changePoints(Map<String, Object> map) {
         return sqlSession.update("buyPage.changePoints",map);
+    }
+
+    @Override
+    public List<MyBasket_EshopVO> selectMBEL(int[] mbno) {
+        return sqlSession.selectList("buyPage.selectMBEL",mbno);
+    }
+
+    @Override
+    public int insertBindData(BuyPageBindVO bbvo) {
+        return sqlSession.insert("buyPage.insertBindData",bbvo);
     }
 
 

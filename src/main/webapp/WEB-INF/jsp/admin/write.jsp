@@ -101,8 +101,8 @@
         </div>
         <div class="row">
             <div class="col-6 offset-2 text-center">
-                <button id="inputOK" class="btn btn-success mr-1 singleDay">입력완료</button>
-                <button id="cancel" class="btn btn-danger ml-1 singleDay">취소하기</button>
+                <button id="AdmininputOKBtn" class="btn btn-success mr-1 singleDay">입력완료</button>
+                <button id="AdminInputCancelBtn" class="btn btn-danger ml-1 singleDay">취소하기</button>
             </div>
             <div class="col-4"></div> <%--칸맞춤용div--%>
         </div>

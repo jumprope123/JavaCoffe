@@ -1,9 +1,8 @@
 package javaCoffe.spring.mvc.dao;
 
-import javaCoffe.spring.mvc.vo.BuyPageVO;
-import javaCoffe.spring.mvc.vo.EshopVO;
-import javaCoffe.spring.mvc.vo.MemberVO;
+import javaCoffe.spring.mvc.vo.*;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -16,4 +15,8 @@ public interface BuyPageDAO {
     int insertData(BuyPageVO buyvo);
 
     int changePoints(Map<String, Object> map);
+
+    List<MyBasket_EshopVO> selectMBEL(int[] mbno);
+
+    int insertBindData(BuyPageBindVO bbvo);
 }
