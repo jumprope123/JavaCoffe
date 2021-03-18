@@ -50,12 +50,16 @@
             <div class="row">
                 <div class="col-10 offset-1 text-center">
                     <div class="row mt-4">
-                        <div class="col-12 h1">주문상황 확인 시스템</div>
+                        <div class="col-12 h1">주문상황 확인 시스템<span class="text-danger">(단품배송)</span></div>
                     </div>
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-10 offset-1  text-right">
+                <div class="col-4 offset-4 text-center">
+                    <button class="btn btn-danger" onclick="javascript:goToHandelBtn()">단품배송보기</button>
+                    <button class="btn btn-success" onclick="javascript:goToHandelBindBtn()">묶음배송보기</button>
+                </div>
+                <div class="col-4  text-right">
                     <select id="adminSearchTxt" class="p-2">
                         <option value="1" <c:if test="${param.adminSearchTxt == '1'}">selected</c:if>>배송준비중</option>
                         <option value="2" <c:if test="${param.adminSearchTxt == '2'}">selected</c:if>>배송중</option>

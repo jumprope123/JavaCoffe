@@ -88,26 +88,31 @@ $('#AdminInputCancelBtn').on('click',function () {
     history.back();
 }) //취소하기 버튼 클릭시
 
-function processMod(buyno) {
-    var status = $('#processModify'+buyno).val();
-    $('#processVal'+buyno).text(status);
+function processBindMod(buyno) {
+    var status = $('#processBindModify'+buyno).val();
+    $('#processBindVal'+buyno).text(status);
     $.ajax({
-        url:'/admin/processModify',
+        url:'/admin/processBindModify',
         type: 'GET',
         data: {buyno: buyno, process:status}
     })
     alert(buyno+' 번의 배송상황을 '+status+' 로 수정하였습니다');
 }
 
-$('#adminFindBtn').on('click',function () {
-    var adminSearchTxt = $('#adminSearchTxt').val()
-    location.href = '/admin/find?cp=1&adminSearchTxt='+adminSearchTxt;
+$('#adminBindFindBtn').on('click',function () {
+    var adminSearchTxt = $('#adminBindSearchTxt').val()
+    location.href = '/admin/findBind?cp=1&adminSearchTxt='+adminSearchTxt;
 })
 
-$('#goToAdminWrite').on('click',function () {
-    location.href = '/admin/write';
-})
 
 $('#goToAdminHandle').on('click',function () {
     location.href = '/admin/handle';
 })
+
+function goToHandelBtn(){
+    location.href = '/admin/handle';
+}
+
+function goToHandelBindBtn(){
+    location.href = '/admin/handleBind';
+}

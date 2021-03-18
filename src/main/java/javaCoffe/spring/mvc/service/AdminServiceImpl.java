@@ -2,6 +2,7 @@ package javaCoffe.spring.mvc.service;
 
 import javaCoffe.spring.mvc.dao.AdminDAO;
 import javaCoffe.spring.mvc.utils.ImageUploadUtilForAdmin;
+import javaCoffe.spring.mvc.vo.BuyPageBindVO;
 import javaCoffe.spring.mvc.vo.BuyPageVO;
 import javaCoffe.spring.mvc.vo.EshopVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,12 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
+    public List<BuyPageBindVO> readBuyBindData(String cp) {
+        int snum = (Integer.parseInt(cp) - 1) * 30;
+        return adao.readAllBindData(snum);
+    }
+
+    @Override
     public void processModi(int buyno, String process) {
         Map<String,Object> map = new HashMap<>();
         map.put("buyno",buyno);
@@ -66,8 +73,21 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
+    public void processBindModi(int buyno, String process) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("buyno",buyno);
+        map.put("process",process);
+        adao.processBindModify(map);
+    }
+
+    @Override
     public int countData() {
         return adao.countData();
+    }
+
+    @Override
+    public int countBindData() {
+        return adao.countBindData();
     }
 
     @Override
@@ -80,7 +100,22 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
+    public List<BuyPageBindVO> readBuyBindData(String cp, String adminSearchTxt) {
+        int snum = (Integer.parseInt(cp) - 1) * 30;
+        Map<String,Object> map = new HashMap<>();
+        map.put("snum",snum);
+        map.put("adminSearchTxt",adminSearchTxt);
+        return adao.readAllBindDataSearch(map);
+    }
+
+    @Override
     public int countData(String adminSearchTxt) {
         return adao.countDataSearch(adminSearchTxt);
     }
+
+    @Override
+    public int countBindData(String adminSearchTxt) {
+        return adao.countBindDataSearch(adminSearchTxt);
+    }
+
 }

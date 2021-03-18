@@ -1,5 +1,6 @@
 package javaCoffe.spring.mvc.dao;
 
+import javaCoffe.spring.mvc.vo.BuyPageBindVO;
 import javaCoffe.spring.mvc.vo.BuyPageVO;
 import javaCoffe.spring.mvc.vo.EshopVO;
 import org.apache.ibatis.session.SqlSession;
@@ -32,8 +33,18 @@ public class AdminDAOImpl implements AdminDAO{
     }
 
     @Override
+    public void processBindModify(Map<String, Object> map) {
+        sqlSession.update("admin.processBindModify",map);
+    }
+
+    @Override
     public int countData() {
         return sqlSession.selectOne("admin.countData");
+    }
+
+    @Override
+    public int countBindData() {
+        return sqlSession.selectOne("admin.countBindData");
     }
 
     @Override
@@ -42,7 +53,22 @@ public class AdminDAOImpl implements AdminDAO{
     }
 
     @Override
+    public List<BuyPageBindVO> readAllBindDataSearch(Map<String, Object> map) {
+        return sqlSession.selectList("admin.selectAllBindDataSearch",map);
+    }
+
+    @Override
     public int countDataSearch(String adminSearchTxt) {
         return sqlSession.selectOne("admin.countDataSearch",adminSearchTxt);
+    }
+
+    @Override
+    public int countBindDataSearch(String adminSearchTxt) {
+        return sqlSession.selectOne("admin.countBindDataSearch",adminSearchTxt);
+    }
+
+    @Override
+    public List<BuyPageBindVO> readAllBindData(int snum) {
+        return sqlSession.selectList("admin.selectAllBindData",snum);
     }
 }
