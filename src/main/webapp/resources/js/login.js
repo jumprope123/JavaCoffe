@@ -32,21 +32,38 @@ if (joinorbind == 100){
 }
 /*  여기서 부터 카카오  코드*/
 function logout() {
+    localStorage.clear();
+    sessionStorage.clear();
     alert('로그아웃 완료')
 }
 
-/*  여기서 부터 카카오  코드*/
+/* ========================== 여기서 부터 카카오  코드*/
 
+    window.Kakao.init("9c38cdfacc89f99ac0fe0615bba90cd9")
+    console.log(Kakao.isInitialized());
 
-//로그아웃 끝
+    function kakaoLogin(){
+    window.Kakao.Auth.login({
+        scope:'profile,account_email,gender',
+        success: function(authObj){
+            console.log(authObj);
+            window.Kakao.API.request({
+                url:'/v2/user/me',
+                success: res => {
+                    const kakao_account = res.kakao_account;
+                    console.log(kakao_account);
+                }
+            });
+        }
+    })
 
-/*$(document).click(function () {
-    document.getElementById("hloginbtn1").onclick = function (){
-        sessionStorage.removeItem("kakaoID")
-        alert('로그아웃 뱀')
-    }
-})*/
+}
 
+function kakaoLogout() {
+    Kakao.Auth.logout(function(response) {
+        alert(response + 'logout');
+    });
+}
 
 $('#hjoinbtn').on('click',function () {
     location.href = "/join/agree"
