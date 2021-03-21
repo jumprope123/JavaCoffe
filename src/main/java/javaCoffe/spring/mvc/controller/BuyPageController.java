@@ -1,5 +1,6 @@
 package javaCoffe.spring.mvc.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import javaCoffe.spring.mvc.service.BuyPageService;
 import javaCoffe.spring.mvc.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ public class BuyPageController {
         System.out.println(bbvo.getMycode());
         System.out.println("--------------------------");
         int allproductprice = 0;
-        int allshipPay = 2500; //묶음배송시 shipPay는 .. ?
+        int allshipPay = 0; //묶음배송시 shipPay는 .. ?
 
         for (int i=0; i<bbvoCnt; i++){
             String eno = bbvo.getEno().split(",")[i];
@@ -78,12 +79,14 @@ public class BuyPageController {
             int totalDcPrice = Integer.parseInt(dcPrice) * Integer.parseInt(purchase);
             allproductprice = allproductprice + totalDcPrice;
 
+            allshipPay = allshipPay + Integer.parseInt(shipPay);
+
             buyBindVO b = new buyBindVO(eno,fnames,brand, title,shipPay,purchase, discount, dcPrice, ogPrice, mycode);
 
             bbvos.add(b);
         }
-
         int totalprice = allproductprice + allshipPay;
+
 
         mv.addObject("allproductprice",allproductprice);
         mv.addObject("allshipPay",allshipPay);
@@ -111,4 +114,16 @@ public class BuyPageController {
         mv.addObject("UID",UID);
         return mv;
     }
+
+    @PostMapping("/buylist/buyBindProcess")
+    public String buyBindProcess(BuyPageBindVO bbvo){//따로 결재를 안할거라서 그냥 String리턴으로 받음
+        String returnPage = "redirect:/buylist/buyOK"; //지금은 ok페이지만존재
+        int insertResult = buysrv.insertBindData(bbvo);
+        if (insertResult > 0) {
+            returnPage = "redirect:/buylist/buyOK";
+        }
+        buysrv.changePoint(bbvo);//사용한 포인트만큼 차감하고, 적립된 포인트만큼 증가시켜주기
+        return returnPage;
+    }
+
 }

@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-10 offset-1 text-center">
                     <div class="row mt-4">
-                        <div class="col-12 h1">주문상황 확인 시스템<span class="text-danger">(단품배송)</span></div>
+                        <div class="col-12 h1">주문상황 확인 시스템<span class="text-danger">(묶음배송)</span></div>
                     </div>
                 </div>
             </div>
@@ -60,23 +60,22 @@
                     <button class="btn btn-success" onclick="javascript:goToHandelBindBtn()">묶음배송보기</button>
                 </div>
                 <div class="col-4  text-right">
-                    <select id="adminSearchTxt" class="p-2">
+                    <select id="adminBindSearchTxt" class="p-2">
                         <option value="1" <c:if test="${param.adminSearchTxt == '1'}">selected</c:if>>배송준비중</option>
                         <option value="2" <c:if test="${param.adminSearchTxt == '2'}">selected</c:if>>배송중</option>
                         <option value="3" <c:if test="${param.adminSearchTxt == '3'}">selected</c:if>>배송완료</option>
                         <option value="4" <c:if test="${param.adminSearchTxt == '4'}">selected</c:if>>반품요청</option>
                         <option value="5" <c:if test="${param.adminSearchTxt == '5'}">selected</c:if>>반품</option>
                     </select>
-                    <button type="button" id="adminFindBtn" class="btn btn-dark"><i class="bi bi-search bidragup"></i>검색하기</button>
+                    <button type="button" id="adminBindFindBtn" class="btn btn-dark"><i class="bi bi-search bidragup"></i>검색하기</button>
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-12">
-                    <table class="table table-hover ">
+                <div class="col-12 table-responsive">
+                    <table class="table table-hover align-middle">
                         <thead>
                             <tr>
                                 <td>번호</td>
-                                <td>사진</td>
                                 <td>제목</td>
                                 <td>브랜드</td>
                                 <td>배송비</td>
@@ -93,19 +92,18 @@
                         <tbody>
                             <c:forEach var="d" items="${data}">
                                 <tr>
-                                    <td class="align-middle">${d.buyno}</td>
-                                    <td class="align-middle"><img src="${thumbURL}${d.eno}_${fn:split(d.fnames,"[/]")[0]}" style="border-radius: 50%; width: 50px; height: 50px"></td>
-                                    <td class="align-middle">${d.title}</td>
-                                    <td class="align-middle">${d.brand}</td>
-                                    <td class="align-middle">${d.shipPay}</td>
-                                    <td class="align-middle">${d.purchase}</td>
+                                    <td class="align-middle font-weight-bold">${d.buyno}</td>
+                                    <td class="align-middle">${fn:replace(d.title,",","<br/>")}</td>
+                                    <td class="align-middle">${fn:replace(d.brand,",","<br/>")}</td>
+                                    <td class="align-middle">${fn:replace(d.shipPay,",","<br/>")}</td>
+                                    <td class="align-middle">${fn:replace(d.purchase,",","<br/>")}</td>
                                     <td class="align-middle">${d.afterFinalPrice}</td>
                                     <td class="align-middle">${d.userid}</td>
                                     <td class="align-middle">${d.deliveryUserAddr1}&nbsp;${d.deliveryUserAddr2}&nbsp;${d.deliveryUserAddr3}</td>
                                     <td class="align-middle">${d.receivePhone}</td>
                                     <td class="align-middle">${fn:substring(d.regdate,0,19)}</td>
-                                    <td class="align-middle"><span id="processVal${d.buyno}">${d.process}</span></td>
-                                    <td class="align-middle"><select id="processModify${d.buyno}" onchange="processMod('${d.buyno}')">
+                                    <td class="align-middle"><span id="processBindVal${d.buyno}">${d.process}</span></td>
+                                    <td class="align-middle"><select id="processBindModify${d.buyno}" onchange="processBindMod('${d.buyno}')">
                                         <option <c:if test="${d.process eq '배송준비중'}">selected</c:if> value="배송준비중">배송준비중</option>
                                         <option <c:if test="${d.process eq '배송중'}">selected</c:if> value="배송중">배송중</option>
                                         <option <c:if test="${d.process eq '배송완료'}">selected</c:if> value="배송완료">배송완료</option>

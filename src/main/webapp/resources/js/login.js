@@ -5,9 +5,9 @@ $('#Login_Btn').on('click',function (){
     location.href = '/index';
 });
 
-$('#hloginbtn1').on('click',function (){
+/*$('#hloginbtn1').on('click',function (){   <<<<< 잠깐 종료 !!!!!!!!!!!
     location.href = '/login/loginDel';
-});
+});*/
 
 $('#h_mybasket').on('click',function (){
     location.href = '/mybasket/list';
@@ -31,11 +31,14 @@ if (joinorbind == 100){
     alert('회원가입 후 sns연동해주세요.');
 }
 /*  여기서 부터 카카오  코드*/
-function logout() {
-    alert('로그아웃 완료')
-}
 
-/*  여기서 부터 카카오  코드*/
+$(function (){
+    $('#hloginbtn1').click(function (){
+        location.href = '/login/loginDel'
+        sessionStorage.clear();
+    })
+})
+
 
 
 //로그아웃 끝
