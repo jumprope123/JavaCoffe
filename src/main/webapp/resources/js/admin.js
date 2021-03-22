@@ -120,3 +120,21 @@ function goToHandelBtn(){
 function goToHandelBindBtn(){
     location.href = '/admin/handleBind';
 }
+
+let rmud_num = $('#eshop_remove_update_rmud_num').val();
+for (let iii_idx = 1; iii_idx <= rmud_num; iii_idx++) {
+    $("#eshop_remove_btn"+iii_idx).on('click', function () {
+        if (confirm('정말로 이 상품을 E-shop 에서 삭제하겠습니까?')) {
+            let rmudnotemp = $('#eshop_remove_update_index'+iii_idx).val()
+            // location.href = '/eshop/delete'
+            $.ajax({
+                url: '/eshop/delete',
+                type: 'POST',
+                data: {rmudno: rmudnotemp}
+            })
+            alert('E-shop 에서 해당 상품이 삭제되었습니다.');
+            // location.href = '/eshop/list';
+        }
+    });
+}
+// eshop_update_btn

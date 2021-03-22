@@ -20,6 +20,8 @@ public interface AdminService {
 
     int countData();
 
+    boolean remove_eshop(int eno);
+
     int countBindData();
 
     List<BuyPageVO> readBuyData(String cp, String adminSearchTxt);

@@ -91,6 +91,15 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
+    public boolean remove_eshop(int eno) {
+        boolean isOk = false;
+        int cnt = adao.delete_eshop(eno);
+        if(cnt>0) isOk = true;
+
+        return isOk;
+    }
+
+    @Override
     public List<BuyPageVO> readBuyData(String cp, String adminSearchTxt) {
         int snum = (Integer.parseInt(cp) - 1) * 30;
         Map<String,Object> map = new HashMap<>();

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -24,6 +25,17 @@ public class AdminController {
         mv.setViewName("admin/write.tiles");
         String UID = (String) sess.getAttribute("UID");
         mv.addObject("UID",UID);
+        return mv;
+    }
+
+
+    @PostMapping("/eshop/delete") //삭제하기
+    public ModelAndView delete(ModelAndView mv, HttpServletRequest req){
+        mv.setViewName("eshop/list.tiles");
+        int eno = Integer.parseInt(req.getParameter("rmudno"));
+        System.out.println(eno);
+        adsrv.remove_eshop(eno);
+
         return mv;
     }
 

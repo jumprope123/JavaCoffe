@@ -9,6 +9,28 @@
         values (#{title}, #{brand}, #{ogprice}, #{dcprice}, #{bigGenre}, #{smallGenre}, #{code}, #{simpleExplain}, #{shipPay}, #{stuck}, #{fsizes}, #{fnames}, #{uuid});
     </insert>
 
+    <update id="updateEshop" statementType="PREPARED" parameterType="javaCoffe.spring.mvc.vo.EshopVO">
+        update eshop
+        set title = #{title},
+            brand = #{brand},
+            ogprice = #{ogprice},
+            dcprice = #{dcprice},
+            bigGenre = #{bigGenre},
+            smallGenre = #{smallGenre},
+            code = #{code},
+            simpleExplain = #{simpleExplain},
+            shipPay = #{shipPay},
+            stuck = #{stuck},
+            fsizes = #{fsizes},
+            fnames = #{fnames},
+            uuid = #{uuid}
+        where eno = #{eno}
+    </update>
+
+    <delete id="deleteEshop" statementType="PREPARED" parameterType="int">
+        delete from eshop where eno = #{eno}
+    </delete>
+
     <select id="lastEnoId" statementType="PREPARED" resultType="String">
         select AUTO_INCREMENT -1 eno from information_schema.TABLES where TABLE_NAME = 'eshop';
     </select>

@@ -48,6 +48,11 @@ public class AdminDAOImpl implements AdminDAO{
     }
 
     @Override
+    public int delete_eshop(int eno) {
+        return sqlSession.delete("admin.deleteEshop", eno);
+    }
+
+    @Override
     public List<BuyPageVO> readAllDataSearch(Map<String, Object> map) {
         return sqlSession.selectList("admin.selectAllDataSearch",map);
     }

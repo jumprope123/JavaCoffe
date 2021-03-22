@@ -68,6 +68,7 @@ function changecart(x) {
     if ($(this).is(":checked")) {  // 체크되면 체크 항목의 가격 배송비를 전체 금액에 합산
         product_static_temp = 0;
         shipPay_static_temp = 0;
+        shipPay_static_temp1 = 0;
         total_price_temp = 0;
         for (let vv_idx = 1; vv_idx <= mbnum; vv_idx++) {
             let ttt = "#mb_product_cb" + vv_idx;
@@ -78,7 +79,10 @@ function changecart(x) {
                 product_static_temp = product_static_temp + product_temp;
 
                 shipPay_temp = parseInt($(sss).text());
-                shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+                if(shipPay_temp > shipPay_static_temp){
+                    shipPay_static_temp = shipPay_temp;
+                    shipPay_static_temp1 = shipPay_static_temp;
+                }
 
                 total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
             }
@@ -87,6 +91,7 @@ function changecart(x) {
     else {
         product_static_temp = 0;
         shipPay_static_temp = 0;
+        shipPay_static_temp1 = 0;
         total_price_temp = 0;
         for (let vv_idx = 1; vv_idx <= mbnum; vv_idx++) {
             let ttte = "#mb_product_cb" + vv_idx;
@@ -97,7 +102,10 @@ function changecart(x) {
                 product_static_temp = product_static_temp + product_temp;
 
                 shipPay_temp = parseInt($(ssse).text());
-                shipPay_static_temp = shipPay_static_temp + shipPay_temp;
+                if(shipPay_temp > shipPay_static_temp){
+                    shipPay_static_temp = shipPay_temp;
+                    shipPay_static_temp1 = shipPay_static_temp;
+                }
 
                 total_price_temp = total_price_temp + shipPay_static_temp + product_static_temp;
             }
@@ -200,8 +208,22 @@ function changecart(x) {
             // 스택 총 값에 해당 스택 상품값과 스택 배송비 뺴는 로직
         // }
     $("#total_mb_product_price").text(product_static_temp);
-    $("#total_mb_shipPay_price").text(shipPay_static_temp);
-    $("#total_mb_order_price").text(product_static_temp + shipPay_static_temp);
+
+    if((product_static_temp >= 60000) || (shipPay_static_temp = 0)){
+        $("#total_mb_shipPay_price").text("무료");
+        total_price_temp = product_static_temp;
+    }
+    else {
+        if (shipPay_static_temp = 0){
+            $("#total_mb_shipPay_price").text("무료");
+            total_price_temp = product_static_temp;
+        }else{
+            $("#total_mb_shipPay_price").text(shipPay_static_temp1 + "원");
+            total_price_temp = product_static_temp + shipPay_static_temp1;
+        }
+    }
+
+    $("#total_mb_order_price").text(total_price_temp);
 }
 
 $('#mb_login_btn').on('click',function (){
